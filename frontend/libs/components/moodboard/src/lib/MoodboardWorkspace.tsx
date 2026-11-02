@@ -83,8 +83,8 @@ export const MoodboardWorkspace = ({ adapter, topBarEndSlot }: Props) => {
 
 const OPTIONS: Array<{ mode: ViewMode; label: string; icon: LucideIcon }> =
   [
-    { mode: "grid", label: "Grid", icon: Grid3x3Icon },
-    { mode: "canvas", label: "Canvas", icon: SquareDashedIcon },
+    { mode: "grid", label: "격자", icon: Grid3x3Icon },
+    { mode: "canvas", label: "캔버스", icon: SquareDashedIcon },
   ];
 
 // Top-left chrome: the board picker plus the Grid/Canvas view switch, sharing
@@ -145,7 +145,7 @@ const SaveButton = ({
       : status === "saved"
         ? "Saved"
         : status === "error"
-          ? "Retry save"
+          ? "다시 저장"
           : "Save";
 
   return (
@@ -153,8 +153,8 @@ const SaveButton = ({
       type="button"
       onClick={onSave}
       disabled={status === "saving"}
-      title="Save board"
-      aria-label="Save board"
+      title="보드 저장"
+      aria-label="보드 저장"
       className={[
         "flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-sm font-medium transition-colors duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
@@ -198,12 +198,12 @@ const TopRightCluster = ({
       <button
         type="button"
         onClick={onPresent}
-        title="Present"
-        aria-label="Present"
+        title="발표 모드"
+        aria-label="발표 모드"
         className="flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-sm font-medium text-base-fg/55 transition-colors duration-150 hover:text-base-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <PlayIcon  className="h-3 w-3" />
-        Present
+        발표 모드
       </button>
     </div>
     {endSlot && <div className="pointer-events-auto">{endSlot}</div>}

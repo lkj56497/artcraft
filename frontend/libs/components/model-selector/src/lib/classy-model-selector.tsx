@@ -93,7 +93,7 @@ function ProviderTooltipContent({
   return (
     <div className="flex flex-col gap-1">
       <div className="mb-1 mt-0.5 px-1.5 text-sm font-normal text-base-fg opacity-70">
-        Select Provider
+        제공업체 선택
       </div>
       <div className="flex flex-col gap-0">
         {allowedProviders.map((p) => (
@@ -282,13 +282,13 @@ export function ClassyModelSelector({
       ? getCreatorIcon(selectedModel.creator)
       : modelList.find((i) => i.selected)?.icon;
     return (
-      <Tooltip content="Model" position="top" className="z-50" closeOnClick>
+      <Tooltip content="모델" position="top" className="z-50" closeOnClick>
         <PopoverMenu
           items={embeddedList}
           onSelect={handleModelSelect}
           mode="toggle"
           richList
-          panelTitle="Select Model"
+          panelTitle="모델 선택"
           panelClassName="w-[280px]"
           maxListHeight={maxListHeight}
           buttonClassName="max-w-48"
@@ -306,7 +306,7 @@ export function ClassyModelSelector({
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-base-fg/90 text-base font-semibold">Model</span>
+      <span className="text-base-fg/90 text-base font-semibold">모델</span>
       <PopoverMenu
         items={modelList}
         onSelect={handleModelSelect}
@@ -329,7 +329,7 @@ export function ClassyModelSelector({
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 text-base-fg/60 text-[13px] -mt-[1px]">
-                  <span>via</span>
+                  <span>제공:</span>
                   {providerIcon && (
                     <span className="opacity-70">{providerIcon}</span>
                   )}

@@ -99,13 +99,13 @@ function DegradedRendererBanner() {
 
   return (
     <div className="bg-accent border-b h-9 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-      <span>For the best experience, open this editor in Chrome.</span>
+      <span>최상의 환경을 위해 이 편집기는 크롬에서 여세요.</span>
       <Button
         variant="text"
         size="icon"
         className="p-0 w-auto [&_svg]:size-3.5"
         onClick={() => setDismissed(true)}
-        aria-label="Dismiss"
+        aria-label="닫기"
       >
         <HugeiconsIcon icon={Cancel01Icon} />
       </Button>

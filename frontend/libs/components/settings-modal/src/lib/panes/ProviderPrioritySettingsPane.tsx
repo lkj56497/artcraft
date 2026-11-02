@@ -108,7 +108,7 @@ const getProviderIcon = (provider: Provider): ReactNode => {
           ? "/resources/images/services/generic.svg"
           : "/images/services/generic.svg"
       }
-      alt="generic logo"
+      alt="기본 로고"
       className="h-4 w-4 icon-auto-contrast"
     />
   );
@@ -189,9 +189,7 @@ export const ProviderPrioritySettingsPane = () => {
     <div className="space-y-4 pt-3">
       <div>
         <p className="text-xs text-base-fg/70 mb-4">
-          Drag and drop to reorder model provider priority. Higher items will be
-          tried first. You can use this to control favorite services and
-          spending.
+          끌어서 모델 제공업체 우선순위를 바꾸세요. 위에 있는 항목부터 먼저 시도합니다. 선호 서비스와 지출을 조절하는 데 쓸 수 있습니다.
         </p>
       </div>
 
@@ -218,7 +216,7 @@ export const ProviderPrioritySettingsPane = () => {
       {isUpdating && (
         <div className="mt-4 flex animate-pulse items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-base-fg/70">
           <LoaderCircleIcon className="animate-spin" />
-          Updating...
+          업데이트 중...
         </div>
       )}
     </div>

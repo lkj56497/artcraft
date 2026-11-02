@@ -39,8 +39,8 @@ export const SelectionBar = ({
         </span>
         {/* Triage shortcut discoverability — these keys act on the selection. */}
         <span className="hidden items-center gap-1 text-[11px] text-white/40 sm:flex">
-          <Kbd>1–5</Kbd> rate
-          <Kbd>0</Kbd> clear
+          <Kbd>1–5</Kbd> 평점
+          <Kbd>0</Kbd> 지우기
         </span>
         <MoveToMenu
           sections={sections}
@@ -54,7 +54,7 @@ export const SelectionBar = ({
             className="flex items-center gap-2 rounded-full bg-ui-controls/60 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-ui-controls/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <WandSparklesIcon  className="text-xs" />
-            Use as reference
+            참조로 사용
           </button>
         )}
         <button
@@ -63,11 +63,11 @@ export const SelectionBar = ({
           className="flex items-center gap-2 rounded-full bg-red/90 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red focus:outline-none focus-visible:ring-2 focus-visible:ring-red"
         >
           <Trash2Icon  className="text-xs" />
-          Delete
+          삭제
         </button>
         <button
           type="button"
-          aria-label="Clear selection"
+          aria-label="선택 해제"
           onClick={onClear}
           className="flex h-8 w-8 items-center justify-center rounded-full bg-ui-controls/60 text-white transition-colors hover:bg-ui-controls/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
@@ -121,7 +121,7 @@ const MoveToMenu = ({
         className="flex items-center gap-2 rounded-full bg-ui-controls/60 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-ui-controls/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <LayersIcon  className="text-xs" />
-        Move to
+        이동할 위치
       </button>
 
       {open && (
@@ -130,7 +130,7 @@ const MoveToMenu = ({
           className="absolute bottom-[calc(100%+8px)] left-1/2 z-40 max-h-72 w-52 -translate-x-1/2 overflow-y-auto rounded-lg border border-ui-panel-border bg-ui-panel p-2 shadow-xl"
         >
           <MenuItem
-            label="Ungrouped"
+            label="그룹 없음"
             muted
             onClick={() => pick(() => onAssignToSection(null))}
           />
@@ -146,7 +146,7 @@ const MoveToMenu = ({
           ))}
           <div className="mx-1.5 my-1 border-t border-ui-panel-border" />
           <MenuItem
-            label="New section"
+            label="새 섹션"
             icon={PlusIcon}
             accent
             onClick={() => pick(onCreateSectionWithSelection)}

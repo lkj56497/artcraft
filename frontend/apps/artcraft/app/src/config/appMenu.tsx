@@ -38,33 +38,33 @@ export interface AppDescriptor {
 export const APP_DESCRIPTORS: AppDescriptor[] = [
   {
     id: "IMAGE",
-    label: "Create Image",
+    label: "이미지 만들기",
     icon: ImageIcon,
   },
   {
     id: "VIDEO",
-    label: "Create Video",
+    label: "영상 만들기",
     icon: FilmIcon,
   },
   {
     id: "AUDIO",
-    label: "Create Audio",
+    label: "오디오 만들기",
     icon: MusicIcon,
   },
   {
     id: "2D",
-    label: "Image Editor",
+    label: "이미지 편집기",
     icon: PenToolIcon,
     imageSrc: "/resources/gifs/2D_CANVAS_DEMO.webp",
-    description: "Easy edits. Great for graphic design.",
+    description: "간편한 편집. 그래픽 디자인에 적합합니다.",
     large: true,
   },
   {
     id: "3D",
-    label: "3D Stage",
+    label: "3D 스테이지",
     icon: BoxIcon,
     imageSrc: "/resources/gifs/3D_CANVAS_DEMO.webp",
-    description: "Precision control. Great for AI film.",
+    description: "정밀한 제어. AI 영화 제작에 적합합니다.",
     large: true,
   },
 ];
@@ -215,8 +215,8 @@ export const getAppCardPalette = (id: string): AppCardPalette =>
 export const ALL_APPS: FullAppItem[] = [
   {
     id: "text-to-image",
-    label: "Create Image",
-    description: "Generate AI images",
+    label: "이미지 만들기",
+    description: "AI 이미지 생성",
     icon: ImageIcon,
     category: "generate",
     action: "IMAGE",
@@ -224,8 +224,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "image-to-video",
-    label: "Create Video",
-    description: "Create video from images",
+    label: "영상 만들기",
+    description: "이미지로 영상 만들기",
     icon: FilmIcon,
     category: "generate",
     action: "VIDEO",
@@ -233,8 +233,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "create-audio",
-    label: "Create Audio",
-    description: "Generate music and sound effects",
+    label: "오디오 만들기",
+    description: "음악과 효과음 생성",
     icon: MusicIcon,
     category: "generate",
     action: "AUDIO",
@@ -242,8 +242,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "image-to-3d-object",
-    label: "Image to 3D Object",
-    description: "Convert references into textured assets",
+    label: "이미지 → 3D 오브젝트",
+    description: "참조 이미지를 텍스처 입힌 에셋으로 변환",
     icon: BoxIcon,
     category: "generate",
     action: "IMAGE_TO_3D_OBJECT",
@@ -251,8 +251,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "image-to-3d-world",
-    label: "Image to 3D World",
-    description: "Turn mood boards into explorable worlds",
+    label: "이미지 → 3D 월드",
+    description: "무드보드를 탐험 가능한 월드로 변환",
     icon: GlobeIcon,
     category: "generate",
     action: "IMAGE_TO_3D_WORLD",
@@ -260,8 +260,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "edit-image",
-    label: "Edit Image",
-    description: "Change with inpainting",
+    label: "이미지 편집",
+    description: "인페인팅으로 수정",
     icon: PencilIcon,
     category: "edit",
     action: "2D",
@@ -269,8 +269,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "video-frame-extractor",
-    label: "Video Frame Extractor",
-    description: "Extract frames from video",
+    label: "영상 프레임 추출기",
+    description: "영상에서 프레임 추출",
     icon: ImagesIcon,
     category: "edit",
     action: "VIDEO_FRAME_EXTRACTOR",
@@ -278,8 +278,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "video-watermark-removal",
-    label: "Video Watermark Remover",
-    description: "Remove watermarks from videos",
+    label: "영상 워터마크 제거",
+    description: "영상의 워터마크 제거",
     icon: DropletIcon,
     category: "edit",
     badge: "SOON",
@@ -287,8 +287,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "image-watermark-removal",
-    label: "Image Watermark Remover",
-    description: "Remove watermarks from images",
+    label: "이미지 워터마크 제거",
+    description: "이미지의 워터마크 제거",
     icon: DropletIcon,
     category: "edit",
     badge: "SOON",
@@ -296,8 +296,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "remove-background",
-    label: "Remove Background",
-    description: "Remove backgrounds from images",
+    label: "배경 제거",
+    description: "이미지 배경 제거",
     icon: WandSparklesIcon,
     category: "edit",
     action: "REMOVE_BACKGROUND",
@@ -305,8 +305,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "angles",
-    label: "Angles",
-    description: "Generate new camera angles from a single photo",
+    label: "앵글",
+    description: "사진 한 장으로 새로운 카메라 앵글 생성",
     icon: CrosshairIcon,
     category: "generate",
     action: "ANGLES",
@@ -316,8 +316,8 @@ export const ALL_APPS: FullAppItem[] = [
 
   {
     id: "storyboard",
-    label: "Storyboard",
-    description: "Plan your shots with a visual storyboard",
+    label: "스토리보드",
+    description: "시각적 스토리보드로 샷 계획하기",
     icon: ImagesIcon,
     category: "generate",
     action: "STORYBOARD",
@@ -326,8 +326,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "moodboard",
-    label: "Moodboard",
-    description: "Collect references and steer generations from a board",
+    label: "무드보드",
+    description: "참조 자료를 모아 보드에서 생성 방향 잡기",
     icon: GroupIcon,
     category: "generate",
     action: "MOODBOARD",
@@ -336,8 +336,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "background-change",
-    label: "Background Change",
-    description: "Swap the backdrop of a video using a reference image",
+    label: "배경 변경",
+    description: "참조 이미지로 영상의 배경 교체",
     icon: SparklesIcon,
     category: "edit",
     action: "BACKGROUND_CHANGE",
@@ -346,8 +346,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "video-editor",
-    label: "Video Editor",
-    description: "Edit and assemble videos on a timeline",
+    label: "영상 편집기",
+    description: "타임라인에서 영상 편집·조립",
     icon: FilmIcon,
     category: "edit",
     action: "VIDEO_EDITOR",
@@ -356,8 +356,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "2d-canvas",
-    label: "Image Editor",
-    description: "Easy edits. Great for graphic design.",
+    label: "이미지 편집기",
+    description: "간편한 편집. 그래픽 디자인에 적합합니다.",
     icon: PenToolIcon,
     category: "edit",
     action: "2D",
@@ -365,8 +365,8 @@ export const ALL_APPS: FullAppItem[] = [
   },
   {
     id: "3d-editor",
-    label: "3D Stage",
-    description: "Precision control. Great for AI film.",
+    label: "3D 스테이지",
+    description: "정밀한 제어. AI 영화 제작에 적합합니다.",
     icon: BoxIcon,
     category: "generate",
     action: "3D",
@@ -408,6 +408,9 @@ export const useEditApps = (): FullAppItem[] => {
     [visible],
   );
 };
+
+const BADGE_LABELS_KO: Record<string, string> = { NEW: "신규", BEST: "추천", SOON: "곧 출시", BETA: "베타" };
+export const getBadgeLabel = (badge?: string) => (badge ? (BADGE_LABELS_KO[badge] ?? badge) : "");
 
 export const getBadgeStyles = (badge?: string) => {
   switch (badge) {

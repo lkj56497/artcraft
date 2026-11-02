@@ -12,8 +12,8 @@ const OPTIONS: {
   icon: LucideIcon;
   label: string;
 }[] = [
-  { mode: "grid", icon: LayoutGridIcon, label: "Grid view" },
-  { mode: "list", icon: ListIcon, label: "List view" },
+  { mode: "grid", icon: LayoutGridIcon, label: "격자 보기" },
+  { mode: "list", icon: ListIcon, label: "목록 보기" },
 ];
 
 // Segmented grid/list switch for the create-page galleries. Lives in the
@@ -25,7 +25,7 @@ export function GalleryViewToggle() {
   return (
     <div
       role="group"
-      aria-label="Gallery layout"
+      aria-label="갤러리 레이아웃"
       className="flex items-center gap-0.5 rounded-[3px] border border-white/[0.08] bg-white/[0.04] p-0.5"
     >
       {OPTIONS.map(({ mode, icon, label }) => {

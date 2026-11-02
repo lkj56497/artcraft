@@ -45,13 +45,13 @@ export const AspectRatioMenu = () => {
   };
 
   return (
-    <Tooltip content="Aspect ratio" position="bottom" delay={300} closeOnClick>
+    <Tooltip content="화면 비율" position="bottom" delay={300} closeOnClick>
       <PopoverMenu
         items={items}
         onSelect={handleSelect}
         mode="toggle"
         position="bottom"
-        panelTitle="Aspect Ratio"
+        panelTitle="화면 비율"
         showIconsInList
         buttonClassName={TOOLBAR_BUTTON_CLASS_NAME}
         triggerIcon={<AspectRatioIcon ratio={current.proportions} />}

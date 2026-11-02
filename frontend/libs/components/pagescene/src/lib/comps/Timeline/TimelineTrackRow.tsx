@@ -127,7 +127,7 @@ export const TimelineTrackRow = ({
             <button
               key={`ease-${kf.id}`}
               type="button"
-              title="Edit easing"
+              title="가속 곡선 편집"
               data-easing-chip
               className={`absolute top-1/2 flex h-5 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border bg-ui-controls ${
                 active
@@ -179,7 +179,7 @@ export const TimelineTrackRow = ({
 
       <button
         type="button"
-        title="Add keyframe at playhead"
+        title="재생 헤드 위치에 키프레임 추가"
         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-base-fg/70 hover:bg-white/10 hover:text-base-fg"
         onClick={() => {
           if (editor) addKeyframe(editor, item.id);

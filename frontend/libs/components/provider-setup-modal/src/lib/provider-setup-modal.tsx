@@ -74,7 +74,7 @@ export function ProviderSetupModal({
         <div className="flex flex-col gap-3">
           <p className="hud-label flex items-center gap-2 text-base-fg/55">
             <WandSparklesIcon aria-hidden className="h-3.5 w-3.5" />
-            Connect account
+            계정 연결
           </p>
           <h1 className="font-display text-3xl font-medium leading-[1.05] tracking-[-0.03em]">
             {modalTitle}

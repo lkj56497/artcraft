@@ -72,12 +72,12 @@ export const GalleryItemMenuItems: React.FC<GalleryItemMenuItemsProps> = ({
           <EyeIcon className="text-base-fg w-4" />
           <span>
             {item.mediaClass === "video"
-              ? "View video"
+              ? "영상 보기"
               : item.mediaClass === "dimensional" ||
                   item.mediaClass === "mesh" ||
                   item.mediaClass === "splat"
-                ? "View 3D"
-                : "View image"}
+                ? "3D 보기"
+                : "이미지 보기"}
           </span>
         </button>
       )}
@@ -95,7 +95,7 @@ export const GalleryItemMenuItems: React.FC<GalleryItemMenuItemsProps> = ({
           }}
         >
           <PencilIcon className="text-base-fg w-4" />
-          <span>Edit image</span>
+          <span>이미지 편집</span>
         </button>
       )}
 
@@ -120,7 +120,7 @@ export const GalleryItemMenuItems: React.FC<GalleryItemMenuItemsProps> = ({
           >
             <div className="flex items-center gap-2">
               <FolderPlusIcon className="text-base-fg w-4" />
-              <span>Add to Folder</span>
+              <span>폴더에 추가</span>
             </div>
             <ChevronRightIcon
               className={twMerge(
@@ -175,7 +175,7 @@ export const GalleryItemMenuItems: React.FC<GalleryItemMenuItemsProps> = ({
           }}
         >
           <FolderMinusIcon className="text-base-fg w-4" />
-          <span>Remove from folder</span>
+          <span>폴더에서 제거</span>
         </button>
       )}
 
@@ -190,7 +190,7 @@ export const GalleryItemMenuItems: React.FC<GalleryItemMenuItemsProps> = ({
           }}
         >
           <Trash2Icon className="text-red w-4" />
-          <span className="text-red">Delete</span>
+          <span className="text-red">삭제</span>
         </button>
       )}
     </div>
@@ -245,7 +245,7 @@ const FolderList = ({
       }}
     >
       <PlusIcon className="text-xs w-4" />
-      <span>New Folder</span>
+      <span>새 폴더</span>
     </button>
   </>
 );

@@ -16,8 +16,8 @@ export type VFXShowcaseEntry = {
 export const VFX_SHOWCASE: VFXShowcaseEntry[] = [
   {
     id: "showcase-change-location",
-    title: "Change Location",
-    description: "Transport your subject to any location imaginable.",
+    title: "장소 바꾸기",
+    description: "피사체를 상상하는 어떤 장소로든 옮겨 보세요.",
     prompt:
       "A man with curly hair wearing a grey leather jacket sitting in a luxurious private jet cabin, warm afternoon light streaming through the window.",
     resolution: "720p",
@@ -38,8 +38,8 @@ export const VFX_SHOWCASE: VFXShowcaseEntry[] = [
   },
   {
     id: "showcase-relight",
-    title: "Relight",
-    description: "Match your subject's lighting to any reference.",
+    title: "조명 바꾸기",
+    description: "피사체의 조명을 참조 이미지에 맞춥니다.",
     prompt:
       "Cinematic golden-hour rim light, soft warm fill, shallow depth of field.",
     resolution: "720p",
@@ -56,8 +56,8 @@ export const VFX_SHOWCASE: VFXShowcaseEntry[] = [
   },
   {
     id: "showcase-time-shift",
-    title: "Time Shift",
-    description: "Move the same shot from day to night, or season to season.",
+    title: "시간 바꾸기",
+    description: "같은 장면을 낮에서 밤으로, 계절에서 계절로 바꿉니다.",
     prompt:
       "Same composition, shifted to twilight blue hour with city lights coming on in the background.",
     resolution: "720p",
@@ -74,8 +74,8 @@ export const VFX_SHOWCASE: VFXShowcaseEntry[] = [
   },
   {
     id: "showcase-object-swap",
-    title: "Object Swap",
-    description: "Swap props and wardrobe while preserving motion.",
+    title: "사물 바꾸기",
+    description: "움직임은 유지한 채 소품과 의상을 바꿉니다.",
     prompt:
       "Replace the coffee cup with a glass of red wine, keep the hand pose and motion identical.",
     resolution: "720p",

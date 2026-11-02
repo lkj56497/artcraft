@@ -60,7 +60,7 @@ export const PendingRow = memo(function PendingRow({
             // A just-enqueued job's prompt may not be resolved yet — show a
             // placeholder rather than an empty line with a stray copy button.
             <p className="min-w-0 flex-1 text-sm italic text-white/40">
-              Generating…
+              생성 중…
             </p>
           )}
           {prompt.trim() && (
@@ -78,7 +78,7 @@ export const PendingRow = memo(function PendingRow({
             <>
               <span className="text-white/25">·</span>
               <span className="shrink-0">
-                {batchCount} {batchNoun(mediaClass)}
+                {batchNoun(mediaClass)} {batchCount}개
               </span>
             </>
           )}

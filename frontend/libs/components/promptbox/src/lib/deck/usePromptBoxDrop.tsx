@@ -199,11 +199,11 @@ export function usePromptBoxDrop({
     // because the current input mode (e.g. keyframes) doesn't show it.
     if (rejectedKinds.size > 0) {
       toast.error(
-        `${capitalize(listKinds([...rejectedKinds]))} references aren't available here`,
+        `여기서는 ${capitalize(listKinds([...rejectedKinds]))} 참조를 쓸 수 없습니다`,
       );
     } else if (unknownCount > 0 && !anyAccepted) {
       toast.error(
-        `Only ${listKinds(acceptedKindLabels(acceptsImages, acceptsVideos, acceptsAudio))} files can be added here`,
+        `여기에는 ${listKinds(acceptedKindLabels(acceptsImages, acceptsVideos, acceptsAudio))} 파일만 추가할 수 있습니다`,
       );
     }
   };
@@ -371,7 +371,7 @@ export function usePromptBoxDrop({
           const failedCount = readable.length - readFiles.length;
           if (failedCount > 0) {
             toast.error(
-              `Couldn't read ${failedCount} file${failedCount > 1 ? "s" : ""}`,
+              `파일 ${failedCount}개를 읽지 못했습니다`,
             );
           }
 
@@ -458,8 +458,8 @@ export function PromptBoxDropOverlay({
     ...(acceptsImages
       ? [{ icon: ImagesIcon, label: keyframeMode ? "Frames" : "Images" }]
       : []),
-    ...(acceptsVideos ? [{ icon: VideoIcon, label: "Video" }] : []),
-    ...(acceptsAudio ? [{ icon: MusicIcon, label: "Audio" }] : []),
+    ...(acceptsVideos ? [{ icon: VideoIcon, label: "영상" }] : []),
+    ...(acceptsAudio ? [{ icon: MusicIcon, label: "오디오" }] : []),
   ];
   const rejected = dragState === "reject";
 
@@ -483,14 +483,14 @@ export function PromptBoxDropOverlay({
       </div>
       <div className="text-sm font-semibold text-base-fg">
         {rejected
-          ? "That file type isn't supported"
+          ? "지원하지 않는 파일 형식입니다"
           : keyframeMode && !acceptsVideos && !acceptsAudio
-            ? "Drop to set your frames"
-            : "Drop to add references"}
+            ? "놓아서 프레임 지정"
+            : "놓아서 참조 추가"}
       </div>
       <div className="-mt-1 text-xs text-base-fg/60">
         {rejected
-          ? `Accepts ${listKinds(acceptedKindLabels(acceptsImages, acceptsVideos, acceptsAudio))} files`
+          ? `${listKinds(acceptedKindLabels(acceptsImages, acceptsVideos, acceptsAudio))} 파일 가능`
           : kinds.map((kind) => kind.label).join(" · ")}
       </div>
     </div>

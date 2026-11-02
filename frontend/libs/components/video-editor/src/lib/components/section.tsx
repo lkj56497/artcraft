@@ -123,7 +123,7 @@ export function SectionHeader({
           <Button
             variant="ghost"
             size="icon"
-            aria-label={isOpen ? "Collapse section" : "Expand section"}
+            aria-label={isOpen ? "섹션 접기" : "섹션 펼치기"}
             onClick={handleClick}
           >
             {chevronIcon}

@@ -57,7 +57,7 @@ export function canDeleteScene({ scene }: { scene: TScene }): {
   reason?: string;
 } {
   if (scene.isMain) {
-    return { canDelete: false, reason: "Cannot delete main scene" };
+    return { canDelete: false, reason: "메인 장면은 삭제할 수 없습니다" };
   }
   return { canDelete: true };
 }

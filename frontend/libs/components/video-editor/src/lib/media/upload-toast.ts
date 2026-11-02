@@ -34,7 +34,7 @@ export async function showMediaUploadToast<T extends MediaUploadToastResult>({
   promise: Promise<T> | (() => Promise<T>);
 }): Promise<T> {
   const run = typeof promise === "function" ? promise : () => promise;
-  toast.info(`Uploading ${getAssetLabel({ count: filesCount })}...`);
+  toast.info(`${getAssetLabel({ count: filesCount })} 업로드 중...`);
   await waitForNextPaint();
 
   try {
@@ -44,17 +44,17 @@ export async function showMediaUploadToast<T extends MediaUploadToastResult>({
       const assetName = assetNames?.[0];
       toast.success(
         assetName
-          ? `${assetName} has been uploaded`
-          : "1 media asset has been uploaded",
+          ? `${assetName} 업로드 완료`
+          : "미디어 에셋 1개 업로드 완료",
       );
     } else if (uploadedCount > 1) {
-      toast.success(`${uploadedCount} media assets have been uploaded`);
+      toast.success(`미디어 에셋 ${uploadedCount}개 업로드 완료`);
     } else {
-      toast.warning("No media assets were uploaded");
+      toast.warning("업로드된 미디어 에셋이 없습니다");
     }
     return result;
   } catch (error) {
-    toast.error(`Failed to upload ${getAssetLabel({ count: filesCount })}`, {
+    toast.error(`${getAssetLabel({ count: filesCount })} 업로드 실패`, {
       description: error instanceof Error ? error.message : undefined,
     });
     throw error;

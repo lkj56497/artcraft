@@ -283,7 +283,7 @@ export const ImagePromptRow = ({
       >
         <img
           src={image.url}
-          alt="Reference"
+          alt="참조"
           className="h-full w-full object-cover"
         />
         {isReferenceMode && (
@@ -426,7 +426,7 @@ export const ImagePromptRow = ({
     const availableSlots = Math.max(0, maxVideoCount - baseVideos.length);
     if (availableSlots <= 0) {
       toast.error(
-        `Max ${maxVideoCount} videos / ${maxVideoRefDuration}s total`,
+        `최대 영상 ${maxVideoCount}개 / 총 ${maxVideoRefDuration}초`,
         { id: "video-ref-limit" },
       );
       if (videoFileInputRef.current) videoFileInputRef.current.value = "";
@@ -442,7 +442,7 @@ export const ImagePromptRow = ({
 
       if (currentTotal + duration > maxVideoRefDuration) {
         toast.error(
-          `Total video duration cannot exceed ${maxVideoRefDuration}s`,
+          `영상 총 길이는 ${maxVideoRefDuration}초를 넘을 수 없습니다`,
           { id: "video-ref-limit" },
         );
         break;
@@ -474,7 +474,7 @@ export const ImagePromptRow = ({
               newState.status === UploaderStates.imageCreateError
             ) {
               setUploadingVideo(null);
-              toast.error("Failed to upload video. Please upload an MP4 file.");
+              toast.error("영상 업로드 실패. MP4 파일을 올려주세요.");
             }
           },
         });
@@ -557,7 +557,7 @@ export const ImagePromptRow = ({
 
       if (currentTotal + duration > maxAudioRefDuration) {
         toast.error(
-          `Total audio duration cannot exceed ${maxAudioRefDuration}s`,
+          `오디오 총 길이는 ${maxAudioRefDuration}초를 넘을 수 없습니다`,
         );
         break;
       }
@@ -734,7 +734,7 @@ export const ImagePromptRow = ({
       const availableSlots = Math.max(0, maxVideoCount - baseVideos.length);
       if (availableSlots <= 0) {
         toast.error(
-          `Max ${maxVideoCount} videos / ${maxVideoRefDuration}s total`,
+          `최대 영상 ${maxVideoCount}개 / 총 ${maxVideoRefDuration}초`,
           { id: "video-ref-limit" },
         );
         setIsGalleryModalOpen(false);
@@ -776,7 +776,7 @@ export const ImagePromptRow = ({
         }
         if (exceeded) {
           toast.error(
-            `Total video duration cannot exceed ${maxVideoRefDuration}s`,
+            `영상 총 길이는 ${maxVideoRefDuration}초를 넘을 수 없습니다`,
             { id: "video-ref-limit" },
           );
         }
@@ -887,9 +887,9 @@ export const ImagePromptRow = ({
                   <span className="text-sm font-medium flex items-center gap-1.5">
                     {isVideo
                       ? isReferenceMode
-                        ? "Image Ref"
-                        : "Start Frame"
-                      : "Image Prompts"}
+                        ? "이미지 참조"
+                        : "시작 프레임"
+                      : "이미지 프롬프트"}
                     {(!isVideo || isReferenceMode) && (
                       <span className="text-base-fg/60 font-semibold">
                         ({usedSlotsRender}/{maxImagePromptCount})
@@ -900,9 +900,9 @@ export const ImagePromptRow = ({
                 <span className="text-[13px] text-base-fg/60">
                   {isVideo
                     ? isReferenceMode
-                      ? "Upload images"
-                      : "Animate an image"
-                    : "Use the elements of an image"}
+                      ? "이미지 업로드"
+                      : "이미지를 움직이기"
+                    : "이미지의 요소 활용"}
                 </span>
               </div>
 
@@ -941,7 +941,7 @@ export const ImagePromptRow = ({
                       >
                         <img
                           src={image.url}
-                          alt="Reference"
+                          alt="참조"
                           className="h-full w-full object-cover"
                         />
                         {isReferenceMode && (
@@ -977,7 +977,7 @@ export const ImagePromptRow = ({
                         <div className="absolute inset-0">
                           <img
                             src={previewUrl}
-                            alt="Uploading preview"
+                            alt="미리보기 업로드 중"
                             className="h-full w-full object-cover blur-sm"
                           />
                         </div>
@@ -1006,7 +1006,7 @@ export const ImagePromptRow = ({
                             icon={PlusIcon}
                             className="w-full"
                           >
-                            Upload
+                            업로드
                           </Button>
                         )}
                         <Button
@@ -1018,7 +1018,7 @@ export const ImagePromptRow = ({
                           icon={ImagesIcon}
                           className="w-full bg-base-fg/10 hover:bg-base-fg/20"
                         >
-                          Pick from library
+                          라이브러리에서 선택
                         </Button>
                       </div>
                     }
@@ -1050,14 +1050,14 @@ export const ImagePromptRow = ({
                     <div className="flex items-center gap-2 opacity-90 text-base-fg">
                       <ImageIcon  className="h-3.5 w-3.5" />
                       <span className="text-sm font-medium flex items-center gap-1.5">
-                        End Frame{" "}
+                        끝 프레임{" "}
                         <span className="text-base-fg/60 text-xs">
-                          (optional)
+                          (선택)
                         </span>
                       </span>
                     </div>
                     <span className="text-[13px] text-base-fg/60">
-                      How video ends
+                      영상이 끝나는 모습
                     </span>
                   </div>
                 </div>
@@ -1069,7 +1069,7 @@ export const ImagePromptRow = ({
                     >
                       <img
                         src={endFrameImage.url}
-                        alt="Ending Frame"
+                        alt="끝 프레임"
                         className="h-full w-full object-cover"
                       />
                       <button
@@ -1090,7 +1090,7 @@ export const ImagePromptRow = ({
                         <div className="absolute inset-0">
                           <img
                             src={uploadingEnd.previewUrl}
-                            alt="Uploading preview"
+                            alt="미리보기 업로드 중"
                             className="h-full w-full object-cover blur-sm"
                           />
                         </div>
@@ -1117,7 +1117,7 @@ export const ImagePromptRow = ({
                               icon={PlusIcon}
                               className="w-full"
                             >
-                              Upload
+                              업로드
                             </Button>
                           )}
                           <Button
@@ -1129,7 +1129,7 @@ export const ImagePromptRow = ({
                             icon={ImagesIcon}
                             className="w-full bg-base-fg/10 hover:bg-base-fg/20"
                           >
-                            Pick from library
+                            라이브러리에서 선택
                           </Button>
                         </div>
                       }
@@ -1163,14 +1163,14 @@ export const ImagePromptRow = ({
                   <div className="flex items-center gap-2 opacity-90 text-base-fg">
                     <VideoIcon  className="h-3.5 w-3.5" />
                     <span className="text-sm font-medium flex items-center gap-1.5">
-                      Video Ref{" "}
+                      영상 참조{" "}
                       <span className="text-base-fg/60 font-semibold">
                         ({referenceVideos.length}/{maxVideoCount})
                       </span>
                     </span>
                   </div>
                   <span className="text-[13px] text-base-fg/60">
-                    {totalVideoDuration}s / {maxVideoRefDuration}s max
+                    {totalVideoDuration}초 / 최대 {maxVideoRefDuration}초
                   </span>
                 </div>
                 <div className="flex gap-2 items-center">
@@ -1234,7 +1234,7 @@ export const ImagePromptRow = ({
                               icon={PlusIcon}
                               className="w-full"
                             >
-                              Upload
+                              업로드
                             </Button>
                             <Button
                               variant="action"
@@ -1245,7 +1245,7 @@ export const ImagePromptRow = ({
                               icon={ImagesIcon}
                               className="w-full bg-base-fg/10 hover:bg-base-fg/20"
                             >
-                              Pick from library
+                              라이브러리에서 선택
                             </Button>
                           </div>
                         }
@@ -1271,14 +1271,14 @@ export const ImagePromptRow = ({
                     <div className="flex items-center gap-2 opacity-90 text-base-fg">
                       <MusicIcon  className="h-3.5 w-3.5" />
                       <span className="text-sm font-medium flex items-center gap-1.5">
-                        Audio Ref{" "}
+                        오디오 참조{" "}
                         <span className="text-base-fg/60 font-semibold">
                           ({referenceAudios.length}/{maxAudioCount})
                         </span>
                       </span>
                     </div>
                     <span className="text-[13px] text-base-fg/60">
-                      {totalAudioDuration}s / {maxAudioRefDuration}s max
+                      {totalAudioDuration}초 / 최대 {maxAudioRefDuration}초
                     </span>
                   </div>
                 </div>

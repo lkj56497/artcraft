@@ -342,7 +342,7 @@ export const ControlPanelSceneObject = () => {
         className={"flex flex-col gap-2 overflow-y-auto"}
       >
         <div className="flex flex-col gap-1">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">Color</p>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">색상</p>
           {/* Native <input type="color"> is nested INSIDE the Button's
               <label> so Safari opens the picker reliably. Safari refuses
               to open a color picker triggered via label[htmlFor]→input
@@ -385,7 +385,7 @@ export const ControlPanelSceneObject = () => {
           </Button>
         </div>
         <div className="flex flex-col gap-2">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">Location</p>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">위치</p>
           <InputVector
             x={localPosition.x.toString()}
             y={localPosition.y.toString()}
@@ -398,7 +398,7 @@ export const ControlPanelSceneObject = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">Rotation</p>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">회전</p>
           <InputVector
             x={localRotation.x.toString()}
             y={localRotation.y.toString()}
@@ -413,7 +413,7 @@ export const ControlPanelSceneObject = () => {
 
         <div className="mb-1 flex flex-col gap-2">
           <DraggablePrecisionMutator onChange={handleUniformScaleChange}>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">Scale</p>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-white/60">크기</p>
           </DraggablePrecisionMutator>
           <InputVector
             x={localScale.x.toString()}
@@ -437,7 +437,7 @@ export const ControlPanelSceneObject = () => {
           onClick={handleDeleteObject}
           className="w-full"
         >
-          Delete
+          삭제
         </Button>
       </div>
     </Transition>

@@ -65,7 +65,7 @@ export const ResolutionPicker = ({
   return (
     <>
       <Tooltip
-        content="Resolution"
+        content="해상도"
         position="top"
         className="z-50"
         closeOnClick={true}
@@ -74,7 +74,7 @@ export const ResolutionPicker = ({
           items={resolutionList}
           onSelect={handleSelectAdapter}
           mode="toggle"
-          panelTitle="Resolution"
+          panelTitle="해상도"
           showIconsInList
           triggerIcon={
             <DynamicIcon

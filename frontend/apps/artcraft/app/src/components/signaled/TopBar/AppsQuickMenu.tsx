@@ -5,6 +5,7 @@ import {
   useEditApps,
   getAppCardPalette,
   getBadgeStyles,
+  getBadgeLabel,
   goToApp,
   type FullAppItem,
 } from "~/config/appMenu";
@@ -14,8 +15,8 @@ export const AppsQuickMenu = () => {
   const editApps = useEditApps();
   return (
     <div className="grid w-[680px] grid-cols-2 gap-3">
-      <AppsQuickMenuSection title="Create" apps={generateApps} />
-      <AppsQuickMenuSection title="Edit" apps={editApps} />
+      <AppsQuickMenuSection title="만들기" apps={generateApps} />
+      <AppsQuickMenuSection title="편집" apps={editApps} />
     </div>
   );
 };
@@ -65,7 +66,7 @@ const AppsQuickMenuSection = ({
                       getBadgeStyles(app.badge),
                     )}
                   >
-                    {app.badge}
+                    {getBadgeLabel(app.badge)}
                   </span>
                 )}
               </div>

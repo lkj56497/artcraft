@@ -251,7 +251,7 @@ export const useMoodboardStore = create<MoodboardState>((set, get) => ({
       height: DEFAULT_TEXT_H,
       rotation: 0,
       zIndex: get().rootOrder.length,
-      text: "Note",
+      text: "메모",
       fontSize: DEFAULT_FONT_SIZE,
       color: DEFAULT_TEXT_COLOR,
     };

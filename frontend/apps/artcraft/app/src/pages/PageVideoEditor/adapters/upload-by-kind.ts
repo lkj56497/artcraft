@@ -35,7 +35,7 @@ export async function uploadByKind({
         : await api.UploadImage({ uuid, blob, fileName, maybe_title });
 
   if (!response.success || !response.data) {
-    throw new Error(response.errorMessage || "Upload failed");
+    throw new Error(response.errorMessage || "업로드 실패");
   }
   return response.data;
 }

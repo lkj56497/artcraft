@@ -192,6 +192,6 @@ export class UserApiKeysApi extends ApiManager {
   private statusFallback(response: ErrorBody): string {
     if (response.error_code_str) return response.error_code_str;
     if (response.error_code) return `Request failed (${response.error_code})`;
-    return "Request failed";
+    return "요청 실패";
   }
 }

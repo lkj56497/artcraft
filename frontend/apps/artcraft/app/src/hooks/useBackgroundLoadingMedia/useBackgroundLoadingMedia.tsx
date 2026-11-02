@@ -49,7 +49,7 @@ export const useBackgroundLoadingMedia = () => {
       if (ret) {
         addToast(
           ToastTypes.SUCCESS,
-          "New movie is completed! Please check My Movies",
+          "새 영상이 완성되었습니다! 내 영상에서 확인하세요",
           false,
         );
       }
@@ -86,7 +86,7 @@ export const useBackgroundLoadingMedia = () => {
       if (ret) {
         addToast(
           ToastTypes.SUCCESS,
-          "New audio is generated! Please check your audio library",
+          "새 오디오가 생성되었습니다! 오디오 라이브러리에서 확인하세요",
         );
       }
     });

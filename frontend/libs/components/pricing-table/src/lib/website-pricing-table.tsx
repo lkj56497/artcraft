@@ -16,35 +16,35 @@ import "./website-pricing-table.css";
 
 export type BillingCadence = "yearly" | "monthly";
 const BILLING_TABS = [
-  { id: "yearly", label: "Yearly" },
-  { id: "monthly", label: "Monthly" },
+  { id: "yearly", label: "연간" },
+  { id: "monthly", label: "월간" },
 ];
 const HIGHLIGHT_ICONS = { "Most popular": StarIcon, "Best value": GemIcon };
 const PLAN_STYLE: Record<
   string,
   { tagline: string; highlight?: keyof typeof HIGHLIGHT_ICONS }
 > = {
-  artcraft_basic: { tagline: "For getting started" },
-  artcraft_pro: { tagline: "For serious creators", highlight: "Most popular" },
+  artcraft_basic: { tagline: "처음 시작하는 분께" },
+  artcraft_pro: { tagline: "본격적인 창작자용", highlight: "가장 인기" },
   artcraft_max: {
-    tagline: "For studios and power users",
-    highlight: "Best value",
+    tagline: "스튜디오·파워 유저용",
+    highlight: "최고 가성비",
   },
 };
 const PLAN_BUTTON_CLASSES =
   "h-11 w-full font-mono text-[11px] font-semibold uppercase tracking-[0.12em] rounded-none bg-[var(--plan)] hover:bg-[var(--plan)] text-white hover:opacity-90";
 const CONTACT_EMAIL = "hello@storyteller.ai";
 const ENTERPRISE_FEATURES = [
-  "Bespoke credit allocation",
-  "Secure models",
+  "맞춤 크레딧 배정",
+  "보안 모델",
   "Support SLAs",
-  "Custom integrations",
+  "맞춤 연동",
 ];
 const TRUST_POINTS = [
-  "Cancel anytime",
-  "Secure checkout via Stripe",
-  "Credits refunded if a generation fails",
-  "Open source — yours forever",
+  "언제든 해지 가능",
+  "Stripe를 통한 안전한 결제",
+  "생성 실패 시 크레딧 환불",
+  "오픈소스 — 영원히 내 것",
 ];
 
 interface WebsitePricingTableProps {
@@ -94,16 +94,16 @@ export function WebsitePricingTable({
             tabClassName="w-24 font-mono text-[11px] uppercase tracking-[0.1em]"
           />
           <span className="pricing-hud pricing-sale-badge bg-primary px-2 py-1 text-white">
-            {PROMO_PCT}% off · ends soon
+            {PROMO_PCT}% 할인 · 곧 종료
           </span>
           <p className="pricing-hud hidden text-primary sm:block">
             {cadence === "yearly"
-              ? "2 months free"
-              : "Switch to yearly, save 20%"}
+              ? "2개월 무료"
+              : "연간으로 바꾸면 20% 절약"}
           </p>
         </div>
         <p className="pricing-hud hidden text-white/40 sm:block">
-          {displayName ? `Signed in as ${displayName}` : "Prices in USD"}
+          {displayName ? `${displayName}(으)로 로그인됨` : "가격은 USD 기준"}
         </p>
       </div>
 
@@ -118,10 +118,10 @@ export function WebsitePricingTable({
             isCurrent={plan.slug === activePlanSlug}
             ctaLabel={
               plan.slug === activePlanSlug
-                ? "Current plan"
+                ? "현재 요금제"
                 : hasActivePlan
-                  ? `Switch to ${plan.name}`
-                  : `Get ${plan.name}`
+                  ? `${plan.name}(으)로 변경`
+                  : `${plan.name} 시작하기`
             }
             disabled={loading || processingPlan !== null}
             processing={processingPlan === plan.slug}
@@ -155,7 +155,7 @@ export function WebsitePricingTable({
             disabled={managing}
             className="pricing-hud text-white/55 underline underline-offset-4 hover:text-white/80 disabled:opacity-50"
           >
-            {managing ? "Opening portal…" : "Manage plan"}
+            {managing ? "포털 여는 중…" : "요금제 관리"}
           </button>
         )}
       </div>
@@ -204,7 +204,7 @@ function PlanCell({
         {isCurrent ? (
           <>
             <CheckIcon aria-hidden className="h-3 w-3" />
-            Your plan
+            내 요금제
           </>
         ) : (
           <>
@@ -220,7 +220,7 @@ function PlanCell({
             {plan.name}
           </h3>
           <span className="pricing-hud bg-[var(--plan)] hover:bg-[var(--plan)] px-2 py-1 font-bold text-white">
-            {PROMO_PCT}% off
+            {PROMO_PCT}% 할인
           </span>
         </div>
         <p className="mt-1 text-sm text-white/55">
@@ -234,18 +234,18 @@ function PlanCell({
           <span className="font-display text-5xl font-medium tracking-[-0.03em] text-white">
             ${current}
           </span>
-          <span className="text-white/55">/mo</span>
+          <span className="text-white/55">/월</span>
         </div>
         <p className="pricing-hud mt-2 text-white/40">
           {cadence === "yearly" ? (
             <>
-              ${plan.yearlyPrice} billed yearly ·{" "}
+              ${plan.yearlyPrice} 연간 청구 ·{" "}
               <span className="text-[var(--plan-ink)]">
-                Save ${yearlySavings}
+                절약 ${yearlySavings}
               </span>
             </>
           ) : (
-            "Billed monthly · cancel anytime"
+            "매월 청구 · 언제든 해지"
           )}
         </p>
 
@@ -264,7 +264,7 @@ function PlanCell({
           {!isCurrent && <ArrowRightIcon aria-hidden className="h-3.5 w-3.5" />}
         </Button>
 
-        <p className="pricing-hud mt-8 text-white/40">What you get</p>
+        <p className="pricing-hud mt-8 text-white/40">포함 내용</p>
         <FeatureList items={features.map((f) => f.text)} className="mt-3" />
       </div>
     </article>
@@ -283,25 +283,25 @@ function EnterpriseCell({
       id="enterprise"
       className="website-plan-card plan-enterprise flex flex-col"
     >
-      <CellIndexRow index={index}>For teams</CellIndexRow>
+      <CellIndexRow index={index}>팀용</CellIndexRow>
 
       <div className="flex flex-1 flex-col p-6 md:p-8">
         <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-white">
-          Enterprise
+          엔터프라이즈
         </h3>
         <div className="mt-5 flex items-baseline gap-2">
           <span className="font-display text-5xl font-medium tracking-[-0.03em] text-white">
-            Custom
+            맞춤
           </span>
         </div>
         <p className="pricing-hud mt-2 text-white/40">
-          Bespoke volume &amp; terms
+          맞춤 사용량 &amp; 조건
         </p>
 
         <ContactButtons className="mt-6" onContact={onContact} />
 
         <p className="pricing-hud mt-8 text-white/40">
-          Everything in Max, plus
+          Max의 모든 기능, 그리고
         </p>
         <FeatureList items={ENTERPRISE_FEATURES} className="mt-3" />
       </div>
@@ -389,12 +389,12 @@ function ContactButtons({
         className={twMerge(PLAN_BUTTON_CLASSES, "flex-1")}
       >
         <MailIcon aria-hidden className="h-3.5 w-3.5" />
-        Contact us
+        문의하기
       </Button>
       <Button
         type="button"
         onClick={copy}
-        aria-label={copied ? "Email copied" : "Copy email address"}
+        aria-label={copied ? "이메일 복사됨" : "이메일 주소 복사"}
         className={twMerge(PLAN_BUTTON_CLASSES, "w-12 px-0")}
       >
         {copied ? (

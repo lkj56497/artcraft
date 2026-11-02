@@ -110,7 +110,7 @@ export const VideoWatermarkRemover = () => {
   const handleGallerySelect = async (selectedItems: GalleryItem[]) => {
     const item = selectedItems[0];
     if (!item || !item.fullImage) {
-      toast.error("No video selected");
+      toast.error("선택된 영상이 없습니다");
       return;
     }
 
@@ -179,22 +179,22 @@ export const VideoWatermarkRemover = () => {
 
   const handleRemoveWatermark = async () => {
     if (!videoRef.current || !videoUrl) {
-      toast.error("Please select a video first");
+      toast.error("먼저 영상을 선택하세요");
       return;
     }
 
     setIsProcessing(true);
-    toast.loading("Processing watermark removal...", {
+    toast.loading("워터마크 제거 처리 중...", {
       id: "watermark-removal",
     });
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      toast.success("Watermark removal completed!", {
+      toast.success("워터마크 제거 완료!", {
         id: "watermark-removal",
       });
     } catch (error) {
-      toast.error("Failed to remove watermark", { id: "watermark-removal" });
+      toast.error("워터마크 제거 실패", { id: "watermark-removal" });
       console.error("Error removing watermark:", error);
     } finally {
       setIsProcessing(false);
@@ -217,14 +217,14 @@ export const VideoWatermarkRemover = () => {
                 <div className="aspect-video overflow-hidden border border-ui-panel-border bg-ui-panel">
                   <UploadEntryCard
                     icon={DropletIcon}
-                    title="Remove Video Watermark"
-                    description="Clean up your videos by removing unwanted watermarks. Upload your video and let AI do the magic."
+                    title="영상 워터마크 제거"
+                    description="원치 않는 워터마크를 지워 영상을 깔끔하게 만드세요. 영상을 올리면 AI가 알아서 처리합니다."
                     accentBackgroundClass="bg-cyan-500/40"
                     accentBorderClass="border-cyan-400/30"
                     accept="video/*"
                     onFilesSelected={handleLocalVideoSelect}
-                    primaryLabel="Select Video"
-                    secondaryLabel="Pick from Library"
+                    primaryLabel="영상 선택"
+                    secondaryLabel="라이브러리에서 선택"
                     secondaryIcon={ImagesIcon}
                     onSecondaryClick={() => setIsGalleryModalOpen(true)}
                   />
@@ -243,7 +243,7 @@ export const VideoWatermarkRemover = () => {
                       }}
                       className="absolute right-3 top-3 z-10 border border-red/50 px-3 py-1.5 text-sm hover:border-red/80 hover:bg-red/80"
                     >
-                      Switch Video
+                      영상 바꾸기
                     </Button>
                     <video
                       ref={videoRef}
@@ -271,7 +271,7 @@ export const VideoWatermarkRemover = () => {
                           <button
                             onClick={() => seekToFrame("first")}
                             className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-white/10 transition-colors hover:bg-white/20"
-                            title="First Frame"
+                            title="첫 프레임"
                           >
                             <SkipBackIcon
                               
@@ -289,7 +289,7 @@ export const VideoWatermarkRemover = () => {
                           <button
                             onClick={() => seekToFrame("last")}
                             className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-white/10 transition-colors hover:bg-white/20"
-                            title="Last Frame"
+                            title="마지막 프레임"
                           >
                             <SkipForwardIcon
                               
@@ -334,7 +334,7 @@ export const VideoWatermarkRemover = () => {
                     className="px-12 py-3 text-lg font-semibold"
                     disabled={isProcessing}
                   >
-                    {isProcessing ? "Processing..." : "Remove Watermark"}
+                    {isProcessing ? "처리 중..." : "워터마크 제거"}
                   </Button>
                 </div>
 
@@ -344,12 +344,12 @@ export const VideoWatermarkRemover = () => {
                       <VideoIcon
                         
                         className="text-ui-accent-ink" />
-                      Video Information
+                      영상 정보
                     </div>
                     <div className="space-y-3 text-sm">
                       <div className="flex items-center justify-between border-b border-ui-divider py-2">
                         <span className="font-medium text-base-fg/70">
-                          Duration
+                          길이
                         </span>
                         <span className="font-mono text-lg font-semibold tabular-nums text-base-fg">
                           {formatTime(duration)}
@@ -358,7 +358,7 @@ export const VideoWatermarkRemover = () => {
                       {videoRef.current && (
                         <div className="flex items-center justify-between py-2">
                           <span className="font-medium text-base-fg/70">
-                            Resolution
+                            해상도
                           </span>
                           <span className="font-mono font-semibold tabular-nums text-base-fg">
                             {videoRef.current.videoWidth} ×{" "}

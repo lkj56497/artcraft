@@ -22,7 +22,7 @@ export function Kbd({ binding }: { binding: Binding }) {
 // "Unbound" when empty.
 export function KbdBindings({ bindings }: { bindings: Binding[] }) {
   if (!bindings.length) {
-    return <span className="text-[11px] italic text-base-fg/40">Unbound</span>;
+    return <span className="text-[11px] italic text-base-fg/40">지정 안 됨</span>;
   }
   return (
     <span className="inline-flex items-center gap-1.5">

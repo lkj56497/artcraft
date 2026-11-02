@@ -94,8 +94,8 @@ export const ItemElements = ({
         <CircleSlashIcon
           
           className="mb-4 text-4xl opacity-30" />
-        <h4>You do not have anything here.</h4>
-        <p className="text-sm opacity-75">Please upload some assets.</p>
+        <h4>여기에 아무것도 없습니다.</h4>
+        <p className="text-sm opacity-75">에셋을 업로드해 주세요.</p>
       </div>
     );
   }

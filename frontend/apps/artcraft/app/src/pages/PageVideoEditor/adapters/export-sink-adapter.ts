@@ -69,14 +69,14 @@ export const tauriExportSinkAdapter: ExportSinkAdapter = {
         onProgress?.({
           destination: "disk",
           status: "error",
-          error: "Already saving this export",
+          error: "이미 이 결과물을 저장 중입니다",
         });
       }
       if (saveToLibrary) {
         onProgress?.({
           destination: "library",
           status: "error",
-          error: "Already uploading this export",
+          error: "이미 이 결과물을 업로드 중입니다",
         });
       }
       setTimeout(() => URL.revokeObjectURL(downloadUrl), 60_000);
@@ -100,7 +100,7 @@ export const tauriExportSinkAdapter: ExportSinkAdapter = {
             onProgress?.({
               destination: "disk",
               status: "error",
-              error: "Save dialog cancelled",
+              error: "저장 창이 취소되었습니다",
             });
           }
         } catch (error) {
@@ -108,7 +108,7 @@ export const tauriExportSinkAdapter: ExportSinkAdapter = {
           onProgress?.({
             destination: "disk",
             status: "error",
-            error: error instanceof Error ? error.message : "Disk save failed",
+            error: error instanceof Error ? error.message : "디스크 저장 실패",
           });
         }
       }
@@ -123,7 +123,7 @@ export const tauriExportSinkAdapter: ExportSinkAdapter = {
           onProgress?.({
             destination: "library",
             status: "error",
-            error: error instanceof Error ? error.message : "Upload failed",
+            error: error instanceof Error ? error.message : "업로드 실패",
           });
         }
       }

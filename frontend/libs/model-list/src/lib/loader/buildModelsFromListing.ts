@@ -333,11 +333,11 @@ const sizeOptionForAspectRatio = (value: string): SizeOption => {
     case "tall_nine_by_twenty_one":
       return { tauriValue: value, textLabel: "9:21", icon: SizeIconOption.Portrait9x16 };
     case "wide":
-      return { tauriValue: value, textLabel: "Landscape", icon: SizeIconOption.Landscape };
+      return { tauriValue: value, textLabel: "가로", icon: SizeIconOption.Landscape };
     case "tall":
-      return { tauriValue: value, textLabel: "Portrait", icon: SizeIconOption.Portrait };
+      return { tauriValue: value, textLabel: "세로", icon: SizeIconOption.Portrait };
     case "auto":
-      return { tauriValue: value, textLabel: "Auto", icon: SizeIconOption.Square };
+      return { tauriValue: value, textLabel: "자동", icon: SizeIconOption.Square };
     default:
       return { tauriValue: value, textLabel: value, icon: SizeIconOption.Square };
   }

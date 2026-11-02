@@ -22,10 +22,10 @@ export function CostCalculatorButton({
       variant="action"
       onClick={openModal}
       className={className}
-      title="Cost Calculator"
+      title="비용 계산기"
     >
       <CalculatorIcon  className="text-base-fg" />
-      <span>Costs</span>
+      <span>비용</span>
       {credits != null && (
         <span className="text-xs font-semibold flex items-center gap-1">
           <CoinsIcon  className="text-base-fg" />

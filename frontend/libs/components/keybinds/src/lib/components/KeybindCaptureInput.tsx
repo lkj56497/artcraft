@@ -34,7 +34,7 @@ export function KeybindCaptureInput({
     <button
       type="button"
       onClick={() => setCapturing((v) => !v)}
-      aria-label="Change keybinding"
+      aria-label="단축키 변경"
       className={twMerge(
         "inline-flex min-h-8 min-w-[7rem] items-center justify-center rounded-[3px] border px-2 py-1 text-sm transition-colors",
         capturing
@@ -46,7 +46,7 @@ export function KeybindCaptureInput({
       )}
     >
       {capturing ? (
-        <span className="text-[12px] font-medium">Press a key… (Esc to cancel)</span>
+        <span className="text-[12px] font-medium">키를 누르세요… (Esc로 취소)</span>
       ) : (
         <KbdBindings bindings={bindings} />
       )}

@@ -29,7 +29,7 @@ export const getProviderIcon = (
           ? "/resources/images/services/generic.svg"
           : "/images/services/generic.svg"
       }
-      alt="generic logo"
+      alt="기본 로고"
       className={className}
     />
   );

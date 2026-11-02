@@ -81,7 +81,7 @@ export const AspectRatioPicker = ({
   return (
     <>
       <Tooltip
-        content="Aspect Ratio"
+        content="화면 비율"
         position="top"
         className="z-50"
         closeOnClick={true}
@@ -90,7 +90,7 @@ export const AspectRatioPicker = ({
           items={aspectRatioList}
           onSelect={handleSelectAdapter}
           mode="toggle"
-          panelTitle="Aspect Ratio"
+          panelTitle="화면 비율"
           showIconsInList
           triggerIcon={
             isAutoRatio || !useAspectRatio ? (

@@ -155,8 +155,8 @@ const TextToImage = ({ imageMediaId, imageUrl }: TextToImageProps) => {
   return (
     <DesktopCreatePageShell
       hasContent={hasContent}
-      emptyStateTitle="Create Image"
-      emptyStateSubtitle="Add a prompt, then generate"
+      emptyStateTitle="이미지 만들기"
+      emptyStateSubtitle="프롬프트를 입력하고 생성하세요"
       bottomOffset={promptHeight + 40}
       listContent={
         <DesktopGenerationGallery

@@ -515,7 +515,7 @@ function MentionDropdown({
       }}
     >
       <div className="px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-base-fg/50">
-        References
+        참조
       </div>
       <div>
         {items.map((item, i) => (

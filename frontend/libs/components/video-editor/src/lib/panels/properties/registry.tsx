@@ -82,7 +82,7 @@ function buildTransformTab({
 }): PropertiesTabDef {
   return {
     id: "transform",
-    label: "Transform",
+    label: "변형",
     icon: <HugeiconsIcon icon={ArrowExpandIcon} size={16} />,
     content: ({ trackId }) => (
       <ElementParamsTab
@@ -102,7 +102,7 @@ function buildBlendingTab({
 }): PropertiesTabDef {
   return {
     id: "blending",
-    label: "Blending",
+    label: "혼합",
     icon: <HugeiconsIcon icon={RainDropIcon} size={16} />,
     content: ({ trackId }) => (
       <ElementParamsTab
@@ -122,7 +122,7 @@ function buildAudioTab({
 }): PropertiesTabDef {
   return {
     id: "audio",
-    label: "Audio",
+    label: "오디오",
     icon: <HugeiconsIcon icon={MusicNote03Icon} size={16} />,
     content: ({ trackId }) => (
       <ElementParamsTab
@@ -142,7 +142,7 @@ function buildSpeedTab({
 }): PropertiesTabDef {
   return {
     id: "speed",
-    label: "Speed",
+    label: "속도",
     icon: <HugeiconsIcon icon={DashboardSpeed02Icon} size={16} />,
     content: ({ trackId }) => (
       <SpeedTab element={element} trackId={trackId} />
@@ -157,7 +157,7 @@ function buildMasksTab({
 }): PropertiesTabDef {
   return {
     id: "masks",
-    label: "Masks",
+    label: "마스크",
     icon: <OcShapesIcon size={16} />,
     content: ({ trackId }) => (
       <MasksTab element={element} trackId={trackId} />
@@ -172,7 +172,7 @@ function buildClipEffectsTab({
 }): PropertiesTabDef {
   return {
     id: "effects",
-    label: "Effects",
+    label: "효과",
     icon: <HugeiconsIcon icon={MagicWand05Icon} size={16} />,
     content: ({ trackId }) => (
       <ClipEffectsTab element={element} trackId={trackId} />
@@ -183,7 +183,7 @@ function buildClipEffectsTab({
 function buildTextTab({ element }: { element: TextElement }): PropertiesTabDef {
   return {
     id: "text",
-    label: "Text",
+    label: "텍스트",
     icon: <HugeiconsIcon icon={TextFontIcon} size={16} />,
     content: ({ trackId }) => (
       <ElementParamsTab
@@ -203,7 +203,7 @@ function buildGraphicTab({
 }): PropertiesTabDef {
   return {
     id: "graphic",
-    label: "Graphic",
+    label: "그래픽",
     icon: <OcShapesIcon size={16} />,
     content: ({ trackId }) => (
       <GraphicTab element={element} trackId={trackId} />
@@ -218,7 +218,7 @@ function buildStandaloneEffectTab({
 }): PropertiesTabDef {
   return {
     id: "effects",
-    label: "Effects",
+    label: "효과",
     icon: <HugeiconsIcon icon={MagicWand05Icon} size={16} />,
     content: ({ trackId }) => (
       <StandaloneEffectTab element={element} trackId={trackId} />

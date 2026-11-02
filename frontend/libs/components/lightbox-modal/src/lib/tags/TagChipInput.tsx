@@ -160,7 +160,7 @@ export function TagChipInput({
                 e.stopPropagation();
                 onRemove(value);
               }}
-              title={`Remove "${value}"`}
+              title={`"${value}" 제거`}
               className={`group/tag ${chipClass(value)} hover:bg-red/15 hover:text-red focus:outline-none focus-visible:ring-2 focus-visible:ring-red`}
             >
               {value}
@@ -183,8 +183,8 @@ export function TagChipInput({
               setFocused(false);
               if (draft.trim()) commit(draft);
             }}
-            aria-label="Tags"
-            placeholder={chips.length === 0 ? "Add tags (comma separated)" : "Add tag"}
+            aria-label="태그"
+            placeholder={chips.length === 0 ? "태그 추가 (쉼표로 구분)" : "태그 추가"}
             className="min-w-[7rem] flex-1 bg-transparent py-0.5 text-sm text-base-fg placeholder:text-base-fg/40 focus:outline-none"
           />
         )}

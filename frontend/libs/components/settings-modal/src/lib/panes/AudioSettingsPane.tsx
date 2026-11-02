@@ -109,13 +109,13 @@ export const AudioSettingsPane = (args: AudioSettingsPaneProps) => {
       <div className="space-y-4 pt-3 text-base-fg">
         <div className="flex flex-col gap-2">
           <Label htmlFor="play-sounds" className="mb-0">
-            Play Notification Sounds for Events?
+            이벤트 알림음을 재생할까요?
           </Label>
           <Switch enabled={playSounds} setEnabled={setPlaySounds} />
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="success-sound">Delete File Sound</Label>
+          <Label htmlFor="success-sound">파일 삭제 소리</Label>
           <div className="flex items-center gap-2">
             <Select
               id="success-sound"
@@ -134,7 +134,7 @@ export const AudioSettingsPane = (args: AudioSettingsPaneProps) => {
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="success-sound">Enqueue Success Sound</Label>
+          <Label htmlFor="success-sound">대기열 등록 성공 소리</Label>
           <div className="flex items-center gap-2">
             <Select
               id="success-sound"
@@ -153,7 +153,7 @@ export const AudioSettingsPane = (args: AudioSettingsPaneProps) => {
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="success-sound">Enqueue Failure Sound</Label>
+          <Label htmlFor="success-sound">대기열 등록 실패 소리</Label>
           <div className="flex items-center gap-2">
             <Select
               id="success-sound"
@@ -172,7 +172,7 @@ export const AudioSettingsPane = (args: AudioSettingsPaneProps) => {
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="success-sound">Generation Success Sound</Label>
+          <Label htmlFor="success-sound">생성 성공 소리</Label>
           <div className="flex items-center gap-2">
             <Select
               id="success-sound"
@@ -191,7 +191,7 @@ export const AudioSettingsPane = (args: AudioSettingsPaneProps) => {
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="failure-sound">Generation Failure Sound</Label>
+          <Label htmlFor="failure-sound">생성 실패 소리</Label>
           <div className="flex items-center gap-2">
             <Select
               id="failure-sound"

@@ -3,8 +3,8 @@ import { TabSelector, type TabItem } from "@storyteller/ui-tab-selector";
 import { usePageSceneStore, type SceneMode } from "../../PageSceneStore";
 
 const TABS: TabItem[] = [
-  { id: "build", label: "Build" },
-  { id: "record", label: "Record" },
+  { id: "build", label: "만들기" },
+  { id: "record", label: "녹화" },
 ];
 
 export const SceneModePill = () => {

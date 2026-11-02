@@ -32,7 +32,7 @@ function buildBootstrapProject({ id }: { id: string }): TProject {
   return {
     metadata: {
       id,
-      name: "Untitled project",
+      name: "제목 없는 프로젝트",
       duration: ZERO_MEDIA_TIME,
       createdAt: now,
       updatedAt: now,

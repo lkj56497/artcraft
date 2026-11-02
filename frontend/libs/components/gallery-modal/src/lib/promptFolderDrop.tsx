@@ -25,14 +25,13 @@ export function promptFolderDrop({
   const dest = targetFolderName ? ` to "${targetFolderName}"` : "";
   showActionReminder({
     reminderType: "default",
-    title: `Move or copy ${count} item${plural}?`,
+    title: `항목 ${count}개를 이동하거나 복사할까요?`,
     message: (
       <p className="text-sm text-white/70">
-        Move{dest} removes {count === 1 ? "it" : "them"} from the current folder.
-        Add a copy keeps {count === 1 ? "it" : "them"} in both.
+        '이동'{dest}하면 현재 폴더에서 빠집니다. '복사본 추가'는 양쪽에 모두 둡니다.
       </p>
     ),
-    primaryActionText: "Move here",
+    primaryActionText: "여기로 이동",
     onPrimaryAction: async () => {
       try {
         await onMove();
@@ -40,7 +39,7 @@ export function promptFolderDrop({
         isActionReminderOpen.value = false;
       }
     },
-    secondaryActionText: "Add a copy",
+    secondaryActionText: "복사본 추가",
     onSecondaryAction: async () => {
       try {
         await onAdd();

@@ -218,7 +218,7 @@ function InfoHint({ content }: { content: ReactNode }) {
       <button
         ref={anchorRef}
         type="button"
-        aria-label="More info"
+        aria-label="더 보기"
         className="ml-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center text-base-fg/40 transition-colors hover:text-base-fg/80"
         onClick={(e) => {
           // Don't let the click select the row.
@@ -1422,7 +1422,7 @@ export const PopoverMenu = ({
                             onClick={onAdd}
                             disabled={disableAddButton}
                           >
-                            + Add
+                            + 추가
                           </Button>
                         )}
                       </div>
@@ -1591,7 +1591,7 @@ export const PopoverMenu = ({
                             onClick={onAdd}
                             disabled={disableAddButton}
                           >
-                            + Add
+                            + 추가
                           </Button>
                         )}
                       </div>

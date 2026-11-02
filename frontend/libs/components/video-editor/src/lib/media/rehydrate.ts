@@ -98,7 +98,7 @@ async function fetchEntry({
     return { file, handle, resolved };
   } catch (error) {
     console.error("Failed to rehydrate media asset:", entry.id, error);
-    toast.error(`Couldn't restore ${entry.name}`, {
+    toast.error(`${entry.name} 복원 실패`, {
       description: error instanceof Error ? error.message : undefined,
     });
     return null;

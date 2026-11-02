@@ -49,12 +49,12 @@ export const convertFileToBase64 = (file: File): Promise<string> => {
       if (reader.result) {
         resolve(reader.result as string);
       } else {
-        reject(new Error("Failed to convert file to base64."));
+        reject(new Error("파일 변환에 실패했습니다."));
       }
     };
 
     reader.onerror = () => {
-      reject(new Error("Error reading file."));
+      reject(new Error("파일을 읽는 중 오류가 발생했습니다."));
     };
 
     reader.readAsDataURL(file);

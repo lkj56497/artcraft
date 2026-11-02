@@ -321,12 +321,12 @@ export class VideoCache {
     try {
       const videoTrack = await input.getPrimaryVideoTrack();
       if (!videoTrack) {
-        throw new Error("No video track found");
+        throw new Error("영상 트랙을 찾을 수 없습니다");
       }
 
       const canDecode = await videoTrack.canDecode();
       if (!canDecode) {
-        throw new Error("Video codec not supported for decoding");
+        throw new Error("지원하지 않는 영상 코덱입니다");
       }
 
       const sink = new CanvasSink(videoTrack, {

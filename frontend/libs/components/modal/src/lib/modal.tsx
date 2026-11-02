@@ -190,7 +190,7 @@ const ExpandButton = ({ className, size = "md" }: ExpandButtonProps) => {
   return (
     <button
       type="button"
-      aria-label={expanded ? "Restore modal size" : "Expand modal"}
+      aria-label={expanded ? "창 크기 복원" : "창 크게 보기"}
       onClick={toggleExpanded}
       className={twMerge(
         "flex items-center justify-center rounded-[3px] bg-black/40 text-white/60 transition-colors hover:bg-white hover:text-black",

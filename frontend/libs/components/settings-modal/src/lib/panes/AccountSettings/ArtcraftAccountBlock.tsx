@@ -67,10 +67,10 @@ export const ArtcraftAccountBlock = ({
     <div className="flex items-center justify-between gap-3">
       <div className="flex min-w-0 flex-col gap-0.5">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em]">
-          ArtCraft account
+          ArtCraft 계정
         </p>
         <p className="truncate text-sm font-medium text-base-fg/80">
-          {artcraftSession?.display_name || "Not logged in"}
+          {artcraftSession?.display_name || "로그인하지 않음"}
         </p>
       </div>
       <Button

@@ -59,7 +59,7 @@ export function UploadModalMedia({
         return (
           <>
             <LoadingDots className="mb-1 bg-transparent" />
-            <div className="hud-label w-full text-center text-base-fg/50">Uploading...</div>
+            <div className="hud-label w-full text-center text-base-fg/50">업로드 중...</div>
           </>
         );
       case UploaderStates.success:

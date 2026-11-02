@@ -25,7 +25,7 @@ export class PromptBoxErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="flex items-center justify-center rounded-[3px] border border-red-500/30 bg-red-500/10 px-6 py-4 text-sm text-red-300">
-          <span>Something went wrong with the prompt box.&nbsp;</span>
+          <span>프롬프트 입력창에 문제가 생겼습니다.&nbsp;</span>
           <button
             className="underline hover:text-red-200"
             onClick={() =>
@@ -35,7 +35,7 @@ export class PromptBoxErrorBoundary extends Component<Props, State> {
               }))
             }
           >
-            Try again
+            다시 시도
           </button>
         </div>
       );

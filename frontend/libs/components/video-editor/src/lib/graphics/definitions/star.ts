@@ -15,20 +15,20 @@ interface StarParams {
 const STAR_PARAMS: ParamDefinition<keyof StarParams & string>[] = [
   {
     key: "fill",
-    label: "Fill",
+    label: "채우기",
     type: "color",
     default: "#ffffff",
   },
   {
     key: "stroke",
-    label: "Color",
+    label: "색상",
     type: "color",
     default: "#000000",
     group: "stroke",
   },
   {
     key: "strokeWidth",
-    label: "Width",
+    label: "너비",
     type: "number",
     default: 0,
     min: 0,
@@ -40,7 +40,7 @@ const STAR_PARAMS: ParamDefinition<keyof StarParams & string>[] = [
   STROKE_ALIGN_PARAM,
   {
     key: "points",
-    label: "Points",
+    label: "꼭짓점",
     type: "number",
     default: 5,
     min: 3,
@@ -50,7 +50,7 @@ const STAR_PARAMS: ParamDefinition<keyof StarParams & string>[] = [
   },
   {
     key: "depth",
-    label: "Depth",
+    label: "깊이",
     type: "number",
     default: 45,
     min: 1,

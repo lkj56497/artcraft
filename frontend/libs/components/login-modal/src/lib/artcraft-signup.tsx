@@ -59,7 +59,7 @@ export const ArtCraftSignUp = ({
         form.elements.namedItem("confirmPassword") as HTMLInputElement
       ).value;
       if (password !== confirmPassword) {
-        setLocalError("Passwords do not match.");
+        setLocalError("비밀번호가 일치하지 않습니다.");
         return;
       }
       onSubmit(username, email, password, confirmPassword);
@@ -89,17 +89,17 @@ export const ArtCraftSignUp = ({
       {isSignUp ? (
         <>
           <div className="space-y-2">
-            <label className={FIELD_LABEL}>Username</label>
+            <label className={FIELD_LABEL}>사용자 이름</label>
             <Input
               name="username"
-              placeholder="Username"
+              placeholder="사용자 이름"
               required
               autoComplete="off"
               inputClassName={FIELD_INPUT}
             />
           </div>
           <div className="space-y-2">
-            <label className={FIELD_LABEL}>Email</label>
+            <label className={FIELD_LABEL}>이메일</label>
             <Input
               name="email"
               type="email"
@@ -112,10 +112,10 @@ export const ArtCraftSignUp = ({
         </>
       ) : (
         <div className="space-y-2">
-          <label className={FIELD_LABEL}>Email or Username</label>
+          <label className={FIELD_LABEL}>이메일 또는 사용자 이름</label>
           <Input
             name="usernameOrEmail"
-            placeholder="you@example.com or username"
+            placeholder="you@example.com 또는 사용자 이름"
             required
             autoComplete="off"
             inputClassName={FIELD_INPUT}
@@ -124,12 +124,12 @@ export const ArtCraftSignUp = ({
       )}
 
       <div className="space-y-2">
-        <label className={FIELD_LABEL}>Password</label>
+        <label className={FIELD_LABEL}>비밀번호</label>
         <div className="relative">
           <Input
             name="password"
             type={showPassword ? "text" : "password"}
-            placeholder="Min. 8 characters"
+            placeholder="최소 8자"
             required
             autoComplete="off"
             inputClassName={`${FIELD_INPUT} pr-12`}
@@ -147,12 +147,12 @@ export const ArtCraftSignUp = ({
 
       {isSignUp && (
         <div className="space-y-2">
-          <label className={FIELD_LABEL}>Confirm Password</label>
+          <label className={FIELD_LABEL}>비밀번호 확인</label>
           <div className="relative">
             <Input
               name="confirmPassword"
               type={showConfirm ? "text" : "password"}
-              placeholder="Re-enter password"
+              placeholder="비밀번호 다시 입력"
               required
               autoComplete="off"
               inputClassName={`${FIELD_INPUT} pr-12`}
@@ -178,21 +178,21 @@ export const ArtCraftSignUp = ({
           {isLoading ? (
             <LoaderCircleIcon className="animate-spin" />
           ) : isSignUp ? (
-            "Sign up"
+            "회원가입"
           ) : (
-            "Log in"
+            "로그인"
           )}
         </Button>
       </div>
 
       <div className="mt-4 text-center text-sm text-white/60">
-        {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+        {isSignUp ? "이미 계정이 있나요?" : "계정이 없나요?"}{" "}
         <button
           type="button"
           onClick={onToggleMode}
           className="font-semibold text-primary transition-colors hover:text-primary-400"
         >
-          {isSignUp ? "Log in" : "Sign up"}
+          {isSignUp ? "로그인" : "회원가입"}
         </button>
       </div>
     </form>

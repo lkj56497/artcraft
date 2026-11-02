@@ -75,7 +75,7 @@ export const ControlsTopButtons = () => {
     if (retSceneMediaToken === "") {
       editor.adapter.showToast(
         ToastTypes.ERROR,
-        "Failed to Save Scene Try again Later!",
+        "장면 저장 실패. 잠시 후 다시 시도하세요!",
       );
     }
 
@@ -113,7 +113,7 @@ export const ControlsTopButtons = () => {
     if (retSceneMediaToken === "") {
       editor.adapter.showToast(
         ToastTypes.ERROR,
-        "Failed to Save Scene Try again Later!",
+        "장면 저장 실패. 잠시 후 다시 시도하세요!",
       );
       return;
     }
@@ -200,21 +200,21 @@ export const ControlsTopButtons = () => {
 
   const saveAsCopyDialogProps = {
     title: isVisitingOthersScene
-      ? "Save a copy to your account"
-      : "Save Scene as Copy",
+      ? "내 계정에 사본 저장"
+      : "장면을 사본으로 저장",
     content: (
       <Input
         value={sceneTitleInput}
-        label="Please enter a name for your scene"
+        label="장면 이름을 입력하세요"
         onChange={handleChangeSceneTitleInput}
       />
     ),
     confirmButtonProps: {
-      label: "Save",
+      label: "저장",
       disabled: sceneTitleInput === "",
       onClick: handleButtonSaveAsCopy,
     },
-    closeButtonProps: { label: "Cancel" },
+    closeButtonProps: { label: "취소" },
     showClose: true,
   };
 
@@ -222,20 +222,20 @@ export const ControlsTopButtons = () => {
   // Same input as the copy dialog, but the confirm performs the
   // in-place save under sceneMeta.token (undefined → create new).
   const saveWithNameDialogProps = {
-    title: "Save Scene",
+    title: "장면 저장",
     content: (
       <Input
         value={sceneTitleInput}
-        label="Please enter a name for your scene"
+        label="장면 이름을 입력하세요"
         onChange={handleChangeSceneTitleInput}
       />
     ),
     confirmButtonProps: {
-      label: "Save",
+      label: "저장",
       disabled: sceneTitleInput.trim() === "",
       onClick: handleButtonSaveWithName,
     },
-    closeButtonProps: { label: "Cancel" },
+    closeButtonProps: { label: "취소" },
     showClose: true,
   };
 
@@ -243,12 +243,12 @@ export const ControlsTopButtons = () => {
     <div className="flex flex-col gap-2 pl-3 pt-3">
       <div className="flex items-center gap-1.5">
         <ButtonDropdown
-          label="File"
+          label="파일"
           icon={FileIcon}
           className={TOOLBAR_BUTTON_CLASS_NAME}
           options={[
             {
-              label: "New scene",
+              label: "새 장면",
               description: "Ctrl+N",
               // Hosts that own a New-Scene chooser (e.g. the webapp's
               // splash modal) wire `onRequestNewSceneSelector` and take
@@ -260,15 +260,14 @@ export const ControlsTopButtons = () => {
                   }
                 : {
                     dialogProps: {
-                      title: "Create New Scene",
+                      title: "새 장면 만들기",
                       content: (
                         <h4>
-                          Make sure you&apos;ve saved your scene. Unsaved
-                          changes will be lost. Continue?
+                          장면을 저장했는지 확인하세요. 저장하지 않은 변경 사항은 사라집니다. 계속할까요?
                         </h4>
                       ),
                       confirmButtonProps: {
-                        label: "Create new scene",
+                        label: "새 장면 만들기",
                         onClick: async () => {
                           handleResetScene();
                           const defaultTitle = "Untitled New Scene";
@@ -276,27 +275,27 @@ export const ControlsTopButtons = () => {
                           await editor?.newScene(defaultTitle);
                         },
                       },
-                      closeButtonProps: { label: "Cancel" },
+                      closeButtonProps: { label: "취소" },
                       showClose: true,
                     },
                   }),
             },
             {
-              label: "Load my scene",
+              label: "내 장면 불러오기",
               description: "Ctrl+O",
               ...(currentUserToken
                 ? {
                     dialogProps: {
-                      title: "Load a Saved Scene",
+                      title: "저장된 장면 불러오기",
                       content: (
                         <LoadUserScenes onSceneSelect={handleSceneSelection} />
                       ),
                       confirmButtonProps: {
-                        label: "Load",
+                        label: "불러오기",
                         disabled: sceneTokenSelected === "",
                         onClick: handleButtonLoadScene,
                       },
-                      closeButtonProps: { label: "Cancel" },
+                      closeButtonProps: { label: "취소" },
                       showClose: true,
                       className: "max-w-5xl",
                     },
@@ -313,7 +312,7 @@ export const ControlsTopButtons = () => {
             // that branch.
             {
               disabled: !canSave,
-              label: isVisitingOthersScene ? "Save copy" : "Save scene",
+              label: isVisitingOthersScene ? "사본 저장" : "장면 저장",
               description: "Ctrl+S",
               ...(!currentUserToken
                 ? {
@@ -337,7 +336,7 @@ export const ControlsTopButtons = () => {
               : [
                   {
                     disabled: !currentUserToken || !sceneMeta.token,
-                    label: "Save scene as copy",
+                    label: "장면을 사본으로 저장",
                     onDialogOpen: bumpCopyCountInTitle,
                     dialogProps: saveAsCopyDialogProps,
                   },
@@ -350,27 +349,25 @@ export const ControlsTopButtons = () => {
             ...(sceneMeta.token && editor?.adapter.resetToOriginal
               ? [
                   {
-                    label: "Reset to original",
+                    label: "원래대로 초기화",
                     className:
                       "text-error-400 hover:bg-error-500/15 focus:bg-error-500/15",
                     divider: true,
                     dialogProps: {
-                      title: "Reset scene to original?",
+                      title: "장면을 원래대로 초기화할까요?",
                       content: (
                         <p>
-                          This will discard every change you&apos;ve made in
-                          this session and restore the scene to the version the
-                          author shared. This cannot be undone.
+                          이번 세션에서 바꾼 모든 내용을 버리고 작성자가 공유한 버전으로 장면을 되돌립니다. 되돌릴 수 없습니다.
                         </p>
                       ),
                       confirmButtonProps: {
-                        label: "Reset",
+                        label: "초기화",
                         variant: "destructive" as const,
                         onClick: async () => {
                           await editor.adapter.resetToOriginal?.();
                         },
                       },
-                      closeButtonProps: { label: "Cancel" },
+                      closeButtonProps: { label: "취소" },
                       showClose: true,
                     },
                   },
@@ -389,7 +386,7 @@ export const ControlsTopButtons = () => {
           variant="secondary"
           onClick={handleShowOutliner}
         >
-          Outliner
+          아웃라이너
         </Button>
 
         {/* Pins the live keybinds cheatsheet (rendered by Stage3DBody) open
@@ -407,7 +404,7 @@ export const ControlsTopButtons = () => {
           onClick={toggleCheatsheet}
           data-cheatsheet-toggle
         >
-          Shortcuts
+          단축키
         </Button>
       </div>
     </div>

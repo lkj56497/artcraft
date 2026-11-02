@@ -75,7 +75,7 @@ export const ConfirmationModal = ({
               <div className="mt-2 text-sm leading-relaxed text-white/70">{text}</div>
               {canHide && (
                 <div className="mt-2">
-                  <Checkbox id="hide-dialog" label="Do not show this again" />
+                  <Checkbox id="hide-dialog" label="다시 보지 않기" />
                 </div>
               )}
 

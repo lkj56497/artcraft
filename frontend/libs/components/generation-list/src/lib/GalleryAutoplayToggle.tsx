@@ -9,8 +9,8 @@ const OPTIONS: {
   icon: LucideIcon;
   label: string;
 }[] = [
-  { autoplay: true, icon: PlayIcon, label: "Play video previews" },
-  { autoplay: false, icon: PauseIcon, label: "Still thumbnails" },
+  { autoplay: true, icon: PlayIcon, label: "영상 미리보기 재생" },
+  { autoplay: false, icon: PauseIcon, label: "정지 썸네일" },
 ];
 
 // Segmented playing/still switch for video preview thumbnails. Sits next to
@@ -23,7 +23,7 @@ export function GalleryAutoplayToggle() {
   return (
     <div
       role="group"
-      aria-label="Video preview playback"
+      aria-label="영상 미리보기 재생"
       className="flex items-center gap-0.5 rounded-[3px] border border-white/[0.08] bg-white/[0.04] p-0.5"
     >
       {OPTIONS.map(({ autoplay, icon, label }) => {

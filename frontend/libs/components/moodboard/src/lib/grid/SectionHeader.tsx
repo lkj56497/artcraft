@@ -52,7 +52,7 @@ export const SectionHeader = ({
       {editable ? (
         <button
           type="button"
-          aria-label={collapsed ? "Expand section" : "Collapse section"}
+          aria-label={collapsed ? "섹션 펼치기" : "섹션 접기"}
           onClick={onToggleCollapse}
           className="flex h-6 w-6 items-center justify-center rounded-md text-base-fg/45 transition-colors duration-150 hover:bg-base-fg/10 hover:text-base-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
@@ -104,8 +104,8 @@ export const SectionHeader = ({
       {editable && (
         <button
           type="button"
-          aria-label="Delete section"
-          title="Delete section (keeps items)"
+          aria-label="섹션 삭제"
+          title="섹션 삭제 (항목은 유지)"
           onClick={onDelete}
           className="flex h-7 w-7 items-center justify-center rounded-md text-base-fg/40 opacity-0 transition-all duration-150 hover:bg-danger/10 hover:text-danger focus:outline-none focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-danger group-hover/section:opacity-100"
         >

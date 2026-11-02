@@ -20,10 +20,10 @@ const sx = (x: number) => PAD + x * SPAN;
 const sy = (y: number) => PAD + (1 - y) * SPAN;
 
 const PRESETS: { name: EasingPresetName; label: string }[] = [
-  { name: "linear", label: "Linear" },
-  { name: "easeIn", label: "In" },
-  { name: "easeOut", label: "Out" },
-  { name: "easeInOut", label: "In-Out" },
+  { name: "linear", label: "선형" },
+  { name: "easeIn", label: "시작" },
+  { name: "easeOut", label: "끝" },
+  { name: "easeInOut", label: "시작-끝" },
 ];
 
 interface MotionPopoverProps {

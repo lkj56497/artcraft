@@ -67,25 +67,25 @@ export const SettingsModal = ({
   }, [experimentalEnabled, selectedSection]);
 
   const sections = [
-    { id: "general" as const, label: "General", icon: SettingsIcon },
-    { id: "downloads" as const, label: "Downloads", icon: DownloadIcon },
+    { id: "general" as const, label: "일반", icon: SettingsIcon },
+    { id: "downloads" as const, label: "다운로드", icon: DownloadIcon },
 
-    { id: "accounts" as const, label: "Accounts", icon: UserIcon },
-    { id: "billing" as const, label: "Plan & Credits", icon: CreditCardIcon },
+    { id: "accounts" as const, label: "계정", icon: UserIcon },
+    { id: "billing" as const, label: "요금제 & 크레딧", icon: CreditCardIcon },
 
     /* {
       id: "provider_priority" as const,
       label: "Provider Priority",
       icon: RouteIcon,
     }, */
-    { id: "appearance" as const, label: "Appearance", icon: PaletteIcon },
-    { id: "keybinds" as const, label: "Keybinds", icon: KeyboardIcon },
-    { id: "alerts" as const, label: "Alerts", icon: Volume2Icon },
-    { id: "about" as const, label: "About", icon: InfoIcon },
+    { id: "appearance" as const, label: "화면 테마", icon: PaletteIcon },
+    { id: "keybinds" as const, label: "단축키", icon: KeyboardIcon },
+    { id: "alerts" as const, label: "알림", icon: Volume2Icon },
+    { id: "about" as const, label: "정보", icon: InfoIcon },
     //{ id: "video" as const, label: "Video", icon: VideoIcon },
     //{ id: "image" as const, label: "Image", icon: ImageIcon },
     ...(experimentalEnabled
-      ? [{ id: "experimental" as const, label: "Experimental", icon: FlaskConicalIcon }]
+      ? [{ id: "experimental" as const, label: "실험 기능", icon: FlaskConicalIcon }]
       : []),
   ];
 
@@ -141,7 +141,7 @@ export const SettingsModal = ({
             <div className="relative col-span-4 p-3 pt-2 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-ui-panel-border">
               <div className="flex items-center justify-between gap-2.5 py-0.5">
                 <h2 className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                  Settings
+                  설정
                 </h2>
               </div>
               <hr className="my-2 w-full border-ui-panel-border" />
@@ -180,14 +180,14 @@ export const SettingsModal = ({
                 <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-ui-panel-border bg-ui-modal px-3 py-2">
                   <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] opacity-80">
                     <FlaskConicalIcon />
-                    Experimental features enabled
+                    실험 기능이 켜졌습니다
                   </div>
                   <Button
                     variant="destructive"
                     onClick={() => setIsResetConfirmOpen(true)}
                     className="rounded-[3px] px-2 py-1 text-xs"
                   >
-                    Reset
+                    초기화
                   </Button>
                 </div>
               )}
@@ -200,9 +200,9 @@ export const SettingsModal = ({
         isOpen={isResetConfirmOpen}
         onClose={() => setIsResetConfirmOpen(false)}
         onConfirm={handleConfirmReset}
-        title="Reset experimental settings?"
-        text="This will hide the Experimental section and clear any experimental settings. You can unlock it again from the About page."
-        confirmText="Reset"
+        title="실험 기능 설정을 초기화할까요?"
+        text="실험 기능 메뉴를 숨기고 관련 설정을 모두 지웁니다. 정보 페이지에서 다시 열 수 있습니다."
+        confirmText="초기화"
       />
     </>
   );

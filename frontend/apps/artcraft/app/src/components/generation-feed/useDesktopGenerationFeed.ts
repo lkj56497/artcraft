@@ -50,15 +50,15 @@ const FAILED_STATUSES = new Set([
 ]);
 
 const FAILURE_REASON_LABEL: Record<string, string> = {
-  rule_bans_user_image: "Image violates content policy",
-  rule_bans_user_image_with_faces: "Images with faces are not allowed",
-  rule_bans_user_text_prompt: "Text prompt violates content policy",
-  rule_bans_user_content: "Content violates content policy",
-  rule_bans_generated_video: "Generated video flagged by content policy",
-  rule_bans_generated_audio: "Generated audio flagged by content policy",
-  rule_bans_generated_content: "Generated content flagged by content policy",
-  generation_failed: "Generation failed",
-  unknown: "An unknown error occurred",
+  rule_bans_user_image: "이미지가 콘텐츠 정책을 위반합니다",
+  rule_bans_user_image_with_faces: "얼굴이 포함된 이미지는 사용할 수 없습니다",
+  rule_bans_user_text_prompt: "프롬프트가 콘텐츠 정책을 위반합니다",
+  rule_bans_user_content: "콘텐츠가 정책을 위반합니다",
+  rule_bans_generated_video: "생성된 영상이 콘텐츠 정책에 걸렸습니다",
+  rule_bans_generated_audio: "생성된 오디오가 콘텐츠 정책에 걸렸습니다",
+  rule_bans_generated_content: "생성된 콘텐츠가 콘텐츠 정책에 걸렸습니다",
+  generation_failed: "생성 실패",
+  unknown: "알 수 없는 오류가 발생했습니다",
 };
 
 // ── Hook ───────────────────────────────────────────────────────────────────
@@ -170,7 +170,7 @@ export function useDesktopGenerationFeed(options: {
     addCompletedItems(
       event.generated_images.map((img) => ({
         id: img.media_token,
-        label: "Image Generation",
+        label: "이미지 생성",
         thumbnail:
           getThumbnailUrl(img.maybe_thumbnail_template, {
             width: THUMBNAIL_SIZES.LARGE,
@@ -189,7 +189,7 @@ export function useDesktopGenerationFeed(options: {
     addCompletedItems([
       {
         id: video.media_token,
-        label: "Video Generation",
+        label: "영상 생성",
         thumbnail:
           getThumbnailUrl(video.maybe_thumbnail_template, {
             width: THUMBNAIL_SIZES.LARGE,
@@ -360,7 +360,7 @@ function getTaskModelLabel(t: TaskQueueItem): string {
     ? getProviderDisplayName(String(t.provider).toLowerCase())
     : undefined;
   if (modelDisplay && provider) return `${modelDisplay} · ${provider}`;
-  return modelDisplay || provider || "Unknown model";
+  return modelDisplay || provider || "알 수 없는 모델";
 }
 
 function taskToInProgress(

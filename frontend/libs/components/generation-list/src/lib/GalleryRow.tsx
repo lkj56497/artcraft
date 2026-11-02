@@ -142,7 +142,7 @@ export const GalleryRow = memo(function GalleryRow({
         {lastViewed && (
           <div className="pointer-events-none absolute left-1 top-1 z-10 flex items-center gap-1 rounded-full bg-black/70 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-white/80">
             <EyeIcon />
-            Last viewed
+            최근 본 항목
           </div>
         )}
       </div>

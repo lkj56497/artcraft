@@ -38,7 +38,7 @@ export async function submitVFXJob(
         success: false,
         error_code: res.status,
         error_code_str: VFX_NOT_AVAILABLE_ERROR,
-        error_message: "Background change backend is not yet available.",
+        error_message: "배경 변경 서버가 아직 준비되지 않았습니다.",
       };
     }
 
@@ -50,7 +50,7 @@ export async function submitVFXJob(
         success: false,
         error_code: res.status,
         error_code_str: "unknown_response",
-        error_message: "Server returned an unparseable response.",
+        error_message: "서버 응답을 해석할 수 없습니다.",
       };
     }
     return json;

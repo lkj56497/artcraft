@@ -34,7 +34,7 @@ export const PoseModeSelector: React.FC<PoseModeSelectorProps> = () => {
       onMouseDown={(e) => e.stopPropagation()}
     >
       <Tooltip
-        content={"Toggle pose mode (K)"}
+        content={"포즈 모드 전환 (K)"}
         position={"bottom"}
         delay={300}
         closeOnClick={true}
@@ -46,7 +46,7 @@ export const PoseModeSelector: React.FC<PoseModeSelectorProps> = () => {
               onClick={handleModeChange}
               className="rounded-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
             >
-              Enter Pose Mode
+              포즈 모드 시작
             </Button>
           ) : (
             <Button
@@ -54,7 +54,7 @@ export const PoseModeSelector: React.FC<PoseModeSelectorProps> = () => {
               onClick={handleModeChange}
               className="rounded-[3px] outline-none  focus-visible:outline-none"
             >
-              Done
+              완료
             </Button>
           )}
         </>
@@ -63,7 +63,7 @@ export const PoseModeSelector: React.FC<PoseModeSelectorProps> = () => {
           posing so the row stays a single "Done" affordance. */}
       {poseMode === "select" && (
         <Tooltip
-          content={"Add an animation to this character"}
+          content={"이 캐릭터에 애니메이션 추가"}
           position={"bottom"}
           delay={300}
           closeOnClick={true}
@@ -73,7 +73,7 @@ export const PoseModeSelector: React.FC<PoseModeSelectorProps> = () => {
             onClick={() => openAnimationsModal()}
             className="rounded-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
           >
-            Add Animation
+            애니메이션 추가
           </Button>
         </Tooltip>
       )}

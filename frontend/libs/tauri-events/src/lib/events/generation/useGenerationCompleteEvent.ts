@@ -41,20 +41,20 @@ export const useGenerationCompleteEvent = () => {
 
 const makeMessage = (event: GenerationCompleteEvent) => {
   if (!event.action) {
-    return "Generation complete!";
+    return "생성 완료!";
   }
   switch (event.action) {
     case GenerationAction.GenerateImage:
-      return "Image generation complete!";
+      return "이미지 생성 완료!";
     case GenerationAction.GenerateVideo:
-      return "Video generation complete!";
+      return "영상 생성 완료!";
     case GenerationAction.RemoveBackground:
-      return "Background removal complete!";
+      return "배경 제거 완료!";
     case GenerationAction.ImageTo3d:
-      return "3D model generation complete!";
+      return "3D 모델 생성 완료!";
     case GenerationAction.GenerateGaussian:
-      return "3D world generation complete!";
+      return "3D 월드 생성 완료!";
     default:
-      return "Generation complete!";
+      return "생성 완료!";
   }
 }

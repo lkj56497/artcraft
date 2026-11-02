@@ -34,13 +34,13 @@ export const RecordControls = () => {
           className="border border-ui-panel-border bg-ui-controls flex items-center gap-2 rounded-[3px] px-5 py-2.5 text-sm font-medium text-base-fg hover:bg-white/10 disabled:opacity-50"
         >
           <CameraIcon  className="h-3.5 w-3.5" />
-          Capture
+          캡처
         </button>
         <Tooltip
           content={
             timelineExists
-              ? "Render the timeline to video"
-              : "Add an animation timeline first"
+              ? "타임라인을 영상으로 렌더링"
+              : "먼저 애니메이션 타임라인을 추가하세요"
           }
           position="top"
           delay={200}
@@ -52,7 +52,7 @@ export const RecordControls = () => {
             className="flex items-center gap-2 rounded-[3px] bg-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:brightness-110 disabled:opacity-50"
           >
             <CircleIcon  className="h-3 w-3" />
-            Record
+            녹화
           </button>
         </Tooltip>
       </div>

@@ -32,11 +32,11 @@ export function CopyPromptButton({
   );
 
   return (
-    <Tooltip content={copied ? "Copied" : "Copy prompt"} position="top">
+    <Tooltip content={copied ? "복사됨" : "프롬프트 복사"} position="top">
       <button
         type="button"
         onClick={handleCopy}
-        aria-label="Copy prompt"
+        aria-label="프롬프트 복사"
         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[3px] text-white/40 transition-colors hover:bg-white/10 hover:text-white"
       >
         <DynamicIcon icon={copied ? CheckIcon : CopyIcon} className="text-sm" />

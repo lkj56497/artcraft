@@ -140,13 +140,13 @@ export const MainApp = ({ sceneToken }: Props) => {
 
   useFlashFileDownloadErrorEvent(async (event) => {
     console.log("Flash file download error event received:", event);
-    toast.error(event.message || "File download failed");
+    toast.error(event.message || "파일 다운로드 실패");
   });
 
   useMediaFileDeletedEvent(async (event) => {
     console.log("Media file deleted event received:", event);
     await SoundManager.playFileDeleted();
-    toast.error("File deleted.");
+    toast.error("파일이 삭제되었습니다.");
   });
 
   // Session probe (runs once per shell mount).
@@ -198,7 +198,7 @@ export const MainApp = ({ sceneToken }: Props) => {
             role="status"
             className="flex h-[calc(100vh-56px)] items-center justify-center text-base-fg/60"
           >
-            Loading…
+            불러오는 중…
           </div>
         }
       >

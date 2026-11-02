@@ -257,7 +257,7 @@ export function WaveformAudioPlayer({
     >
       <button
         type="button"
-        aria-label={isPlaying ? "Pause" : "Play"}
+        aria-label={isPlaying ? "일시정지" : "재생"}
         onClick={togglePlay}
         className={`flex shrink-0 items-center justify-center rounded-full bg-white text-black transition-transform hover:scale-105 active:scale-95 ${compact ? "h-8 w-8" : "h-10 w-10"}`}
       >
@@ -305,7 +305,7 @@ export function WaveformAudioPlayer({
       <div className="relative shrink-0">
         <button
           type="button"
-          aria-label="Volume"
+          aria-label="볼륨"
           onClick={() => setShowVolume((visible) => !visible)}
           className="flex h-7 w-7 items-center justify-center rounded-md text-white/70 transition-colors hover:bg-white/10 hover:text-white"
         >

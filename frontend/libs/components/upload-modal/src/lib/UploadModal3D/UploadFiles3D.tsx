@@ -199,7 +199,7 @@ export const UploadFiles3D = ({
               ? {
                   ...entry,
                   status: "error" as FileEntryStatus,
-                  errorMessage: `FBX conversion failed: ${String(error)}`,
+                  errorMessage: `FBX 변환 실패: ${String(error)}`,
                 }
               : entry,
           ),
@@ -345,8 +345,8 @@ export const UploadFiles3D = ({
             file,
             "error",
             unreadable
-              ? "Couldn't read this file — it may be corrupt."
-              : "No animation clips found in this file.",
+              ? "이 파일을 읽을 수 없습니다 — 손상되었을 수 있습니다."
+              : "이 파일에서 애니메이션 클립을 찾지 못했습니다.",
           );
         } else {
           durations.set(file, millis);
@@ -389,8 +389,8 @@ export const UploadFiles3D = ({
           entry.file,
           "error",
           unreadable
-            ? "Couldn't read this file — it may be corrupt."
-            : "No animation clips found in this file.",
+            ? "이 파일을 읽을 수 없습니다 — 손상되었을 수 있습니다."
+            : "이 파일에서 애니메이션 클립을 찾지 못했습니다.",
         );
         return;
       }
@@ -442,12 +442,12 @@ export const UploadFiles3D = ({
     setIsSubmitting(true);
 
     if (fileEntries.length === 0) {
-      setSelectionError("Please select a file to upload.");
+      setSelectionError("업로드할 파일을 선택하세요.");
       releaseSubmitGuard();
       return;
     }
     if (fileEntries.some((e) => e.status === "converting")) {
-      setSelectionError("Still converting FBX files — one moment.");
+      setSelectionError("FBX 파일 변환 중입니다 — 잠시만 기다려 주세요.");
       releaseSubmitGuard();
       return;
     }
@@ -472,7 +472,7 @@ export const UploadFiles3D = ({
       setSelectionError(
         excludedCount > 0
           ? `${excludedCount} file(s) could not be converted and cannot be uploaded.`
-          : "Please select a file to upload.",
+          : "업로드할 파일을 선택하세요.",
       );
       releaseSubmitGuard();
       return;
@@ -487,7 +487,7 @@ export const UploadFiles3D = ({
       excludedCount += keep.filter((kept) => !kept).length;
       files = files.filter((_, i) => keep[i]);
       if (files.length === 0) {
-        setSelectionError("No animation clips found in the selected file(s).");
+        setSelectionError("선택한 파일에서 애니메이션 클립을 찾지 못했습니다.");
         releaseSubmitGuard();
         return;
       }
@@ -542,7 +542,7 @@ export const UploadFiles3D = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -598,7 +598,7 @@ export const UploadFiles3D = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -615,7 +615,7 @@ export const UploadFiles3D = ({
         <button
           type="button"
           title={
-            previewSkeletonVisible ? "Hide skeleton" : "Show skeleton"
+            previewSkeletonVisible ? "뼈대 숨기기" : "뼈대 보기"
           }
           onClick={handleSkeletonToggle}
           className={`flex h-10 w-10 items-center justify-center rounded-[3px] border transition-colors ${
@@ -637,7 +637,7 @@ export const UploadFiles3D = ({
                 label: name,
                 value: String(index),
               })),
-              { label: "T-pose (none)", value: "-1" },
+              { label: "T-포즈 (없음)", value: "-1" },
             ]}
           />
         </div>
@@ -667,7 +667,7 @@ export const UploadFiles3D = ({
   const convertingOverlay = isConvertingCurrent ? (
     <h6 className="pointer-events-none absolute left-0 top-1/2 -mt-5 flex w-full items-center justify-center gap-2.5 text-center opacity-60">
       <LoaderIcon  className="animate-spin" />
-      Converting FBX to GLB...
+      FBX를 GLB로 변환 중...
     </h6>
   ) : currentEntry?.status === "error" && isFbx(currentEntry.file) ? (
     <h6 className="pointer-events-none absolute left-0 top-1/2 -mt-5 w-full px-4 text-center text-red-400">
@@ -717,7 +717,7 @@ export const UploadFiles3D = ({
                         e.stopPropagation();
                         removeFile(i);
                       }}
-                      title="Remove"
+                      title="제거"
                     >
                       <XIcon />
                     </button>
@@ -744,7 +744,7 @@ export const UploadFiles3D = ({
                           e.stopPropagation();
                           retrySingleFile(i);
                         }}
-                        title="Retry"
+                        title="다시 시도"
                       >
                         <RotateCwIcon />
                       </button>
@@ -775,7 +775,7 @@ export const UploadFiles3D = ({
               {!currentFile && (
                 <h6 className="pointer-events-auto absolute left-0 top-1/2 -mt-5 flex w-full items-center justify-center gap-2.5 text-center opacity-50">
                   <BoxIcon />
-                  Your model preview will appear here
+                  모델 미리보기가 여기에 표시됩니다
                 </h6>
               )}
               {previewStatus.type.includes("Error") && (
@@ -823,7 +823,7 @@ export const UploadFiles3D = ({
           {!currentFile && (
             <h6 className="pointer-events-auto absolute left-0 top-1/2 -mt-5 flex w-full items-center justify-center gap-2.5 text-center opacity-50">
               <BoxIcon />
-              Your model preview will appear here
+              모델 미리보기가 여기에 표시됩니다
             </h6>
           )}
           {previewStatus.type.includes("Error") && (
@@ -838,24 +838,23 @@ export const UploadFiles3D = ({
 
       {(isUploading || anyUploading) && overallProgress && isMulti && (
         <p className="text-center text-sm opacity-60">
-          Uploading {overallProgress.current} / {overallProgress.total}...
+          업로드 중 {overallProgress.current} / {overallProgress.total}...
         </p>
       )}
 
       {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
         <p className="text-center text-sm text-red-400">
-          {fileEntries.filter((e) => e.status === "error").length} file(s)
-          failed to upload.
+          파일 {fileEntries.filter((e) => e.status === "error").length}개 업로드 실패.
         </p>
       )}
 
       <div className="flex justify-end gap-2">
         <Button variant="secondary" onClick={onClose}>
-          Cancel
+          취소
         </Button>
         {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
           <Button variant="secondary" onClick={retryAllFailed}>
-            Retry Failed
+            실패 항목 재시도
           </Button>
         )}
         {!hasUploadStarted && (
@@ -865,10 +864,10 @@ export const UploadFiles3D = ({
             disabled={fileEntries.length === 0 || anyConverting || isSubmitting}
           >
             {anyConverting
-              ? "Converting..."
+              ? "변환 중..."
               : isSubmitting
-                ? "Uploading..."
-                : "Upload"}
+                ? "업로드 중..."
+                : "업로드"}
           </Button>
         )}
       </div>

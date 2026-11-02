@@ -274,7 +274,7 @@ async fn do_open_window(
   // TODO(bt,2025-09-01): We probably need to open this in a real browser to get autocomplete.
   let _window = WebviewWindowBuilder::new(app, BILLING_WINDOW_NAME, url)
       .always_on_top(false)
-      .title("ArtCraft Billing")
+      .title("ArtCraft 결제")
       .center()
       .resizable(true)
       .visible(true)

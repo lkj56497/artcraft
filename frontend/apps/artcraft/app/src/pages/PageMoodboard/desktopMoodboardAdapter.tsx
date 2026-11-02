@@ -43,7 +43,7 @@ const sendToGeneration = (refs: MoodboardReference[]): void => {
   store.setReferenceImages(dedupeByToken([...store.referenceImages, ...newRefs]));
   void useTabStore.getState().setActiveTab("IMAGE");
   toast.success(
-    `${refs.length} reference${refs.length > 1 ? "s" : ""} added to the prompt`,
+    `프롬프트에 참조 ${refs.length}개 추가됨`,
   );
 };
 

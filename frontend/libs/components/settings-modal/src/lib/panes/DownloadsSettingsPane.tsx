@@ -20,8 +20,8 @@ import { FolderIcon, RotateCcwIcon, SearchIcon } from "lucide-react";
 
 const DEFAULT_CUSTOM_FORMAT = "{model}_{date}";
 const FILENAME_OPTIONS = [
-  { value: "artcraft_convention", label: "ArtCraft convention" },
-  { value: "custom", label: "Custom format" },
+  { value: "artcraft_convention", label: "ArtCraft 기본 방식" },
+  { value: "custom", label: "사용자 지정 형식" },
 ];
 
 export const DownloadsSettingsPane = () => {
@@ -133,11 +133,11 @@ export const DownloadsSettingsPane = () => {
   const saveCustomFormat = async () => {
     const format = customFormat.trim();
     if (!format) {
-      setFormatError("Format cannot be empty");
+      setFormatError("형식을 비워둘 수 없습니다");
       return;
     }
     if (/[/\\'"`%<>|:*?\x00-\x1f\x7f]/.test(format) || format.includes("..")) {
-      setFormatError("Format cannot contain slashes, quotes, or other unsafe characters");
+      setFormatError("형식에 슬래시, 따옴표 등 안전하지 않은 문자를 넣을 수 없습니다");
       return;
     }
     await saveFilenamePreference({ custom_format: format });
@@ -147,10 +147,9 @@ export const DownloadsSettingsPane = () => {
     <div className="space-y-4 pt-3 text-base-fg">
       {settingsError && <p role="alert" className="text-red-400">{settingsError}</p>}
       <div className="space-y-2">
-        <Label htmlFor="download-path">Default Download Directory</Label>
+        <Label htmlFor="download-path">기본 다운로드 폴더</Label>
         <p className="text-xs opacity-70">
-          This is where downloads are placed after downloading. The current path
-          is:
+          다운로드한 파일이 저장되는 위치입니다. 현재 경로:
         </p>
         <div className="mt-1 border border-ui-panel-border bg-ui-sunken px-3 py-2 text-base-fg">
           <pre className="whitespace-pre-wrap break-all font-mono text-xs">
@@ -161,27 +160,27 @@ export const DownloadsSettingsPane = () => {
       <div className="flex flex-wrap gap-2">
         <Button variant="primary" onClick={openDirectoryPicker}>
           <FolderIcon />
-          Choose Directory
+          폴더 선택
         </Button>
         <Button variant="destructive" onClick={clearDirectory}>
           <RotateCcwIcon />
-          Use Default
+          기본값 사용
         </Button>
         <Button variant="secondary" onClick={showDirectory}>
           <SearchIcon />
-          Show Directory
+          폴더 열기
         </Button>
       </div>
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex flex-col gap-0.5">
-          <Label htmlFor="auto-download">Auto Download</Label>
+          <Label htmlFor="auto-download">자동 다운로드</Label>
           <p className="text-xs opacity-70">
-            Downloads to your system the minute generations complete
+            생성이 끝나는 즉시 컴퓨터로 다운로드합니다
           </p>
         </div>
         <Switch
           id="auto-download"
-          label="Auto Download"
+          label="자동 다운로드"
           enabled={preferences?.auto_download ?? false}
           setEnabled={toggleAutoDownload}
           disabled={!preferences || saving}
@@ -190,24 +189,21 @@ export const DownloadsSettingsPane = () => {
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex flex-col gap-0.5">
           <Label htmlFor="ask-location-before-download">
-            Ask location before download
+            다운로드 전에 위치 묻기
           </Label>
           <p className="text-xs opacity-70">
-            When on, a system file picker appears every time you download from
-            the lightbox or anywhere in the app, letting you choose the save
-            location for that file. When off, downloads go straight to the
-            default download directory above.
+            켜면 앱 어디서든 다운로드할 때마다 저장 위치를 고르는 창이 뜹니다. 끄면 위의 기본 다운로드 폴더로 바로 저장됩니다.
           </p>
         </div>
         <Switch
           id="ask-location-before-download"
-          label="Ask location before download"
+          label="다운로드 전에 위치 묻기"
           enabled={askLocationBeforeDownload}
           setEnabled={toggleAskLocationBeforeDownload}
         />
       </div>
       <fieldset disabled={!preferences || saving} className="flex flex-col gap-2 border-0 p-0">
-        <Label htmlFor="download-filename-mode">Preferred download naming scheme</Label>
+        <Label htmlFor="download-filename-mode">다운로드 파일 이름 규칙</Label>
         <p className="text-xs opacity-70">
           {"The ArtCraft convention is {model}_{date}.{ext}, with a batch number when a generation produces several files."}
         </p>
@@ -228,7 +224,7 @@ export const DownloadsSettingsPane = () => {
         </div>
         {filenameMode === "custom" && (
           <>
-            <Label htmlFor="download-filename-format">Custom format</Label>
+            <Label htmlFor="download-filename-format">사용자 지정 형식</Label>
             <div className="flex flex-wrap items-center gap-2">
               <input
                 id="download-filename-format"
@@ -239,12 +235,12 @@ export const DownloadsSettingsPane = () => {
                 spellCheck={false}
                 className="min-w-0 flex-1 rounded-[3px] border border-ui-controls-border bg-ui-controls px-3 py-2 font-mono text-xs outline-none focus:border-base-fg/40"
               />
-              <Button variant="secondary" onClick={saveCustomFormat}>Save format</Button>
+              <Button variant="secondary" onClick={saveCustomFormat}>형식 저장</Button>
             </div>
             <p className="text-xs opacity-70">
               {"Tokens: {model}, {date}, {YYYY}, {YY}, {MM}, {DD}, {HH}, {mm}, {SS}, {batch_index}. The file extension is added automatically. Batch numbers are added automatically if omitted."}
             </p>
-            <p className="text-xs opacity-70">Changes apply after you click Save format.</p>
+            <p className="text-xs opacity-70">'형식 저장'을 눌러야 변경이 적용됩니다.</p>
           </>
         )}
         {formatError && <p role="alert" className="text-xs text-red-400">{formatError}</p>}

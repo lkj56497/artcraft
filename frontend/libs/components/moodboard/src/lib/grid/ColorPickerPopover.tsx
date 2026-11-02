@@ -16,17 +16,17 @@ interface Props {
 // no longer spams the board with a swatch on every tick.
 export const ColorPickerPopover = ({ onAdd }: Props) => (
   // Tooltip matches the sibling ToolbarIconButtons (bottom, 300ms, close on click).
-  <Tooltip content="Add color" position="bottom" delay={300} closeOnClick>
+  <Tooltip content="색상 추가" position="bottom" delay={300} closeOnClick>
     <PopoverMenu
       mode="default"
       position="bottom"
-      panelTitle="Add a color"
+      panelTitle="색상 추가"
       panelClassName="w-60"
       triggerIcon={
         <PaletteIcon
           
           className="h-4 w-4"
-          aria-label="Add color" />
+          aria-label="색상 추가" />
       }
       buttonClassName="h-9 w-9 rounded-[10px] border-transparent bg-transparent p-0 text-base-fg/80 shadow-none hover:bg-base-fg/10 hover:text-base-fg"
     >
@@ -62,7 +62,7 @@ const ColorPickerPanel = ({ onAdd }: Props) => {
           color={color}
           onChange={setColor}
           prefixed
-          aria-label="Hex color"
+          aria-label="HEX 색상"
           className="h-9 w-full rounded-lg border border-ui-controls-border bg-ui-controls px-2.5 text-sm uppercase text-base-fg outline-none focus:border-primary"
         />
       </div>
@@ -71,7 +71,7 @@ const ColorPickerPanel = ({ onAdd }: Props) => {
         onClick={() => onAdd(normalized)}
         className="w-full justify-center"
       >
-        Add color
+        색상 추가
       </Button>
     </div>
   );

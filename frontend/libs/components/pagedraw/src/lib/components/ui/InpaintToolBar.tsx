@@ -25,7 +25,7 @@ const InpaintToolBar = ({
             }`}
             onClick={() => onOperationChange("add")}
           >
-            Add
+            추가
           </button>
           <button
             className={`rounded-r-lg px-4 py-2 text-sm font-medium transition-colors ${
@@ -35,7 +35,7 @@ const InpaintToolBar = ({
             }`}
             onClick={() => onOperationChange("minus")}
           >
-            Erase
+            지우기
           </button>
         </div>
 

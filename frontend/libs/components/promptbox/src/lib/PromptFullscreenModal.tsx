@@ -79,7 +79,7 @@ export const PromptFullscreenModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      accessibleTitle="Prompt focus mode"
+      accessibleTitle="프롬프트 집중 모드"
       closeOnOutsideClick
       closeOnEsc
       className="w-full max-w-4xl"
@@ -94,7 +94,7 @@ export const PromptFullscreenModal = ({
         style={{ height: "70vh" }}
       >
         {dropOverlay}
-        <h2 className="shrink-0 text-lg font-bold text-base-fg">Prompt</h2>
+        <h2 className="shrink-0 text-lg font-bold text-base-fg">프롬프트</h2>
         {/* flex-1 so the editor takes only the space left after the (shrink-0)
             image row + footer — that's what keeps it from overflowing when the
             window is shorter. min-h-0 + overflow-hidden bound the editor area so
@@ -119,7 +119,7 @@ export const PromptFullscreenModal = ({
           <div className="flex items-center gap-2">{footerControls}</div>
           <div className="flex items-center gap-2">
             {clearAllButton}
-            <Button onClick={onClose}>Done</Button>
+            <Button onClick={onClose}>완료</Button>
           </div>
         </div>
       </div>

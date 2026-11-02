@@ -44,7 +44,7 @@ export const FailedCard = memo(function FailedCard({
       <div className="relative flex h-full flex-col items-center justify-center gap-2 px-4 sm:px-6">
         <CircleAlertIcon className="text-2xl text-red-400" />
         <span className="text-center text-xs font-medium text-red-400">
-          {failureReason || "Generation failed"}
+          {failureReason || "생성 실패"}
         </span>
         {failureMessage && failureMessage !== failureReason && (
           <span className="text-center text-[10px] max-w-md text-red-400/60 line-clamp-2 sm:line-clamp-4">
@@ -59,7 +59,7 @@ export const FailedCard = memo(function FailedCard({
             className="flex items-center gap-1.5 rounded-[3px] bg-white/5 px-3 py-1.5 text-xs text-white/50 transition-colors hover:bg-white/10 hover:text-white/70"
           >
             <XIcon />
-            Dismiss
+            닫기
           </button>
         </div>
       </div>

@@ -119,16 +119,16 @@ export const BASE_BINDINGS: Record<ActionId, Binding[]> = {
 export const PRESETS: Record<PresetId, Preset> = {
   gamer: {
     id: "gamer",
-    label: "Gamer",
+    label: "게이머",
     description:
-      "Game-style free camera — WASD to move, Q/E down/up, arrows to look. The current Artcraft default.",
+      "게임식 자유 카메라 — WASD로 이동, Q/E로 하강/상승, 방향키로 시점 이동. 현재 ArtCraft 기본값입니다.",
     bindings: {}, // BASE is the gamer scheme.
   },
   blender: {
     id: "blender",
-    label: "Blender-like",
+    label: "블렌더 방식",
     description:
-      "Familiar to Blender users — G/R/S for grab/rotate/scale and X/Y/Z axis locking during a transform.",
+      "블렌더 사용자에게 익숙한 방식 — G/R/S로 이동/회전/크기 조절, 변형 중 X/Y/Z로 축 고정.",
     bindings: {
       // Camera moves off WASD/QE onto the numpad (Blender's navigation cluster),
       // with the top-row digits as the laptop-friendly "Emulate Numpad" mirror.

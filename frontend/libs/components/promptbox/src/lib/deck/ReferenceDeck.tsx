@@ -291,7 +291,7 @@ export const ReferenceDeck = ({
       {onClearAll && items.length > 1 && (
         <div className="mb-1.5 flex items-center justify-between px-0.5">
           <span className="text-[11px] font-medium text-base-fg/60">
-            {items.length} reference{items.length !== 1 ? "s" : ""}
+            참조 {items.length}개
           </span>
           <button
             type="button"
@@ -299,7 +299,7 @@ export const ReferenceDeck = ({
             className="flex items-center gap-1 rounded-[3px] px-1 py-0.5 text-[11px] text-base-fg/60 transition-colors hover:text-red-400"
           >
             <Trash2Icon className="h-2.5 w-2.5" />
-            Clear all
+            모두 지우기
           </button>
         </div>
       )}

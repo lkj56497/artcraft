@@ -187,7 +187,7 @@ export function DraggableItem({
                 {shouldShowPlusOnDrag && (
                   <PlusButton
                     onClick={handleAddToTimeline}
-                    tooltipText="Add to timeline or drag to position"
+                    tooltipText="타임라인에 추가하거나 원하는 위치로 드래그"
                   />
                 )}
               </AspectRatio>

@@ -21,7 +21,7 @@ export const AssetMenu = () => {
   return (
     <>
       <div className="glass absolute left-2 top-1/2 flex -translate-y-1/2 flex-col gap-1 rounded-lg p-1">
-        <Tooltip content="Add 3D object to scene" position="right" delay={100}>
+        <Tooltip content="장면에 3D 오브젝트 추가" position="right" delay={100}>
           <Button
             icon={BoxIcon}
             className="h-12 w-12 text-lg"
@@ -29,7 +29,7 @@ export const AssetMenu = () => {
           />
         </Tooltip>
         <Tooltip
-          content="Create 3D model from image"
+          content="이미지로 3D 모델 만들기"
           position="right"
           delay={100}
         >

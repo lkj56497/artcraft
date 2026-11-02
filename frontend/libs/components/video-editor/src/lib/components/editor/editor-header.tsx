@@ -98,9 +98,9 @@ function ProjectDropdown({ exitTo }: { exitTo: string }) {
           name: newName.trim(),
         });
       } catch (error) {
-        toast.error("Failed to rename project", {
+        toast.error("프로젝트 이름 변경 실패", {
           description:
-            error instanceof Error ? error.message : "Please try again",
+            error instanceof Error ? error.message : "다시 시도해 주세요",
         });
       } finally {
         setOpenDialog(null);
@@ -116,9 +116,9 @@ function ProjectDropdown({ exitTo }: { exitTo: string }) {
         });
         navigate(exitTo);
       } catch (error) {
-        toast.error("Failed to delete project", {
+        toast.error("프로젝트 삭제 실패", {
           description:
-            error instanceof Error ? error.message : "Please try again",
+            error instanceof Error ? error.message : "다시 시도해 주세요",
         });
       } finally {
         setOpenDialog(null);
@@ -132,7 +132,7 @@ function ProjectDropdown({ exitTo }: { exitTo: string }) {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="p-1 rounded-sm size-8">
             <div
-              aria-label="Project menu"
+              aria-label="프로젝트 메뉴"
               className="size-5 rounded-sm bg-foreground/80"
             />
           </Button>
@@ -143,14 +143,14 @@ function ProjectDropdown({ exitTo }: { exitTo: string }) {
             disabled={isExiting}
             icon={<HugeiconsIcon icon={Logout05Icon} />}
           >
-            Exit project
+            프로젝트 나가기
           </DropdownMenuItem>
 
           <DropdownMenuItem
             onClick={() => setOpenDialog("shortcuts")}
             icon={<HugeiconsIcon icon={CommandIcon} />}
           >
-            Shortcuts
+            단축키
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
@@ -213,9 +213,9 @@ function EditableProjectName() {
           name: newName,
         });
       } catch (error) {
-        toast.error("Failed to rename project", {
+        toast.error("프로젝트 이름 변경 실패", {
           description:
-            error instanceof Error ? error.message : "Please try again",
+            error instanceof Error ? error.message : "다시 시도해 주세요",
         });
       }
     }

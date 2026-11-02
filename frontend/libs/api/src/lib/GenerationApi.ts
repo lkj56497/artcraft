@@ -24,12 +24,12 @@ export class GenerationApi extends ApiManager {
         }
         return {
           success: false,
-          error: response.BadInput ?? "Generation failed",
+          error: response.BadInput ?? "생성 실패",
         };
       })
       .catch((err) => ({
         success: false,
-        error: err.message ?? "Request failed",
+        error: err.message ?? "요청 실패",
       }));
   }
 }

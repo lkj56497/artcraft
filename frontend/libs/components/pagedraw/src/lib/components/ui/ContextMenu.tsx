@@ -92,7 +92,7 @@ export const ContextMenuContainer: React.FC<ContextMenuContainerProps> = ({
           icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" strokeWidth="2" strokeLinecap="round"/>
           </svg>,
-          label: 'Unlock',
+          label: '잠금 해제',
           action: 'LOCK'
         }
       ];
@@ -146,14 +146,14 @@ const defaultMenuItems: MenuItem[] = [
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M4 4v16h16M4 20l16-16" strokeWidth="2" strokeLinecap="round"/>
     </svg>,
-    label: 'Remove background',
+    label: '배경 제거',
     action: 'REMOVE_BACKGROUND'
   },
   {
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M12 10V14M8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6Z" strokeWidth="2" strokeLinecap="round"/>
     </svg>,
-    label: 'Lock',
+    label: '잠금',
     action: 'LOCK',
     divider: true
   },
@@ -161,28 +161,28 @@ const defaultMenuItems: MenuItem[] = [
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M5 15L12 8L19 15" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>,
-    label: 'Bring to front',
+    label: '맨 앞으로',
     action: 'BRING_TO_FRONT'
   },
   {
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M8 14L12 10L16 14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>,
-    label: 'Bring forward',
+    label: '앞으로',
     action: 'BRING_FORWARD'
   },
   {
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M8 10L12 14L16 10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>,
-    label: 'Send backward',
+    label: '뒤로',
     action: 'SEND_BACKWARD'
   },
   {
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M5 9L12 16L19 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>,
-    label: 'Send to back',
+    label: '맨 뒤로',
     action: 'SEND_TO_BACK',
     divider: true
   },
@@ -190,7 +190,7 @@ const defaultMenuItems: MenuItem[] = [
     icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M16 8V6M16 8H8M16 8V16M8 8V6M8 8V16M8 16H6M8 16H16M16 16H18M6 6H8M8 6H16M16 6H18" strokeWidth="2" strokeLinecap="round"/>
     </svg>,
-    label: 'Duplicate',
+    label: '복제',
     action: 'DUPLICATE'
   },
   {
@@ -209,7 +209,7 @@ const defaultMenuItems: MenuItem[] = [
         />
       </svg>
     ),
-    label: 'Delete',
+    label: '삭제',
     action: 'DELETE'
   },
 ];

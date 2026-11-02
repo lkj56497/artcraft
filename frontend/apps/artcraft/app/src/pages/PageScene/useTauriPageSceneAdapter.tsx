@@ -99,7 +99,7 @@ const uploadSceneCoverImage = async (blob: Blob, fileName: string) => {
     headers: { Accept: "application/json" },
     body: formData,
   });
-  if (!response.ok) throw new Error("Upload Media Failed to send file");
+  if (!response.ok) throw new Error("미디어 업로드: 파일 전송 실패");
   return response.json();
 };
 
@@ -125,7 +125,7 @@ const loadSceneState = async (
 ): Promise<unknown> => {
   const url = `${apiHost()}/v1/media_files/file/${scene_media_file_token}`;
   const response = await fetch(url);
-  if (response.status > 200) throw new Error("Failed to load scene");
+  if (response.status > 200) throw new Error("장면을 불러오지 못했습니다");
 
   const json = await response.json();
   if (json?.media_file) {
@@ -143,7 +143,7 @@ const loadSceneState = async (
   const media_url = `${GetCdnOrigin()}${bucket_path}`;
 
   const file_response = await fetch(media_url);
-  if (!file_response.ok) throw new Error("Failed to download file");
+  if (!file_response.ok) throw new Error("파일 다운로드 실패");
 
   const blob = await file_response.blob();
   return new Promise((resolve, reject) => {

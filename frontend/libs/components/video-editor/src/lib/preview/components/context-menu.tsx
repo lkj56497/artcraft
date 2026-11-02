@@ -33,8 +33,8 @@ export function PreviewContextMenu({
     const result = await editor.renderer.copySnapshot();
 
     if (!result.success) {
-      toast.error("Failed to copy snapshot", {
-        description: result.error ?? "Please try again",
+      toast.error("스냅샷 복사 실패", {
+        description: result.error ?? "다시 시도해 주세요",
       });
       return;
     }
@@ -44,8 +44,8 @@ export function PreviewContextMenu({
     const result = await editor.renderer.saveSnapshot();
 
     if (!result.success) {
-      toast.error("Failed to save snapshot", {
-        description: result.error ?? "Please try again",
+      toast.error("스냅샷 저장 실패", {
+        description: result.error ?? "다시 시도해 주세요",
       });
       return;
     }
@@ -54,17 +54,17 @@ export function PreviewContextMenu({
   return (
     <ContextMenuContent className="w-56" container={container}>
       <ContextMenuItem onClick={viewport.fitToScreen} inset>
-        Fit to screen
+        화면에 맞추기
       </ContextMenuItem>
       <ContextMenuSeparator />
       <ContextMenuItem onClick={onToggleFullscreen} inset>
-        Full screen
+        전체 화면
       </ContextMenuItem>
       <ContextMenuItem onClick={handleSaveSnapshot} inset>
-        Save snapshot
+        스냅샷 저장
       </ContextMenuItem>
       <ContextMenuItem onClick={handleCopySnapshot} inset>
-        Copy snapshot
+        스냅샷 복사
       </ContextMenuItem>
       {overlayControls.length > 0 ? <ContextMenuSeparator /> : null}
       {overlayControls.map((overlayControl) => (

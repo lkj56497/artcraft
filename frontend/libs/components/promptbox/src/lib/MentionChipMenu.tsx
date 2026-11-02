@@ -25,10 +25,10 @@ const MENU_ROW =
 // Header subtitle and empty-replace-list copy per chip type.
 const TYPE_COPY: Record<MentionItem["type"], { title: string; empty: string }> =
   {
-    character: { title: "Character", empty: "No other characters" },
-    image: { title: "Image reference", empty: "No other images" },
-    video: { title: "Video reference", empty: "No other videos" },
-    audio: { title: "Audio reference", empty: "No other audio" },
+    character: { title: "캐릭터", empty: "다른 캐릭터 없음" },
+    image: { title: "이미지 참조", empty: "다른 이미지 없음" },
+    video: { title: "영상 참조", empty: "다른 영상 없음" },
+    audio: { title: "오디오 참조", empty: "다른 오디오 없음" },
   };
 
 export interface MentionChipMenuProps {
@@ -208,8 +208,8 @@ export function MentionChipMenu({
             <button
               type="button"
               onClick={onPreview}
-              title="View full size"
-              aria-label={`View ${currentName}`}
+              title="원본 크기로 보기"
+              aria-label={`${currentName} 보기`}
               className="group/avatar relative shrink-0 cursor-pointer overflow-hidden rounded-[3px]"
             >
               <ChipAvatar
@@ -233,12 +233,12 @@ export function MentionChipMenu({
           <div className="my-1 border-t border-ui-panel-border" />
           <button type="button" className={MENU_ROW} onClick={() => setView("replace")}>
             <RefreshCwIcon  className="h-3.5 w-3.5 opacity-60" />
-            <span className="flex-1 text-left">Replace</span>
+            <span className="flex-1 text-left">교체</span>
             <span className="text-xs text-base-fg/40">{replaceItems.length}</span>
           </button>
           <button type="button" className={MENU_ROW} onClick={onPreview}>
             <EyeIcon  className="h-3.5 w-3.5 opacity-60" />
-            <span className="flex-1 text-left">Preview</span>
+            <span className="flex-1 text-left">미리보기</span>
           </button>
           <div className="my-1 border-t border-ui-panel-border" />
           <button
@@ -247,7 +247,7 @@ export function MentionChipMenu({
             onClick={onRemove}
           >
             <Trash2Icon  className="h-3.5 w-3.5 opacity-60" />
-            <span className="flex-1 text-left">Remove</span>
+            <span className="flex-1 text-left">제거</span>
           </button>
         </>
       ) : (
@@ -257,14 +257,14 @@ export function MentionChipMenu({
               type="button"
               className="flex h-6 w-6 items-center justify-center rounded-[3px] text-base-fg/60 transition-colors hover:bg-ui-controls/60 hover:text-base-fg"
               onClick={() => setView("menu")}
-              aria-label="Back"
+              aria-label="뒤로"
             >
               <ChevronLeftIcon  className="h-3 w-3" />
             </button>
             <div className="min-w-0">
-              <div className="text-sm font-medium text-base-fg">Replace</div>
+              <div className="text-sm font-medium text-base-fg">교체</div>
               <div className="truncate text-[11px] text-base-fg/50">
-                Currently {currentName}
+                현재 {currentName}
               </div>
             </div>
           </div>

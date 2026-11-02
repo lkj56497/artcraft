@@ -323,7 +323,7 @@ export class ProjectManager {
     options: ExportOptions;
   }): Promise<ExportResult> {
     if (this.exportState.isExporting) {
-      return { success: false, error: "Export already in progress" };
+      return { success: false, error: "이미 내보내는 중입니다" };
     }
 
     this.exportCancelRequested = false;
@@ -357,7 +357,7 @@ export class ProjectManager {
       return result;
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unknown export error";
+        error instanceof Error ? error.message : "알 수 없는 내보내기 오류";
       const failure: ExportResult = { success: false, error: message };
       this.exportState = {
         isExporting: false,

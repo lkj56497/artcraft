@@ -146,8 +146,8 @@ const CreateAudio = () => {
   return (
     <DesktopCreatePageShell
       hasContent={hasContent}
-      emptyStateTitle="Create Audio"
-      emptyStateSubtitle="Describe a song, a sound, or a sample"
+      emptyStateTitle="오디오 만들기"
+      emptyStateSubtitle="노래, 소리, 샘플을 설명하세요"
       bottomOffset={promptHeight + 40}
       listContent={
         <DesktopGenerationGallery

@@ -149,20 +149,20 @@ export const Controls3D = ({
     {
       value: "move",
       icon: MoveIcon,
-      text: "Move",
-      tooltip: "Move (T)",
+      text: "이동",
+      tooltip: "이동 (T)",
     },
     {
       value: "rotate",
       icon: RefreshCwIcon,
-      text: "Rotate",
-      tooltip: "Rotate (R)",
+      text: "회전",
+      tooltip: "회전 (R)",
     },
     {
       value: "scale",
       icon: Maximize2Icon,
-      text: "Scale",
-      tooltip: "Scale (G)",
+      text: "크기",
+      tooltip: "크기 (G)",
     },
   ];
 
@@ -176,13 +176,13 @@ export const Controls3D = ({
                 {showEmptySceneTooltip && (
                   <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 transform whitespace-nowrap">
                     <div className="rounded-[3px] bg-primary px-4 py-2 text-sm font-medium text-white">
-                      Click + to add your first 3D asset
+                      +를 눌러 첫 3D 에셋을 추가하세요
                       <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 transform bg-primary" />
                     </div>
                   </div>
                 )}
                 <Tooltip
-                  content="Add an asset to scene"
+                  content="장면에 에셋 추가"
                   position="bottom"
                   delay={300}
                   closeOnClick
@@ -193,42 +193,42 @@ export const Controls3D = ({
                   <PopoverMenu
                     mode="button"
                     position="bottom"
-                    panelTitle="Add an asset to scene"
+                    panelTitle="장면에 에셋 추가"
                     onOpenChange={setIsAddAssetPopoverOpen}
                     items={[
                       {
-                        label: "ArtCraft Presets (B)",
+                        label: "ArtCraft 프리셋 (B)",
                         selected: false,
                         icon: <BoxIcon className="h-4 w-4" />,
                         action: "presets",
                       },
                       {
-                        label: "Animations",
+                        label: "애니메이션",
                         selected: false,
                         icon: <FilmIcon className="h-4 w-4" />,
                         action: "animations",
                       },
                       {
-                        label: "My Library",
+                        label: "내 라이브러리",
                         selected: false,
                         icon: <ImagesIcon className="h-4 w-4" />,
                         action: "library",
                         divider: true,
                       },
                       {
-                        label: "Upload 3D Model",
+                        label: "3D 모델 업로드",
                         selected: false,
                         icon: <UploadIcon className="h-4 w-4" />,
                         action: "upload-3d",
                       },
                       {
-                        label: "Upload Image",
+                        label: "이미지 업로드",
                         selected: false,
                         icon: <UploadIcon className="h-4 w-4" />,
                         action: "upload-image",
                       },
                       {
-                        label: "Upload Splat",
+                        label: "스플랫 업로드",
                         selected: false,
                         icon: <UploadIcon className="h-4 w-4" />,
                         action: "upload-splat",
@@ -247,7 +247,7 @@ export const Controls3D = ({
               </div>
               {showImageTo3DButton && (
                 <Tooltip
-                  content="Create 3D model from image"
+                  content="이미지로 3D 모델 만들기"
                   position="bottom"
                   delay={300}
                   closeOnClick
@@ -273,7 +273,7 @@ export const Controls3D = ({
             <span aria-hidden="true" className="h-5 w-px bg-white/15" />
             {selectedMode === "scale" ? (
               <Tooltip
-                content="Scale is always in local space"
+                content="크기는 항상 로컬 좌표 기준입니다"
                 position="bottom"
                 delay={300}
               >
@@ -282,12 +282,12 @@ export const Controls3D = ({
                   className="flex min-w-[92px] cursor-not-allowed items-center justify-center gap-2 rounded-[3px] border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-base-fg opacity-40 transition-colors duration-150"
                 >
                   <BoxIcon className="h-3 w-3 text-base-fg/60" />
-                  Local
+                  로컬
                 </button>
               </Tooltip>
             ) : (
               <Tooltip
-                content={`Transform space: ${transformSpace} (X to toggle)`}
+                content={`변형 기준: ${transformSpace} (X로 전환)`}
                 position="bottom"
                 delay={300}
               >
@@ -299,7 +299,7 @@ export const Controls3D = ({
                     icon={transformSpace === "world" ? GlobeIcon : BoxIcon}
                     className="h-3 w-3 text-base-fg/60"
                   />
-                  {transformSpace === "world" ? "World" : "Local"}
+                  {transformSpace === "world" ? "월드" : "로컬"}
                 </button>
               </Tooltip>
             )}
@@ -315,7 +315,7 @@ export const Controls3D = ({
           isOpen: upload3DIsShowing,
           onClose: () => setUpload3DIsShowing(false),
           onSuccess: () => setUpload3DIsShowing(false),
-          title: "Upload a 3D Model",
+          title: "3D 모델 업로드",
           titleIcon: BoxIcon,
         })}
 
@@ -324,7 +324,7 @@ export const Controls3D = ({
           isOpen: uploadImageIsShowing,
           onClose: () => setUploadImageIsShowing(false),
           onSuccess: () => setUploadImageIsShowing(false),
-          title: "Upload an Image",
+          title: "이미지 업로드",
           titleIcon: ImagesIcon,
         })}
 
@@ -333,7 +333,7 @@ export const Controls3D = ({
           isOpen: uploadSplatIsShowing,
           onClose: () => setUploadSplatIsShowing(false),
           onSuccess: () => setUploadSplatIsShowing(false),
-          title: "Upload an spz file",
+          title: "spz 파일 업로드",
           titleIcon: BoxIcon,
         })}
     </>

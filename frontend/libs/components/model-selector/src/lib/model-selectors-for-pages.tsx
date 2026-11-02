@@ -21,9 +21,9 @@ const videoCapabilityBadges = (model: Model) => {
   if (model.kind !== "video_model") return undefined;
   const video = model as VideoModel;
   const badges = [
-    ...(video.generateWithSound ? [{ label: "Audio Support" }] : []),
-    ...(video.endFrame ? [{ label: "Start/End" }] : []),
-    ...(video.supportsReferenceMode ? [{ label: "Reference" }] : []),
+    ...(video.generateWithSound ? [{ label: "오디오 지원" }] : []),
+    ...(video.endFrame ? [{ label: "시작/끝" }] : []),
+    ...(video.supportsReferenceMode ? [{ label: "참조" }] : []),
   ];
   return badges.length > 0 ? badges : undefined;
 };

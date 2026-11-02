@@ -8,7 +8,7 @@ import { useGallerySelectionStore } from "./gallery-selection-store";
 export function GallerySelectToggle() {
   const active = useGallerySelectionStore((s) => s.active);
   const setActive = useGallerySelectionStore((s) => s.setActive);
-  const label = active ? "Exit selection" : "Select items";
+  const label = active ? "선택 종료" : "항목 선택";
 
   return (
     <div className="flex items-center rounded-[3px] border border-white/[0.08] bg-white/[0.04] p-0.5">

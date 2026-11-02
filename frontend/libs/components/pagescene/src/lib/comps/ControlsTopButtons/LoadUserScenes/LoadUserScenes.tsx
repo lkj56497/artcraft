@@ -107,18 +107,18 @@ export const LoadUserScenes = ({ onSceneSelect }: LoadSceneProps) => {
 
   return (
     <div className="flex flex-col gap-0.5">
-      <Label>My Scenes</Label>
+      <Label>내 장면</Label>
       <div className="relative flex max-h-[500px] min-h-[140px] flex-col">
         {!scenes && (
           <div className="flex items-center justify-center gap-3 py-12">
             <LoadingSpinner />
-            <span className="font-medium opacity-70">Loading scenes...</span>
+            <span className="font-medium opacity-70">장면 불러오는 중...</span>
           </div>
         )}
         {scenes && scenes.length === 0 && (
           <div className="flex items-center justify-center gap-3 py-12">
             <span className="font-medium opacity-50">
-              You have no saved scenes yet.
+              저장된 장면이 아직 없습니다.
             </span>
           </div>
         )}

@@ -81,8 +81,8 @@ export function UploadModalSplat(props: Props) {
             <LoadingDots className="mb-1 bg-transparent" />
             <div className="w-100 text-center opacity-50">
               {p && p.total > 1
-                ? `Uploading ${p.current} / ${p.total}...`
-                : "Uploading..."}
+                ? `업로드 중 ${p.current} / ${p.total}...`
+                : "업로드 중..."}
             </div>
           </>
         );
@@ -90,7 +90,7 @@ export function UploadModalSplat(props: Props) {
       case UploaderStates.success: {
         return (
           <UploadSuccess
-            title="Splat"
+            title="스플랫"
             onOk={() => {
               galleryModalVisibleViewMode.value = true;
               galleryModalVisibleDuringDrag.value = true;

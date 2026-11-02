@@ -27,7 +27,7 @@ export const sceneOutputAdapter: Pick<
       ? await api.UploadNewVideo(request)
       : await api.UploadImage(request);
     if (!response.success || !response.data) {
-      throw new Error(response.errorMessage || "Could not upload the recording or capture.");
+      throw new Error(response.errorMessage || "녹화 또는 캡처를 업로드하지 못했습니다.");
     }
     return response.data;
   },
@@ -38,11 +38,11 @@ export const sceneOutputAdapter: Pick<
     });
     const file = response.data;
     if (!response.success || !file?.media_links?.cdn_url) {
-      throw new Error("Upload succeeded, but the preview could not be loaded. Retry to open it.");
+      throw new Error("업로드는 됐지만 미리보기를 불러오지 못했습니다. 다시 시도해 열어보세요.");
     }
     const item: GalleryItem = {
       id: token,
-      label: file.maybe_title || (kind === "video" ? "Scene recording" : "Scene capture"),
+      label: file.maybe_title || (kind === "video" ? "장면 녹화" : "장면 캡처"),
       thumbnail: null,
       thumbnailUrlTemplate: file.media_links.thumbnail_template,
       fullImage: file.media_links.cdn_url,

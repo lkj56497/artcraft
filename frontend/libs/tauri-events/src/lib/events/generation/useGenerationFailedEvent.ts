@@ -46,16 +46,16 @@ const makeMessage = (event: GenerationFailedEvent) => {
   }
   switch (event.action) {
     case GenerationAction.GenerateImage:
-      return "Image generation failed!";
+      return "이미지 생성 실패!";
     case GenerationAction.GenerateVideo:
-      return "Video generation failed!";
+      return "영상 생성 실패!";
     case GenerationAction.RemoveBackground:
-      return "Background removal failed!";
+      return "배경 제거 실패!";
     case GenerationAction.ImageTo3d:
-      return "3D model generation failed!";
+      return "3D 모델 생성 실패!";
     case GenerationAction.GenerateGaussian:
-      return "3D world generation failed!";
+      return "3D 월드 생성 실패!";
     default:
-      return "Generation failed!";
+      return "생성 실패!";
   }
 }

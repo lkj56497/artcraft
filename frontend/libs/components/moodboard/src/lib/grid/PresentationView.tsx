@@ -38,7 +38,7 @@ export const PresentationView = ({ items, onClose }: Props) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
       <button
         type="button"
-        aria-label="Exit presentation"
+        aria-label="발표 모드 종료"
         onClick={onClose}
         className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 backdrop-blur-md transition-colors hover:bg-white/15 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
       >
@@ -46,7 +46,7 @@ export const PresentationView = ({ items, onClose }: Props) => {
       </button>
 
       {count === 0 ? (
-        <p className="text-sm text-white/50">This board is empty.</p>
+        <p className="text-sm text-white/50">이 보드는 비어 있습니다.</p>
       ) : (
         <>
           <div className="flex h-full w-full items-center justify-center p-12">
@@ -149,7 +149,7 @@ const Arrow = ({
 }) => (
   <button
     type="button"
-    aria-label={side === "left" ? "Previous" : "Next"}
+    aria-label={side === "left" ? "이전" : "다음"}
     onClick={onClick}
     className={[
       "absolute top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full",

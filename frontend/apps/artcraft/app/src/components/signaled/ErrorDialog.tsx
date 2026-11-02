@@ -33,7 +33,7 @@ export function ErrorDialog() {
             onClick={() => setShowErrorDialog(false)}
             variant="secondary"
           >
-            Close
+            닫기
           </Button>
         </div>
       </div>

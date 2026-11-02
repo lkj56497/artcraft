@@ -172,7 +172,7 @@ export const Angles = () => {
             });
             resolve();
           };
-          img.onerror = () => reject(new Error("Failed to load image"));
+          img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
           img.src = objectUrl;
         });
 
@@ -185,7 +185,7 @@ export const Angles = () => {
         });
 
         if (!uploadResult?.success || !uploadResult.data) {
-          throw new Error("Upload failed — no media token returned");
+          throw new Error("업로드 실패 — 미디어 토큰을 받지 못했습니다");
         }
 
         const mediaToken = uploadResult.data;
@@ -221,7 +221,7 @@ export const Angles = () => {
         setIsLoadingImage(false);
       } catch (error) {
         console.error("Error processing image:", error);
-        toast.error("Failed to process image");
+        toast.error("이미지 처리 실패");
         setIsLoadingImage(false);
       }
     },
@@ -240,7 +240,7 @@ export const Angles = () => {
     async (selectedItems: GalleryItem[]) => {
       const item = selectedItems[0];
       if (!item || !item.fullImage) {
-        toast.error("No image selected");
+        toast.error("선택된 이미지가 없습니다");
         return;
       }
 
@@ -261,7 +261,7 @@ export const Angles = () => {
             });
             resolve();
           };
-          img.onerror = () => reject(new Error("Failed to load image"));
+          img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
           img.src = imageUrl;
         });
 
@@ -269,7 +269,7 @@ export const Angles = () => {
         setIsLoadingImage(false);
       } catch (error) {
         console.error("Error processing gallery image:", error);
-        toast.error("Failed to process image");
+        toast.error("이미지 처리 실패");
         setIsLoadingImage(false);
       }
     },
@@ -303,22 +303,22 @@ export const Angles = () => {
       });
     } catch (error) {
       console.error("Error generating angle:", error);
-      toast.error("Failed to generate angle");
+      toast.error("앵글 생성 실패");
       useAnglesStore.getState().removePendingSubscriber(subscriberId);
     }
   }, [selectedModel, selectedProvider]);
 
   const handleDownload = useCallback(async () => {
     if (!activeAngle) {
-      toast.error("No image to download");
+      toast.error("다운로드할 이미지가 없습니다");
       return;
     }
     try {
       await downloadFileFromUrl(activeAngle.imageUrl);
-      toast.success("Image saved to Downloads folder");
+      toast.success("이미지가 다운로드 폴더에 저장되었습니다");
     } catch (error) {
       console.error("Download failed:", error);
-      toast.error("Failed to download image");
+      toast.error("이미지 다운로드 실패");
     }
   }, [activeAngle]);
 
@@ -484,14 +484,14 @@ export const Angles = () => {
               <div className="relative aspect-video overflow-hidden border border-ui-panel-border bg-ui-panel">
                 <UploadEntryCard
                   icon={CrosshairIcon}
-                  title="Angles"
-                  description="Generate new camera angles from a single photo. Upload an image to get started."
+                  title="앵글"
+                  description="사진 한 장으로 새로운 카메라 앵글을 만들어 보세요. 이미지를 업로드하면 시작됩니다."
                   accentBackgroundClass="bg-lime-500/20"
                   accentBorderClass="border-lime-500/40"
                   accept="image/*"
                   onFilesSelected={handleLocalImageSelect}
-                  primaryLabel="Upload media"
-                  secondaryLabel="Pick from Library"
+                  primaryLabel="미디어 업로드"
+                  secondaryLabel="라이브러리에서 선택"
                   secondaryIcon={ImagesIcon}
                   onSecondaryClick={handleOpenGallery}
                   disabled={isLoadingImage}
@@ -524,13 +524,13 @@ export const Angles = () => {
                 {activeAngle ? (
                   <img
                     src={activeAngle.imageUrl}
-                    alt="Generated Angle"
+                    alt="생성된 앵글"
                     className="absolute inset-0 h-full w-full object-contain"
                   />
                 ) : sourceImageUrl ? (
                   <img
                     src={sourceImageUrl}
-                    alt="Source"
+                    alt="원본"
                     className="absolute inset-0 h-full w-full object-contain"
                   />
                 ) : (
@@ -549,7 +549,7 @@ export const Angles = () => {
                   onClick={handleChangeImage}
                   className="select-none px-4 py-1.5 text-sm font-medium transition-all"
                 >
-                  Change Image
+                  이미지 변경
                 </Button>
                 {activeAngle && (
                   <Button
@@ -562,7 +562,7 @@ export const Angles = () => {
                       isProcessing && "cursor-not-allowed opacity-50",
                     )}
                   >
-                    Download
+                    다운로드
                   </Button>
                 )}
               </div>
@@ -633,7 +633,7 @@ export const Angles = () => {
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-16 shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                      Rotation
+                      회전
                     </span>
                     <div className="min-w-0 flex-1">
                       <SliderV2
@@ -652,7 +652,7 @@ export const Angles = () => {
 
                   <div className="flex items-center gap-3">
                     <span className="w-16 shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                      Tilt
+                      기울기
                     </span>
                     <div className="min-w-0 flex-1">
                       <SliderV2
@@ -671,7 +671,7 @@ export const Angles = () => {
 
                   <div className="flex items-center gap-3">
                     <span className="w-16 shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                      Zoom
+                      줌
                     </span>
                     <div className="min-w-0 flex-1">
                       <SliderV2
@@ -730,7 +730,7 @@ export const Angles = () => {
                     credits={anglesCredits}
                     className="whitespace-nowrap px-5 py-1.5 text-sm"
                   >
-                    Generate
+                    생성
                   </GenerateButton>
                 </div>
               </div>

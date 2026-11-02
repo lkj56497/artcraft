@@ -121,8 +121,8 @@ export function getSourceAudioActionLabel({
   element: VideoElement;
 }): "Extract audio" | "Recover audio" {
   return isSourceAudioSeparated({ element })
-    ? "Recover audio"
-    : "Extract audio";
+    ? "오디오 복구"
+    : "오디오 추출";
 }
 
 function cloneVolumeAnimations({

@@ -80,7 +80,7 @@ export const signUp = async ({
   console.log(response);
   if (!response.success || !response.data) {
     setLogoutStates();
-    return response.errorMessage ?? "Unknown error";
+    return response.errorMessage ?? "알 수 없는 오류";
   }
 
   // technically user is login with the system now, HOWEVER,

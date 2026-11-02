@@ -270,7 +270,7 @@ export const splitMaskDefinition: MaskDefinition<"split"> = {
     },
     {
       key: "rotation",
-      label: "Rotation",
+      label: "회전",
       type: "number",
       default: 0,
       min: 0,

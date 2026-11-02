@@ -12,13 +12,12 @@ export function GenericProviderBillingBlock({
 
   return (
     <div className="flex w-full flex-col gap-3 text-base-fg">
-      <p className="hud-label text-base-fg/55">Billing</p>
+      <p className="hud-label text-base-fg/55">결제</p>
       <h2 className="font-display text-2xl font-medium tracking-[-0.02em]">
-        Set up {serviceProviderName}
+        설정하기 {serviceProviderName}
       </h2>
       <p className="text-sm leading-relaxed text-base-fg/60">
-        Please set up {serviceProviderName} on their website to use it with
-        ArtCraft.
+        ArtCraft에서 사용하려면 {serviceProviderName} 웹사이트에서 먼저 설정해 주세요.
       </p>
     </div>
   );

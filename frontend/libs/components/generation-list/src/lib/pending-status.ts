@@ -13,7 +13,7 @@ export function derivePendingStatus(
     progress != null ? Math.max(0, Math.min(100, Math.round(progress))) : null;
   const isAlmostDone = progress != null && progress >= 95;
   const timeLabel = isAlmostDone
-    ? "Almost done..."
+    ? "거의 다 됐습니다..."
     : estimatedTimeLeftMs != null && estimatedTimeLeftMs > 0
       ? formatTimeLeft(estimatedTimeLeftMs)
       : null;

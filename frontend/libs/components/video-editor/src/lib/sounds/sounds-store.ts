@@ -152,7 +152,7 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       });
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Failed to load saved sounds";
+        error instanceof Error ? error.message : "저장한 소리를 불러오지 못했습니다";
       set({
         savedSoundsError: errorMessage,
         isLoadingSavedSounds: false,
@@ -183,9 +183,9 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       });
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Failed to save sound";
+        error instanceof Error ? error.message : "소리 저장 실패";
       set({ savedSoundsError: errorMessage });
-      EditorCore.getInstance().adapters.toast.error("Failed to save sound");
+      EditorCore.getInstance().adapters.toast.error("소리 저장 실패");
       console.error("Failed to save sound:", error);
     }
   },
@@ -200,9 +200,9 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       }));
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Failed to remove sound";
+        error instanceof Error ? error.message : "소리 제거 실패";
       set({ savedSoundsError: errorMessage });
-      EditorCore.getInstance().adapters.toast.error("Failed to remove sound");
+      EditorCore.getInstance().adapters.toast.error("소리 제거 실패");
       console.error("Failed to remove sound:", error);
     }
   },
@@ -232,10 +232,10 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       });
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Failed to clear saved sounds";
+        error instanceof Error ? error.message : "저장한 소리 지우기 실패";
       set({ savedSoundsError: errorMessage });
       EditorCore.getInstance().adapters.toast.error(
-        "Failed to clear saved sounds",
+        "저장한 소리 지우기 실패",
       );
       console.error("Failed to clear saved sounds:", error);
     }
@@ -254,7 +254,7 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       }
     }
     if (!audioUrl) {
-      editor.adapters.toast.error("Sound file not available");
+      editor.adapters.toast.error("소리 파일을 사용할 수 없습니다");
       return false;
     }
 
@@ -287,7 +287,7 @@ export const useSoundsStore = create<SoundsStore>((set, get) => ({
       editor.adapters.toast.error(
         error instanceof Error
           ? error.message
-          : "Failed to add sound to timeline",
+          : "소리를 타임라인에 추가하지 못했습니다",
       );
       return false;
     }

@@ -47,8 +47,8 @@ export function SoundsView() {
       <Tabs defaultValue="sound-effects" className="flex h-full flex-col">
         <div className="px-3 pt-4 pb-0">
           <TabsList>
-            <TabsTrigger value="sound-effects">Sound effects</TabsTrigger>
-            <TabsTrigger value="saved">Saved</TabsTrigger>
+            <TabsTrigger value="sound-effects">효과음</TabsTrigger>
+            <TabsTrigger value="saved">저장됨</TabsTrigger>
           </TabsList>
         </div>
         <Separator className="my-4" />
@@ -147,7 +147,7 @@ function SoundEffectsView() {
           console.error("Failed to fetch top sounds:", error);
           setError({
             error:
-              error instanceof Error ? error.message : "Failed to load sounds",
+              error instanceof Error ? error.message : "소리를 불러오지 못했습니다",
           });
         }
       } finally {
@@ -230,7 +230,7 @@ function SoundEffectsView() {
     <div className="mt-1 flex h-full flex-col gap-5">
       <div className="flex items-center gap-3">
         <Input
-          placeholder="Search sound effects"
+          placeholder="효과음 검색"
           className="w-full"
           containerClassName="w-full"
           value={searchQuery}
@@ -255,12 +255,12 @@ function SoundEffectsView() {
               checked={showCommercialOnly}
               onCheckedChange={() => toggleCommercialFilter()}
             >
-              Show only commercially licensed
+              상업적 이용 가능한 것만 보기
             </DropdownMenuCheckboxItem>
             <div className="text-muted-foreground px-2 py-1.5 text-xs">
               {showCommercialOnly
-                ? "Only showing sounds licensed for commercial use"
-                : "Showing all sounds regardless of license"}
+                ? "상업적 이용이 가능한 소리만 표시 중"
+                : "라이선스와 관계없이 모든 소리 표시 중"}
             </div>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -275,11 +275,11 @@ function SoundEffectsView() {
           <div className="flex flex-col gap-4">
             {isLoading && !searchQuery && (
               <div className="text-muted-foreground text-sm">
-                Loading sounds...
+                소리 불러오는 중...
               </div>
             )}
             {isSearching && searchQuery && (
-              <div className="text-muted-foreground text-sm">Searching...</div>
+              <div className="text-muted-foreground text-sm">검색 중...</div>
             )}
             {displayedSounds.map((sound) => (
               <AudioItem
@@ -291,12 +291,12 @@ function SoundEffectsView() {
             ))}
             {!isLoading && !isSearching && displayedSounds.length === 0 && (
               <div className="text-muted-foreground text-sm">
-                {searchQuery ? "No sounds found" : "No sounds available"}
+                {searchQuery ? "소리를 찾을 수 없습니다" : "사용 가능한 소리가 없습니다"}
               </div>
             )}
             {isLoadingMore && (
               <div className="text-muted-foreground py-4 text-center text-sm">
-                Loading more sounds...
+                소리 더 불러오는 중...
               </div>
             )}
           </div>
@@ -384,7 +384,7 @@ function SavedSoundsView() {
     return (
       <div className="flex h-full items-center justify-center">
         <div className="text-muted-foreground text-sm">
-          Loading saved sounds...
+          저장한 소리 불러오는 중...
         </div>
       </div>
     );
@@ -394,7 +394,7 @@ function SavedSoundsView() {
     return (
       <div className="flex h-full items-center justify-center">
         <div className="text-destructive text-sm">
-          Error: {savedSoundsError}
+          오류: {savedSoundsError}
         </div>
       </div>
     );
@@ -408,9 +408,9 @@ function SavedSoundsView() {
           className="text-muted-foreground size-10"
         />
         <div className="flex flex-col gap-2 text-center">
-          <p className="text-lg font-medium">No saved sounds</p>
+          <p className="text-lg font-medium">저장한 소리가 없습니다</p>
           <p className="text-muted-foreground text-sm text-balance">
-            Click the heart icon on any sound to save it here
+            소리의 하트 아이콘을 누르면 여기에 저장됩니다
           </p>
         </div>
       </div>
@@ -421,8 +421,7 @@ function SavedSoundsView() {
     <div className="mt-1 flex h-full flex-col gap-5">
       <div className="flex items-center justify-between">
         <p className="text-muted-foreground text-sm">
-          {savedSounds.length} saved{" "}
-          {savedSounds.length === 1 ? "sound" : "sounds"}
+          저장한 소리 {savedSounds.length}개
         </p>
         <Dialog open={showClearDialog} onOpenChange={setShowClearDialog}>
           <DialogTrigger asChild>
@@ -431,20 +430,19 @@ function SavedSoundsView() {
               size="sm"
               className="text-muted-foreground hover:text-destructive h-auto !opacity-100"
             >
-              Clear all
+              모두 지우기
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Clear all saved sounds?</DialogTitle>
+              <DialogTitle>저장한 소리를 모두 지울까요?</DialogTitle>
               <DialogDescription>
-                This will permanently remove all {savedSounds.length} saved
-                sounds from your collection. This action cannot be undone.
+                저장한 소리 {savedSounds.length}개를 모두 영구 삭제합니다. 되돌릴 수 없습니다.
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
               <Button variant="text" onClick={() => setShowClearDialog(false)}>
-                Cancel
+                취소
               </Button>
               <Button
                 variant="destructive"
@@ -454,7 +452,7 @@ function SavedSoundsView() {
                   setShowClearDialog(false);
                 }}
               >
-                Clear all sounds
+                모든 소리 지우기
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -536,7 +534,7 @@ function AudioItem({ sound, isPlaying, onPlay }: AudioItemProps) {
           size="icon"
           className="text-muted-foreground hover:text-foreground w-auto !opacity-100"
           onClick={handleAddToTimeline}
-          title="Add to timeline"
+          title="타임라인에 추가"
         >
           <HugeiconsIcon icon={PlusSignIcon} />
         </Button>
@@ -549,7 +547,7 @@ function AudioItem({ sound, isPlaying, onPlay }: AudioItemProps) {
               : "text-muted-foreground"
           }`}
           onClick={handleSaveClick}
-          title={isSaved ? "Remove from saved" : "Save sound"}
+          title={isSaved ? "저장 목록에서 제거" : "소리 저장"}
         >
           <HugeiconsIcon
             icon={FavouriteIcon}

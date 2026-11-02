@@ -14,19 +14,19 @@ export const MUSICAL_KEYS: Array<{
   label: string;
   shortLabel: string;
 }> = [
-  { value: "auto", label: "Auto", shortLabel: "Auto" },
-  { value: "c_major", label: "C Major", shortLabel: "C" },
-  { value: "c_minor", label: "C Minor", shortLabel: "Cm" },
-  { value: "d_major", label: "D Major", shortLabel: "D" },
-  { value: "d_minor", label: "D Minor", shortLabel: "Dm" },
-  { value: "f_major", label: "F Major", shortLabel: "F" },
-  { value: "f_minor", label: "F Minor", shortLabel: "Fm" },
-  { value: "g_major", label: "G Major", shortLabel: "G" },
-  { value: "g_minor", label: "G Minor", shortLabel: "Gm" },
-  { value: "a_major", label: "A Major", shortLabel: "A" },
-  { value: "a_minor", label: "A Minor", shortLabel: "Am" },
-  { value: "b_major", label: "B Major", shortLabel: "B" },
-  { value: "b_minor", label: "B Minor", shortLabel: "Bm" },
+  { value: "auto", label: "자동", shortLabel: "자동" },
+  { value: "c_major", label: "C 장조", shortLabel: "C" },
+  { value: "c_minor", label: "C 단조", shortLabel: "Cm" },
+  { value: "d_major", label: "D 장조", shortLabel: "D" },
+  { value: "d_minor", label: "D 단조", shortLabel: "Dm" },
+  { value: "f_major", label: "F 장조", shortLabel: "F" },
+  { value: "f_minor", label: "F 단조", shortLabel: "Fm" },
+  { value: "g_major", label: "G 장조", shortLabel: "G" },
+  { value: "g_minor", label: "G 단조", shortLabel: "Gm" },
+  { value: "a_major", label: "A 장조", shortLabel: "A" },
+  { value: "a_minor", label: "A 단조", shortLabel: "Am" },
+  { value: "b_major", label: "B 장조", shortLabel: "B" },
+  { value: "b_minor", label: "B 단조", shortLabel: "Bm" },
 ];
 
 export interface SoundsSettingsPopoverProps {
@@ -60,7 +60,7 @@ export function SoundsSettingsPopover({
   return (
     <PopoverMenu
       mode="default"
-      panelTitle="Beat & Key"
+      panelTitle="박자 & 조성"
       triggerIcon={<DrumIcon  className="h-3.5 w-3.5" />}
       triggerLabel={triggerLabel || "Beat"}
     >
@@ -71,7 +71,7 @@ export function SoundsSettingsPopover({
               <span className="text-xs font-medium text-base-fg/60">BPM</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-medium tabular-nums text-base-fg">
-                  {bpm === null ? "Auto" : bpm}
+                  {bpm === null ? "자동" : bpm}
                 </span>
                 {bpm !== null && (
                   <button
@@ -79,7 +79,7 @@ export function SoundsSettingsPopover({
                     onClick={() => onBpmChange?.(null)}
                     className="rounded-[3px] bg-white/5 px-1.5 py-0.5 text-[10px] font-medium text-base-fg/60 transition-colors hover:bg-white/10 hover:text-base-fg"
                   >
-                    Auto
+                    자동
                   </button>
                 )}
               </div>
@@ -98,7 +98,7 @@ export function SoundsSettingsPopover({
         {showMusicalKey && (
           <div>
             <div className="mb-1.5 text-xs font-medium text-base-fg/60">
-              Musical key
+              조성
             </div>
             <div className="grid grid-cols-4 gap-1">
               {MUSICAL_KEYS.map((entry) => (

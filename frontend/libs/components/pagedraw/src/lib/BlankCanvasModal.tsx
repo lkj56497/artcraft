@@ -63,7 +63,7 @@ export const BlankCanvasModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      title="Choose Canvas Size"
+      title="캔버스 크기 선택"
       onClose={handleClose}
       width={560}
     >
@@ -111,10 +111,10 @@ export const BlankCanvasModal = ({
 
         <div className="mt-2 flex justify-end gap-3">
           <Button variant="action" onClick={handleClose}>
-            Cancel
+            취소
           </Button>
           <Button variant="primary" onClick={handleConfirm} disabled={!selected}>
-            Create Canvas
+            캔버스 만들기
           </Button>
         </div>
       </div>

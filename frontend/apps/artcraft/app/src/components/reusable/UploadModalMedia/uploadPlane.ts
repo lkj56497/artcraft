@@ -45,7 +45,7 @@ export const uploadPlane = async ({
   if (!thumbnailBlob) {
     progressCallback({
       status: UploaderStates.coverCreateError,
-      errorMessage: `Could not make thumbnail from ${assetFileName}!`,
+      errorMessage: `${assetFileName}에서 썸네일을 만들지 못했습니다!`,
     });
     return;
   }
@@ -60,7 +60,7 @@ export const uploadPlane = async ({
   if (thumbnailResponse == undefined) {
     progressCallback({
       status: UploaderStates.coverCreateError,
-      errorMessage: "Could not upload thumbnail!",
+      errorMessage: "썸네일을 업로드하지 못했습니다!",
     });
     return;
   }
@@ -109,7 +109,7 @@ const takeVideoSnapshot = async (
   if (video === null) {
     errorCallback({
       status: UploaderStates.coverCreateError,
-      errorMessage: "Could not upload thumbnail, video does not exist!",
+      errorMessage: "영상이 없어 썸네일을 업로드하지 못했습니다!",
     });
     return;
   }

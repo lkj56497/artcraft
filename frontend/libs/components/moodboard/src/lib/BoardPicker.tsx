@@ -70,8 +70,8 @@ export const BoardPicker = () => {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        title="Switch board"
-        aria-label="Switch board"
+        title="보드 전환"
+        aria-label="보드 전환"
         className="flex max-w-[180px] items-center gap-2 rounded-xl px-3.5 py-1.5 text-sm font-medium text-base-fg/70 transition-colors duration-150 hover:text-base-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <span className="truncate">{activeBoard?.name ?? "Boards"}</span>
@@ -100,8 +100,8 @@ export const BoardPicker = () => {
                 </button>
                 <button
                   type="button"
-                  title={`Delete ${board.name}`}
-                  aria-label={`Delete ${board.name}`}
+                  title={`${board.name} 삭제`}
+                  aria-label={`${board.name} 삭제`}
                   onClick={() => void handleDelete(board.id)}
                   className="mr-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-base-fg/40 opacity-0 transition-opacity hover:bg-red-500/20 hover:text-red-400 focus:opacity-100 group-hover:opacity-100"
                 >
@@ -116,7 +116,7 @@ export const BoardPicker = () => {
             className="mt-1 flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-base-fg/70 transition-colors hover:bg-base-fg/10 hover:text-base-fg focus:outline-none"
           >
             <PlusIcon  className="h-3 w-3" />
-            New board
+            새 보드
           </button>
         </div>
       )}

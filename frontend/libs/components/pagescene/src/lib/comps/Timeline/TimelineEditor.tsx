@@ -325,7 +325,7 @@ export const TimelineEditor = () => {
       <div className="mb-2 flex items-center gap-2 border-b border-ui-panel-border pb-2">
         <button
           type="button"
-          title="Go to start"
+          title="처음으로"
           onClick={() => editor && seekTimeline(editor, 0)}
           className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/70 hover:bg-white/10"
         >
@@ -334,7 +334,7 @@ export const TimelineEditor = () => {
         <button
           type="button"
           onClick={togglePlay}
-          aria-label={isPlaying ? "Pause timeline" : "Play timeline"}
+          aria-label={isPlaying ? "타임라인 일시정지" : "타임라인 재생"}
           className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/90 hover:bg-white/10"
         >
           <DynamicIcon
@@ -344,7 +344,7 @@ export const TimelineEditor = () => {
         </button>
         <button
           type="button"
-          title="Go to end"
+          title="끝으로"
           onClick={() => editor && seekTimeline(editor, duration)}
           className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/70 hover:bg-white/10"
         >
@@ -359,8 +359,8 @@ export const TimelineEditor = () => {
           <Tooltip
             content={
               focusSelected
-                ? "Show all tracks"
-                : "Show only the selected object's track"
+                ? "모든 트랙 보기"
+                : "선택한 오브젝트 트랙만 보기"
             }
             position="top"
             delay={300}
@@ -381,7 +381,7 @@ export const TimelineEditor = () => {
         </div>
         <button
           type="button"
-          title="Collapse timeline"
+          title="타임라인 접기"
           onClick={() => setExpanded(false)}
           className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/60 hover:bg-white/10"
         >
@@ -456,7 +456,7 @@ export const TimelineEditor = () => {
 
         {rows.length === 0 ? (
           <div className="py-6 text-center text-xs text-base-fg/40">
-            Add objects to the scene to start animating.
+            장면에 오브젝트를 추가하면 애니메이션을 시작할 수 있습니다.
           </div>
         ) : (
           /* Cap at ~3.5 rows (row = 36px lane + 8px padding) so the panel
@@ -539,7 +539,7 @@ export const TimelineEditor = () => {
             style={{ left: LANE_LEFT, right: LANE_RIGHT }}
           >
             <MotionPopover
-              title="Transition"
+              title="전환"
               easing={clipTransitionAnchor.easing}
               onChange={(next) =>
                 editor &&
@@ -565,7 +565,7 @@ export const TimelineEditor = () => {
                     usePageSceneStore.getState().setTimelineEasingClipLane(null);
                   }}
                 >
-                  Remove transition
+                  전환 제거
                 </button>
               }
             />
@@ -576,8 +576,7 @@ export const TimelineEditor = () => {
       {/* footer */}
       <div className="mt-3 flex items-center justify-between gap-2">
         <span className="ms-2 text-[11px] text-base-fg/40">
-          Each diamond stores an object's full position, rotation and scale at
-          that moment. Tap a diamond to jump to it.
+          각 마름모는 그 순간 오브젝트의 위치·회전·크기를 저장합니다. 마름모를 누르면 그 시점으로 이동합니다.
         </span>
         <div className="flex items-center gap-2">
           {selectedKeyframe && (
@@ -593,7 +592,7 @@ export const TimelineEditor = () => {
                   editor && deleteKeyframe(editor, selectedKeyframe.id)
                 }
               >
-                Delete
+                삭제
               </Button>
             </div>
           )}
@@ -602,14 +601,14 @@ export const TimelineEditor = () => {
             className="flex h-9 items-center border border-ui-controls-border bg-ui-controls/60 px-3 text-sm text-base-fg hover:bg-ui-controls/90"
             onClick={() => editor && cancelTimeline(editor)}
           >
-            Cancel
+            취소
           </Button>
           <Button
             variant="primary"
             className="flex h-9 items-center border-none bg-brand-primary px-3 text-sm text-white"
             onClick={() => editor && saveTimeline(editor)}
           >
-            Save
+            저장
           </Button>
         </div>
       </div>

@@ -41,7 +41,7 @@ export function SelectionActionBar({
         {children}
         <button
           type="button"
-          aria-label="Exit selection"
+          aria-label="선택 종료"
           onClick={() => setActive(false)}
           className="flex h-8 w-8 items-center justify-center rounded-full bg-ui-controls/60 text-white transition-colors hover:bg-ui-controls/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >

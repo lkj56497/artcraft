@@ -371,7 +371,7 @@ export function useDeckMedia<
       const currentTotal = committed.reduce((sum, v) => sum + v.duration, 0);
 
       if (currentTotal + duration > maxVideoTotalSec) {
-        toast.error(`Total video duration cannot exceed ${maxVideoTotalSec}s`, {
+        toast.error(`영상 총 길이는 ${maxVideoTotalSec}초를 넘을 수 없습니다`, {
           id: "video-ref-limit",
         });
         break;
@@ -409,7 +409,7 @@ export function useDeckMedia<
             ) {
               URL.revokeObjectURL(entry.previewUrl);
               setUploadingVideo(null);
-              toast.error("Failed to upload video. Please upload an MP4 file.");
+              toast.error("영상 업로드 실패. MP4 파일을 올려주세요.");
             }
           },
         });
@@ -450,7 +450,7 @@ export function useDeckMedia<
       );
 
       if (currentTotal + duration > maxAudioTotalSec) {
-        toast.error(`Total audio duration cannot exceed ${maxAudioTotalSec}s`);
+        toast.error(`오디오 총 길이는 ${maxAudioTotalSec}초를 넘을 수 없습니다`);
         break;
       }
 
@@ -600,7 +600,7 @@ export function useDeckMedia<
         }
         if (exceeded) {
           toast.error(
-            `Total video duration cannot exceed ${maxVideoTotalSec}s`,
+            `영상 총 길이는 ${maxVideoTotalSec}초를 넘을 수 없습니다`,
             { id: "video-ref-limit" },
           );
         }
@@ -617,7 +617,7 @@ export function useDeckMedia<
       const baseAudios = [...referenceAudios];
       const availableSlots = Math.max(0, maxAudios - baseAudios.length);
       if (availableSlots <= 0) {
-        toast.error(`Max ${maxAudios} audio tracks / ${maxAudioTotalSec}s total`, {
+        toast.error(`최대 오디오 ${maxAudios}개 / 총 ${maxAudioTotalSec}초`, {
           id: "audio-ref-limit",
         });
         handleGalleryClose();
@@ -664,7 +664,7 @@ export function useDeckMedia<
         }
         if (exceeded) {
           toast.error(
-            `Total audio duration cannot exceed ${maxAudioTotalSec}s`,
+            `오디오 총 길이는 ${maxAudioTotalSec}초를 넘을 수 없습니다`,
             { id: "audio-ref-limit" },
           );
         }

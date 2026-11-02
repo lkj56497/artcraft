@@ -155,7 +155,7 @@ export const Stage3DBody = ({
 
   useEffect(() => {
     window.onbeforeunload = () => {
-      return "You may have unsaved changes.";
+      return "저장하지 않은 변경 사항이 있을 수 있습니다.";
     };
   }, []);
 
@@ -214,12 +214,12 @@ export const Stage3DBody = ({
   );
   const inlineModelSelector =
     modelSelectorPlacement === "prompt-box" ? (
-      <Tooltip content="Model" position="top" className="z-50" closeOnClick>
+      <Tooltip content="모델" position="top" className="z-50" closeOnClick>
         <PopoverMenu
           items={inlineModelItems}
           onSelect={handleInlineModelSelect}
           mode="toggle"
-          panelTitle="Select Model"
+          panelTitle="모델 선택"
           panelClassName="min-w-[260px]"
           showIconsInList
           triggerIcon={selectedModelIcon}
@@ -350,7 +350,7 @@ export const Stage3DBody = ({
 
     addCamera({
       id: newId,
-      label: `Camera ${newIndex}`,
+      label: `카메라 ${newIndex}`,
       focalLength: 24,
       position: { x: randomX, y: randomY, z: randomZ },
       rotation: { x: 0, y: 0, z: 0 },
@@ -574,11 +574,11 @@ export const Stage3DBody = ({
                 <ClassyModelSelector
                   items={stage3dModelList}
                   page={PAGE_ID}
-                  panelTitle="Select Model"
+                  panelTitle="모델 선택"
                   panelClassName="min-w-[300px]"
                   buttonClassName="bg-transparent p-0 text-lg hover:bg-transparent text-white/80 hover:text-white"
                   showIconsInList
-                  triggerLabel="Model"
+                  triggerLabel="모델"
                 />
               </div>
             )}

@@ -79,7 +79,7 @@ export function LoginModal({
       }
     }).catch((error) => {
       if (!active || generation !== authGeneration.current) return;
-      setErrorMessage(isDesktopLoginError(error) ? error.message : "Unable to check your account. Please sign in again.");
+      setErrorMessage(isDesktopLoginError(error) ? error.message : "계정을 확인할 수 없습니다. 다시 로그인해 주세요.");
       useLoginModalStore.getState().openModal();
     });
     return () => { active = false; };
@@ -140,7 +140,7 @@ export function LoginModal({
         handleLoginSuccess(user);
       }
     } catch (error) {
-      if (generation === authGeneration.current) setErrorMessage(isDesktopLoginError(error) ? error.message : "An unexpected error occurred. Please try again.");
+      if (generation === authGeneration.current) setErrorMessage(isDesktopLoginError(error) ? error.message : "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.");
     } finally {
       if (generation === authGeneration.current) setIsLoading(false);
     }
@@ -152,10 +152,10 @@ export function LoginModal({
       return (
         <div className="flex flex-1 flex-col items-center justify-center px-8 py-16 text-center">
           <h2 className="mb-3 font-display text-3xl leading-[1.05] tracking-tight text-white sm:text-4xl">
-            Thank you for signing in!
+            로그인해 주셔서 감사합니다!
           </h2>
           <p className="mb-8 text-sm leading-relaxed text-white/60">
-            You're all set to start creating amazing content.
+            이제 멋진 작품을 만들 준비가 끝났습니다.
           </p>
           <Button
             variant="primary"
@@ -164,7 +164,7 @@ export function LoginModal({
             iconFlip={true}
             className="h-10 rounded-[3px] bg-white px-5 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-black shadow-none hover:bg-white/90"
           >
-            Get Started
+            시작하기
           </Button>
         </div>
       );
@@ -174,11 +174,10 @@ export function LoginModal({
     return (
       <div className="flex flex-1 flex-col items-center justify-center px-8 py-16 text-center">
         <h2 className="mb-3 font-display text-3xl leading-[1.05] tracking-tight text-white sm:text-4xl">
-          Join our <span className="font-serif-italic">community.</span>
+          <span className="font-serif-italic">커뮤니티</span>에 함께해요.
         </h2>
         <p className="mb-8 max-w-md text-sm leading-relaxed text-white/60">
-          Connect with other creators, share your work, and get the latest
-          updates in our Discord community.
+          디스코드 커뮤니티에서 다른 창작자와 교류하고, 작품을 공유하고, 최신 소식을 받아보세요.
         </p>
         <div className="flex gap-3">
           <Button
@@ -189,7 +188,7 @@ export function LoginModal({
               setShowSuccess(true);
             }}
           >
-            Skip for now
+            나중에 하기
           </Button>
           <Button
             variant="primary"
@@ -197,7 +196,7 @@ export function LoginModal({
             icon={DiscordIcon}
             className="h-10 rounded-[3px] bg-[#5865F2] px-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-none hover:bg-[#6a76ff]"
           >
-            Join Discord
+            디스코드 참여
           </Button>
         </div>
       </div>
@@ -254,18 +253,18 @@ export function LoginModal({
                             />
                             <h1 className="mb-3 text-balance font-display text-3xl leading-[1.05] tracking-tight sm:text-4xl">
                               {isSignUp ? (
-                                "Create your account"
+                                "계정 만들기"
                               ) : (
                                 <>
-                                  Welcome{" "}
-                                  <span className="font-serif-italic">back.</span>
+                                  다시 오신 걸{" "}
+                                  <span className="font-serif-italic">환영합니다.</span>
                                 </>
                               )}
                             </h1>
                             <p className="text-sm leading-relaxed text-white/60">
                               {isSignUp
-                                ? "Sign up to start creating with ArtCraft"
-                                : "Log in to your creative workspace."}
+                                ? "가입하고 ArtCraft로 창작을 시작하세요"
+                                : "창작 작업 공간에 로그인하세요."}
                             </p>
                           </div>
 
@@ -273,7 +272,7 @@ export function LoginModal({
                           {!isSignUp && !isChallengeActive && (
                             <div className="mb-6 flex items-center gap-4 before:h-px before:flex-1 before:bg-white/15 after:h-px after:flex-1 after:bg-white/15">
                               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-white/40">
-                                or
+                                또는
                               </span>
                             </div>
                           )}
@@ -288,8 +287,7 @@ export function LoginModal({
                       </div>
 
                       <div className="px-6 pb-6 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-white/25 sm:px-10">
-                        &copy; {new Date().getFullYear()} ArtCraft. All rights
-                        reserved.
+                        &copy; {new Date().getFullYear()} ArtCraft. 모든 권리 보유.
                       </div>
                     </div>
 
@@ -337,13 +335,13 @@ function LoginShowcase({ videoUrl }: { videoUrl: string }) {
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 p-8">
         <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-white/70">
-          One of the cheapest
+          가장 저렴한 축
         </p>
         <h2 className="text-2xl font-bold leading-tight">
-          Seedance 2.0 Video Generation
+          Seedance 2.0 영상 생성
         </h2>
         <p className="mt-1 max-w-sm text-sm text-white/70">
-          Generate jaw-dropping AI videos with Seedance 2.0.
+          Seedance 2.0으로 놀라운 AI 영상을 만들어 보세요.
         </p>
       </div>
     </div>

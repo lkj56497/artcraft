@@ -830,7 +830,7 @@ class Scene {
       }
       // Don't toast aborts — those are us cancelling a superseded load.
       if ((error as { name?: string })?.name !== "AbortError") {
-        toast.error("Failed to load splat.");
+        toast.error("스플랫을 불러오지 못했습니다.");
       }
       throw error;
     });
@@ -914,7 +914,7 @@ class Scene {
       }
       // Don't toast aborts — those are us cancelling a superseded load.
       if ((error as { name?: string })?.name !== "AbortError") {
-        toast.error("Failed to load 3D asset.");
+        toast.error("3D 에셋을 불러오지 못했습니다.");
       }
       throw error;
     });

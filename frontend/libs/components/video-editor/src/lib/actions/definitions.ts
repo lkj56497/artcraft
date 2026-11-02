@@ -23,128 +23,128 @@ export interface TActionDefinition extends TActionBaseDefinition {
 
 export const ACTIONS = {
   "toggle-play": {
-    description: "Play/Pause",
+    description: "재생/일시정지",
     category: "playback",
   },
   "stop-playback": {
-    description: "Stop playback",
+    description: "재생 정지",
     category: "playback",
   },
   "seek-forward": {
-    description: "Seek forward 1 second",
+    description: "1초 앞으로",
     category: "playback",
     args: { seconds: "number" },
   },
   "seek-backward": {
-    description: "Seek backward 1 second",
+    description: "1초 뒤로",
     category: "playback",
     args: { seconds: "number" },
   },
   "frame-step-forward": {
-    description: "Frame step forward",
+    description: "한 프레임 앞으로",
     category: "navigation",
   },
   "frame-step-backward": {
-    description: "Frame step backward",
+    description: "한 프레임 뒤로",
     category: "navigation",
   },
   "jump-forward": {
-    description: "Jump forward 5 seconds",
+    description: "5초 앞으로",
     category: "navigation",
     args: { seconds: "number" },
   },
   "jump-backward": {
-    description: "Jump backward 5 seconds",
+    description: "5초 뒤로",
     category: "navigation",
     args: { seconds: "number" },
   },
   "goto-start": {
-    description: "Go to timeline start",
+    description: "타임라인 처음으로",
     category: "navigation",
   },
   "goto-end": {
-    description: "Go to timeline end",
+    description: "타임라인 끝으로",
     category: "navigation",
   },
   split: {
-    description: "Split elements at playhead",
+    description: "재생 헤드에서 요소 자르기",
     category: "editing",
   },
   "split-left": {
-    description: "Split and remove left",
+    description: "자르고 왼쪽 제거",
     category: "editing",
   },
   "split-right": {
-    description: "Split and remove right",
+    description: "자르고 오른쪽 제거",
     category: "editing",
   },
   "delete-selected": {
-    description: "Delete current selection",
+    description: "현재 선택 삭제",
     category: "editing",
   },
   "copy-selected": {
-    description: "Copy selected elements",
+    description: "선택한 요소 복사",
     category: "editing",
   },
   "paste-copied": {
-    description: "Paste elements at playhead",
+    description: "재생 헤드에 요소 붙여넣기",
     category: "editing",
   },
   "toggle-snapping": {
-    description: "Toggle snapping",
+    description: "스냅 전환",
     category: "editing",
   },
   "toggle-ripple-editing": {
-    description: "Toggle ripple editing",
+    description: "리플 편집 전환",
     category: "editing",
   },
   "toggle-source-audio": {
-    description: "Extract or recover source audio",
+    description: "원본 오디오 추출/복구",
     category: "editing",
   },
   "select-all": {
-    description: "Select all elements",
+    description: "모든 요소 선택",
     category: "selection",
   },
   "cancel-interaction": {
-    description: "Cancel current interaction",
+    description: "현재 동작 취소",
     category: "controls",
   },
   "deselect-all": {
-    description: "Deselect all elements",
+    description: "모든 요소 선택 해제",
     category: "selection",
   },
   "duplicate-selected": {
-    description: "Duplicate selected element",
+    description: "선택한 요소 복제",
     category: "selection",
   },
   "toggle-elements-muted-selected": {
-    description: "Mute/unmute selected elements",
+    description: "선택한 요소 음소거/해제",
     category: "selection",
   },
   "toggle-elements-visibility-selected": {
-    description: "Show/hide selected elements",
+    description: "선택한 요소 보이기/숨기기",
     category: "selection",
   },
   "toggle-bookmark": {
-    description: "Toggle bookmark at playhead",
+    description: "재생 헤드에 북마크 전환",
     category: "timeline",
   },
   undo: {
-    description: "Undo",
+    description: "실행 취소",
     category: "history",
   },
   redo: {
-    description: "Redo",
+    description: "다시 실행",
     category: "history",
   },
   "remove-media-asset": {
-    description: "Remove media asset",
+    description: "미디어 에셋 제거",
     category: "assets",
     args: { projectId: "string", assetId: "string" },
   },
   "remove-media-assets": {
-    description: "Remove media assets",
+    description: "미디어 에셋 제거",
     category: "assets",
     args: { projectId: "string", assetIds: "string[]" },
   },

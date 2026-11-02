@@ -23,7 +23,7 @@ export default function ProfileDropdown() {
 
   const options = [
     {
-      label: "Logout",
+      label: "로그아웃",
       icon: LogOutIcon,
       onClick: () => {
         logout();
@@ -70,7 +70,7 @@ export default function ProfileDropdown() {
                 rel="noreferrer"
               >
                 <UserIcon className="text-[11px] text-white/50" />
-                My Profile
+                내 프로필
               </a>
             )}
           </Menu.Item>

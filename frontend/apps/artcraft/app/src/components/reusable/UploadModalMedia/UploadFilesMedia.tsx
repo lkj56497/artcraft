@@ -35,7 +35,7 @@ export const UploadFilesMedia = ({
     if (!uploadTitle.value) {
       setUploadTitle((curr) => ({
         ...curr,
-        error: "Please enter a title.",
+        error: "제목을 입력하세요.",
       }));
       return;
     }
@@ -43,7 +43,7 @@ export const UploadFilesMedia = ({
     if (!assetFile.value) {
       setAssetFile((curr) => ({
         ...curr,
-        error: "Please select a file to upload.",
+        error: "업로드할 파일을 선택하세요.",
       }));
       return;
     }
@@ -59,7 +59,7 @@ export const UploadFilesMedia = ({
     <>
       <div className="mb-4 flex flex-col gap-4">
         <Input
-          placeholder="Enter the title here"
+          placeholder="제목을 입력하세요"
           errorMessage={uploadTitle.error}
           value={uploadTitle.value}
           onChange={(event) => setUploadTitle({ value: event.target.value })}
@@ -87,7 +87,7 @@ export const UploadFilesMedia = ({
         <div className="relative m-auto aspect-square w-full overflow-hidden border border-white/15 bg-ui-controls">
           {!assetFile.value && (
             <h6 className="absolute left-0 top-1/2 -mt-5 w-full text-center">
-              File Preview
+              파일 미리보기
             </h6>
           )}
           {assetFile.value &&
@@ -100,11 +100,11 @@ export const UploadFilesMedia = ({
                 id="thumbnail-video"
                 src={assetFile.src}
               >
-                Your browser does not support the video tag.
+                브라우저가 영상 재생을 지원하지 않습니다.
               </video>
             ) : (
               <img
-                alt="file upload preview"
+                alt="파일 업로드 미리보기"
                 className="m-auto max-h-full max-w-full"
                 src={assetFile.src}
               />
@@ -113,10 +113,10 @@ export const UploadFilesMedia = ({
 
         <div className="flex justify-end gap-4">
           <Button variant="primary" onClick={handleSubmit}>
-            Upload
+            업로드
           </Button>
           <Button variant="secondary" onClick={onClose}>
-            Cancel
+            취소
           </Button>
         </div>
       </div>

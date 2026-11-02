@@ -29,7 +29,7 @@ export const uploadImage = async ({
   if (assetResponse == undefined) {
     progressCallback({
       status: UploaderStates.assetError,
-      errorMessage: "Could not upload image plane!",
+      errorMessage: "이미지 평면을 업로드하지 못했습니다!",
     });
     return;
   }

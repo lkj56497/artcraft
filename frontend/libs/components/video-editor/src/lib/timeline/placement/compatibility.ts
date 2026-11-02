@@ -47,7 +47,7 @@ export function validateElementTrackCompatibility({
   if (!isValid) {
     return {
       isValid: false,
-      errorMessage: `${element.type} elements cannot be placed on ${track.type} tracks`,
+      errorMessage: `${element.type} 요소는 ${track.type} 트랙에 놓을 수 없습니다`,
     };
   }
 

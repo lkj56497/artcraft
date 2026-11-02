@@ -241,7 +241,7 @@ export async function browseAll({
   if (recentItems.length > 0) {
     sections.push({
       id: "recent",
-      title: "Recently used",
+      title: "최근 사용",
       items: recentItems.slice(0, limit),
       hasMore: recentItems.length > limit,
       layout: "row",

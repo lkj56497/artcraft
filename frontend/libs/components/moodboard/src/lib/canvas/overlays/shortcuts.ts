@@ -26,29 +26,29 @@ export const fmtShortcut = (keys: string[]): string =>
 
 export const SHORTCUTS: ShortcutRow[] = [
   // Tools
-  { section: "Tools", label: "Select tool", keys: ["V"] },
-  { section: "Tools", label: "Lasso tool", keys: ["L"] },
-  { section: "Tools", label: "Text tool", keys: ["T"] },
+  { section: "Tools", label: "선택 도구", keys: ["V"] },
+  { section: "Tools", label: "올가미 도구", keys: ["L"] },
+  { section: "Tools", label: "텍스트 도구", keys: ["T"] },
 
   // Selection
-  { section: "Selection", label: "Select all", keys: [MOD, "A"] },
-  { section: "Selection", label: "Clear selection", keys: ["Esc"] },
-  { section: "Selection", label: "Add / remove from selection", keys: ["Shift", "Click"] },
+  { section: "Selection", label: "모두 선택", keys: [MOD, "A"] },
+  { section: "Selection", label: "선택 해제", keys: ["Esc"] },
+  { section: "Selection", label: "선택에 추가 / 제거", keys: ["Shift", "Click"] },
 
   // Editing
-  { section: "Editing", label: "Delete selection", keys: ["Delete"] },
-  { section: "Editing", label: "Group selection", keys: [MOD, "G"] },
-  { section: "Editing", label: "Ungroup selection", keys: [MOD, "Shift", "G"] },
-  { section: "Editing", label: "Paste image", keys: [MOD, "V"] },
+  { section: "Editing", label: "선택 항목 삭제", keys: ["Delete"] },
+  { section: "Editing", label: "선택 항목 그룹화", keys: [MOD, "G"] },
+  { section: "Editing", label: "선택 항목 그룹 해제", keys: [MOD, "Shift", "G"] },
+  { section: "Editing", label: "이미지 붙여넣기", keys: [MOD, "V"] },
 
   // Viewport
-  { section: "Viewport", label: "Pan", keys: ["Middle-click", "drag"] },
-  { section: "Viewport", label: "Pan (alt)", keys: ["Space", "drag"] },
-  { section: "Viewport", label: "Zoom", keys: ["Scroll"] },
-  { section: "Viewport", label: "Reset zoom", keys: [MOD, "0"] },
-  { section: "Viewport", label: "Zoom to fit", keys: ["Shift", "1"] },
+  { section: "Viewport", label: "화면 이동", keys: ["Middle-click", "drag"] },
+  { section: "Viewport", label: "화면 이동 (보조)", keys: ["Space", "drag"] },
+  { section: "Viewport", label: "줌", keys: ["Scroll"] },
+  { section: "Viewport", label: "줌 초기화", keys: [MOD, "0"] },
+  { section: "Viewport", label: "화면에 맞추기", keys: ["Shift", "1"] },
 
   // History
-  { section: "History", label: "Undo", keys: [MOD, "Z"] },
-  { section: "History", label: "Redo", keys: [MOD, "Shift", "Z"] },
+  { section: "History", label: "실행 취소", keys: [MOD, "Z"] },
+  { section: "History", label: "다시 실행", keys: [MOD, "Shift", "Z"] },
 ];

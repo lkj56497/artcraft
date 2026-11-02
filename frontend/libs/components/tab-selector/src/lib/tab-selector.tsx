@@ -122,7 +122,7 @@ export const TabSelector: React.FC<TabSelectorProps> = ({
       {disabled && (
         <Tooltip
           content={
-            disabledMessage ?? "Cannot change tab. Generation in progress."
+            disabledMessage ?? "생성 중에는 탭을 바꿀 수 없습니다."
           }
           position="bottom"
         >

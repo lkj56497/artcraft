@@ -19,9 +19,9 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { TextIcon } from "@hugeicons/core-free-icons";
 
 const FONT_TABS = [
-  { key: "all", label: "All fonts" },
-  { key: "my-fonts", label: "My fonts" },
-  { key: "favorites", label: "Favorites" },
+  { key: "all", label: "모든 글꼴" },
+  { key: "my-fonts", label: "내 글꼴" },
+  { key: "favorites", label: "즐겨찾기" },
 ] as const;
 
 type FontTab = (typeof FONT_TABS)[number]["key"];
@@ -98,7 +98,7 @@ export function FontPicker({
             <HugeiconsIcon icon={TextIcon} />
           </span>
           <span className="truncate" style={{ fontFamily: defaultValue }}>
-            {defaultValue ?? "Select a font"}
+            {defaultValue ?? "글꼴 선택"}
           </span>
         </div>
         <ChevronDown className="size-3 shrink-0 opacity-50" />
@@ -120,7 +120,7 @@ export function FontPicker({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 shrink-0 opacity-50" />
           <Input
             ref={searchInputRef}
-            placeholder={`Search ${activeTabLabel}...`}
+            placeholder={`${activeTabLabel} 검색...`}
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             size="xs"
@@ -146,16 +146,16 @@ export function FontPicker({
         </div>
         {status === "loading" && (
           <div className="py-8 text-center text-sm text-muted-foreground">
-            Loading fonts...
+            글꼴 불러오는 중...
           </div>
         )}
         {status === "error" && (
           <div className="flex flex-col items-center gap-3 py-8 px-4">
             <p className="text-sm text-muted-foreground text-center">
-              Failed to load font previews.
+              글꼴 미리보기를 불러오지 못했습니다.
             </p>
             <Button variant="outline" size="sm" onClick={handleRetry}>
-              Retry
+              다시 시도
             </Button>
           </div>
         )}
@@ -163,7 +163,7 @@ export function FontPicker({
           fontNames.length > 0 &&
           filteredFonts.length === 0 && (
             <div className="py-6 text-center text-sm text-muted-foreground">
-              No fonts found.
+              글꼴을 찾을 수 없습니다.
             </div>
           )}
         {status === "idle" && atlas && filteredFonts.length > 0 && (

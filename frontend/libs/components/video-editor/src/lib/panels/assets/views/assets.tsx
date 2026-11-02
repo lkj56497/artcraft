@@ -78,7 +78,7 @@ export function MediaView() {
   const processFiles = async ({ files }: { files: File[] }) => {
     if (!files || files.length === 0) return;
     if (!activeProject) {
-      toast.error("No active project");
+      toast.error("열린 프로젝트가 없습니다");
       return;
     }
 
@@ -131,7 +131,7 @@ export function MediaView() {
       });
     } catch (error) {
       console.error("Gallery picker failed:", error);
-      toast.error("Couldn't open the gallery");
+      toast.error("갤러리를 열 수 없습니다");
       return;
     }
     if (selections.length === 0) return;
@@ -179,7 +179,7 @@ export function MediaView() {
                   selection.name,
                   error,
                 );
-                toast.error(`Couldn't import ${selection.name}`, {
+                toast.error(`${selection.name} 가져오기 실패`, {
                   description:
                     error instanceof Error ? error.message : undefined,
                 });
@@ -297,7 +297,7 @@ export function MediaView() {
       <input {...fileInputProps} />
 
       <PanelView
-        title="Assets"
+        title="에셋"
         actions={
           <MediaActions
             mediaViewMode={mediaViewMode}
@@ -323,7 +323,7 @@ export function MediaView() {
           />
         ) : (
           <SelectableSurface
-            ariaLabel="Assets"
+            ariaLabel="에셋"
             orderedIds={orderedMediaIds}
             revealId={highlightMediaId}
             onRevealComplete={clearHighlight}
@@ -583,7 +583,7 @@ function MediaPreview({
     return (
       <MediaTypePlaceholder
         icon={Video01Icon}
-        label="Video"
+        label="영상"
         duration={item.duration}
         variant="muted"
       />
@@ -594,7 +594,7 @@ function MediaPreview({
     return (
       <MediaTypePlaceholder
         icon={MusicNote03Icon}
-        label="Audio"
+        label="오디오"
         duration={item.duration}
         variant="bordered"
       />
@@ -602,7 +602,7 @@ function MediaPreview({
   }
 
   return (
-    <MediaTypePlaceholder icon={Image02Icon} label="Unknown" variant="muted" />
+    <MediaTypePlaceholder icon={Image02Icon} label="알 수 없음" variant="muted" />
   );
 }
 
@@ -650,8 +650,8 @@ function MediaActions({
           <TooltipContent>
             <p>
               {mediaViewMode === "grid"
-                ? "Switch to list view"
-                : "Switch to grid view"}
+                ? "목록 보기로 전환"
+                : "격자 보기로 전환"}
             </p>
           </TooltipContent>
         </Tooltip>
@@ -671,28 +671,28 @@ function MediaActions({
             </TooltipTrigger>
             <DropdownMenuContent align="end">
               <SortMenuItem
-                label="Name"
+                label="이름"
                 sortKey="name"
                 currentSortBy={sortBy}
                 currentSortOrder={sortOrder}
                 onSort={onSort}
               />
               <SortMenuItem
-                label="Type"
+                label="종류"
                 sortKey="type"
                 currentSortBy={sortBy}
                 currentSortOrder={sortOrder}
                 onSort={onSort}
               />
               <SortMenuItem
-                label="Duration"
+                label="길이"
                 sortKey="duration"
                 currentSortBy={sortBy}
                 currentSortOrder={sortOrder}
                 onSort={onSort}
               />
               <SortMenuItem
-                label="File size"
+                label="파일 크기"
                 sortKey="size"
                 currentSortBy={sortBy}
                 currentSortOrder={sortOrder}
@@ -702,7 +702,7 @@ function MediaActions({
           </DropdownMenu>
           <TooltipContent>
             <p>
-              Sort by {sortBy} (
+              정렬 기준 {sortBy} (
               {sortOrder === "asc" ? "ascending" : "descending"})
             </p>
           </TooltipContent>
@@ -717,7 +717,7 @@ function MediaActions({
           className="items-center justify-center gap-1.5"
         >
           <HugeiconsIcon icon={FolderLibraryIcon} />
-          Browse
+          찾아보기
         </Button>
       ) : null}
       <Button
@@ -728,7 +728,7 @@ function MediaActions({
         className="items-center justify-center gap-1.5"
       >
         <HugeiconsIcon icon={CloudUploadIcon} />
-        Import
+        가져오기
       </Button>
     </div>
   );

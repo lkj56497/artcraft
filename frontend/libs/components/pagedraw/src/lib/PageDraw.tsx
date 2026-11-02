@@ -75,7 +75,7 @@ export const DecodeBase64ToImage = async (
       }
     };
 
-    img.onerror = () => reject(new Error("Failed to load image"));
+    img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
 
     img.src = dataUrl;
   });
@@ -156,7 +156,7 @@ const Edit3DButton = memo(function Edit3DButton({
       onPointerDown={(e) => e.stopPropagation()}
       onClick={() => onEdit(nodeId)}
     >
-      Edit 3D
+      3D 편집
     </button>
   );
 });
@@ -236,17 +236,17 @@ const Edit3DScrubControls = memo(function Edit3DScrubControls({
     >
       <DragScrubButton
         icon={<Maximize2Icon />}
-        title="Scale — drag"
+        title="크기 — 드래그"
         onDrag={(dx, dy) => overlayHandle.current?.onScaleDrag(dx, dy)}
       />
       <DragScrubButton
         icon={<RefreshCwIcon />}
-        title="Rotate — drag"
+        title="회전 — 드래그"
         onDrag={(dx, dy) => overlayHandle.current?.onRotateDrag(dx, dy)}
       />
       <DragScrubButton
         icon={<CameraIcon />}
-        title="Field of view — drag"
+        title="시야각 — 드래그"
         onDrag={(dx, dy) => overlayHandle.current?.onFovDrag(dx, dy)}
       />
       <button
@@ -563,7 +563,7 @@ const PageDraw = ({
           console.error("No model URL available for 3D item");
           return;
         }
-        const toastId = toast.loading(`Loading 3D model "${item.label}"…`);
+        const toastId = toast.loading(`3D 모델 "${item.label}" 불러오는 중…`);
         try {
           const dataUrl = await render3DModelToDataUrl(
             modelUrl,
@@ -589,12 +589,12 @@ const PageDraw = ({
               displayW,
               displayH,
             );
-            toast.success(`Added "${item.label}" to canvas`, { id: toastId });
+            toast.success(`캔버스에 "${item.label}" 추가됨`, { id: toastId });
           };
           img.src = dataUrl;
         } catch (err) {
           console.error("Failed to render 3D model:", err);
-          toast.error(`Failed to load 3D model "${item.label}"`, {
+          toast.error(`3D 모델 "${item.label}"을(를) 불러오지 못했습니다`, {
             id: toastId,
           });
         }

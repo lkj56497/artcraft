@@ -53,7 +53,7 @@ export function loadImageSource({
     try {
       await new Promise<void>((resolve, reject) => {
         image.onload = () => resolve();
-        image.onerror = () => reject(new Error("Image load failed"));
+        image.onerror = () => reject(new Error("이미지 불러오기 실패"));
         image.src = src;
       });
     } finally {

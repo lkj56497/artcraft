@@ -57,7 +57,7 @@ export const FolderNameDialog: React.FC<FolderNameDialogProps> = ({
         <input
           ref={inputRef}
           type="text"
-          aria-label="Folder name"
+          aria-label="폴더 이름"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => {
@@ -72,7 +72,7 @@ export const FolderNameDialog: React.FC<FolderNameDialogProps> = ({
             onClick={onClose}
             className="px-3 py-1.5 text-[11px]"
           >
-            Cancel
+            취소
           </Button>
           <Button
             onClick={submit}

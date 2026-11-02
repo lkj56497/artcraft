@@ -11,9 +11,9 @@ import type {
 // Shown when the OmniGen service is unavailable (e.g. returns 5xx). Separate
 // copy for the two failure points so the user knows which step failed.
 export const OMNI_MODELS_OUTAGE_MESSAGE =
-  "Couldn't load models - the generation service may be down. Try again shortly.";
+  "모델을 불러오지 못했습니다 — 생성 서비스가 중단되었을 수 있습니다. 잠시 후 다시 시도하세요.";
 export const OMNI_GENERATE_OUTAGE_MESSAGE =
-  "Couldn't start generation - the service is temporarily unavailable. Try again shortly.";
+  "생성을 시작하지 못했습니다 — 서비스를 일시적으로 사용할 수 없습니다. 잠시 후 다시 시도하세요.";
 
 // ── Error notifier ───────────────────────────────────────────────────────
 

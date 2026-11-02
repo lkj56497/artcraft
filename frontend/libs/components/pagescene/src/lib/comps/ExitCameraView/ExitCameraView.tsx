@@ -30,7 +30,7 @@ export const ExitCameraView = ({ className }: { className?: string }) => {
       )}
     >
       <LogOutIcon  className="h-3.5 w-3.5" />
-      Exit
+      나가기
     </button>
   );
 };

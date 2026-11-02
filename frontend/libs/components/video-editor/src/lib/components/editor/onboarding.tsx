@@ -84,11 +84,11 @@ export function Onboarding() {
   const getStepTitle = () => {
     switch (step) {
       case 0:
-        return "Welcome to the editor";
+        return "편집기에 오신 걸 환영합니다";
       case 1:
-        return "Early preview — expect rough edges";
+        return "초기 미리보기 — 다듬어지지 않은 부분이 있을 수 있습니다";
       case 2:
-        return "Have fun creating!";
+        return "즐겁게 만들어 보세요!";
       default:
         return "Editor Onboarding";
     }
@@ -100,10 +100,10 @@ export function Onboarding() {
         return (
           <div className="space-y-5">
             <div className="space-y-3">
-              <Title title="Welcome to the editor" />
-              <Description description="Drop media onto the timeline, scrub the playhead to preview, and use the panels on the right to tune properties, animations, and effects." />
+              <Title title="편집기에 오신 걸 환영합니다" />
+              <Description description="미디어를 타임라인에 놓고, 재생 헤드를 움직여 미리보고, 오른쪽 패널에서 속성·애니메이션·효과를 조정하세요." />
             </div>
-            <NextButton onClick={handleNext}>Next</NextButton>
+            <NextButton onClick={handleNext}>다음</NextButton>
           </div>
         );
       case 1:
@@ -111,10 +111,10 @@ export function Onboarding() {
           <div className="space-y-5">
             <div className="space-y-3">
               <Title title={getStepTitle()} />
-              <Description description="This editor is in active development." />
-              <Description description="A lot of features are still being built out — if something looks off, it probably is. Save often." />
+              <Description description="이 편집기는 한창 개발 중입니다." />
+              <Description description="아직 만드는 중인 기능이 많습니다 — 이상해 보이면 실제로 문제일 수 있으니 자주 저장하세요." />
             </div>
-            <NextButton onClick={handleNext}>Next</NextButton>
+            <NextButton onClick={handleNext}>다음</NextButton>
           </div>
         );
       case 2:
@@ -122,9 +122,9 @@ export function Onboarding() {
           <div className="space-y-5">
             <div className="space-y-3">
               <Title title={getStepTitle()} />
-              <Description description="Keyboard shortcuts are available under the project menu — press the Shortcuts entry to view or rebind them." />
+              <Description description="단축키는 프로젝트 메뉴의 '단축키' 항목에서 보거나 바꿀 수 있습니다." />
             </div>
-            <NextButton onClick={handleClose}>Finish</NextButton>
+            <NextButton onClick={handleClose}>마치기</NextButton>
           </div>
         );
       default:

@@ -22,17 +22,15 @@ export const PricingPromoBanner = ({ className }: PricingPromoBannerProps) => (
     <div className="relative flex flex-col gap-3">
       <span className="inline-flex w-fit items-center gap-1.5 bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-white">
         <TagIcon  className="text-[10px]" />
-        Limited-time offer
+        기간 한정 혜택
       </span>
 
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight tracking-[-0.02em] text-white">
-        Save <span className="text-primary-300">{PROMO_PCT}%</span> on all
-        monthly &amp; yearly plans
+        모든 월간·연간 요금제 <span className="text-primary-300">{PROMO_PCT}%</span> 할인
       </h2>
 
       <p className="max-w-2xl text-sm sm:text-base text-white/60">
-        Every ArtCraft plan is discounted for a limited time - lock in the
-        lowest price and start creating.
+        모든 ArtCraft 요금제가 기간 한정 할인 중입니다 — 최저가로 확정하고 창작을 시작하세요.
       </p>
     </div>
   </div>

@@ -70,9 +70,9 @@ export function DesktopGenerationGallery({
 
   const handleCopyResult = useCallback((success: boolean) => {
     if (success) {
-      toast.success("Prompt copied");
+      toast.success("프롬프트 복사됨");
     } else {
-      toast.error("Unable to copy prompt");
+      toast.error("프롬프트를 복사할 수 없습니다");
     }
   }, []);
 
@@ -186,7 +186,7 @@ function SelectionDownloadBar({
           icon={isDownloading ? LoaderCircleIcon : ArrowDownToLineIcon}
           className={`text-xs ${isDownloading ? "animate-spin" : ""}`}
         />
-        Download
+        다운로드
       </button>
     </SelectionActionBar>
   );
@@ -282,12 +282,12 @@ function ItemActions({
   return (
     <>
       {canRecreate && (
-        <Tooltip content="Recreate" position="top">
+        <Tooltip content="다시 만들기" position="top">
           <button
             type="button"
             onClick={handleRecreate}
             disabled={isRecreating}
-            aria-label="Recreate"
+            aria-label="다시 만들기"
             className={buttonClass}
           >
             <DynamicIcon
@@ -298,22 +298,22 @@ function ItemActions({
         </Tooltip>
       )}
       {canMakeVideo && (
-        <Tooltip content="Make Video" position="top">
+        <Tooltip content="영상 만들기" position="top">
           <button
             type="button"
             onClick={handleMakeVideo}
-            aria-label="Make Video"
+            aria-label="영상 만들기"
             className={buttonClass}
           >
             <VideoIcon className="text-sm" />
           </button>
         </Tooltip>
       )}
-      <Tooltip content={shareCopied ? "Copied" : "Share"} position="top">
+      <Tooltip content={shareCopied ? "복사됨" : "공유"} position="top">
         <button
           type="button"
           onClick={handleShare}
-          aria-label="Share"
+          aria-label="공유"
           className={buttonClass}
         >
           <DynamicIcon
@@ -323,12 +323,12 @@ function ItemActions({
         </button>
       </Tooltip>
       {item.fullImage && (
-        <Tooltip content="Download" position="top">
+        <Tooltip content="다운로드" position="top">
           <button
             type="button"
             onClick={handleDownload}
             disabled={isDownloading}
-            aria-label="Download"
+            aria-label="다운로드"
             className={buttonClass}
           >
             <DynamicIcon

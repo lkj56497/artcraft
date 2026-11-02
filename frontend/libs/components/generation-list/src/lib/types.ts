@@ -25,16 +25,16 @@ export function is3DMediaClass(mediaClass: string | undefined | null): boolean {
 export function batchNoun(mediaClass: GenerationMediaClass): string {
   switch (mediaClass) {
     case "video":
-      return "videos";
+      return "영상";
     case "audio":
-      return "audio clips";
+      return "오디오";
     case "dimensional":
     case "mesh":
-      return "3D models";
+      return "3D 모델";
     case "splat":
-      return "3D worlds";
+      return "3D 월드";
     default:
-      return "images";
+      return "이미지";
   }
 }
 

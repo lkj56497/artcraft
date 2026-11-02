@@ -96,7 +96,7 @@ export const AudioReferenceRow = forwardRef<
       );
       if (currentTotal + duration > maxAudioRefDuration) {
         toast.error(
-          `Total audio duration cannot exceed ${maxAudioRefDuration}s`,
+          `오디오 총 길이는 ${maxAudioRefDuration}초를 넘을 수 없습니다`,
         );
         break;
       }
@@ -125,7 +125,7 @@ export const AudioReferenceRow = forwardRef<
               newState.status === UploaderStates.imageCreateError
             ) {
               setIsUploadingAudio(false);
-              toast.error("Audio upload failed. Please try again.");
+              toast.error("오디오 업로드 실패. 다시 시도해 주세요.");
             }
           },
         });
@@ -162,7 +162,7 @@ export const AudioReferenceRow = forwardRef<
           newState.status === UploaderStates.imageCreateError
         ) {
           setIsUploadingImage(false);
-          toast.error("Image upload failed. Please try again.");
+          toast.error("이미지 업로드 실패. 다시 시도해 주세요.");
         }
       },
     });
@@ -215,13 +215,13 @@ export const AudioReferenceRow = forwardRef<
         <div className="flex items-center gap-2 text-base-fg opacity-90">
           <MusicIcon  className="h-3.5 w-3.5" />
           <span className="text-sm font-medium">
-            Audio Track{" "}
+            오디오 트랙{" "}
             <span className="font-semibold text-base-fg/60">
               ({referenceAudios.length}/{maxAudioCount})
             </span>
             {audioRequired && referenceAudios.length === 0 && (
               <span className="ml-1.5 text-xs font-medium text-red-500">
-                required
+                필수
               </span>
             )}
           </span>
@@ -245,7 +245,7 @@ export const AudioReferenceRow = forwardRef<
               className="flex h-9 items-center gap-1.5 rounded-[3px] border border-dashed border-ui-controls-border bg-ui-controls/50 px-3 text-sm text-base-fg/70 transition-colors hover:bg-ui-controls hover:text-base-fg disabled:cursor-wait disabled:opacity-60"
             >
               <PlusIcon  className="h-3 w-3" />
-              {isUploadingAudio ? "Uploading…" : "Add audio"}
+              {isUploadingAudio ? "업로드 중…" : "오디오 추가"}
             </button>
             {onPickAudioFromLibrary && (
               <button
@@ -255,7 +255,7 @@ export const AudioReferenceRow = forwardRef<
                 className="flex h-9 items-center gap-1.5 rounded-[3px] border border-dashed border-ui-controls-border bg-ui-controls/50 px-3 text-sm text-base-fg/70 transition-colors hover:bg-ui-controls hover:text-base-fg disabled:cursor-wait disabled:opacity-60"
               >
                 <FolderOpenIcon  className="h-3 w-3" />
-                From library
+                라이브러리에서
               </button>
             )}
           </>
@@ -265,7 +265,7 @@ export const AudioReferenceRow = forwardRef<
           <>
             <div className="ms-2 flex items-center gap-2 text-base-fg opacity-90">
               <ImageIcon  className="h-3.5 w-3.5" />
-              <span className="text-sm font-medium">Image</span>
+              <span className="text-sm font-medium">이미지</span>
             </div>
             {referenceImages.map((image) => (
               <div
@@ -274,12 +274,12 @@ export const AudioReferenceRow = forwardRef<
               >
                 <img
                   src={image.url}
-                  alt="Reference"
+                  alt="참조"
                   className="h-full w-full object-cover"
                 />
                 <button
                   type="button"
-                  aria-label="Remove image"
+                  aria-label="이미지 제거"
                   onClick={() => onReferenceImagesChange?.([])}
                   className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100"
                 >
@@ -297,7 +297,7 @@ export const AudioReferenceRow = forwardRef<
                 className="flex h-9 items-center gap-1.5 rounded-[3px] border border-dashed border-ui-controls-border bg-ui-controls/50 px-3 text-sm text-base-fg/70 transition-colors hover:bg-ui-controls hover:text-base-fg disabled:cursor-wait disabled:opacity-60"
               >
                 <PlusIcon  className="h-3 w-3" />
-                {isUploadingImage ? "Uploading…" : "Add image"}
+                {isUploadingImage ? "업로드 중…" : "이미지 추가"}
               </button>
             )}
           </>
@@ -340,7 +340,7 @@ function AudioRefTile({
     <div className="group flex h-9 items-center gap-2 rounded-[3px] border border-ui-controls-border bg-ui-controls px-2.5">
       <button
         type="button"
-        aria-label={isPlaying ? "Stop" : "Play"}
+        aria-label={isPlaying ? "정지" : "재생"}
         onClick={togglePlay}
         className="flex h-5 w-5 items-center justify-center rounded-full bg-white/90 text-black transition-transform hover:scale-105"
       >
@@ -350,11 +350,11 @@ function AudioRefTile({
         />
       </button>
       <span className="text-xs font-medium text-base-fg/80">
-        Audio {index + 1} · {audio.duration}s
+        오디오 {index + 1} · {audio.duration}s
       </span>
       <button
         type="button"
-        aria-label="Remove audio"
+        aria-label="오디오 제거"
         onClick={() => onRemove(audio.id)}
         className="flex h-4 w-4 items-center justify-center rounded-[3px] text-base-fg/40 transition-colors hover:text-base-fg"
       >

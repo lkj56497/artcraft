@@ -129,16 +129,16 @@ export const AnimationsModal = () => {
 
   const tabs = useMemo<AnimationsTab[]>(
     () => [
-      { id: "all", label: "All", icon: LayersIcon, items: allAnimations },
+      { id: "all", label: "전체", icon: LayersIcon, items: allAnimations },
       {
         id: "presets",
-        label: "Presets",
+        label: "프리셋",
         icon: FootprintsIcon,
         items: defaultAnimations,
       },
       {
         id: "uploaded",
-        label: "Uploaded",
+        label: "업로드됨",
         icon: ArrowUpFromLineIcon,
         items: userAnimations,
       },
@@ -173,9 +173,9 @@ export const AnimationsModal = () => {
     ) {
       return (
         <div className="flex h-full flex-col items-center justify-center gap-1 text-center">
-          <p className="text-sm text-white/70">No uploaded animations yet.</p>
+          <p className="text-sm text-white/70">업로드한 애니메이션이 아직 없습니다.</p>
           <p className="text-xs text-white/40">
-            Upload a Mixamo GLB or FBX to add your own clips.
+            Mixamo GLB 또는 FBX를 업로드해 나만의 클립을 추가하세요.
           </p>
           <Button
             variant="primary"
@@ -183,7 +183,7 @@ export const AnimationsModal = () => {
             className="mt-3"
             onClick={handleOpenUpload}
           >
-            Upload animation
+            애니메이션 업로드
           </Button>
         </div>
       );
@@ -230,7 +230,7 @@ export const AnimationsModal = () => {
           <div className="relative col-span-3 flex h-full flex-col p-3 pt-2 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-gray-200 after:bg-white/10">
             <div className="flex h-10 items-center justify-between gap-2.5">
               <h2 className="font-display text-lg tracking-tight text-white">
-                Animations
+                애니메이션
               </h2>
             </div>
             <hr className="my-2 w-full border-white/10" />
@@ -262,13 +262,13 @@ export const AnimationsModal = () => {
                 className="w-full justify-center rounded-[3px] border border-white/10 bg-white/[6%] px-3.5 py-2.5 hover:bg-white/15"
                 onClick={handleOpenUpload}
               >
-                Upload animation
+                애니메이션 업로드
               </Button>
               <Checkbox
                 id="animations-reopen-after-add"
                 checked={reopenAfterDrag}
                 onChange={handleReopenChange}
-                label="Reopen after adding"
+                label="추가 후 다시 열기"
               />
             </div>
           </div>
@@ -279,7 +279,7 @@ export const AnimationsModal = () => {
                   <div className="relative grow">
                     <Input
                       ref={searchInputRef}
-                      placeholder="Search animations"
+                      placeholder="애니메이션 검색"
                       className="relative z-[51] grow"
                       inputClassName="bg-white/5 pr-10 placeholder-white/40"
                       icon={SearchIcon}
@@ -317,7 +317,7 @@ export const AnimationsModal = () => {
           isOpen: isUploadModalOpen,
           onClose: () => setIsUploadModalOpen(false),
           onSuccess: handleUploadSuccess,
-          title: "Upload Animation",
+          title: "애니메이션 업로드",
           titleIcon: ArrowUpFromLineIcon,
           initialCategory: "animation",
         })}

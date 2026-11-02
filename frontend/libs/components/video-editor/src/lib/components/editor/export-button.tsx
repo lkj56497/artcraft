@@ -133,7 +133,7 @@ export function ExportButton() {
           }}
         >
           <HugeiconsIcon icon={TransitionTopIcon} className="z-50 size-3.5" />
-          <span className="z-50 text-[0.875rem]">Export</span>
+          <span className="z-50 text-[0.875rem]">내보내기</span>
         </Button>
       </PopoverTrigger>
       {hasProject && <ExportPopover onOpenChange={setIsExportPopoverOpen} />}
@@ -223,8 +223,8 @@ function ExportPopover({
         setSaveState((prev) => finalizeSaveState(prev));
       } catch (error) {
         console.error("Export sink failed:", error);
-        toast.error("Couldn't save exported video", {
-          description: error instanceof Error ? error.message : "Unknown error",
+        toast.error("내보낸 영상을 저장하지 못했습니다", {
+          description: error instanceof Error ? error.message : "알 수 없는 오류",
         });
         setSaveState((prev) => finalizeSaveState(prev));
         return;
@@ -246,14 +246,14 @@ function ExportPopover({
     <PopoverContent className="bg-ui-controls mr-4 flex w-80 flex-col p-0">
       {exportResult && !exportResult.success ? (
         <ExportError
-          error={exportResult.error || "Unknown error occurred"}
+          error={exportResult.error || "알 수 없는 오류가 발생했습니다"}
           onRetry={handleExport}
         />
       ) : (
         <>
           <div className="flex items-center justify-between p-3 border-b border-ui-controls-border">
             <h3 className="font-medium text-sm">
-              {isExporting ? "Exporting project" : "Export project"}
+              {isExporting ? "프로젝트 내보내는 중" : "프로젝트 내보내기"}
             </h3>
           </div>
 
@@ -267,7 +267,7 @@ function ExportPopover({
                     showTopBorder={false}
                   >
                     <SectionHeader>
-                      <SectionTitle>Format</SectionTitle>
+                      <SectionTitle>형식</SectionTitle>
                     </SectionHeader>
                     <SectionContent>
                       <RadioGroup
@@ -281,13 +281,13 @@ function ExportPopover({
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="mp4" id="mp4" />
                           <Label htmlFor="mp4">
-                            MP4 (H.264) - Better compatibility
+                            MP4 (H.264) - 호환성 좋음
                           </Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="webm" id="webm" />
                           <Label htmlFor="webm">
-                            WebM (VP9) - Smaller file size
+                            WebM (VP9) - 파일 크기 작음
                           </Label>
                         </div>
                       </RadioGroup>
@@ -296,7 +296,7 @@ function ExportPopover({
 
                   <Section collapsible defaultOpen={false}>
                     <SectionHeader>
-                      <SectionTitle>Quality</SectionTitle>
+                      <SectionTitle>품질</SectionTitle>
                     </SectionHeader>
                     <SectionContent>
                       <RadioGroup
@@ -309,20 +309,20 @@ function ExportPopover({
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="low" id="low" />
-                          <Label htmlFor="low">Low - Smallest file size</Label>
+                          <Label htmlFor="low">낮음 - 가장 작은 파일</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="medium" id="medium" />
-                          <Label htmlFor="medium">Medium - Balanced</Label>
+                          <Label htmlFor="medium">중간 - 균형</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="high" id="high" />
-                          <Label htmlFor="high">High - Recommended</Label>
+                          <Label htmlFor="high">높음 - 권장</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="very_high" id="very_high" />
                           <Label htmlFor="very_high">
-                            Very high - Largest file size
+                            매우 높음 - 가장 큰 파일
                           </Label>
                         </div>
                       </RadioGroup>
@@ -331,7 +331,7 @@ function ExportPopover({
 
                   <Section collapsible defaultOpen={false}>
                     <SectionHeader>
-                      <SectionTitle>Audio</SectionTitle>
+                      <SectionTitle>오디오</SectionTitle>
                     </SectionHeader>
                     <SectionContent>
                       <div className="flex items-center space-x-2">
@@ -343,7 +343,7 @@ function ExportPopover({
                           }
                         />
                         <Label htmlFor="include-audio">
-                          Include audio in export
+                          내보낼 때 오디오 포함
                         </Label>
                       </div>
                     </SectionContent>
@@ -351,7 +351,7 @@ function ExportPopover({
 
                   <Section collapsible defaultOpen={true}>
                     <SectionHeader>
-                      <SectionTitle>Destination</SectionTitle>
+                      <SectionTitle>저장 위치</SectionTitle>
                     </SectionHeader>
                     <SectionContent>
                       <div className="flex flex-col gap-2">
@@ -364,7 +364,7 @@ function ExportPopover({
                             }
                           />
                           <Label htmlFor="save-to-disk">
-                            Save to disk
+                            디스크에 저장
                           </Label>
                         </div>
                         <div className="flex items-center space-x-2">
@@ -376,12 +376,12 @@ function ExportPopover({
                             }
                           />
                           <Label htmlFor="save-to-library">
-                            Save to my media library
+                            내 미디어 라이브러리에 저장
                           </Label>
                         </div>
                         {!canExport && (
                           <p className="text-muted-foreground text-xs">
-                            Pick at least one destination.
+                            저장 위치를 하나 이상 선택하세요.
                           </p>
                         )}
                       </div>
@@ -396,7 +396,7 @@ function ExportPopover({
                     className="w-full gap-2"
                   >
                     <Download className="size-4" />
-                    Export
+                    내보내기
                   </Button>
                 </div>
               </>
@@ -419,7 +419,7 @@ function ExportPopover({
                   className="w-full rounded-md"
                   onClick={handleCancel}
                 >
-                  Cancel
+                  취소
                 </Button>
               </div>
             )}
@@ -457,9 +457,9 @@ function SavePhasePanel({
   );
   const headerLabel = settled
     ? allSucceeded
-      ? "Export saved"
-      : "Export finished with errors"
-    : "Saving export";
+      ? "내보내기 저장됨"
+      : "내보내기가 오류와 함께 끝났습니다"
+    : "내보내기 저장 중";
 
   return (
     <div className="space-y-4 p-3">
@@ -480,7 +480,7 @@ function SavePhasePanel({
           className="w-full rounded-md"
           onClick={onDismiss}
         >
-          Close
+          닫기
         </Button>
       )}
     </div>
@@ -497,7 +497,7 @@ function DestinationRow({
   error?: string;
 }) {
   const label =
-    destination === "disk" ? "Saving to disk" : "Saving to media library";
+    destination === "disk" ? "디스크에 저장 중" : "미디어 라이브러리에 저장 중";
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-2 text-xs">
@@ -505,12 +505,12 @@ function DestinationRow({
         <span className="text-foreground">
           {status === "success"
             ? destination === "disk"
-              ? "Saved to disk"
-              : "Saved to media library"
+              ? "디스크에 저장됨"
+              : "미디어 라이브러리에 저장됨"
             : status === "error"
               ? destination === "disk"
-                ? "Disk save failed"
-                : "Library upload failed"
+                ? "디스크 저장 실패"
+                : "라이브러리 업로드 실패"
               : label}
         </span>
       </div>
@@ -562,7 +562,7 @@ function ExportError({
   return (
     <div className="space-y-4 p-3">
       <div className="flex flex-col gap-1.5">
-        <p className="text-destructive text-sm font-medium">Export failed</p>
+        <p className="text-destructive text-sm font-medium">내보내기 실패</p>
         <p className="text-muted-foreground text-xs">{error}</p>
       </div>
 
@@ -574,7 +574,7 @@ function ExportError({
           onClick={handleCopy}
         >
           {copied ? <Check className="text-constructive" /> : <Copy />}
-          Copy
+          복사
         </Button>
         <Button
           variant="outline"
@@ -583,7 +583,7 @@ function ExportError({
           onClick={onRetry}
         >
           <RotateCcw />
-          Retry
+          다시 시도
         </Button>
       </div>
     </div>

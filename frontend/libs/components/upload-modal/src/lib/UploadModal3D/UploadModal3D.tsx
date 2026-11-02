@@ -118,7 +118,7 @@ export function UploadModal3D(props: Props) {
                   setIsCharacter(e.target.checked);
                   if (e.target.checked) setIsAnimation(false);
                 }}
-                label="Upload as Character"
+                label="캐릭터로 업로드"
               />
               <Checkbox
                 id="upload-as-animation"
@@ -128,7 +128,7 @@ export function UploadModal3D(props: Props) {
                   setIsAnimation(e.target.checked);
                   if (e.target.checked) setIsCharacter(false);
                 }}
-                label="Upload as Animation"
+                label="애니메이션으로 업로드"
               />
             </div>
             <UploadFiles3D
@@ -162,8 +162,8 @@ export function UploadModal3D(props: Props) {
             <LoadingDots className="mb-1 bg-transparent" />
             <div className="w-100 text-center opacity-50">
               {p && p.total > 1
-                ? `Uploading ${p.current} / ${p.total}...`
-                : "Uploading..."}
+                ? `업로드 중 ${p.current} / ${p.total}...`
+                : "업로드 중..."}
             </div>
           </>
         );
@@ -171,7 +171,7 @@ export function UploadModal3D(props: Props) {
       case UploaderStates.success: {
         return (
           <UploadSuccess
-            title={isAnimation ? "Animation" : "3D model"}
+            title={isAnimation ? "애니메이션" : "3D 모델"}
             onOk={() => {
               // Category-scoped opens come from a library panel that shows
               // the upload itself — don't pop My Library over it.

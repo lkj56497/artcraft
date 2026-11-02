@@ -174,19 +174,19 @@ const BoardCardInner = ({
               fades up on hover. */}
           <div className="absolute right-2 top-2 flex translate-y-1 items-center gap-1 rounded-full border border-white/15 bg-black/65 p-0.5 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
             <RailButton
-              label="Open"
+              label="열기"
               icon={Maximize2Icon}
               onClick={() => onOpen(item.id)}
             />
             {item.kind === "image" && (
               <RailButton
-                label="Use as reference"
+                label="참조로 사용"
                 icon={WandSparklesIcon}
                 onClick={() => onUseReference(item.id)}
               />
             )}
             <RailButton
-              label="Delete"
+              label="삭제"
               icon={Trash2Icon}
               onClick={() => onDelete(item.id)}
             />
@@ -360,7 +360,7 @@ const NoteEditor = ({
             onCommit(initial.trim());
           }
         }}
-        placeholder="Write a note…"
+        placeholder="메모 쓰기…"
         className="h-full w-full resize-none bg-transparent text-sm leading-relaxed text-base-fg/90 placeholder:text-base-fg/35 focus:outline-none"
       />
     </div>

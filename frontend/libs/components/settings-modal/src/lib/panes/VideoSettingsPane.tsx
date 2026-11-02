@@ -9,7 +9,7 @@ export const VideoSettingsPane = () => {
     <div className="space-y-4">
       <div>
         <label htmlFor="default-video-model" className="mb-2 block">
-          Default Video Model
+          기본 영상 모델
         </label>
         <Select
           id="default-video-model"
@@ -23,7 +23,7 @@ export const VideoSettingsPane = () => {
       </div>
       <div>
         <label htmlFor="human-video-provider" className="mb-2 block">
-          Human Video Provider
+          인물 영상 제공업체
         </label>
         <Select
           id="human-video-provider"

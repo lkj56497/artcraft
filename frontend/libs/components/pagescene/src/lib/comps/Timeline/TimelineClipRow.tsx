@@ -109,7 +109,7 @@ export const TimelineClipRow = ({
       if (!enableClipTransition(editor, lane.id)) {
         editor.adapter.showToast(
           ToastTypes.WARNING,
-          "No room on this row to open a gap for the transition.",
+          "이 줄에는 전환을 넣을 공간이 없습니다.",
         );
         return;
       }
@@ -125,7 +125,7 @@ export const TimelineClipRow = ({
     if (!laneId) {
       editor.adapter.showToast(
         ToastTypes.WARNING,
-        "No room left on this row for that clip.",
+        "이 줄에는 그 클립을 넣을 공간이 없습니다.",
       );
     }
   };
@@ -170,12 +170,12 @@ export const TimelineClipRow = ({
     <div className="flex items-center gap-3 py-0.5">
       <div className="flex w-32 shrink-0 items-center gap-2 truncate ps-6 text-xs text-base-fg/50">
         <FilmIcon className="h-3 w-3 opacity-60" />
-        <span className="truncate">Animation</span>
+        <span className="truncate">애니메이션</span>
         {bakedClips && bakedClips.length > 0 && (
           <div className="shrink-0">
             <button
               type="button"
-              title="Add one of this object's baked animations"
+              title="이 오브젝트에 포함된 애니메이션 추가"
               className={`flex h-4 w-4 items-center justify-center rounded-[3px] transition-colors ${
                 pickerAnchor
                   ? "bg-brand-primary text-white"
@@ -241,8 +241,8 @@ export const TimelineClipRow = ({
         {lanes.length === 0 && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-md border border-dashed border-white/15 text-[10px] text-base-fg/30">
             {droppable
-              ? "Drag an animation here"
-              : "Add a baked animation with +"}
+              ? "애니메이션을 여기로 드래그"
+              : "+로 내장 애니메이션 추가"}
           </div>
         )}
 
@@ -286,8 +286,8 @@ export const TimelineClipRow = ({
                 type="button"
                 title={
                   strip.loop
-                    ? "Looping — click to play once"
-                    : "Play once — click to loop"
+                    ? "반복 중 — 클릭하면 한 번만 재생"
+                    : "한 번 재생 — 클릭하면 반복"
                 }
                 className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] ${
                   strip.loop
@@ -310,7 +310,7 @@ export const TimelineClipRow = ({
               {isSelected && (
                 <button
                   type="button"
-                  title="Remove animation (Del)"
+                  title="애니메이션 제거 (Del)"
                   className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] text-white/70 hover:bg-white/20 hover:text-white"
                   onPointerDown={(e) => e.stopPropagation()}
                   onClick={() => {
@@ -328,7 +328,7 @@ export const TimelineClipRow = ({
               {/* right-edge trim handle */}
               <div
                 className="absolute inset-y-0 right-0 w-1.5 cursor-ew-resize rounded-r-md bg-white/40 hover:bg-white/70"
-                title="Trim clip length"
+                title="클립 길이 자르기"
                 onPointerDown={(e) => {
                   e.stopPropagation();
                   e.currentTarget.setPointerCapture(e.pointerId);
@@ -364,8 +364,8 @@ export const TimelineClipRow = ({
                 data-transition-chip
                 title={
                   active
-                    ? "Edit transition into the next clip"
-                    : "Blend into the next clip"
+                    ? "다음 클립으로의 전환 편집"
+                    : "다음 클립과 섞기"
                 }
                 className={`absolute top-1/2 z-10 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border transition-colors ${
                   active

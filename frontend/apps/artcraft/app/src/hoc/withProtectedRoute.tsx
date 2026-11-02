@@ -55,7 +55,7 @@ const RedirectToLogin = () => {
   }, [navigate, pathname]);
   return (
     <div className="fixed flex h-full w-full flex-col  items-center justify-center">
-      <LoadingDots type="bricks" message="Redirecting to Login..." />
+      <LoadingDots type="bricks" message="로그인 화면으로 이동 중..." />
     </div>
   );
 };

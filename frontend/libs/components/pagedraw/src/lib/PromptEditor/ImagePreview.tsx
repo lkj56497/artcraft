@@ -48,7 +48,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ image, onUpdate, onRemove }
     >
       <img 
         src={image.url} 
-        alt="Style reference" 
+        alt="스타일 참조" 
         className="w-full h-full object-cover"
       />
       

@@ -1,3 +1,4 @@
+import { labelValue } from "./common/labelValue";
 import { useState, useRef, useEffect } from "react";
 import { useSignals } from "@preact/signals-react/runtime";
 import { PopoverMenu, PopoverItem } from "@storyteller/ui-popover";
@@ -107,17 +108,17 @@ export const PromptBox2D = ({
   const [showImagePrompts, setShowImagePrompts] = useState(false);
   const [aspectRatioList, setAspectRatioList] = useState<PopoverItem[]>([
     {
-      label: "Wide",
+      label: "가로",
       selected: aspectRatio === "wide",
       icon: <RectangleHorizontalIcon  className="h-4 w-4" />,
     },
     {
-      label: "Tall",
+      label: "세로",
       selected: aspectRatio === "tall",
       icon: <RectangleVerticalIcon  className="h-4 w-4" />,
     },
     {
-      label: "Square",
+      label: "정사각형",
       selected: aspectRatio === "square",
       icon: <SquareIcon  className="h-4 w-4" />,
     },
@@ -153,7 +154,7 @@ export const PromptBox2D = ({
     setResolutionList((prev) =>
       prev.map((item) => ({
         ...item,
-        selected: item.label.toLowerCase() === resolution,
+        selected: labelValue(item.label) === resolution,
       })),
     );
   }, [resolution]);
@@ -173,7 +174,7 @@ export const PromptBox2D = ({
   });
 
   const handleAspectRatioSelect = (selectedItem: PopoverItem) => {
-    const value = selectedItem.label.toLowerCase() as AspectRatio;
+    const value = labelValue(selectedItem.label) as AspectRatio;
     onAspectRatioChange?.(value);
     setAspectRatio(value);
     setAspectRatioList((prev) =>
@@ -185,7 +186,7 @@ export const PromptBox2D = ({
   };
 
   const handleResolutionSelect = (selectedItem: PopoverItem) => {
-    setResolution(selectedItem.label.toLowerCase() as any);
+    setResolution(labelValue(selectedItem.label) as any);
   };
 
   // Image prompt row replaces legacy upload/gallery UI
@@ -283,7 +284,7 @@ export const PromptBox2D = ({
     if (busy || isDisabled || !prompt.trim()) return;
     if (isFinite(maxLen) && prompt.length > maxLen) {
       toast.error(
-        `Prompt exceeds the ${maxLen} character limit for this model`,
+        `프롬프트가 이 모델의 글자 수 제한(${maxLen}자)을 넘었습니다`,
       );
       return;
     }
@@ -378,7 +379,7 @@ export const PromptBox2D = ({
               setContent(
                 <img
                   src={image.fullUrl ?? image.url}
-                  alt="Reference preview"
+                  alt="참조 미리보기"
                   className="w-full h-full object-contain"
                 />,
               );
@@ -397,7 +398,7 @@ export const PromptBox2D = ({
           <div className="flex gap-3">
             {selectedImageModel?.canUseImagePrompt && (
               <Tooltip
-                content="Add Image"
+                content="이미지 추가"
                 position="top"
                 closeOnClick={true}
                 className={twMerge(isImageRowVisible && "hidden opacity-0")}
@@ -432,7 +433,7 @@ export const PromptBox2D = ({
               <textarea
                 ref={textareaRef}
                 rows={1}
-                placeholder="Describe your image..."
+                placeholder="이미지를 설명하세요..."
                 className={`promptbox-scrollbar text-md min-h-[2.5em] w-full resize-y overflow-y-auto bg-transparent pr-8 text-base-fg placeholder-base-fg/60 focus:outline-none ${isExpanded ? "max-h-[500px]" : "max-h-[5.5em]"}`}
                 value={prompt}
                 onChange={handleChange}
@@ -454,7 +455,7 @@ export const PromptBox2D = ({
               {modelSelector}
               {selectedImageModel?.canChangeAspectRatio && (
                 <Tooltip
-                  content="Aspect ratio"
+                  content="화면 비율"
                   position="top"
                   className="z-50"
                   closeOnClick={true}
@@ -463,7 +464,7 @@ export const PromptBox2D = ({
                     items={aspectRatioList}
                     onSelect={handleAspectRatioSelect}
                     mode="toggle"
-                    panelTitle="Aspect Ratio"
+                    panelTitle="화면 비율"
                     showIconsInList
                     triggerIcon={
                       <DynamicIcon
@@ -476,7 +477,7 @@ export const PromptBox2D = ({
               )}
               {selectedImageModel?.canChangeResolution && (
                 <Tooltip
-                  content="Resolution"
+                  content="해상도"
                   position="top"
                   className="z-50"
                   closeOnClick={true}
@@ -485,7 +486,7 @@ export const PromptBox2D = ({
                     items={resolutionList}
                     onSelect={handleResolutionSelect}
                     mode="toggle"
-                    panelTitle="Resolution"
+                    panelTitle="해상도"
                     showIconsInList
                     triggerIcon={
                       <MaximizeIcon  className="h-4 w-4" />
@@ -497,7 +498,7 @@ export const PromptBox2D = ({
             <div className="flex items-center gap-2">
               {onFitPressed && (
                 <Tooltip
-                  content={"Fit canvas to screen"}
+                  content={"캔버스를 화면에 맞추기"}
                   position="top"
                   className="z-50"
                   delay={200}
@@ -508,7 +509,7 @@ export const PromptBox2D = ({
                     onClick={onFitPressed}
                   >
                     <FrameIcon  className="h-4 w-4" />
-                    Fit
+                    맞추기
                   </Button>
                 </Tooltip>
               )}
@@ -531,13 +532,13 @@ export const PromptBox2D = ({
                 disabled={isEnqueueing || isDisabled || !prompt.trim()}
                 loading={isEnqueueing}
               >
-                Generate
+                생성
               </GenerateButton>
             </div>
           </div>
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
             <Tooltip
-              content={isExpanded ? "Collapse" : "Expand"}
+              content={isExpanded ? "접기" : "펼치기"}
               position="top"
               className="-mb-2"
             >
@@ -586,7 +587,7 @@ export const PromptBox2D = ({
         }
       >
         <textarea
-          placeholder="Describe your image..."
+          placeholder="이미지를 설명하세요..."
           className="promptbox-scrollbar text-md h-full min-h-0 w-full resize-none overflow-y-auto rounded-[3px] bg-transparent text-base-fg placeholder-base-fg/60 focus:outline-none"
           value={prompt}
           onChange={handleChange}

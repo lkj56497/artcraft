@@ -53,7 +53,7 @@ export const KeyframeCards = ({
 
       <DeckSlotCard
         item={firstFrame}
-        label="First frame"
+        label="첫 프레임"
         tiltClass={showLastFrame ? "-rotate-6" : ""}
         addActions={onFirstAddActions}
         onRemove={onRemoveFirst}
@@ -67,7 +67,7 @@ export const KeyframeCards = ({
               <button
                 type="button"
                 onClick={onSwap}
-                title="Swap frames"
+                title="프레임 바꾸기"
                 className="flex h-5 w-5 items-center justify-center rounded-full border border-white/20 bg-black/60 text-[10px] text-white shadow backdrop-blur-md transition-all hover:scale-110 hover:bg-black/80"
               >
                 <ArrowLeftRightIcon />
@@ -81,7 +81,7 @@ export const KeyframeCards = ({
 
           <DeckSlotCard
             item={lastFrame}
-            label="Last frame"
+            label="마지막 프레임"
             tiltClass="rotate-6"
             addActions={onLastAddActions}
             onRemove={onRemoveLast}

@@ -6,7 +6,7 @@ import { useKeybindCapture } from "../useKeybindCapture";
 import { ACTIONS, ACTIONS_BY_SURFACE } from "../registry";
 import { BASE_BINDINGS, PRESETS } from "../presets";
 import { bindingsEqual } from "../matcher";
-import { ActionDef, ActionId, Binding, PresetId, Surface } from "../types";
+import { ActionDef, ActionId, Binding, KEY_GROUP_LABELS_KO, PresetId, Surface } from "../types";
 import { KbdBindings } from "../components/Kbd";
 import { KeybindCaptureInput } from "../components/KeybindCaptureInput";
 import { actionMatchesQuery, groupActions } from "./search";
@@ -20,19 +20,19 @@ type SearchMode = "name" | "key";
 const PRESET_ORDER: PresetId[] = ["gamer", "blender"];
 
 const SURFACE_TITLES: Record<Surface, string> = {
-  global: "Global",
-  pagescene: "3D Editor",
-  pagedraw: "2D Editor",
-  moodboard: "Moodboard canvas",
-  "moodboard-grid": "Moodboard grid",
+  global: "전체",
+  pagescene: "3D 편집기",
+  pagedraw: "2D 편집기",
+  moodboard: "무드보드 캔버스",
+  "moodboard-grid": "무드보드 격자",
 };
 
 const SURFACE_HINTS: Record<Surface, string> = {
-  global: "App-wide — works on every page",
-  pagescene: "Viewport camera, transforms & selection",
-  pagedraw: "Vector canvas editing",
-  moodboard: "Figma-style board tools",
-  "moodboard-grid": "Board library, item viewer & presentation",
+  global: "앱 전체 — 모든 페이지에서 작동",
+  pagescene: "뷰포트 카메라, 변형 & 선택",
+  pagedraw: "벡터 캔버스 편집",
+  moodboard: "Figma 방식 보드 도구",
+  "moodboard-grid": "보드 라이브러리, 항목 뷰어 & 발표",
 };
 
 interface PendingConflict {
@@ -167,7 +167,7 @@ export function KeybindsSettings({
     <div className="flex flex-col gap-8">
       {/* ── Preset + layering explainer ────────────────────────────────────── */}
       <section className="flex flex-col gap-3">
-        <Eyebrow>Preset</Eyebrow>
+        <Eyebrow>프리셋</Eyebrow>
         <PresetDropdown value={selectedPreset} onChange={setPreset} />
         <LayeringNote preset={selectedPreset} />
       </section>
@@ -206,8 +206,8 @@ export function KeybindsSettings({
           {searchActive
             ? `${totalMatches} ${totalMatches === 1 ? "match" : "matches"}`
             : overriddenCount > 0
-              ? `${overriddenCount} customized`
-              : "Default bindings"}
+              ? `${overriddenCount}개 사용자 지정됨`
+              : "기본 단축키"}
         </span>
         {!searchActive && (
           <button
@@ -215,7 +215,7 @@ export function KeybindsSettings({
             onClick={toggleAll}
             className="font-medium text-base-fg/50 transition-colors hover:text-base-fg/80"
           >
-            {allOpen ? "Collapse all" : "Expand all"}
+            {allOpen ? "모두 접기" : "모두 펼치기"}
           </button>
         )}
       </div>
@@ -245,7 +245,7 @@ export function KeybindsSettings({
               >
                 {groups.map(({ group, actions }) => (
                   <div key={group}>
-                    <GroupLabel>{group}</GroupLabel>
+                    <GroupLabel>{KEY_GROUP_LABELS_KO[group] ?? group}</GroupLabel>
                     {actions.map((action) => (
                       <ActionRow
                         key={action.id}
@@ -276,18 +276,17 @@ export function KeybindsSettings({
         <div className="flex items-center justify-between gap-4 rounded-none bg-red/[0.04] p-4 ring-1 ring-red/20">
           <div className="flex min-w-0 flex-col gap-0.5">
             <span className="text-[13px] font-medium text-base-fg/90">
-              Reset all customizations
+              모든 사용자 설정 초기화
             </span>
             <span className="text-xs leading-relaxed text-base-fg/50">
-              Removes {overriddenCount === 1 ? "your 1 custom binding" : `all ${overriddenCount} custom bindings`}{" "}
-              on every surface. Your preset stays selected. This can’t be
-              undone.
+              모든 화면에서 {overriddenCount === 1 ? "사용자 지정 단축키 1개" : `사용자 지정 단축키 ${overriddenCount}개 전부`}를{" "}
+              제거합니다. 선택한 프리셋은 유지됩니다. 되돌릴 수 없습니다.
             </span>
           </div>
           <ConfirmResetButton
-            idleLabel="Reset all"
-            confirmLabel={`Confirm — reset ${overriddenCount}`}
-            title={`Reset all ${overriddenCount} customized bindings to the preset defaults`}
+            idleLabel="모두 초기화"
+            confirmLabel={`확인 — ${overriddenCount}개 초기화`}
+            title={`사용자 지정 단축키 ${overriddenCount}개를 모두 프리셋 기본값으로 초기화`}
             prominent
             confirmDelayMs={2000}
             onConfirm={resetAll}
@@ -299,7 +298,7 @@ export function KeybindsSettings({
       <div className="flex items-start gap-3 rounded-none bg-white/[0.02] p-4 text-[13px] leading-relaxed text-base-fg/55 ring-1 ring-white/15">
         <InfoIcon className="mt-0.5 h-4 w-4 shrink-0 text-base-fg/35" />
         <span>
-          Video editor shortcuts are managed in the video editor itself
+          영상 편집기 단축키는 영상 편집기 안에서 관리합니다
           {onOpenVideoEditorShortcuts ? (
             <>
               {" — "}
@@ -308,12 +307,12 @@ export function KeybindsSettings({
                 onClick={onOpenVideoEditorShortcuts}
                 className="font-medium text-primary underline-offset-2 hover:underline"
               >
-                open shortcut settings
+                단축키 설정 열기
               </button>
               .
             </>
           ) : (
-            " (Video editor → Settings → Shortcuts)."
+            " (영상 편집기 → 설정 → 단축키)."
           )}
         </span>
       </div>
@@ -379,7 +378,7 @@ function PresetDropdown({
 
       <div
         role="listbox"
-        aria-label="Preset"
+        aria-label="프리셋"
         className={twMerge(
           "absolute left-0 right-0 top-full z-20 mt-2 origin-top rounded-none bg-ui-modal shadow-[0_20px_50px_-16px_rgba(0,0,0,0.7)] ring-1 ring-white/10 transition-all duration-200 overflow-hidden",
           EASE,
@@ -434,15 +433,14 @@ function PresetDropdown({
 function LayeringNote({ preset }: { preset: PresetId }) {
   return (
     <p className="text-[13px] leading-relaxed text-base-fg/55">
-      Every shortcut starts from the{" "}
+      모든 단축키는{" "}
       <span className="font-medium text-base-fg/80">
         {PRESETS[preset].label}
       </span>{" "}
-      preset. Any key you change is saved as your own{" "}
-      <span className="font-medium text-base-fg/80">override</span> on top —
-      these sit beside the dimmed preset default
+      프리셋에서 시작합니다. 바꾼 키는 내{" "}
+      <span className="font-medium text-base-fg/80">사용자 지정</span> 설정으로 저장되며, 흐리게 표시된 프리셋 기본값 옆에 나타나고
       <span className="mx-1 inline-block h-1.5 w-1.5 translate-y-px rounded-full bg-primary align-middle" />
-      and revert with ↺.
+      ↺로 되돌릴 수 있습니다.
     </p>
   );
 }
@@ -499,14 +497,14 @@ function NameSearchField({
         type="search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Search by name — “rotate”, “camera up”…"
+        placeholder="이름으로 검색 — “회전”, “카메라 위로”…"
         className="h-10 w-full bg-transparent px-3 text-sm text-base-fg placeholder:text-base-fg/35 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
       />
       {value && (
         <button
           type="button"
           onClick={() => onChange("")}
-          aria-label="Clear search"
+          aria-label="검색 지우기"
           className={twMerge(
             "mr-1.5 grid h-7 w-7 shrink-0 place-items-center rounded-[3px] text-base-fg/40 transition-all hover:bg-white/10 hover:text-base-fg active:scale-90",
             EASE,
@@ -551,16 +549,16 @@ function KeySearchField({
         />
         {listening ? (
           <span className="animate-pulse text-[13px] font-medium text-primary">
-            Listening… press a shortcut
+            입력 대기 중… 단축키를 누르세요
           </span>
         ) : binding ? (
           <span className="flex items-center gap-2 text-[13px] text-base-fg/60">
             <KbdBindings bindings={[binding]} />
-            <span className="text-base-fg/35">— filtering by this key</span>
+            <span className="text-base-fg/35">— 이 키로 필터링 중</span>
           </span>
         ) : (
           <span className="text-sm text-base-fg/35">
-            Click, then press a shortcut to filter…
+            클릭 후 단축키를 눌러 필터링…
           </span>
         )}
       </button>
@@ -568,7 +566,7 @@ function KeySearchField({
         <button
           type="button"
           onClick={onClear}
-          aria-label="Clear key filter"
+          aria-label="키 필터 지우기"
           className={twMerge(
             "mr-1.5 grid h-7 w-7 shrink-0 place-items-center rounded-[3px] text-base-fg/40 transition-all hover:bg-white/10 hover:text-base-fg active:scale-90",
             EASE,
@@ -639,11 +637,9 @@ function CollapsibleSurface({
           </button>
           {overriddenCount > 0 && (
             <ConfirmResetButton
-              idleLabel={`Reset ${overriddenCount}`}
-              confirmLabel="Confirm?"
-              title={`Reset ${title}'s ${overriddenCount} customized ${
-                overriddenCount === 1 ? "binding" : "bindings"
-              } to the preset defaults`}
+              idleLabel={`${overriddenCount}개 초기화`}
+              confirmLabel="확인할까요?"
+              title={`${title}의 사용자 지정 단축키 ${overriddenCount}개를 프리셋 기본값으로 초기화`}
               onConfirm={onReset}
             />
           )}
@@ -736,7 +732,7 @@ function ConfirmResetButton({
         }
       }}
       title={title}
-      aria-label={armed ? `${title} — click again to confirm` : title}
+      aria-label={armed ? `${title} — 한 번 더 누르면 확정` : title}
       className={twMerge(
         "relative shrink-0 overflow-hidden whitespace-nowrap rounded-[3px] font-medium transition-all active:scale-[0.97]",
         EASE,
@@ -837,7 +833,7 @@ function ActionRow({
           "h-1.5 w-1.5 shrink-0 rounded-full bg-primary transition-opacity duration-300",
           overridden ? "opacity-100" : "opacity-0",
         )}
-        title={overridden ? "Customized" : undefined}
+        title={overridden ? "사용자 지정됨" : undefined}
       />
       <span className="grow truncate text-[13px] text-base-fg/90">
         {action.label}
@@ -847,7 +843,7 @@ function ActionRow({
       {overridden && (
         <span
           className="hidden items-center gap-1.5 text-xs text-base-fg/35 opacity-70 sm:inline-flex"
-          title="Preset default"
+          title="프리셋 기본값"
         >
           <KbdBindings bindings={defaultBindings} />
         </span>
@@ -856,8 +852,8 @@ function ActionRow({
         <button
           type="button"
           onClick={onReset}
-          title="Revert to preset default"
-          aria-label="Revert to preset default"
+          title="프리셋 기본값으로 되돌리기"
+          aria-label="프리셋 기본값으로 되돌리기"
           className={twMerge(
             "grid h-7 w-7 shrink-0 place-items-center rounded-[3px] text-base-fg/40 transition-all hover:bg-white/10 hover:text-base-fg active:scale-90",
             EASE,
@@ -890,7 +886,7 @@ function ConflictAlert({
       className="flex flex-col gap-2.5 rounded-none bg-red/[0.08] p-3.5 text-[13px] ring-1 ring-red/30"
     >
       <span className="leading-relaxed text-base-fg/80">
-        <KbdBindings bindings={[pending.binding]} /> is already used by{" "}
+        <KbdBindings bindings={[pending.binding]} /> 키는 이미 다음 기능에서 사용 중입니다:{" "}
         <strong className="font-medium text-base-fg">
           {pending.conflicts.map((c) => ACTIONS[c]?.label).join(", ")}
         </strong>
@@ -905,7 +901,7 @@ function ConflictAlert({
             EASE,
           )}
         >
-          Rebind anyway
+          그래도 지정
         </button>
         <button
           type="button"
@@ -915,7 +911,7 @@ function ConflictAlert({
             EASE,
           )}
         >
-          Cancel
+          취소
         </button>
       </div>
     </div>
@@ -939,13 +935,13 @@ function EmptyState({
         <SearchIcon className="h-6 w-6 text-base-fg/25" />
       )}
       <p className="flex flex-wrap items-center justify-center gap-1.5 text-sm text-base-fg/60">
-        Nothing is bound to
+        지정된 기능 없음:
         {mode === "key" && binding ? (
           <KbdBindings bindings={[binding]} />
         ) : (
           <span className="font-medium text-base-fg/90">“{query}”</span>
         )}
-        {mode === "key" ? " yet." : "."}
+        {mode === "key" ? " 아직 없습니다." : ""}
       </p>
     </div>
   );

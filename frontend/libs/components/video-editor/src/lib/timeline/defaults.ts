@@ -41,7 +41,7 @@ const defaultTextElement: Omit<TextElement, "id"> = {
   trimStart: ZERO_MEDIA_TIME,
   trimEnd: ZERO_MEDIA_TIME,
   params: {
-    content: "Default text",
+    content: "기본 텍스트",
     fontSize: 15,
     fontFamily: "Arial",
     color: "#ffffff",

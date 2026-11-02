@@ -125,15 +125,14 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
     if (!onDelete) return;
     showActionReminder({
       reminderType: "default",
-      title: "Delete this media?",
+      title: "이 미디어를 삭제할까요?",
       message: (
         <p className="text-sm text-white/70">
-          This will permanently remove the media from your library. This action
-          cannot be undone.
+          라이브러리에서 이 미디어를 영구적으로 삭제합니다. 되돌릴 수 없습니다.
         </p>
       ),
-      primaryActionText: "Delete",
-      secondaryActionText: "Cancel",
+      primaryActionText: "삭제",
+      secondaryActionText: "취소",
       primaryActionBtnClassName: "bg-red text-white hover:bg-red/90",
       onPrimaryAction: async () => {
         try {
@@ -145,7 +144,7 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
             (result as any).status !== "success"
           ) {
             const msg =
-              (result as any).error_message || "Failed to delete media.";
+              (result as any).error_message || "미디어 삭제 실패.";
             console.error("Delete failed:", result);
             toast.error(msg);
             return;
@@ -154,7 +153,7 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
         } catch (err) {
           console.error("Delete threw:", err);
           toast.error(
-            `Failed to delete media: ${err instanceof Error ? err.message : String(err)}`,
+            `미디어 삭제 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
         } finally {
           isActionReminderOpen.value = false;
@@ -277,7 +276,7 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
           </div>
         ) : !item.thumbnail ? (
           <div className="flex h-full w-full items-center justify-center bg-black/30">
-            <span className="text-white/60">Image not available</span>
+            <span className="text-white/60">이미지를 사용할 수 없습니다</span>
           </div>
         ) : (
           <>
@@ -315,7 +314,7 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
         )}
         {disabled && (
           <div className="absolute left-2 top-2 bg-black/70 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-white/80">
-            Added
+            추가됨
           </div>
         )}
       </div>
@@ -452,19 +451,19 @@ export const GalleryDraggableItem: React.FC<GalleryDraggableItemProps> = ({
             <div className="flex flex-col items-center text-xs whitespace-nowrap">
               {!isAudio && (
                 <span>
-                  <span className="font-bold">Drag</span>
+                  <span className="font-bold">드래그</span>
                   <span className="opacity-50">
                     {item.mediaClass === "dimensional" ||
                     item.mediaClass === "mesh" ||
                     item.mediaClass === "splat"
-                      ? " to add to scene"
-                      : " to add"}
+                      ? "해서 장면에 추가"
+                      : "해서 추가"}
                   </span>
                 </span>
               )}
               <span>
-                <span className="font-bold">Click</span>
-                <span className="opacity-50"> to view</span>
+                <span className="font-bold">클릭</span>
+                <span className="opacity-50"> 해서 보기</span>
               </span>
             </div>
           }

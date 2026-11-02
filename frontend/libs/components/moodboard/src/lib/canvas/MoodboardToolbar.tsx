@@ -20,9 +20,9 @@ const MODES: Array<{
   icon: typeof MousePointerIcon;
   tooltip: string;
 }> = [
-  { value: "select", icon: MousePointerIcon, tooltip: "Select (V)" },
-  { value: "lasso", icon: PenToolIcon, tooltip: "Lasso (L)" },
-  { value: "text", icon: TypeIcon, tooltip: "Text (T)" },
+  { value: "select", icon: MousePointerIcon, tooltip: "선택 (V)" },
+  { value: "lasso", icon: PenToolIcon, tooltip: "올가미 (L)" },
+  { value: "text", icon: TypeIcon, tooltip: "텍스트 (T)" },
 ];
 
 interface Props {
@@ -85,7 +85,7 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
   return (
     <FloatingToolbar>
       <Tooltip
-        content="Add an image"
+        content="이미지 추가"
         position="bottom"
         delay={300}
         closeOnClick
@@ -93,10 +93,10 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
         <PopoverMenu
           mode="button"
           position="bottom"
-          panelTitle="Add an image"
+          panelTitle="이미지 추가"
           items={[
             {
-              label: "Upload Image",
+              label: "이미지 업로드",
               selected: false,
               icon: (
                 <UploadIcon
@@ -106,7 +106,7 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
               action: "upload",
             },
             {
-              label: "Pick from Library",
+              label: "라이브러리에서 선택",
               selected: false,
               icon: <ImagesIcon  className="h-4 w-4" />,
               action: "library",
@@ -131,14 +131,14 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
 
       <FloatingToolbarButton
         icon={GroupIcon}
-        label={`Group (${fmtShortcut([MOD, "G"])})`}
+        label={`그룹 (${fmtShortcut([MOD, "G"])})`}
         onClick={() => group()}
         disabled={selectedIds.size < 2}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={UngroupIcon}
-        label={`Ungroup (${fmtShortcut([MOD, "Shift", "G"])})`}
+        label={`그룹 해제 (${fmtShortcut([MOD, "Shift", "G"])})`}
         onClick={() => ungroup()}
         disabled={selectedIds.size === 0}
         tooltipDelay={100}
@@ -148,26 +148,26 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
 
       <FloatingToolbarButton
         icon={Grid3x3Icon}
-        label="Fit to grid"
+        label="격자에 맞추기"
         onClick={handleFitToGrid}
         disabled={selectedIds.size === 0}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={GripVerticalIcon}
-        label="Pack collage"
+        label="콜라주로 정렬"
         onClick={handlePackCollage}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={WorkflowIcon}
-        label="Auto-group by proximity"
+        label="가까운 항목끼리 자동 그룹"
         onClick={handleAutoGroup}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={MagnetIcon}
-        label={snapEnabled ? "Snapping on" : "Snapping off"}
+        label={snapEnabled ? "스냅 켜짐" : "스냅 꺼짐"}
         active={snapEnabled}
         onClick={toggleSnap}
         tooltipDelay={100}
@@ -177,19 +177,19 @@ export const MoodboardToolbar = ({ onUploadClick, onGalleryClick }: Props) => {
 
       <FloatingToolbarButton
         icon={RotateCcwIcon}
-        label={`Undo (${fmtShortcut([MOD, "Z"])})`}
+        label={`실행 취소 (${fmtShortcut([MOD, "Z"])})`}
         onClick={undo}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={RotateCwIcon}
-        label={`Redo (${fmtShortcut([MOD, "Shift", "Z"])})`}
+        label={`다시 실행 (${fmtShortcut([MOD, "Shift", "Z"])})`}
         onClick={redo}
         tooltipDelay={100}
       />
       <FloatingToolbarButton
         icon={TrashIcon}
-        label="Delete (Del)"
+        label="삭제 (Del)"
         onClick={deleteSelected}
         disabled={selectedIds.size === 0}
         tooltipDelay={100}

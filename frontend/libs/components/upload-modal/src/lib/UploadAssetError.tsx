@@ -15,14 +15,14 @@ export const UploadAssetError = ({
 }: Props) => {
   return (
     <>
-      <h3>Error in Uploading {type}</h3>
+      <h3>업로드 오류 {type}</h3>
       <p>{errorMessage ?? "Unknown Error"}</p>
       <div className="mt-6 flex justify-end gap-2">
         <Button onClick={onCancel} variant="secondary">
-          Cancel
+          취소
         </Button>
         <Button onClick={onRetry} variant="primary">
-          Try again
+          다시 시도
         </Button>
       </div>
     </>

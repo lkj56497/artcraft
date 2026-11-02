@@ -62,7 +62,7 @@ export const SceneTitleInput = ({ pageName }: Props) => {
     setShowInput(false);
     if (scene.value.title === "") {
       setIsValid(false);
-      handleShowErrorDialog("Scene name can not be empty.");
+      handleShowErrorDialog("장면 이름을 비워둘 수 없습니다.");
       resetPreviousTitle();
       e.currentTarget.focus();
     } else if (scene.value.token) {

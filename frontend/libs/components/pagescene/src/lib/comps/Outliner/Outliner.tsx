@@ -83,7 +83,7 @@ const OutlinerRow = ({ item }: { item: OutlinerItem }) => {
         {item.isCamera && (
           <button
             onClick={handleViewFromCamera}
-            title="View from camera"
+            title="카메라 시점으로 보기"
             className="text-white/60 transition-colors duration-100 hover:text-white text-xs"
           >
             <div className="w-3">
@@ -96,7 +96,7 @@ const OutlinerRow = ({ item }: { item: OutlinerItem }) => {
              persists with the scene. */
           <button
             onClick={handleToggleSkeleton}
-            title={item.skeletonVisible ? "Hide skeleton" : "Show skeleton"}
+            title={item.skeletonVisible ? "뼈대 숨기기" : "뼈대 보기"}
             className={twMerge(
               "text-white/60 transition-colors duration-100 hover:text-white text-xs",
               item.skeletonVisible && "text-white/90",
@@ -109,7 +109,7 @@ const OutlinerRow = ({ item }: { item: OutlinerItem }) => {
         )}
         <button
           onClick={handleToggleLock}
-          title={item.locked ? "Unlock" : "Lock"}
+          title={item.locked ? "잠금 해제" : "잠금"}
           className={twMerge(
             "text-white/60 transition-colors duration-100 hover:text-white text-xs",
             item.locked && "text-white/90",
@@ -121,7 +121,7 @@ const OutlinerRow = ({ item }: { item: OutlinerItem }) => {
         </button>
         <button
           onClick={handleToggleVisibility}
-          title={item.visible ? "Hide" : "Show"}
+          title={item.visible ? "숨기기" : "보기"}
           className={twMerge(
             "text-white/60 transition-colors duration-100 hover:text-white text-xs",
             !item.visible && "text-white/90",
@@ -156,7 +156,7 @@ export const Outliner = () => {
       leaveTo="opacity-0"
     >
       <div className="flex items-center border-b border-ui-panel-border px-3 py-2.5">
-        <h2 className="grow font-mono text-[11px] font-semibold uppercase tracking-[0.12em]">Scene</h2>
+        <h2 className="grow font-mono text-[11px] font-semibold uppercase tracking-[0.12em]">장면</h2>
         <Button
           icon={PlusIcon}
           variant="ghost"
@@ -164,12 +164,12 @@ export const Outliner = () => {
           className="h-7 gap-1 px-1.5 py-0 text-[11px] leading-none text-white/70 hover:text-white"
           onClick={openAssetModal}
         >
-          Add
+          추가
         </Button>
         <Button
           icon={XIcon}
           variant="ghost"
-          aria-label="Close scene panel"
+          aria-label="장면 패널 닫기"
           iconClassName="h-4 w-4 shrink-0"
           className="h-7 w-7 p-0 text-white/50 hover:text-white"
           onClick={() => {

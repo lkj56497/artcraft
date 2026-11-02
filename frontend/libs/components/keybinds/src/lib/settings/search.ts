@@ -1,5 +1,5 @@
 import { formatBindingTokens } from "../format";
-import { ActionDef, Binding, KeyGroup } from "../types";
+import { ActionDef, Binding, KEY_GROUP_LABELS_KO, KeyGroup } from "../types";
 
 // Free-text matching for the Keybinds settings search box. A query matches an
 // action by NAME or by KEY: the haystack folds in the label, the group, every
@@ -13,7 +13,7 @@ export function actionMatchesQuery(
 ): boolean {
   const q = query.trim().toLowerCase();
   if (!q) return true;
-  const haystack = `${action.label} ${action.group} ${bindings
+  const haystack = `${action.label} ${action.group} ${KEY_GROUP_LABELS_KO[action.group] ?? ""} ${bindings
     .map(bindingSearchText)
     .join(" ")}`.toLowerCase();
   // A compact pass strips spaces/`+` so "ctrl+z" / "⇧d" match contiguously…

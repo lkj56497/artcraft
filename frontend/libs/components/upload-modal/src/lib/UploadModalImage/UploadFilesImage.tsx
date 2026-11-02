@@ -105,7 +105,7 @@ export const UploadFilesImage = ({
 
   const handleSubmit = () => {
     if (fileEntries.length === 0) {
-      setSelectionError("Please select an image to upload.");
+      setSelectionError("업로드할 이미지를 선택하세요.");
       return;
     }
 
@@ -141,7 +141,7 @@ export const UploadFilesImage = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -172,7 +172,7 @@ export const UploadFilesImage = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -224,7 +224,7 @@ export const UploadFilesImage = ({
                           e.stopPropagation();
                           removeFile(i);
                         }}
-                        title="Remove"
+                        title="제거"
                       >
                         <XIcon />
                       </button>
@@ -250,7 +250,7 @@ export const UploadFilesImage = ({
                             e.stopPropagation();
                             retrySingleFile(i);
                           }}
-                          title="Retry"
+                          title="다시 시도"
                         >
                           <RotateCwIcon />
                         </button>
@@ -275,7 +275,7 @@ export const UploadFilesImage = ({
                 {previewUrl && (
                   <img
                     key={previewIndex}
-                    alt="Preview"
+                    alt="미리보기"
                     className="m-auto max-h-full max-w-full object-contain"
                     src={previewUrl}
                   />
@@ -311,7 +311,7 @@ export const UploadFilesImage = ({
           previewUrl && (
             <div className="relative m-auto flex aspect-square w-full items-center justify-center overflow-hidden rounded-none border border-white/15 bg-black/30">
               <img
-                alt="Preview"
+                alt="미리보기"
                 className="m-auto max-h-full max-w-full object-contain"
                 src={previewUrl}
               />
@@ -322,23 +322,23 @@ export const UploadFilesImage = ({
 
       {(isUploading || anyUploading) && overallProgress && isMulti && (
         <p className="text-center text-sm opacity-60">
-          Uploading {overallProgress.current} / {overallProgress.total}...
+          업로드 중 {overallProgress.current} / {overallProgress.total}...
         </p>
       )}
 
       {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
         <p className="text-center text-sm text-red-400">
-          {fileEntries.filter((e) => e.status === "error").length} file(s) failed to upload.
+          파일 {fileEntries.filter((e) => e.status === "error").length}개 업로드 실패.
         </p>
       )}
 
       <div className="flex justify-end gap-2">
         <Button variant="secondary" onClick={onClose}>
-          Cancel
+          취소
         </Button>
         {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
           <Button variant="secondary" onClick={retryAllFailed}>
-            Retry Failed
+            실패 항목 재시도
           </Button>
         )}
         {!hasUploadStarted && (
@@ -347,7 +347,7 @@ export const UploadFilesImage = ({
             onClick={handleSubmit}
             disabled={fileEntries.length === 0}
           >
-            Upload
+            업로드
           </Button>
         )}
       </div>

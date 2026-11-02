@@ -206,7 +206,7 @@ export const UploadFilesSplat = ({
 
   const handleSubmit = () => {
     if (fileEntries.length === 0) {
-      setSelectionError("Please select a file to upload.");
+      setSelectionError("업로드할 파일을 선택하세요.");
       return;
     }
 
@@ -252,7 +252,7 @@ export const UploadFilesSplat = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -293,7 +293,7 @@ export const UploadFilesSplat = ({
         } else if (!anySucceeded) {
           onUploadProgress({
             status: UploaderStates.assetError,
-            errorMessage: "All uploads failed.",
+            errorMessage: "모든 업로드가 실패했습니다.",
           });
         }
       },
@@ -353,7 +353,7 @@ export const UploadFilesSplat = ({
                         e.stopPropagation();
                         removeFile(i);
                       }}
-                      title="Remove"
+                      title="제거"
                     >
                       <XIcon />
                     </button>
@@ -377,7 +377,7 @@ export const UploadFilesSplat = ({
                           e.stopPropagation();
                           retrySingleFile(i);
                         }}
-                        title="Retry"
+                        title="다시 시도"
                       >
                         <RotateCwIcon />
                       </button>
@@ -406,7 +406,7 @@ export const UploadFilesSplat = ({
               {!currentFile && (
                 <h6 className="pointer-events-auto absolute left-0 top-1/2 -mt-5 flex w-full items-center justify-center gap-2.5 text-center opacity-50">
                   <BoxIcon />
-                  Your model preview will appear here
+                  모델 미리보기가 여기에 표시됩니다
                 </h6>
               )}
               {previewStatus.type.includes("Error") && (
@@ -452,7 +452,7 @@ export const UploadFilesSplat = ({
           {!currentFile && (
             <h6 className="pointer-events-auto absolute left-0 top-1/2 -mt-5 flex w-full items-center justify-center gap-2.5 text-center opacity-50">
               <BoxIcon />
-              Your model preview will appear here
+              모델 미리보기가 여기에 표시됩니다
             </h6>
           )}
           {previewStatus.type.includes("Error") && (
@@ -467,23 +467,23 @@ export const UploadFilesSplat = ({
 
       {(isUploading || anyUploading) && overallProgress && isMulti && (
         <p className="text-center text-sm opacity-60">
-          Uploading {overallProgress.current} / {overallProgress.total}...
+          업로드 중 {overallProgress.current} / {overallProgress.total}...
         </p>
       )}
 
       {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
         <p className="text-center text-sm text-red-400">
-          {fileEntries.filter((e) => e.status === "error").length} file(s) failed to upload.
+          파일 {fileEntries.filter((e) => e.status === "error").length}개 업로드 실패.
         </p>
       )}
 
       <div className="flex justify-end gap-2">
         <Button variant="secondary" onClick={onClose}>
-          Cancel
+          취소
         </Button>
         {!isUploading && !anyUploading && allDone && anyFailed && isMulti && (
           <Button variant="secondary" onClick={retryAllFailed}>
-            Retry Failed
+            실패 항목 재시도
           </Button>
         )}
         {!hasUploadStarted && (
@@ -492,7 +492,7 @@ export const UploadFilesSplat = ({
             onClick={handleSubmit}
             disabled={fileEntries.length === 0}
           >
-            Upload
+            업로드
           </Button>
         )}
       </div>

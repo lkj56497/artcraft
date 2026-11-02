@@ -25,10 +25,10 @@ const convertFileToBase64 = (file: File): Promise<string> => {
       if (reader.result) {
         resolve(reader.result as string);
       } else {
-        reject(new Error("Failed to convert file to base64."));
+        reject(new Error("파일 변환에 실패했습니다."));
       }
     };
-    reader.onerror = () => reject(new Error("Error reading file."));
+    reader.onerror = () => reject(new Error("파일을 읽는 중 오류가 발생했습니다."));
     reader.readAsDataURL(file);
   });
 };
@@ -120,7 +120,7 @@ export const RemoveBackground = () => {
             });
             resolve();
           };
-          img.onerror = () => reject(new Error("Failed to load image"));
+          img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
           img.src = imageUrl;
         });
 
@@ -139,7 +139,7 @@ export const RemoveBackground = () => {
         });
       } catch (error) {
         console.error("Error processing external image:", error);
-        toast.error("Failed to process image");
+        toast.error("이미지 처리 실패");
         setIsLoadingImage(false);
         setIsProcessing(false);
         setPendingJobId(null);
@@ -162,13 +162,13 @@ export const RemoveBackground = () => {
   const addMenuItems: PopoverItem[] = useMemo(
     () => [
       {
-        label: "Upload Image",
+        label: "이미지 업로드",
         selected: false,
         icon: <UploadIcon  className="h-4 w-4" />,
         action: "upload",
       },
       {
-        label: "Choose from Library",
+        label: "라이브러리에서 선택",
         selected: false,
         icon: <ImagesIcon  className="h-4 w-4" />,
         action: "library",
@@ -266,7 +266,7 @@ export const RemoveBackground = () => {
       addImage(newImage);
       setIsProcessing(false);
       setPendingJobId(null);
-      toast.success("Saved to Library");
+      toast.success("라이브러리에 저장됨");
 
       setImageDimensions({
         width: originalImg.naturalWidth,
@@ -279,7 +279,7 @@ export const RemoveBackground = () => {
       addImage(newImage);
       setIsProcessing(false);
       setPendingJobId(null);
-      toast.success("Saved to Library");
+      toast.success("라이브러리에 저장됨");
     }
   });
 
@@ -313,7 +313,7 @@ export const RemoveBackground = () => {
             });
             resolve();
           };
-          img.onerror = () => reject(new Error("Failed to load image"));
+          img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
           img.src = objectUrl;
         });
 
@@ -333,7 +333,7 @@ export const RemoveBackground = () => {
         });
       } catch (error) {
         console.error("Error processing image:", error);
-        toast.error("Failed to process image");
+        toast.error("이미지 처리 실패");
         setIsLoadingImage(false);
         setIsProcessing(false);
         setPendingJobId(null);
@@ -360,7 +360,7 @@ export const RemoveBackground = () => {
     async (selectedItems: GalleryItem[]) => {
       const item = selectedItems[0];
       if (!item || !item.fullImage) {
-        toast.error("No image selected");
+        toast.error("선택된 이미지가 없습니다");
         return;
       }
 
@@ -385,7 +385,7 @@ export const RemoveBackground = () => {
             });
             resolve();
           };
-          img.onerror = () => reject(new Error("Failed to load image"));
+          img.onerror = () => reject(new Error("이미지를 불러오지 못했습니다"));
           img.src = imageUrl;
         });
 
@@ -405,7 +405,7 @@ export const RemoveBackground = () => {
         });
       } catch (error) {
         console.error("Error processing gallery image:", error);
-        toast.error("Failed to process image");
+        toast.error("이미지 처리 실패");
         setIsLoadingImage(false);
         setIsProcessing(false);
         setPendingJobId(null);
@@ -424,15 +424,15 @@ export const RemoveBackground = () => {
   const handleDownload = useCallback(async () => {
     const currentActiveImage = getActiveImage();
     if (!currentActiveImage) {
-      toast.error("No image to download");
+      toast.error("다운로드할 이미지가 없습니다");
       return;
     }
     try {
       await downloadFileFromUrl(currentActiveImage.processedUrl);
-      toast.success("Image saved to Downloads folder");
+      toast.success("이미지가 다운로드 폴더에 저장되었습니다");
     } catch (error) {
       console.error("Download failed:", error);
-      toast.error("Failed to download image");
+      toast.error("이미지 다운로드 실패");
     }
   }, [getActiveImage]);
 
@@ -551,14 +551,14 @@ export const RemoveBackground = () => {
                 <div className="relative aspect-video overflow-hidden border border-ui-panel-border bg-ui-background">
                   <UploadEntryCard
                     icon={WandSparklesIcon}
-                    title="Remove Background"
-                    description="Instantly remove backgrounds from your images with AI-powered precision."
+                    title="배경 제거"
+                    description="AI로 이미지 배경을 즉시 정밀하게 제거합니다."
                     accentBackgroundClass="bg-violet-500/40"
                     accentBorderClass="border-violet-400/30"
                     accept="image/*"
                     onFilesSelected={handleLocalImageSelect}
-                    primaryLabel="Select Image"
-                    secondaryLabel="Pick from Library"
+                    primaryLabel="이미지 선택"
+                    secondaryLabel="라이브러리에서 선택"
                     secondaryIcon={ImagesIcon}
                     onSecondaryClick={handleOpenGallery}
                     disabled={isLoadingImage}
@@ -589,8 +589,8 @@ export const RemoveBackground = () => {
                       )}
                     >
                       {isHoldingCompare
-                        ? "Showing Original"
-                        : "Hold to Compare"}
+                        ? "원본 보는 중"
+                        : "누르고 있으면 비교"}
                     </Button>
                     <Button
                       variant="primary"
@@ -603,7 +603,7 @@ export const RemoveBackground = () => {
                           "cursor-not-allowed opacity-50",
                       )}
                     >
-                      Download
+                      다운로드
                     </Button>
                   </div>
                 )}
@@ -618,7 +618,7 @@ export const RemoveBackground = () => {
                         {currentOriginalUrl && (
                           <img
                             src={currentOriginalUrl}
-                            alt="Processing"
+                            alt="처리 중"
                             className="absolute inset-0 h-full w-full object-contain opacity-30"
                           />
                         )}
@@ -630,7 +630,7 @@ export const RemoveBackground = () => {
                               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white" />
                           </div>
                           <span className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-white">
-                            Removing Background...
+                            배경 제거 중...
                           </span>
                         </div>
                       </div>
@@ -655,7 +655,7 @@ export const RemoveBackground = () => {
 
                         <img
                           src={activeImage.processedUrl}
-                          alt="Background Removed"
+                          alt="배경 제거 완료"
                           className="absolute inset-0 h-full w-full object-contain"
                         />
 
@@ -672,7 +672,7 @@ export const RemoveBackground = () => {
                         >
                           <img
                             src={activeImage.originalUrl}
-                            alt="Original"
+                            alt="원본"
                             className="absolute inset-0 h-full w-full object-contain"
                           />
                         </div>
@@ -732,7 +732,7 @@ export const RemoveBackground = () => {
                     >
                       <img
                         src={img.processedUrl}
-                        alt="Processed"
+                        alt="처리됨"
                         className="h-full w-full object-cover"
                       />
                     </button>

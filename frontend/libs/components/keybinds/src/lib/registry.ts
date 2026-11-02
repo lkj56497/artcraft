@@ -39,7 +39,7 @@ const defs: ActionDef[] = [
   // privacy-blur toggle follows the same recipe: def + default binding here,
   // and the store that owns the blur state registers its toggle handler
   // (likely with allowInEditable so it works mid-typing).
-  act("global.ui.toggleSidebar", "Toggle sidebar", "View", {
+  act("global.ui.toggleSidebar", "사이드바 열기/닫기", "View", {
     important: true,
     preventDefault: true,
     allowInEditable: true, // modifier chord; keeps working while typing
@@ -58,17 +58,17 @@ const defs: ActionDef[] = [
   cam("pagescene.camera.yawRight", "Look right", cameraLook),
 
   // ── PageScene: transform ──────────────────────────────────────────────────
-  act("pagescene.transform.grab", "Grab / move (modal)", "Transform", { important: true, when: inBuild }),
-  act("pagescene.transform.translate", "Move (translate)", "Transform", { important: true, when: inBuild }),
-  act("pagescene.transform.rotate", "Rotate", "Transform", { important: true, when: inBuild }),
-  act("pagescene.transform.scale", "Scale", "Transform", { important: true, when: inBuild }),
-  act("pagescene.transform.toggleSpace", "Toggle local / world", "Transform", { when: inBuild }),
-  act("pagescene.transform.poseFK", "Toggle pose (FK)", "Transform", { when: inBuild }),
+  act("pagescene.transform.grab", "잡기 / 이동 (모달)", "Transform", { important: true, when: inBuild }),
+  act("pagescene.transform.translate", "이동", "Transform", { important: true, when: inBuild }),
+  act("pagescene.transform.rotate", "회전", "Transform", { important: true, when: inBuild }),
+  act("pagescene.transform.scale", "크기", "Transform", { important: true, when: inBuild }),
+  act("pagescene.transform.toggleSpace", "로컬 / 월드 전환", "Transform", { when: inBuild }),
+  act("pagescene.transform.poseFK", "포즈 전환 (FK)", "Transform", { when: inBuild }),
 
   // ── PageScene: view ───────────────────────────────────────────────────────
-  act("pagescene.view.focus", "Focus selection", "View", { important: true, when: inBuild }),
-  act("pagescene.view.assetMenu", "Open asset menu", "View", { important: true, when: inBuild }),
-  act("pagescene.view.toggleCameraView", "Toggle camera view", "View", {
+  act("pagescene.view.focus", "선택 항목에 초점", "View", { important: true, when: inBuild }),
+  act("pagescene.view.assetMenu", "에셋 메뉴 열기", "View", { important: true, when: inBuild }),
+  act("pagescene.view.toggleCameraView", "카메라 뷰 전환", "View", {
     important: true,
     preventDefault: true,
     // Space belongs to timeline playback whenever playback UI is up (the
@@ -76,102 +76,102 @@ const defs: ActionDef[] = [
     // complement. In record mode, view peeking is double-click only.
     when: (ctx) => !inPlayback(ctx) && !ctx.encoding,
   }),
-  act("pagescene.view.toggleStats", "Toggle perf stats", "View"),
+  act("pagescene.view.toggleStats", "성능 통계 전환", "View"),
 
   // ── PageScene: selection ──────────────────────────────────────────────────
   // Build-only: its first branch leaves camera view, which in record mode
   // would break the render-cam lock (record forces camera view). Mid-encode
   // Escape belongs to record.cancelEncode instead.
-  act("pagescene.selection.clearOrExit", "Clear selection / exit pose", "Selection", {
+  act("pagescene.selection.clearOrExit", "선택 해제 / 포즈 종료", "Selection", {
     important: true,
     when: inBuild,
   }),
-  act("pagescene.selection.deselectAll", "Deselect all", "Selection", { when: inBuild }),
+  act("pagescene.selection.deselectAll", "모두 선택 해제", "Selection", { when: inBuild }),
 
   // ── PageScene: edit ───────────────────────────────────────────────────────
   // Scene-object delete owns Del/Backspace EXCEPT when the expanded timeline
   // holds a valid keyframe/strip selection — then timeline.deleteSelected
   // takes the key. The two predicates are exact complements; consumption
   // order is decided here, not by listener phase or registration order.
-  act("pagescene.edit.delete", "Delete selected", "Edit", {
+  act("pagescene.edit.delete", "선택 항목 삭제", "Edit", {
     important: true,
     when: (ctx) =>
       inBuild(ctx) && !(ctx.timelineExpanded && ctx.timelineSelection),
   }),
-  act("pagescene.edit.duplicate", "Duplicate selected", "Edit", { important: true, when: inBuild }),
-  act("pagescene.edit.toggleSnapping", "Toggle grid snapping", "Edit", { when: inBuild }),
-  act("pagescene.view.toggleGrid", "Toggle grid", "View"),
-  act("pagescene.edit.undo", "Undo", "History", { important: true, preventDefault: true, when: inBuild }),
-  act("pagescene.edit.redo", "Redo", "History", { important: true, preventDefault: true, when: inBuild }),
-  act("pagescene.edit.copy", "Copy", "Edit", { preventDefault: true, when: inBuild }),
-  act("pagescene.edit.paste", "Paste", "Edit", { preventDefault: true, when: inBuild }),
+  act("pagescene.edit.duplicate", "선택 항목 복제", "Edit", { important: true, when: inBuild }),
+  act("pagescene.edit.toggleSnapping", "격자 스냅 전환", "Edit", { when: inBuild }),
+  act("pagescene.view.toggleGrid", "격자 전환", "View"),
+  act("pagescene.edit.undo", "실행 취소", "History", { important: true, preventDefault: true, when: inBuild }),
+  act("pagescene.edit.redo", "다시 실행", "History", { important: true, preventDefault: true, when: inBuild }),
+  act("pagescene.edit.copy", "복사", "Edit", { preventDefault: true, when: inBuild }),
+  act("pagescene.edit.paste", "붙여넣기", "Edit", { preventDefault: true, when: inBuild }),
 
   // ── PageScene: timeline ───────────────────────────────────────────────────
   // Transport works wherever playback exists (expanded editor, record mode).
   // Arrows are context-split: a valid keyframe/strip selection makes them
   // NUDGE the selection; otherwise they STEP the playhead — complements, so
   // sharing ←/→ is deliberate, not a conflict.
-  act("pagescene.timeline.playPause", "Play / pause", "Timeline", {
+  act("pagescene.timeline.playPause", "재생 / 일시정지", "Timeline", {
     important: true,
     preventDefault: true,
     when: inPlayback,
   }),
-  act("pagescene.timeline.stepBack", "Step one frame back", "Timeline", {
+  act("pagescene.timeline.stepBack", "한 프레임 뒤로", "Timeline", {
     preventDefault: true,
     when: (ctx) => inPlayback(ctx) && !ctx.timelineSelection,
   }),
-  act("pagescene.timeline.stepForward", "Step one frame forward", "Timeline", {
+  act("pagescene.timeline.stepForward", "한 프레임 앞으로", "Timeline", {
     preventDefault: true,
     when: (ctx) => inPlayback(ctx) && !ctx.timelineSelection,
   }),
-  act("pagescene.timeline.nudgeLeft", "Nudge selection back", "Timeline", {
+  act("pagescene.timeline.nudgeLeft", "선택 항목 조금 뒤로", "Timeline", {
     preventDefault: true,
     when: (ctx) =>
       inBuild(ctx) && !!ctx.timelineExpanded && !!ctx.timelineSelection,
   }),
-  act("pagescene.timeline.nudgeRight", "Nudge selection forward", "Timeline", {
+  act("pagescene.timeline.nudgeRight", "선택 항목 조금 앞으로", "Timeline", {
     preventDefault: true,
     when: (ctx) =>
       inBuild(ctx) && !!ctx.timelineExpanded && !!ctx.timelineSelection,
   }),
-  act("pagescene.timeline.goToStart", "Go to start", "Timeline", {
+  act("pagescene.timeline.goToStart", "처음으로", "Timeline", {
     preventDefault: true,
     when: inPlayback,
   }),
-  act("pagescene.timeline.goToEnd", "Go to end", "Timeline", {
+  act("pagescene.timeline.goToEnd", "끝으로", "Timeline", {
     preventDefault: true,
     when: inPlayback,
   }),
-  act("pagescene.timeline.addKeyframe", "Add keyframe (selected object)", "Timeline", {
+  act("pagescene.timeline.addKeyframe", "키프레임 추가 (선택한 오브젝트)", "Timeline", {
     important: true,
     when: (ctx) => inBuild(ctx) && !!ctx.timelineExpanded,
   }),
   // Exact complement of pagescene.edit.delete (see its note above).
-  act("pagescene.timeline.deleteSelected", "Delete keyframe / clip", "Timeline", {
+  act("pagescene.timeline.deleteSelected", "키프레임 / 클립 삭제", "Timeline", {
     preventDefault: true,
     when: (ctx) =>
       inBuild(ctx) && !!ctx.timelineExpanded && !!ctx.timelineSelection,
   }),
-  act("pagescene.timeline.toggleExpanded", "Expand / collapse timeline", "Timeline", {
+  act("pagescene.timeline.toggleExpanded", "타임라인 펼치기 / 접기", "Timeline", {
     when: inBuild,
   }),
 
   // ── PageScene: record ─────────────────────────────────────────────────────
-  act("pagescene.record.toggleMode", "Toggle build / record mode", "Record", {
+  act("pagescene.record.toggleMode", "만들기 / 녹화 모드 전환", "Record", {
     important: true,
     preventDefault: true,
     when: (ctx) => !ctx.encoding,
   }),
-  act("pagescene.record.captureStill", "Capture still", "Record", {
+  act("pagescene.record.captureStill", "정지 화면 캡처", "Record", {
     preventDefault: true,
     when: (ctx) => ctx.sceneMode === "record" && !ctx.encoding,
   }),
-  act("pagescene.record.recordVideo", "Record timeline to video", "Record", {
+  act("pagescene.record.recordVideo", "타임라인을 영상으로 녹화", "Record", {
     preventDefault: true,
     when: (ctx) => ctx.sceneMode === "record" && !ctx.encoding,
   }),
   // Live ONLY mid-encode — the one action allowed through while rendering.
-  act("pagescene.record.cancelEncode", "Cancel render", "Record", {
+  act("pagescene.record.cancelEncode", "렌더 취소", "Record", {
     when: (ctx) => !!ctx.encoding,
   }),
 
@@ -179,52 +179,52 @@ const defs: ActionDef[] = [
   // Tool switching mirrors the SideToolbar's visual order; the toolbar shows
   // each tool's resolved key as a corner badge. Size up/down adjusts whichever
   // size the active tool uses (brush/eraser share one, mask has its own).
-  act("pagedraw.tools.select", "Select tool", "Tools", { important: true }),
+  act("pagedraw.tools.select", "선택 도구", "Tools", { important: true }),
   // Not a single tool — first press activates, pressing again cycles the
   // rectangle/circle/triangle submenu (Adobe/Figma same-key convention).
-  act("pagedraw.tools.shape", "Shape tool (cycle shapes)", "Tools", {
+  act("pagedraw.tools.shape", "도형 도구 (도형 순환)", "Tools", {
     important: true,
   }),
-  act("pagedraw.tools.brush", "Brush tool", "Tools", { important: true }),
-  act("pagedraw.tools.mask", "Mask tool", "Tools", { important: true }),
-  act("pagedraw.tools.eraser", "Eraser tool", "Tools", { important: true }),
-  act("pagedraw.tools.brushSizeUp", "Increase brush size", "Tools", {
+  act("pagedraw.tools.brush", "브러시 도구", "Tools", { important: true }),
+  act("pagedraw.tools.mask", "마스크 도구", "Tools", { important: true }),
+  act("pagedraw.tools.eraser", "지우개 도구", "Tools", { important: true }),
+  act("pagedraw.tools.brushSizeUp", "브러시 크기 키우기", "Tools", {
     preventDefault: true, // Ctrl+= is browser zoom
   }),
-  act("pagedraw.tools.brushSizeDown", "Decrease brush size", "Tools", {
+  act("pagedraw.tools.brushSizeDown", "브러시 크기 줄이기", "Tools", {
     preventDefault: true, // Ctrl+- is browser zoom
   }),
-  act("pagedraw.edit.delete", "Delete selected", "Edit", { important: true }),
-  act("pagedraw.edit.copy", "Copy", "Edit", { important: true, preventDefault: true }),
-  act("pagedraw.edit.paste", "Paste", "Edit", { important: true, preventDefault: true }),
-  act("pagedraw.history.undo", "Undo", "History", { important: true, preventDefault: true }),
-  act("pagedraw.history.redo", "Redo", "History", { important: true, preventDefault: true }),
+  act("pagedraw.edit.delete", "선택 항목 삭제", "Edit", { important: true }),
+  act("pagedraw.edit.copy", "복사", "Edit", { important: true, preventDefault: true }),
+  act("pagedraw.edit.paste", "붙여넣기", "Edit", { important: true, preventDefault: true }),
+  act("pagedraw.history.undo", "실행 취소", "History", { important: true, preventDefault: true }),
+  act("pagedraw.history.redo", "다시 실행", "History", { important: true, preventDefault: true }),
 
   // ── Moodboard ─────────────────────────────────────────────────────────────
-  act("moodboard.tools.select", "Select tool", "Tools", { important: true }),
-  act("moodboard.tools.lasso", "Lasso tool", "Tools", { important: true }),
-  act("moodboard.tools.text", "Text tool", "Tools", { important: true }),
-  act("moodboard.selection.selectAll", "Select all", "Selection", {
+  act("moodboard.tools.select", "선택 도구", "Tools", { important: true }),
+  act("moodboard.tools.lasso", "올가미 도구", "Tools", { important: true }),
+  act("moodboard.tools.text", "텍스트 도구", "Tools", { important: true }),
+  act("moodboard.selection.selectAll", "모두 선택", "Selection", {
     important: true,
     preventDefault: true,
   }),
-  act("moodboard.selection.clear", "Clear selection", "Selection", { important: true }),
-  act("moodboard.edit.delete", "Delete selection", "Edit", { important: true }),
-  act("moodboard.edit.group", "Group selection", "Edit", {
+  act("moodboard.selection.clear", "선택 해제", "Selection", { important: true }),
+  act("moodboard.edit.delete", "선택 항목 삭제", "Edit", { important: true }),
+  act("moodboard.edit.group", "선택 항목 그룹화", "Edit", {
     important: true,
     preventDefault: true,
   }),
-  act("moodboard.edit.ungroup", "Ungroup selection", "Edit", {
+  act("moodboard.edit.ungroup", "그룹 해제", "Edit", {
     important: true,
     preventDefault: true,
   }),
-  act("moodboard.view.fitToContent", "Zoom to fit", "View", {
+  act("moodboard.view.fitToContent", "화면에 맞추기", "View", {
     important: true,
     preventDefault: true,
   }),
-  act("moodboard.history.undo", "Undo", "History", { important: true, preventDefault: true }),
-  act("moodboard.history.redo", "Redo", "History", { important: true, preventDefault: true }),
-  act("moodboard.view.resetViewport", "Reset zoom & pan", "View", {
+  act("moodboard.history.undo", "실행 취소", "History", { important: true, preventDefault: true }),
+  act("moodboard.history.redo", "다시 실행", "History", { important: true, preventDefault: true }),
+  act("moodboard.view.resetViewport", "줌 & 이동 초기화", "View", {
     important: true,
     preventDefault: true,
   }),
@@ -235,21 +235,21 @@ const defs: ActionDef[] = [
   // contextual action: clear the grid selection, or close whichever viewer
   // is open. The grid's own arrow-key roving focus is a11y navigation, not a
   // shortcut — nav.prev/next are ignored (not consumed) when no viewer is up.
-  act("moodboard-grid.selection.clearOrClose", "Clear selection / close viewer", "Selection", {
+  act("moodboard-grid.selection.clearOrClose", "선택 해제 / 뷰어 닫기", "Selection", {
     important: true,
   }),
-  act("moodboard-grid.edit.delete", "Delete selected items", "Edit", { important: true }),
-  act("moodboard-grid.rate.pick", "Pick (rate 5)", "Rating", { important: true }),
-  act("moodboard-grid.rate.0", "Rate 0 (clear rating)", "Rating", { important: true }),
-  act("moodboard-grid.rate.1", "Rate 1", "Rating"),
-  act("moodboard-grid.rate.2", "Rate 2", "Rating"),
-  act("moodboard-grid.rate.3", "Rate 3", "Rating"),
-  act("moodboard-grid.rate.4", "Rate 4", "Rating"),
-  act("moodboard-grid.rate.5", "Rate 5", "Rating", { important: true }),
-  act("moodboard-grid.nav.prev", "Previous item (viewer / presentation)", "Navigation", {
+  act("moodboard-grid.edit.delete", "선택 항목 삭제", "Edit", { important: true }),
+  act("moodboard-grid.rate.pick", "선택 (별 5개)", "Rating", { important: true }),
+  act("moodboard-grid.rate.0", "별 0개 (평점 지우기)", "Rating", { important: true }),
+  act("moodboard-grid.rate.1", "별 1개", "Rating"),
+  act("moodboard-grid.rate.2", "별 2개", "Rating"),
+  act("moodboard-grid.rate.3", "별 3개", "Rating"),
+  act("moodboard-grid.rate.4", "별 4개", "Rating"),
+  act("moodboard-grid.rate.5", "별 5개", "Rating", { important: true }),
+  act("moodboard-grid.nav.prev", "이전 항목 (뷰어 / 발표)", "Navigation", {
     important: true,
   }),
-  act("moodboard-grid.nav.next", "Next item (viewer / presentation)", "Navigation", {
+  act("moodboard-grid.nav.next", "다음 항목 (뷰어 / 발표)", "Navigation", {
     important: true,
   }),
 ];

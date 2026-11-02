@@ -122,7 +122,7 @@ function GridGuideOptions() {
 
 export const gridGuide = {
   id: "grid",
-  label: "Grid",
+  label: "격자",
   renderPreview: () => <GridGuidePreview />,
   renderTriggerIcon: () => <HugeiconsIcon icon={GridTableIcon} />,
   renderOverlay: () => <GridGuideOverlay />,

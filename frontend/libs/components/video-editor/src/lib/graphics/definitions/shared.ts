@@ -9,13 +9,13 @@ export type GraphicStrokeAlign = "inside" | "center" | "outside";
 
 export const STROKE_ALIGN_PARAM: ParamDefinition<"strokeAlign"> = {
   key: "strokeAlign",
-  label: "Stroke align",
+  label: "외곽선 위치",
   type: "select",
   default: "center",
   group: "stroke",
   options: [
-    { value: "inside", label: "Inside" },
-    { value: "center", label: "Center" },
-    { value: "outside", label: "Outside" },
+    { value: "inside", label: "안쪽" },
+    { value: "center", label: "가운데" },
+    { value: "outside", label: "바깥쪽" },
   ],
 };

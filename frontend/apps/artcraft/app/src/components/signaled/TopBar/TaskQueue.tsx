@@ -152,7 +152,7 @@ const CopyPromptButton = ({ prompt }: { prompt: string }) => {
   const [copied, setCopied] = useState(false);
   return (
     <Tooltip
-      content={copied ? "Copied!" : "Copy prompt"}
+      content={copied ? "복사됨!" : "프롬프트 복사"}
       position="bottom"
       strategy="fixed"
       className="text-xs"
@@ -161,7 +161,7 @@ const CopyPromptButton = ({ prompt }: { prompt: string }) => {
     >
       <button
         className="flex h-6 w-6 items-center justify-center text-base-fg/60 hover:bg-ui-controls"
-        aria-label="Copy prompt"
+        aria-label="프롬프트 복사"
         onClick={(e) => {
           e.stopPropagation();
           navigator.clipboard.writeText(prompt);
@@ -188,7 +188,7 @@ const InProgressCard = ({
   const progressPercent = Math.max(0, Math.min(100, Math.round(task.progress)));
   const isAlmostDone = task.progress >= 95;
   const timeLabel = isAlmostDone
-    ? "Almost done..."
+    ? "거의 다 됐습니다..."
     : task.estimatedTimeLeftMs != null && task.estimatedTimeLeftMs > 0
       ? formatTimeLeft(task.estimatedTimeLeftMs)
       : null;
@@ -199,7 +199,7 @@ const InProgressCard = ({
     <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden">
       <img
         src={task.refImageUrls![0]}
-        alt="Reference"
+        alt="참조"
         className="h-full w-full object-cover opacity-50"
         onError={(e) => {
           e.currentTarget.style.display = "none";
@@ -237,7 +237,7 @@ const InProgressCard = ({
               {task.title}
               {isSeedance2 && (
                 <Tooltip
-                  content="Seedance 2.0 is in Early Alpha. Generations may be slow and may experience outages."
+                  content="Seedance 2.0은 초기 알파 버전입니다. 생성이 느리거나 일시적으로 중단될 수 있습니다."
                   position="top"
                   strategy="fixed"
                   className="w-[200px] text-wrap bg-yellow-400/60"
@@ -279,7 +279,7 @@ const InProgressCard = ({
           {onDismiss && (
             <button
               className="flex h-6 w-6 items-center justify-center text-base-fg/60 hover:bg-ui-controls"
-              aria-label="Dismiss"
+              aria-label="닫기"
               onClick={(e) => {
                 e.stopPropagation();
                 onDismiss();
@@ -328,7 +328,7 @@ const CompletedCard = ({
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-[10px] text-base-fg/40">
-            Done
+            완료
           </div>
         )}
       </div>
@@ -353,7 +353,7 @@ const CompletedCard = ({
         {onDismiss && (
           <button
             className="flex h-6 w-6 items-center justify-center text-base-fg/60 hover:bg-ui-controls"
-            aria-label="Dismiss"
+            aria-label="닫기"
             onClick={(e) => {
               e.stopPropagation();
               onDismiss();
@@ -372,20 +372,20 @@ const FAILED_STATUS_LABEL: Record<string, string> = {
   attempt_failed: "Failed",
   dead: "Failed",
   cancelled_by_user: "Cancelled",
-  cancelled_by_provider: "Cancelled by provider",
+  cancelled_by_provider: "제공업체가 취소함",
   cancelled_by_us: "Cancelled",
 };
 
 const FAILURE_REASON_LABEL: Record<string, string> = {
-  rule_bans_user_image: "Image violates content policy",
-  rule_bans_user_image_with_faces: "Images with faces are not allowed",
-  rule_bans_user_text_prompt: "Text prompt violates content policy",
-  rule_bans_user_content: "Content violates content policy",
-  rule_bans_generated_video: "Generated video flagged by content policy",
-  rule_bans_generated_audio: "Generated audio flagged by content policy",
-  rule_bans_generated_content: "Generated content flagged by content policy",
-  generation_failed: "Generation failed",
-  unknown: "An unknown error occurred",
+  rule_bans_user_image: "이미지가 콘텐츠 정책을 위반합니다",
+  rule_bans_user_image_with_faces: "얼굴이 포함된 이미지는 사용할 수 없습니다",
+  rule_bans_user_text_prompt: "프롬프트가 콘텐츠 정책을 위반합니다",
+  rule_bans_user_content: "콘텐츠가 정책을 위반합니다",
+  rule_bans_generated_video: "생성된 영상이 콘텐츠 정책에 걸렸습니다",
+  rule_bans_generated_audio: "생성된 오디오가 콘텐츠 정책에 걸렸습니다",
+  rule_bans_generated_content: "생성된 콘텐츠가 콘텐츠 정책에 걸렸습니다",
+  generation_failed: "생성 실패",
+  unknown: "알 수 없는 오류가 발생했습니다",
 };
 
 const FailedCard = ({
@@ -402,7 +402,7 @@ const FailedCard = ({
     <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden">
       <img
         src={task.refImageUrls![0]}
-        alt="Reference"
+        alt="참조"
         className="h-full w-full object-cover opacity-50"
         onError={(e) => {
           e.currentTarget.style.display = "none";
@@ -491,7 +491,7 @@ const FailedCard = ({
           {onDismiss && (
             <button
               className="flex h-6 w-6 items-center justify-center text-base-fg/60 hover:bg-ui-controls"
-              aria-label="Dismiss"
+              aria-label="닫기"
               onClick={(e) => {
                 e.stopPropagation();
                 onDismiss();
@@ -546,13 +546,13 @@ export const TaskQueue = () => {
   const handleClearCompleted = (onSuccess?: () => void) => {
     setConfirmationConfig({
       isOpen: true,
-      title: "Clear completed tasks?",
+      title: "완료된 작업을 지울까요?",
       message: (
         <span className="text-sm text-white/80">
-          This will remove all completed tasks from the task queue.
+          작업 대기열에서 완료된 작업을 모두 제거합니다.
         </span>
       ),
-      primaryActionText: "Clear completed",
+      primaryActionText: "완료 항목 지우기",
       primaryActionIcon: BrushIcon,
       primaryActionBtnClassName:
         "bg-green-500/10 hover:bg-green-500/20 text-green-500",
@@ -566,13 +566,13 @@ export const TaskQueue = () => {
   const handleClearStale = () => {
     setConfirmationConfig({
       isOpen: true,
-      title: "Clear stale tasks?",
+      title: "멈춘 작업을 지울까요?",
       message: (
         <span className="text-sm text-white/80">
-          This will remove all stale/stuck in-progress tasks from the queue.
+          대기열에서 멈췄거나 응답 없는 진행 중 작업을 모두 제거합니다.
         </span>
       ),
-      primaryActionText: "Clear stale",
+      primaryActionText: "멈춘 항목 지우기",
       primaryActionIcon: Trash2Icon,
       primaryActionBtnClassName:
         "bg-orange-500/10 hover:bg-orange-500/20 text-orange-500",
@@ -585,13 +585,13 @@ export const TaskQueue = () => {
   const handleClearFailed = () => {
     setConfirmationConfig({
       isOpen: true,
-      title: "Clear failed tasks?",
+      title: "실패한 작업을 지울까요?",
       message: (
         <span className="text-sm text-white/80">
-          This will remove all failed/cancelled tasks from the queue.
+          대기열에서 실패·취소된 작업을 모두 제거합니다.
         </span>
       ),
-      primaryActionText: "Clear failed",
+      primaryActionText: "실패 항목 지우기",
       primaryActionIcon: Trash2Icon,
       primaryActionBtnClassName:
         "bg-red-500/10 hover:bg-red-500/20 text-red-500",
@@ -604,14 +604,13 @@ export const TaskQueue = () => {
   const handleRemoveAll = () => {
     setConfirmationConfig({
       isOpen: true,
-      title: "Remove all tasks?",
+      title: "모든 작업을 제거할까요?",
       message: (
         <span className="text-sm text-white/80">
-          This will remove ALL tasks (completed and in-progress) from the queue.
-          This cannot be undone.
+          대기열의 모든 작업(완료 및 진행 중)을 제거합니다. 되돌릴 수 없습니다.
         </span>
       ),
-      primaryActionText: "Nuke all",
+      primaryActionText: "전부 삭제",
       primaryActionIcon: BombIcon,
       primaryActionBtnClassName:
         "bg-red-500/10 hover:bg-red-500/20 text-red-500",
@@ -724,7 +723,7 @@ export const TaskQueue = () => {
             );
             return {
               id: t.id,
-              title: `Generating ${parts.kind || "Task"}...`,
+              title: `${parts.kind || "작업"} 생성 중...`,
               subtitle: parts.subtitle,
               progress,
               updatedAt: t.updated_at,
@@ -1005,7 +1004,7 @@ export const TaskQueue = () => {
 
   return (
     <>
-      <Tooltip content="Task Queue" position="bottom" closeOnClick={true}>
+      <Tooltip content="작업 대기열" position="bottom" closeOnClick={true}>
         <div className="relative">
           {badgeCount > 0 && (
             <div className="absolute -right-1 -top-1 z-20 flex h-[15px] min-w-[15px] items-center justify-center bg-white px-1 font-mono text-[10px] font-semibold text-black ring-2 ring-[#0b0b0c]">
@@ -1034,7 +1033,7 @@ export const TaskQueue = () => {
                     {hasNothing ? (
                       <div className="flex w-full flex-col items-center justify-center p-5 text-base-fg/60">
                         <div className="flex items-center gap-2.5 text-sm opacity-60">
-                          <ListChecksIcon /> No tasks yet
+                          <ListChecksIcon /> 아직 작업이 없습니다
                         </div>
                       </div>
                     ) : (
@@ -1042,7 +1041,7 @@ export const TaskQueue = () => {
                         {inProgress.length > 0 && (
                           <div className="mb-4">
                             <div className="mb-1 px-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-                              In Progress
+                              진행 중
                             </div>
                             {inProgress.map((t) => (
                               <InProgressCard
@@ -1061,7 +1060,7 @@ export const TaskQueue = () => {
                           <div className="mb-4">
                             <div className="mb-1 flex items-center justify-between px-1">
                               <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-red-400/70">
-                                Failed
+                                실패
                               </div>
                               <button
                                 className="text-xs tracking-wide text-red-400/70 transition-colors hover:text-red-300"
@@ -1070,7 +1069,7 @@ export const TaskQueue = () => {
                                 <XIcon
                                   
                                   className="mr-1" />
-                                Clear failed
+                                실패 항목 지우기
                               </button>
                             </div>
                             {failed.map((t) => (
@@ -1086,7 +1085,7 @@ export const TaskQueue = () => {
                           <div>
                             <div className="mb-1 flex items-center justify-between px-1">
                               <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-                                Completed
+                                완료됨
                               </div>
                               <button
                                 className="text-xs tracking-wide text-base-fg/50 transition-colors hover:text-base-fg/100"
@@ -1095,7 +1094,7 @@ export const TaskQueue = () => {
                                 <XIcon
                                   
                                   className="mr-1" />
-                                Clear completed
+                                완료 항목 지우기
                               </button>
                             </div>
                             {completed.map((t) => (
@@ -1146,7 +1145,7 @@ export const TaskQueue = () => {
                           close();
                         }}
                       >
-                        Show all
+                        모두 보기
                       </Button>
                     </div>
                   </div>
@@ -1165,35 +1164,35 @@ export const TaskQueue = () => {
         <div className="flex h-full flex-col">
           <div className="border-b border-ui-panel-border bg-ui-panel">
             <div className="flex items-center justify-between p-3">
-              <h2 className="text-lg font-semibold">Task Queue</h2>
+              <h2 className="text-lg font-semibold">작업 대기열</h2>
               <div className="flex items-center gap-2">
                 <Button
                   className="flex h-9 items-center justify-center bg-green-500/10 px-3 text-green-500 hover:bg-green-500/20"
                   onClick={() => handleClearCompleted()}
                 >
                   <BrushIcon  className="mr-1.5" />
-                  Clear completed
+                  완료 항목 지우기
                 </Button>
                 <Button
                   className="flex h-9 items-center justify-center bg-orange-500/10 px-3 text-orange-500 hover:bg-orange-500/20"
                   onClick={() => handleClearStale()}
                 >
                   <Trash2Icon  className="mr-1.5" />
-                  Clear stale
+                  멈춘 항목 지우기
                 </Button>
                 <Button
                   className="flex h-9 items-center justify-center bg-red-500/10 px-3 text-red-400 hover:bg-red-500/20"
                   onClick={() => handleClearFailed()}
                 >
                   <Trash2Icon  className="mr-1.5" />
-                  Clear failed
+                  실패 항목 지우기
                 </Button>
                 <Button
                   className="flex h-9 items-center justify-center bg-red-500/10 px-3 text-red-500 hover:bg-red-500/20"
                   onClick={() => handleRemoveAll()}
                 >
                   <BombIcon  className="mr-1.5" />
-                  Remove all
+                  모두 제거
                 </Button>
                 <div className="mr-2 h-4 w-[1px] bg-base-fg/10" />
                 <CloseButton onClick={() => setModalOpen(false)} />
@@ -1204,7 +1203,7 @@ export const TaskQueue = () => {
             {hasNothing ? (
               <div className="flex w-full flex-col items-center justify-center p-5 text-base-fg/60">
                 <div className="flex items-center gap-2.5 text-sm opacity-60">
-                  <ListChecksIcon /> No tasks yet
+                  <ListChecksIcon /> 아직 작업이 없습니다
                 </div>
               </div>
             ) : (
@@ -1212,7 +1211,7 @@ export const TaskQueue = () => {
                 {inProgress.length > 0 && (
                   <div className="mb-4">
                     <div className="mb-1 px-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-                      In Progress
+                      진행 중
                     </div>
                     {inProgress.map((t) => (
                       <InProgressCard
@@ -1228,7 +1227,7 @@ export const TaskQueue = () => {
                 {failed.length > 0 && (
                   <div className="mb-4">
                     <div className="mb-1 px-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-red-400/70">
-                      Failed
+                      실패
                     </div>
                     {failed.map((t) => (
                       <FailedCard
@@ -1242,7 +1241,7 @@ export const TaskQueue = () => {
                 {completed.length > 0 && (
                   <div>
                     <div className="mb-1 px-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-                      Completed
+                      완료됨
                     </div>
                     {completed.map((t) => (
                       <CompletedCard
@@ -1290,7 +1289,7 @@ export const TaskQueue = () => {
           setConfirmationConfig((prev) => ({ ...prev, isOpen: false }));
         }}
         primaryActionText={confirmationConfig.primaryActionText}
-        secondaryActionText="Cancel"
+        secondaryActionText="취소"
         primaryActionIcon={confirmationConfig.primaryActionIcon}
         primaryActionBtnClassName={confirmationConfig.primaryActionBtnClassName}
       />

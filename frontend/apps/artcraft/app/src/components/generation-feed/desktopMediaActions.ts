@@ -60,7 +60,7 @@ export async function downloadMediaFileToDisk(url: string, mediaClass?: string, 
       await DownloadUrl(url, { model });
     }
     if (mediaClass === FilterMediaClasses.DIMENSIONAL) {
-      toast.success(`Downloaded 3D model`);
+      toast.success(`3D 모델 다운로드 완료`);
     } else {
       toast.success(`Downloaded ${mediaClass}`);
     }
@@ -91,11 +91,11 @@ export async function downloadMediaFilesToFolder(
     return false;
   }
 
-  const toastId = toast.loading(`Saving 1 of ${downloadable.length}…`);
+  const toastId = toast.loading(`${downloadable.length}개 중 1개 저장 중…`);
   let failedCount = 0;
   for (let i = 0; i < downloadable.length; i++) {
     const item = downloadable[i];
-    toast.loading(`Saving ${i + 1} of ${downloadable.length}…`, {
+    toast.loading(`${downloadable.length}개 중 ${i + 1}개 저장 중…`, {
       id: toastId,
     });
     try {
@@ -112,16 +112,16 @@ export async function downloadMediaFilesToFolder(
 
   const saved = downloadable.length - failedCount;
   if (failedCount === 0) {
-    toast.success(`Saved ${saved} ${saved === 1 ? "file" : "files"}`, {
+    toast.success(`파일 ${saved}개 저장됨`, {
       id: toastId,
     });
   } else if (saved > 0) {
     toast.error(
-      `${failedCount} of ${downloadable.length} files failed to save`,
+      `파일 ${downloadable.length}개 중 ${failedCount}개 저장 실패`,
       { id: toastId },
     );
   } else {
-    toast.error("Could not save the selected files.", { id: toastId });
+    toast.error("선택한 파일을 저장하지 못했습니다.", { id: toastId });
   }
   return saved > 0;
 }
@@ -150,10 +150,10 @@ export async function applyMakeVideoFromImage(url: string, mediaToken?: string) 
 export async function copyShareLink(mediaToken: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(`${SHARE_URL_BASE}${mediaToken}`);
-    toast.success("Share link copied");
+    toast.success("공유 링크 복사됨");
     return true;
   } catch {
-    toast.error("Unable to copy link");
+    toast.error("링크를 복사할 수 없습니다");
     return false;
   }
 }
@@ -324,7 +324,7 @@ export async function applyRecreateFromPromptToken(
     }
   }
   if (!promptData) {
-    toast.error("Could not load the original prompt.");
+    toast.error("원본 프롬프트를 불러오지 못했습니다.");
     return;
   }
   applyRecreateFromPromptData({ promptData, mediaClass });

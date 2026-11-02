@@ -46,16 +46,16 @@ const makeMessage = (event: GenerationEnqueueFailureEvent) => {
   }
   switch (event.action) {
     case GenerationAction.GenerateImage:
-      return "Couldn't enqueue image generation!";
+      return "이미지 생성을 대기열에 넣지 못했습니다!";
     case GenerationAction.GenerateVideo:
-      return "Couldn't enqueue video generation!";
+      return "영상 생성을 대기열에 넣지 못했습니다!";
     case GenerationAction.RemoveBackground:
-      return "Couldn't enqueue background removal!";
+      return "배경 제거를 대기열에 넣지 못했습니다!";
     case GenerationAction.ImageTo3d:
       return "Couldn't enqueue 3D model generation!";
     case GenerationAction.GenerateGaussian:
       return "Couldn't enqueue 3D world generation!";
     default:
-      return "Couldn't enqueue generation!";
+      return "생성을 대기열에 넣지 못했습니다!";
   }
 }

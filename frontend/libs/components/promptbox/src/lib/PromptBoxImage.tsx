@@ -1,3 +1,4 @@
+import { labelValue } from "./common/labelValue";
 import { useState, useRef, useEffect, useMemo, ReactNode } from "react";
 import { useSignals } from "@preact/signals-react/runtime";
 import { JobContextType, UploaderState } from "@storyteller/common";
@@ -148,7 +149,7 @@ export const PromptBoxImage = ({
     if (images.length === 0) return;
     if (deck.availableImageSlots <= 0) {
       toast.error(
-        `Max ${maxImagePromptCount} image reference${maxImagePromptCount === 1 ? "" : "s"}`,
+        `이미지 참조 최대 ${maxImagePromptCount}개`,
       );
       return;
     }
@@ -195,13 +196,13 @@ export const PromptBoxImage = ({
   const deckAddActions: DeckAddAction[] = [
     {
       key: "upload-image",
-      label: "Upload",
+      label: "업로드",
       group: "image",
       onSelect: deck.openImageUpload,
     },
     {
       key: "library-image",
-      label: "Pick from library",
+      label: "라이브러리에서 선택",
       group: "image",
       onSelect: () => deck.openGallery("start"),
     },
@@ -240,17 +241,17 @@ export const PromptBoxImage = ({
 
   const [aspectRatioList, setAspectRatioList] = useState<PopoverItem[]>([
     {
-      label: "Wide",
+      label: "가로",
       selected: aspectRatio === "wide",
       icon: <AspectRatioIcon ratio={[16, 10]} />,
     },
     {
-      label: "Tall",
+      label: "세로",
       selected: aspectRatio === "tall",
       icon: <AspectRatioIcon ratio={[10, 16]} />,
     },
     {
-      label: "Square",
+      label: "정사각형",
       selected: aspectRatio === "square",
       icon: <AspectRatioIcon ratio={[1, 1]} />,
     },
@@ -297,7 +298,7 @@ export const PromptBoxImage = ({
     setAspectRatioList((prev) =>
       prev.map((item) => ({
         ...item,
-        selected: item.label.toLowerCase() === aspectRatio,
+        selected: labelValue(item.label) === aspectRatio,
       })),
     );
   }, [aspectRatio]);
@@ -306,13 +307,13 @@ export const PromptBoxImage = ({
     setResolutionList((prev) =>
       prev.map((item) => ({
         ...item,
-        selected: item.label.toLowerCase() === resolution,
+        selected: labelValue(item.label) === resolution,
       })),
     );
   }, [resolution]);
 
   const handleAspectRatioSelect = (selectedItem: PopoverItem) => {
-    setAspectRatio(selectedItem.label.toLowerCase() as any);
+    setAspectRatio(labelValue(selectedItem.label) as any);
     setAspectRatioList((prev) =>
       prev.map((item) => ({
         ...item,
@@ -322,7 +323,7 @@ export const PromptBoxImage = ({
   };
 
   const handleResolutionSelect = (selectedItem: PopoverItem) => {
-    setResolution(selectedItem.label.toLowerCase() as any);
+    setResolution(labelValue(selectedItem.label) as any);
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
@@ -359,7 +360,7 @@ export const PromptBoxImage = ({
     }
     if (isFinite(maxLen) && prompt.length > maxLen) {
       toast.error(
-        `Prompt exceeds the ${maxLen} character limit for this model`,
+        `프롬프트가 이 모델의 글자 수 제한(${maxLen}자)을 넘었습니다`,
       );
       return;
     }
@@ -436,7 +437,7 @@ export const PromptBoxImage = ({
       await onEnqueuePressed?.(prompt, generationCount, subscriberId);
     } catch (err) {
       console.error("PromptBoxImage - enqueue failed", err);
-      toast.error(commandErrorMessage(err, "Failed to start image generation. Please try again."));
+      toast.error(commandErrorMessage(err, "이미지 생성을 시작하지 못했습니다. 다시 시도해 주세요."));
     } finally {
       setIsEnqueueing(false);
     }
@@ -486,7 +487,7 @@ export const PromptBoxImage = ({
               <textarea
                 ref={textareaRef}
                 rows={1}
-                placeholder="Describe what you want in the image..."
+                placeholder="이미지에 원하는 것을 설명하세요..."
                 className="promptbox-scrollbar text-md min-h-[2.5em] w-full resize-y overflow-y-auto bg-transparent pr-8 text-base-fg placeholder-base-fg/60 transition-[height] duration-200 ease-out focus:outline-none"
                 value={prompt}
                 onChange={handleChange}
@@ -516,7 +517,7 @@ export const PromptBoxImage = ({
               {selectedModel?.canChangeAspectRatio &&
                 !selectedModel?.supportsNewAspectRatio() && (
                   <Tooltip
-                    content="Aspect Ratio (Legacy)"
+                    content="화면 비율 (구버전)"
                     position="top"
                     className="z-50"
                     closeOnClick={true}
@@ -525,7 +526,7 @@ export const PromptBoxImage = ({
                       items={aspectRatioList}
                       onSelect={handleAspectRatioSelect}
                       mode="toggle"
-                      panelTitle="Aspect Ratio (Legacy)"
+                      panelTitle="화면 비율 (구버전)"
                       showIconsInList
                       triggerIcon={getCurrentLegacyAspectRatioIcon()}
                     />
@@ -541,7 +542,7 @@ export const PromptBoxImage = ({
               {selectedModel?.canChangeResolution &&
                 !selectedModel?.supportsNewResolution() && (
                   <Tooltip
-                    content="Resolution"
+                    content="해상도"
                     position="top"
                     className="z-50"
                     closeOnClick={true}
@@ -550,7 +551,7 @@ export const PromptBoxImage = ({
                       items={resolutionList}
                       onSelect={handleResolutionSelect}
                       mode="toggle"
-                      panelTitle="Resolution"
+                      panelTitle="해상도"
                       showIconsInList
                       triggerIcon={
                         <MaximizeIcon  className="h-4 w-4" />
@@ -589,7 +590,7 @@ export const PromptBoxImage = ({
           </div>
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
             <Tooltip
-              content={isExpanded ? "Collapse" : "Expand"}
+              content={isExpanded ? "접기" : "펼치기"}
               position="top"
               className="-mb-2"
             >
@@ -625,7 +626,7 @@ export const PromptBoxImage = ({
         }
       >
         <textarea
-          placeholder="Describe what you want in the image..."
+          placeholder="이미지에 원하는 것을 설명하세요..."
           className="promptbox-scrollbar text-md h-full min-h-0 w-full resize-none overflow-y-auto rounded-[3px] bg-transparent text-base-fg placeholder-base-fg/60 focus:outline-none"
           value={prompt}
           onChange={handleChange}

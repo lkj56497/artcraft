@@ -90,9 +90,9 @@ const CREDITS_POLL_INTERVAL = 60_000; // milliseconds
 const appMenuTabs: MenuIconItem[] = [
   {
     id: "APPS",
-    label: "Home",
+    label: "홈",
     icon: <HouseIcon />,
-    description: "Explore all apps and miniapps",
+    description: "모든 앱과 미니앱 둘러보기",
     large: true,
     tooltipContent: <AppsQuickMenu />,
     tooltipInteractive: true,
@@ -129,10 +129,10 @@ const CreditsCoinWithStatus = ({
 
   const tooltipMessage =
     iconStatus === "failed"
-      ? "Couldn't refresh your balance."
+      ? "잔액을 새로고침하지 못했습니다."
       : iconStatus === "recovered"
-        ? "Balance up to date."
-        : "Refreshing your balance — current amount may not be up to date.";
+        ? "잔액이 최신 상태입니다."
+        : "잔액 새로고침 중 — 표시된 금액이 최신이 아닐 수 있습니다.";
 
   const showRetry = iconStatus === "slow" || iconStatus === "failed";
 
@@ -159,7 +159,7 @@ const CreditsCoinWithStatus = ({
               className="h-7 self-start px-2 text-xs"
               onClick={handleRetry}
             >
-              Retry
+              다시 시도
             </Button>
           )}
         </div>
@@ -349,41 +349,41 @@ export const TopBar = ({ pageName }: Props) => {
   const getPageCrumbs = (): string[] => {
     switch (tabStore.activeTabId) {
       case "2D":
-        return ["Studio", "Canvas"];
+        return ["스튜디오", "캔버스"];
       case "3D":
-        return ["Studio", "3D Editor"];
+        return ["스튜디오", "3D 편집기"];
       case "IMAGE":
-        return ["Create", "Image"];
+        return ["만들기", "이미지"];
       case "VIDEO":
-        return ["Create", "Video"];
+        return ["만들기", "영상"];
       case "AUDIO":
-        return ["Create", "Audio"];
+        return ["만들기", "오디오"];
       case "EDIT":
-        return ["Studio", "Edit Image"];
+        return ["스튜디오", "이미지 편집"];
       case "VIDEO_FRAME_EXTRACTOR":
-        return ["Studio", "Frame Extractor"];
+        return ["스튜디오", "프레임 추출기"];
       case "VIDEO_WATERMARK_REMOVAL":
-        return ["Studio", "Video Watermark Remover"];
+        return ["스튜디오", "영상 워터마크 제거"];
       case "IMAGE_WATERMARK_REMOVAL":
-        return ["Studio", "Image Watermark Remover"];
+        return ["스튜디오", "이미지 워터마크 제거"];
       case "IMAGE_TO_3D_OBJECT":
-        return ["Create", "3D Object"];
+        return ["만들기", "3D 오브젝트"];
       case "IMAGE_TO_3D_WORLD":
-        return ["Create", "3D World"];
+        return ["만들기", "3D 월드"];
       case "REMOVE_BACKGROUND":
-        return ["Studio", "Remove Background"];
+        return ["스튜디오", "배경 제거"];
       case "ANGLES":
-        return ["Create", "Angles"];
+        return ["만들기", "앵글"];
       case "STORYBOARD":
-        return ["Create", "Storyboard"];
+        return ["만들기", "스토리보드"];
       case "BACKGROUND_CHANGE":
-        return ["Studio", "Background Change"];
+        return ["스튜디오", "배경 변경"];
       case "VIDEO_EDITOR":
-        return ["Studio", "Edit Video"];
+        return ["스튜디오", "영상 편집"];
       case "MOODBOARD":
-        return ["Studio", "Moodboard"];
+        return ["스튜디오", "무드보드"];
       case "APPS":
-        return ["Home"];
+        return ["홈"];
       default:
         return ["ArtCraft"];
     }
@@ -553,7 +553,7 @@ export const TopBar = ({ pageName }: Props) => {
                   <div className="w-72 p-3 text-white">
                     <div className="mb-2 flex items-center justify-between">
                       <span className="text-sm font-medium text-white/70">
-                        Your credit balance
+                        내 크레딧 잔액
                       </span>
                       <button
                         className="text-sm font-medium text-primary transition-colors hover:text-primary-300"
@@ -562,7 +562,7 @@ export const TopBar = ({ pageName }: Props) => {
                           toggleCreditsModal();
                         }}
                       >
-                        Buy credits
+                        크레딧 구매
                       </button>
                     </div>
                     <div className="flex items-center gap-2 text-3xl font-semibold tracking-tight text-white">
@@ -578,7 +578,7 @@ export const TopBar = ({ pageName }: Props) => {
                       }}
                     >
                       <CalculatorIcon />
-                      Cost calculator
+                      비용 계산기
                     </button>
 
                     <div className="mt-3 flex gap-2">
@@ -590,7 +590,7 @@ export const TopBar = ({ pageName }: Props) => {
                           handleOpenBillingSettings();
                         }}
                       >
-                        See details
+                        자세히 보기
                       </Button>
                       <Button
                         variant="primary"
@@ -601,7 +601,7 @@ export const TopBar = ({ pageName }: Props) => {
                         }}
                         icon={GemIcon}
                       >
-                        Support
+                        지원
                       </Button>
                     </div>
                   </div>
@@ -615,7 +615,7 @@ export const TopBar = ({ pageName }: Props) => {
                   onClick={toggleSubscriptionModal}
                   className="h-8 px-3"
                 >
-                  Upgrade
+                  업그레이드
                 </Button>
               )}
 
@@ -624,20 +624,20 @@ export const TopBar = ({ pageName }: Props) => {
               <button
                 type="button"
                 onClick={handleOpenGalleryModal}
-                aria-label="My Library"
+                aria-label="내 라이브러리"
                 className="flex h-8 items-center gap-1.5 rounded-[3px] border border-white/15 px-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-white/80 transition-colors hover:border-white/30 hover:bg-white/10"
               >
                 <ImagesIcon className="text-[11px]" />
                 <span className="hidden whitespace-nowrap xl:block">
-                  My Library
+                  내 라이브러리
                 </span>
               </button>
 
               <UploadImagesButton />
 
-              <Tooltip content="Settings" position="bottom" delay={300}>
+              <Tooltip content="설정" position="bottom" delay={300}>
                 <Button
-                  aria-label="Settings"
+                  aria-label="설정"
                   variant="secondary"
                   icon={SettingsIcon}
                   iconClassName="h-4 w-4 shrink-0"

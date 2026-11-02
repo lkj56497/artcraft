@@ -26,7 +26,7 @@ const getUnsupportedVideoDescription = ({
 }: {
   codec: VideoFileData["codec"];
 }): string => {
-  const codecLabel = codec ? codec.toUpperCase() : "this video codec";
+  const codecLabel = codec ? codec.toUpperCase() : "이 영상 코덱";
 
   return codec === "hevc"
     ? `${codecLabel} cannot be decoded in this browser, so this clip may not preview correctly. Convert it to H.264 MP4 or try importing it in Safari.`
@@ -58,7 +58,7 @@ async function generateImageThumbnail({
         });
       } catch (error) {
         reject(
-          error instanceof Error ? error : new Error("Could not render image"),
+          error instanceof Error ? error : new Error("이미지를 렌더링할 수 없습니다"),
         );
       } finally {
         URL.revokeObjectURL(objectUrl);
@@ -69,7 +69,7 @@ async function generateImageThumbnail({
     image.addEventListener("error", () => {
       URL.revokeObjectURL(objectUrl);
       image.remove();
-      reject(new Error("Could not load image"));
+      reject(new Error("이미지를 불러올 수 없습니다"));
     });
 
     image.src = objectUrl;
@@ -111,7 +111,7 @@ export async function processMediaAssets({
     const fileType = getMediaTypeFromFile({ file });
 
     if (!fileType) {
-      toast.error(`Unsupported file type: ${file.name}`);
+      toast.error(`지원하지 않는 파일 형식: ${file.name}`);
       continue;
     }
 
@@ -147,7 +147,7 @@ export async function processMediaAssets({
           thumbnailUrl = videoData.thumbnailUrl ?? undefined;
 
           if (!videoData.canDecode) {
-            toast.error(`Can't preview ${file.name}`, {
+            toast.error(`${file.name} 미리보기 불가`, {
               description: getUnsupportedVideoDescription({
                 codec: videoData.codec,
               }),
@@ -157,9 +157,9 @@ export async function processMediaAssets({
           const message =
             error instanceof Error
               ? error.message
-              : "Could not process video";
+              : "영상을 처리할 수 없습니다";
 
-          toast.error(`Couldn't process ${file.name}`, {
+          toast.error(`${file.name} 처리 실패`, {
             description: message,
           });
         }
@@ -200,7 +200,7 @@ export async function processMediaAssets({
       }
     } catch (error) {
       console.error("Error processing file:", file.name, error);
-      toast.error(`Failed to process ${file.name}`);
+      toast.error(`${file.name} 처리 실패`);
       if (resolved && mediaSource.releaseResolved) {
         mediaSource.releaseResolved(resolved);
       }
@@ -239,7 +239,7 @@ const getMediaDuration = ({ file }: { file: File }): Promise<number> => {
     });
 
     element.addEventListener("error", () => {
-      reject(new Error("Could not load media"));
+      reject(new Error("미디어를 불러올 수 없습니다"));
       URL.revokeObjectURL(objectUrl);
       element.remove();
     });

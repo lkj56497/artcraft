@@ -14,7 +14,7 @@ export enum TutorialCategory {
 export const defaultTutorials: TutorialItem[] = [
   {
     id: "turn-images-into-objects",
-    title: "Turn Images into 3D Objects",
+    title: "이미지를 3D 오브젝트로 바꾸기",
     thumbnailUrl:
       "/resources/images/tutorial-thumbnails/Turn_Images_Into_Objects.jpg",
     videoUrl: "https://youtu.be/t8F-sy_zyK4?si=P8lSzuiwSgdRttKa",
@@ -22,14 +22,14 @@ export const defaultTutorials: TutorialItem[] = [
   },
   {
     id: "2d-editor-basics",
-    title: "Image Editor Basics",
+    title: "이미지 편집기 기초",
     thumbnailUrl: "/resources/images/tutorial-thumbnails/2D_Editor_Basics.jpg",
     videoUrl: "https://youtu.be/ZASPqlqUBQc?si=U9yRn6KETNJKaUAo",
     category: TutorialCategory.Canvas2D,
   },
   {
     id: "3d-editor-posing",
-    title: "3D Stage & Posing",
+    title: "3D 스테이지 & 포즈",
     thumbnailUrl: "/resources/images/tutorial-thumbnails/3D_Editor_Basics.jpg",
     videoUrl: "https://youtu.be/pM4CxN-isrY?si=XDyG5C1aMIL4KK5O",
     category: TutorialCategory.Editor3D,

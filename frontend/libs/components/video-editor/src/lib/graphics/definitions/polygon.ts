@@ -20,20 +20,20 @@ interface PolygonParams {
 const POLYGON_PARAMS: ParamDefinition<keyof PolygonParams & string>[] = [
   {
     key: "fill",
-    label: "Fill",
+    label: "채우기",
     type: "color",
     default: "#ffffff",
   },
   {
     key: "stroke",
-    label: "Color",
+    label: "색상",
     type: "color",
     default: "#000000",
     group: "stroke",
   },
   {
     key: "strokeWidth",
-    label: "Width",
+    label: "너비",
     type: "number",
     default: 0,
     min: 0,
@@ -45,7 +45,7 @@ const POLYGON_PARAMS: ParamDefinition<keyof PolygonParams & string>[] = [
   STROKE_ALIGN_PARAM,
   {
     key: "sides",
-    label: "Sides",
+    label: "변 개수",
     type: "number",
     default: 5,
     min: 3,
@@ -55,7 +55,7 @@ const POLYGON_PARAMS: ParamDefinition<keyof PolygonParams & string>[] = [
   },
   {
     key: "cornerRadius",
-    label: "Corner radius",
+    label: "모서리 둥글기",
     type: "number",
     default: 0,
     min: 0,

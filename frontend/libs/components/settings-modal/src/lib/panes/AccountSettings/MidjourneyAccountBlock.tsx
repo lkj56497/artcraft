@@ -60,10 +60,10 @@ export const MidjourneyAccountBlock = () => {
     <div className="flex items-center justify-between gap-3">
       <div className="flex min-w-0 flex-col gap-0.5">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em]">
-          Midjourney account
+          Midjourney 계정
         </p>
         <p className="truncate text-sm font-medium text-base-fg/80">
-          {midjourneySession?.payload?.maybe_email || "Not logged in"}
+          {midjourneySession?.payload?.maybe_email || "로그인하지 않음"}
         </p>
       </div>
       <Button

@@ -99,12 +99,12 @@ export const PreviewEngineCamera = () => {
             )}
           >
             <FocusIcon  className="text-sm" />
-            <p className="mt-[2px] text-sm font-medium">Camera View</p>
+            <p className="mt-[2px] text-sm font-medium">카메라 뷰</p>
           </div>
 
           <div className="flex gap-1.5">
             {editorState === EditorStates.CAMERA_VIEW && (
-              <Tooltip content="Toggle Letterbox" position={"top"}>
+              <Tooltip content="레터박스 전환" position={"top"}>
                 <ButtonIcon
                   icon={editorLetterBox ? BlindsIcon : PanelTopOpenIcon}
                   onClick={() => toggleEditorLetterBox()}
@@ -118,7 +118,7 @@ export const PreviewEngineCamera = () => {
               onClick={handleButtonCameraView}
               className="rounded-md px-2 py-1 text-sm"
             >
-              {editorState === EditorStates.EDIT ? "Enter View" : "Exit View"}
+              {editorState === EditorStates.EDIT ? "뷰 들어가기" : "뷰 나가기"}
             </Button>
           </div>
         </div>

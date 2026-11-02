@@ -44,7 +44,7 @@ pub async fn open_sora_login_window(
   let window = WebviewWindowBuilder::new(app, LOGIN_WINDOW_NAME, url)
       //.user_agent(openai_sora_client::credentials::USER_AGENT)
       .always_on_top(true)
-      .title("Login to OpenAI's Sora")
+      .title("OpenAI Sora 로그인")
       .center()
       .resizable(true)
       .visible(true)

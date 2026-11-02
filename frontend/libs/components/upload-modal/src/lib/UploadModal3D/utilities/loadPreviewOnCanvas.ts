@@ -234,12 +234,12 @@ export const loadPreviewOnCanvas = ({
   } else if (file.name.endsWith(".vmd")) {
     statusCallback({
       type: "Preview Error",
-      message: "Sorry, Preview is not available to VMD files yet",
+      message: "죄송합니다. VMD 파일은 아직 미리보기를 지원하지 않습니다",
     });
   } else {
     statusCallback({
       type: "Preview Error",
-      message: "Unknown file type for loader",
+      message: "불러올 수 없는 파일 형식입니다",
     });
   }
 
@@ -366,7 +366,7 @@ const glbLoader = ({
       renderer.render(scene, camera);
       statusCallback({
         type: "OK",
-        message: "Preview should be available",
+        message: "미리보기가 곧 표시됩니다",
       });
     },
     undefined,
@@ -415,7 +415,7 @@ const pmdLoader = ({
       renderer.render(scene, camera);
       statusCallback({
         type: "OK",
-        message: "Preview should be available",
+        message: "미리보기가 곧 표시됩니다",
       });
     },
     undefined,
@@ -460,6 +460,6 @@ const imagePlaneLoader = ({
   scene.add(obj);
   statusCallback({
     type: "OK",
-    message: "Preview should be available",
+    message: "미리보기가 곧 표시됩니다",
   });
 };

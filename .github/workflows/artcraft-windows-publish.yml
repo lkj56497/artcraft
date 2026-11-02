@@ -1,6 +1,7 @@
 name: "Artcraft Windows Publish"
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - release
@@ -99,9 +100,9 @@ jobs:
           SQLX_OFFLINE: true
         with:
           projectPath: ./crates/desktop/artcraft
-          tagName: artcraft-v__VERSION__ # the action automatically replaces __VERSION__ with the app version.
-          releaseName: "ArtCraft v__VERSION__"
-          releaseBody: "Production build of ArtCraft. See the assets below to download and install."
-          releaseDraft: true
+          tagName: artcraft-ko-v__VERSION__ # the action automatically replaces __VERSION__ with the app version.
+          releaseName: "ArtCraft 한국어판 v__VERSION__"
+          releaseBody: "ArtCraft 한국어판 Windows 설치 파일입니다. 아래 Assets에서 .exe(권장) 또는 .msi를 받아 설치하세요."
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}

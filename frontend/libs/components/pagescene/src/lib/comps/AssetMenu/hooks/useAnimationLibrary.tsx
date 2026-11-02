@@ -80,7 +80,7 @@ const fetchFeaturedAnimations = async (
   const result = await fetchFeaturedMediaItems(
     {
       ...ANIMATION_FILTERS,
-      defaultErrorMessage: "Error fetching featured animations",
+      defaultErrorMessage: "추천 애니메이션을 불러오는 중 오류",
     },
     adapter,
   );
@@ -101,7 +101,7 @@ const fetchUserAnimationsShared = async (
   const result = await fetchUserMediaItems(
     {
       ...ANIMATION_FILTERS,
-      defaultErrorMessage: "Error fetching your animations",
+      defaultErrorMessage: "내 애니메이션을 불러오는 중 오류",
       suppressErrorToast: true,
       nextPageIndex: pageIndex,
     },

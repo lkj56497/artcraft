@@ -14,7 +14,7 @@ export const UploadImagesButton = ({ className }: Props) => {
 
   return (
     <>
-      <Tooltip content="Upload images" position="bottom" delay={300}>
+      <Tooltip content="이미지 업로드" position="bottom" delay={300}>
         <Button
           variant="secondary"
           icon={UploadIcon}
@@ -30,7 +30,7 @@ export const UploadImagesButton = ({ className }: Props) => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         onSuccess={() => setIsOpen(false)}
-        title="Upload an Image"
+        title="이미지 업로드"
         titleIcon={ImagesIcon}
       />
     </>

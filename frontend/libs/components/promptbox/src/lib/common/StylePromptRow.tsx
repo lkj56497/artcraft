@@ -41,7 +41,7 @@ export function StylePromptRow({
       {value.length > 0 && (
         <button
           type="button"
-          aria-label="Clear style"
+          aria-label="스타일 지우기"
           onClick={() => onChange("")}
           className="flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] text-base-fg/40 transition-colors hover:bg-white/10 hover:text-base-fg"
         >

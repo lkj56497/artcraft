@@ -190,7 +190,7 @@ export const PromptBoxAudio = ({
         icon: (
           <img
             src={getCreatorIconPathForModelId(model.model)}
-            alt={`${model.model} logo`}
+            alt={`${model.model} 로고`}
             className="h-4 w-4 icon-auto-contrast"
           />
         ),
@@ -204,7 +204,7 @@ export const PromptBoxAudio = ({
   const handleReferenceAudiosChange = (audios: typeof referenceAudios) => {
     if (audios.length > 0 && referenceImages.length > 0) {
       setReferenceImages([]);
-      toast.error("Removed image reference — it can't be combined with audio");
+      toast.error("이미지 참조를 제거했습니다 — 오디오와 함께 쓸 수 없습니다");
     }
     setReferenceAudios(audios);
   };
@@ -267,7 +267,7 @@ export const PromptBoxAudio = ({
         const duration = durations[i]!;
         if (total + duration > AUDIO_REF_MAX_DURATION_SECONDS) {
           toast.error(
-            `Total audio duration cannot exceed ${AUDIO_REF_MAX_DURATION_SECONDS}s`,
+            `오디오 총 길이는 ${AUDIO_REF_MAX_DURATION_SECONDS}초를 넘을 수 없습니다`,
           );
           break;
         }
@@ -292,7 +292,7 @@ export const PromptBoxAudio = ({
   const handleReferenceImagesChange = (images: typeof referenceImages) => {
     if (images.length > 0 && referenceAudios.length > 0) {
       setReferenceAudios([]);
-      toast.error("Removed audio reference — it can't be combined with an image");
+      toast.error("오디오 참조를 제거했습니다 — 이미지와 함께 쓸 수 없습니다");
     }
     setReferenceImages(images);
   };
@@ -373,7 +373,7 @@ export const PromptBoxAudio = ({
 
     if (missingRequiredAudioRef) {
       toast.error(
-        `${selectedModel.full_name ?? "This model"} needs an audio track to work from — add one first`,
+        `${selectedModel.full_name ?? "이 모델"}은(는) 오디오 트랙이 필요합니다 — 먼저 추가하세요`,
       );
       return;
     }
@@ -406,11 +406,11 @@ export const PromptBoxAudio = ({
 
       if (!result.success) {
         if (result.errorCode === 402) {
-          toast.error("Not enough credits for this generation");
+          toast.error("이 생성에 필요한 크레딧이 부족합니다");
         } else if (result.errorCode != null && result.errorCode >= 500) {
           toast.error(OMNI_GENERATE_OUTAGE_MESSAGE);
         } else {
-          toast.error(result.error ?? "Failed to start audio generation");
+          toast.error(result.error ?? "오디오 생성을 시작하지 못했습니다");
         }
         return;
       }
@@ -418,21 +418,21 @@ export const PromptBoxAudio = ({
       await onEnqueuePressed?.(result.jobTokens);
     } catch (err) {
       console.error("PromptBoxAudio - enqueue failed", err);
-      toast.error("Failed to start audio generation. Please try again.");
+      toast.error("오디오 생성을 시작하지 못했습니다. 다시 시도해 주세요.");
     } finally {
       setIsEnqueueing(false);
     }
   };
 
   const modelSelector: ReactNode = (
-    <Tooltip content="Model" position="top" className="z-50" closeOnClick>
+    <Tooltip content="모델" position="top" className="z-50" closeOnClick>
       <PopoverMenu
         items={modelItems}
         onSelect={(item) => {
           if (item.action) setSelectedModelId(item.action);
         }}
         mode="toggle"
-        panelTitle="Select Model"
+        panelTitle="모델 선택"
         panelClassName="w-[360px]"
         richList
         triggerIcon={
@@ -451,7 +451,7 @@ export const PromptBoxAudio = ({
     <>
       {hasInstrumental && (
         <Tooltip
-          content={isInstrumental ? "Instrumental: ON" : "Instrumental: OFF"}
+          content={isInstrumental ? "연주곡: 켜짐" : "연주곡: 꺼짐"}
           position="top"
           className="z-50"
           delay={200}
@@ -460,14 +460,14 @@ export const PromptBoxAudio = ({
             isActive={isInstrumental}
             icon={MicOffIcon}
             activeIcon={MicOffIcon}
-            label="Instrumental"
+            label="연주곡"
             onClick={() => setIsInstrumental(!isInstrumental)}
           />
         </Tooltip>
       )}
       {hasKeepLyrics && (
         <Tooltip
-          content={keepLyrics ? "Keep lyrics: ON" : "Keep lyrics: OFF"}
+          content={keepLyrics ? "가사 유지: 켜짐" : "가사 유지: 꺼짐"}
           position="top"
           className="z-50"
           delay={200}
@@ -476,14 +476,14 @@ export const PromptBoxAudio = ({
             isActive={keepLyrics}
             icon={MicIcon}
             activeIcon={MicIcon}
-            label="Keep lyrics"
+            label="가사 유지"
             onClick={() => setKeepLyrics(!keepLyrics)}
           />
         </Tooltip>
       )}
       {hasLoopable && (
         <Tooltip
-          content={isLoopable ? "Loop: ON" : "Loop: OFF"}
+          content={isLoopable ? "반복: 켜짐" : "반복: 꺼짐"}
           position="top"
           className="z-50"
           delay={200}
@@ -492,7 +492,7 @@ export const PromptBoxAudio = ({
             isActive={isLoopable}
             icon={RepeatIcon}
             activeIcon={RepeatIcon}
-            label="Loop"
+            label="반복"
             onClick={() => setIsLoopable(!isLoopable)}
           />
         </Tooltip>
@@ -569,7 +569,7 @@ export const PromptBoxAudio = ({
               <textarea
                 ref={textareaRef}
                 rows={1}
-                placeholder="Describe the music or sound you want..."
+                placeholder="원하는 음악이나 소리를 설명하세요..."
                 className="promptbox-scrollbar text-md min-h-[2.5em] w-full resize-y overflow-y-auto bg-transparent pr-8 text-base-fg placeholder-base-fg/60 transition-[height] duration-200 ease-out focus:outline-none"
                 value={prompt}
                 onChange={handleChange}
@@ -595,7 +595,7 @@ export const PromptBoxAudio = ({
             <div className="flex items-center gap-1.5">
               {missingRequiredAudioRef && (
                 <span className="flex animate-pulse items-center gap-1.5 text-xs font-medium text-red-500">
-                  Audio track required
+                  오디오 트랙이 필요합니다
                 </span>
               )}
               <PromptClearAllButton
@@ -614,7 +614,7 @@ export const PromptBoxAudio = ({
 
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
             <Tooltip
-              content={isExpanded ? "Collapse" : "Expand"}
+              content={isExpanded ? "접기" : "펼치기"}
               position="top"
               className="-mb-2"
             >
@@ -668,7 +668,7 @@ export const PromptBoxAudio = ({
         }
       >
         <textarea
-          placeholder="Describe the music or sound you want..."
+          placeholder="원하는 음악이나 소리를 설명하세요..."
           className="promptbox-scrollbar text-md h-full min-h-0 w-full resize-none overflow-y-auto rounded-[3px] bg-transparent text-base-fg placeholder-base-fg/60 focus:outline-none"
           value={prompt}
           onChange={handleChange}

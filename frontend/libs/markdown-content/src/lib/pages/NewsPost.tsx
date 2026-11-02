@@ -20,13 +20,13 @@ export const NewsPost = ({ slug: propSlug, basePath }: NewsPostProps) => {
     return (
       <div className="relative min-h-screen text-white">
         <div className="relative z-10 mx-auto w-full max-w-[1200px] px-4 sm:px-8 pt-28 sm:pt-36 pb-12">
-          <h1 className="text-3xl font-bold">Not found</h1>
-          <p className="text-white/70">We couldn't find this article.</p>
+          <h1 className="text-3xl font-bold">찾을 수 없음</h1>
+          <p className="text-white/70">이 글을 찾을 수 없습니다.</p>
           <Link
             to={basePath}
             className="text-blue-400 mt-4 inline-block hover:underline"
           >
-            Return to News
+            소식으로 돌아가기
           </Link>
         </div>
       </div>
@@ -46,7 +46,7 @@ export const NewsPost = ({ slug: propSlug, basePath }: NewsPostProps) => {
             className="rounded-lg px-4 py-2 text-sm border border-white/10 bg-white/5 hover:bg-white/10 inline-flex items-center gap-2 transition-colors"
           >
             <ChevronLeftIcon />
-            Back to News
+            소식으로 돌아가기
           </Link>
           {post.date && (
             <span className="text-white/50 font-mono text-sm">{post.date}</span>

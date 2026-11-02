@@ -4,7 +4,7 @@ import { useResolvedKeybinds } from "../useResolvedKeybinds";
 import { useCheatsheetPin } from "./useCheatsheetVisibility";
 import { ACTIONS_BY_SURFACE } from "../registry";
 import { KbdBindings } from "../components/Kbd";
-import { ActionDef, KeyGroup, Surface } from "../types";
+import { ActionDef, KEY_GROUP_LABELS_KO, KeyGroup, Surface } from "../types";
 
 const GROUP_ORDER: KeyGroup[] = [
   "Camera",
@@ -63,10 +63,10 @@ export function Cheatsheet({
       >
         <div className="mb-3 flex items-center justify-between">
           <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60">
-            Keyboard shortcuts
+            단축키
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/40">
-            {selectedPreset} preset
+            {selectedPreset} 프리셋
           </span>
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -76,7 +76,7 @@ export function Cheatsheet({
             return (
               <div key={group}>
                 <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.13em] text-white/45">
-                  {group}
+                  {KEY_GROUP_LABELS_KO[group] ?? group}
                 </div>
                 <ul className="flex flex-col gap-1.5">
                   {rows.map((a) => (
@@ -95,7 +95,7 @@ export function Cheatsheet({
         </div>
         {pinned && (
           <div className="mt-5 border-t border-white/15 pt-3 text-center font-mono text-[11px] uppercase tracking-[0.12em] text-white/40">
-            Press Esc or click outside to close
+            Esc를 누르거나 바깥을 클릭하면 닫힙니다
           </div>
         )}
       </div>

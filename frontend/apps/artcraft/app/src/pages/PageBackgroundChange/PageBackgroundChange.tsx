@@ -59,8 +59,8 @@ export const PageBackgroundChange = () => {
     if (!result.success) {
       const isExpected = result.error_code_str === VFX_NOT_AVAILABLE_ERROR;
       const message = isExpected
-        ? "Background change backend coming soon. Your inputs are saved."
-        : result.error_message || "Failed to submit background change job.";
+        ? "배경 변경 서버는 곧 제공됩니다. 입력한 내용은 저장되었습니다."
+        : result.error_message || "배경 변경 작업을 제출하지 못했습니다.";
       failResult(id, message);
       if (isExpected) toast(message);
       else toast.error(message);
@@ -93,7 +93,7 @@ export const PageBackgroundChange = () => {
           }
         : undefined,
     });
-    toast("Loaded showcase. Edit and Generate.");
+    toast("예시를 불러왔습니다. 수정 후 생성하세요.");
   }, [selectedShowcaseId, loadFromShowcase]);
 
   return (
@@ -113,8 +113,8 @@ export const PageBackgroundChange = () => {
           style={{ paddingBottom: Math.max(promptBoxHeight + 36, 240) }}
         >
           <CreateEmptyState
-            title="No background changes yet"
-            subtitle="Upload a source video and a reference image, then optionally add a prompt."
+            title="아직 배경 변경 결과가 없습니다"
+            subtitle="원본 영상과 참조 이미지를 업로드하고, 필요하면 프롬프트를 추가하세요."
           />
         </div>
       ) : (

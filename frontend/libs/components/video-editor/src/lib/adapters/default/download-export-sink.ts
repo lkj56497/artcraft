@@ -47,7 +47,7 @@ export const downloadExportSink: ExportSinkAdapter = {
       onProgress?.({
         destination: "disk",
         status: "error",
-        error: error instanceof Error ? error.message : "Download failed",
+        error: error instanceof Error ? error.message : "다운로드 실패",
       });
       throw error;
     }

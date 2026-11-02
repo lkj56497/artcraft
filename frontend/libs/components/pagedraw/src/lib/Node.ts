@@ -139,7 +139,7 @@ export class Node {
   setImageFromFile(file: File): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!file.type.startsWith('image/')) {
-        reject(new Error('File is not an image'));
+        reject(new Error('이미지 파일이 아닙니다'));
         return;
       }
 
@@ -157,7 +157,7 @@ export class Node {
           img.onerror = reject;
           img.src = dataUrl;
         } else {
-          reject(new Error('Failed to read file'));
+          reject(new Error('파일을 읽지 못했습니다'));
         }
       };
       reader.onerror = reject;

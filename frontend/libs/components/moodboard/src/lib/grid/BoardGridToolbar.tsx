@@ -79,25 +79,25 @@ export const BoardGridToolbar = ({
         <div className="flex items-center gap-1">
           <ToolbarIconButton
             icon={UploadIcon}
-            label="Upload"
+            label="업로드"
             onClick={onUpload}
           />
           {canPickLibrary && (
             <ToolbarIconButton
               icon={ImagesIcon}
-              label="From library"
+              label="라이브러리에서"
               onClick={onLibrary}
             />
           )}
           <ToolbarIconButton
             icon={StickyNoteIcon}
-            label="Add note"
+            label="메모 추가"
             onClick={onAddNote}
           />
           <ColorPickerPopover onAdd={onAddColor} />
           <ToolbarIconButton
             icon={LayersIcon}
-            label="New section"
+            label="새 섹션"
             onClick={onNewSection}
           />
         </div>
@@ -113,7 +113,7 @@ export const BoardGridToolbar = ({
                 key={d}
                 type="button"
                 title={DENSITY_LABEL[d]}
-                aria-label={`${DENSITY_LABEL[d]} density`}
+                aria-label={`밀도: ${DENSITY_LABEL[d]}`}
                 onClick={() => onDensityChange(d)}
                 className={[
                   "flex h-7 w-7 items-center justify-center rounded-full transition-colors duration-150",
@@ -139,10 +139,10 @@ export const BoardGridToolbar = ({
           type="button"
           title={
             ratingFilter > 0
-              ? `Showing ${ratingFilter}+ stars`
-              : "Filter by rating"
+              ? `별 ${ratingFilter}개 이상 표시 중`
+              : "평점으로 필터"
           }
-          aria-label="Filter by rating"
+          aria-label="평점으로 필터"
           onClick={onCycleRatingFilter}
           className={[
             "flex h-8 items-center gap-1 rounded-full px-2.5 transition-colors duration-150",
@@ -154,7 +154,7 @@ export const BoardGridToolbar = ({
         >
           <StarIcon  className="h-3.5 w-3.5" />
           <span className="text-xs font-semibold tabular-nums">
-            {ratingFilter > 0 ? `${ratingFilter}+` : "All"}
+            {ratingFilter > 0 ? `${ratingFilter}+` : "전체"}
           </span>
         </button>
 
@@ -217,7 +217,7 @@ const BoardTitle = ({
   return (
     <button
       type="button"
-      title="Rename board"
+      title="보드 이름 변경"
       onClick={() => {
         setDraft(name);
         setEditing(true);

@@ -55,7 +55,7 @@ export function ActionReminderModal({
         titleText = customTitle || "Link Your OpenAI Sora Account";
         break;
       case "artcraftLogin":
-        titleText = customTitle || "Login to ArtCraft";
+        titleText = customTitle || "ArtCraft 로그인";
         break;
       default:
         titleText = customTitle || "Action Required";
@@ -70,19 +70,17 @@ export function ActionReminderModal({
       titleText = customTitle || "Link Your OpenAI Account";
       messageContent = customMessage || (
         <p>
-          To use this feature, please connect your OpenAI account. This allows
-          us to leverage your existing subscription.
+          이 기능을 쓰려면 OpenAI 계정을 연결하세요. 기존 구독을 그대로 활용할 수 있습니다.
         </p>
       );
-      primaryActionBtnText = customPrimaryActionText || "Login with OpenAI";
+      primaryActionBtnText = customPrimaryActionText || "OpenAI로 로그인";
       primaryActionIcon = customPrimaryActionIcon || LogInIcon;
       primaryActionBtnClassName = customPrimaryActionBtnClassName || "";
       break;
     case "artcraftLogin":
       messageContent = customMessage || (
         <p className="text-sm text-white/70">
-          Please log in or sign up to ArtCraft to proceed. This will allow you
-          to save your work and access all features.
+          계속하려면 ArtCraft에 로그인하거나 가입하세요. 작업을 저장하고 모든 기능을 사용할 수 있습니다.
         </p>
       );
       primaryActionBtnText = customPrimaryActionText || "Login / Sign Up";
@@ -92,7 +90,7 @@ export function ActionReminderModal({
     default:
       messageContent = customMessage || (
         <p className="text-sm text-white/70">
-          Please complete the required action.
+          필요한 작업을 완료해 주세요.
         </p>
       );
       primaryActionBtnText = customPrimaryActionText || "Proceed";

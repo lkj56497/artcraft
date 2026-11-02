@@ -58,7 +58,7 @@ export function ShortcutsDialog({
         });
         if (conflict) {
           toast.error(
-            `Key "${keyString}" is already bound to "${conflict.existingAction}"`,
+            `"${keyString}" 키는 이미 "${conflict.existingAction}"에 지정되어 있습니다`,
           );
           setRecordingShortcut(null);
           return;
@@ -112,7 +112,7 @@ export function ShortcutsDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="flex max-h-[80vh] max-w-2xl flex-col p-0">
         <DialogHeader>
-          <DialogTitle>Keyboard shortcuts</DialogTitle>
+          <DialogTitle>단축키</DialogTitle>
         </DialogHeader>
 
         <DialogBody className="scrollbar-thin grow overflow-y-auto">
@@ -142,7 +142,7 @@ export function ShortcutsDialog({
         </DialogBody>
         <DialogFooter>
           <Button variant="destructive" onClick={resetToDefaults}>
-            Reset to default
+            기본값으로 초기화
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -225,7 +225,7 @@ function EditableShortcutKey({
       size="sm"
       onClick={handleClick}
       title={
-        isRecording ? "Press any key combination..." : "Click to edit shortcut"
+        isRecording ? "원하는 키 조합을 누르세요..." : "클릭해서 단축키 편집"
       }
     >
       {children}

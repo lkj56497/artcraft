@@ -87,7 +87,7 @@ const ArrowButton = ({ direction, disabled, onClick }: ArrowButtonProps) => (
     type="button"
     onClick={onClick}
     disabled={disabled}
-    aria-label={direction === "prev" ? "Previous showcase" : "Next showcase"}
+    aria-label={direction === "prev" ? "이전 예시" : "다음 예시"}
     className={twMerge(
       "flex h-7 w-7 items-center justify-center rounded-full text-white/60 transition-colors",
       disabled

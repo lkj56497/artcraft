@@ -20,22 +20,18 @@ export const MiscSettingsPane = (args: MiscSettingsPaneProps) => {
     <div className="space-y-4 text-base-fg">
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex flex-col gap-0.5">
-          <Label htmlFor="enter-to-generate">Enter to generate</Label>
+          <Label htmlFor="enter-to-generate">Enter로 생성</Label>
           <p className="text-xs opacity-70">
-            When on, pressing Enter submits the prompt and Shift+Enter adds a
-            new line. When off (default), both Enter and Shift+Enter add a new
-            line - use only the button to submit.
+            켜면 Enter로 프롬프트를 제출하고 Shift+Enter로 줄을 바꿉니다. 끄면(기본값) Enter와 Shift+Enter 모두 줄바꿈이며, 제출은 버튼으로만 합니다.
           </p>
         </div>
         <Switch enabled={enterToGenerate} setEnabled={setEnterToGenerate} />
       </div>
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex flex-col gap-0.5">
-          <Label htmlFor="group-models-by-family">Group models by family</Label>
+          <Label htmlFor="group-models-by-family">모델을 계열별로 묶기</Label>
           <p className="text-xs opacity-70">
-            When on (default), the model picker groups models into submenus by
-            family, like Seedance or Veo. When off, every model shows in one
-            flat list.
+            켜면(기본값) 모델 선택기에서 Seedance, Veo처럼 계열별 하위 메뉴로 묶어 보여줍니다. 끄면 모든 모델을 한 목록에 표시합니다.
           </p>
         </div>
         <Switch
@@ -46,14 +42,10 @@ export const MiscSettingsPane = (args: MiscSettingsPaneProps) => {
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex flex-col gap-0.5">
           <Label htmlFor="cheatsheet-sticky">
-            Keep shortcut cheatsheet open
+            단축키 안내 계속 표시
           </Label>
           <p className="text-xs opacity-70">
-            In the editors, holding Ctrl (⌘ on Mac) alone for a few seconds
-            shows a cheatsheet of the keyboard shortcuts. When on, it stays on
-            screen after you release the key until you press Esc or click
-            outside it. When off (default), it disappears as soon as you let
-            go.
+            편집기에서 Ctrl(Mac은 ⌘)만 몇 초 누르고 있으면 단축키 안내가 나타납니다. 켜면 키를 떼도 Esc를 누르거나 바깥을 클릭할 때까지 남아 있습니다. 끄면(기본값) 키를 떼는 즉시 사라집니다.
           </p>
         </div>
         <Switch enabled={cheatsheetSticky} setEnabled={setCheatsheetSticky} />

@@ -12,7 +12,7 @@ interface QualityPickerProps {
 const QUALITY_LABELS: Record<CommonQuality, string> = {
   [CommonQuality.Auto]: "Auto",
   [CommonQuality.Max]: "Max",
-  [CommonQuality.XHigh]: "Extra high",
+  [CommonQuality.XHigh]: "매우 높음",
   [CommonQuality.High]: "High",
   [CommonQuality.Medium]: "Medium",
   [CommonQuality.Low]: "Low",
@@ -43,7 +43,7 @@ export const QualityPicker = ({
 
   return (
     <Tooltip
-      content="Quality"
+      content="품질"
       position="top"
       className="z-50"
       closeOnClick={true}
@@ -52,7 +52,7 @@ export const QualityPicker = ({
         items={qualityList}
         onSelect={handleSelectAdapter}
         mode="toggle"
-        panelTitle="Quality"
+        panelTitle="품질"
         triggerIcon={<GemIcon  className="h-3.5 w-3.5" />}
       />
     </Tooltip>

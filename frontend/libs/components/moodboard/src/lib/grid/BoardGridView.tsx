@@ -113,7 +113,7 @@ export const BoardGridView = ({ active, adapter }: Props) => {
       )
       .map((it) => ({ id: it.id, url: it.src, mediaToken: it.mediaId as string }));
     if (refs.length === 0) {
-      toast.error("Add images with a media reference to use them in a generation");
+      toast.error("미디어 참조가 있는 이미지를 추가하면 생성에 쓸 수 있습니다");
       return;
     }
     adapter.sendToGeneration(refs);
@@ -269,7 +269,7 @@ export const BoardGridView = ({ active, adapter }: Props) => {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-base-fg/45">
-              No items match your search.
+              검색 결과가 없습니다.
             </div>
           )
         ) : (

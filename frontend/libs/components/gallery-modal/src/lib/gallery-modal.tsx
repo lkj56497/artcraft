@@ -324,13 +324,13 @@ interface GalleryModalProps {
 const EMPTY_SELECTED_IDS: string[] = [];
 
 const SIDEBAR_FILTERS = [
-  { id: "all", label: "All Assets", icon: Grid3x3Icon },
-  { id: "image", label: "Image", icon: ImageIcon },
-  { id: "video", label: "Video", icon: VideoIcon },
-  { id: "audio", label: "Audio", icon: MusicIcon },
-  { id: "mesh", label: "Mesh", icon: BoxIcon },
-  { id: "splat", label: "Splat", icon: GlobeIcon },
-  { id: "uploaded", label: "Uploaded", icon: UploadIcon },
+  { id: "all", label: "모든 에셋", icon: Grid3x3Icon },
+  { id: "image", label: "이미지", icon: ImageIcon },
+  { id: "video", label: "영상", icon: VideoIcon },
+  { id: "audio", label: "오디오", icon: MusicIcon },
+  { id: "mesh", label: "메시", icon: BoxIcon },
+  { id: "splat", label: "스플랫", icon: GlobeIcon },
+  { id: "uploaded", label: "업로드됨", icon: UploadIcon },
 ];
 
 // Media classes for the user-list endpoint. The Mesh and Splat tabs don't use
@@ -441,7 +441,7 @@ function TagCloudView({
             key={tag.tag_token}
             type="button"
             onClick={() => onOpen(tag.tag_token)}
-            title={`${tag.use_count} file${tag.use_count === 1 ? "" : "s"}`}
+            title={`파일 ${tag.use_count}개`}
             style={{ fontSize: `${Math.round(15 + weight * 33)}px` }}
             className={twMerge(
               "max-w-full truncate leading-none transition-all duration-200 hover:scale-110 hover:text-violet-400",
@@ -539,7 +539,7 @@ const FolderContextMenuItems = ({
           hasStar ? "text-amber-400" : "text-base-fg/40",
         )}
       />
-      <span>{hasStar ? "Unstar" : "Star"}</span>
+      <span>{hasStar ? "별표 해제" : "별표"}</span>
     </button>
     <FolderColorRow
       colorCode={colorCode}
@@ -552,7 +552,7 @@ const FolderContextMenuItems = ({
       onClick={() => onNewSubfolder(folderId)}
     >
       <FolderPlusIcon className="w-4" />
-      <span>New subfolder</span>
+      <span>새 하위 폴더</span>
     </button>
     <button
       type="button"
@@ -560,7 +560,7 @@ const FolderContextMenuItems = ({
       onClick={() => onRename(folderId)}
     >
       <PencilIcon className="w-4" />
-      <span>Rename</span>
+      <span>이름 변경</span>
     </button>
     <button
       type="button"
@@ -568,7 +568,7 @@ const FolderContextMenuItems = ({
       onClick={() => onDelete(folderId)}
     >
       <Trash2Icon className="w-4" />
-      <span>Delete folder</span>
+      <span>폴더 삭제</span>
     </button>
   </div>
 );
@@ -1117,7 +1117,7 @@ export const GalleryModal = React.memo(
               });
             } else {
               setItemsLoadError(
-                response.errorMessage || "Request failed (unknown error)",
+                response.errorMessage || "요청 실패 (알 수 없는 오류)",
               );
             }
 
@@ -1224,7 +1224,7 @@ export const GalleryModal = React.memo(
             });
           } else {
             setItemsLoadError(
-              response.errorMessage || "Request failed (unknown error)",
+              response.errorMessage || "요청 실패 (알 수 없는 오류)",
             );
           }
         } catch (error) {
@@ -1644,15 +1644,14 @@ export const GalleryModal = React.memo(
       const count = bulkSelectedIds.size;
       showActionReminder({
         reminderType: "default",
-        title: `Delete ${count} item${count > 1 ? "s" : ""}?`,
+        title: `항목 ${count}개를 삭제할까요?`,
         message: (
           <p className="text-sm text-white/70">
-            This will permanently remove {count} item{count > 1 ? "s" : ""} from
-            your library. This action cannot be undone.
+            항목 {count}개를 라이브러리에서 영구 삭제합니다. 되돌릴 수 없습니다.
           </p>
         ),
-        primaryActionText: "Delete",
-        secondaryActionText: "Cancel",
+        primaryActionText: "삭제",
+        secondaryActionText: "취소",
         primaryActionBtnClassName: "bg-red text-white hover:bg-red/90",
         onPrimaryAction: async () => {
           try {
@@ -1837,11 +1836,11 @@ export const GalleryModal = React.memo(
               setBulkSelectedIds(new Set());
             }
           } else {
-            toast.error(res.errorMessage || "Failed to create folder.");
+            toast.error(res.errorMessage || "폴더 만들기 실패.");
           }
         } catch (err) {
           toast.error(
-            `Failed to create folder: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더 만들기 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
         }
       },
@@ -1977,12 +1976,12 @@ export const GalleryModal = React.memo(
             newName: trimmed,
           });
           if (!res.success) {
-            toast.error(res.errorMessage || "Failed to rename folder.");
+            toast.error(res.errorMessage || "폴더 이름 변경 실패.");
             loadFolders();
           }
         } catch (err) {
           toast.error(
-            `Failed to rename folder: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더 이름 변경 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
           loadFolders();
         }
@@ -2003,12 +2002,12 @@ export const GalleryModal = React.memo(
             hasStar,
           });
           if (!res.success) {
-            toast.error(res.errorMessage || "Failed to update folder.");
+            toast.error(res.errorMessage || "폴더 수정 실패.");
             loadFolders();
           }
         } catch (err) {
           toast.error(
-            `Failed to update folder: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더 수정 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
           loadFolders();
         }
@@ -2028,12 +2027,12 @@ export const GalleryModal = React.memo(
             colorCode,
           });
           if (!res.success) {
-            toast.error(res.errorMessage || "Failed to update folder color.");
+            toast.error(res.errorMessage || "폴더 색상 변경 실패.");
             loadFolders();
           }
         } catch (err) {
           toast.error(
-            `Failed to update folder color: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더 색상 변경 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
           loadFolders();
         }
@@ -2052,17 +2051,17 @@ export const GalleryModal = React.memo(
         const hasSubfolders = folders.some((f) => f.parentId === folderId);
         showActionReminder({
           reminderType: "default",
-          title: `Delete "${folder.name}"?`,
+          title: `"${folder.name}" 폴더를 삭제할까요?`,
           message: (
             <p className="text-sm text-white/70">
               {hasSubfolders
-                ? "This folder will be deleted and its subfolders moved to the top level. "
-                : "This folder will be deleted. "}
-              Items inside stay in your library.
+                ? "이 폴더가 삭제되고 하위 폴더는 최상위로 이동합니다."
+                : "이 폴더가 삭제됩니다."}
+              안에 있던 항목은 라이브러리에 그대로 남습니다.
             </p>
           ),
-          primaryActionText: "Delete",
-          secondaryActionText: "Cancel",
+          primaryActionText: "삭제",
+          secondaryActionText: "취소",
           primaryActionBtnClassName: "bg-red text-white hover:bg-red/90",
           onPrimaryAction: async () => {
             // Optimistic: drop this folder and reparent its direct children to
@@ -2088,11 +2087,11 @@ export const GalleryModal = React.memo(
                 folderToken: folderId,
               });
               if (!res.success) {
-                toast.error(res.errorMessage || "Failed to delete folder.");
+                toast.error(res.errorMessage || "폴더 삭제 실패.");
               }
             } catch (err) {
               toast.error(
-                `Failed to delete folder: ${err instanceof Error ? err.message : String(err)}`,
+                `폴더 삭제 실패: ${err instanceof Error ? err.message : String(err)}`,
               );
             }
             // Reconcile authoritative orphan flags / parent pointers.
@@ -2168,14 +2167,14 @@ export const GalleryModal = React.memo(
             const name =
               folders.find((f) => f.id === folderId)?.name ?? "folder";
             toast.success(
-              `Added ${itemIds.length} item${itemIds.length === 1 ? "" : "s"} to ${name}`,
+              `${name}에 항목 ${itemIds.length}개 추가됨`,
             );
           } else {
-            toast.error(res.errorMessage || "Failed to add to folder.");
+            toast.error(res.errorMessage || "폴더에 추가 실패.");
           }
         } catch (err) {
           toast.error(
-            `Failed to add to folder: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더에 추가 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
         }
       },
@@ -2231,15 +2230,15 @@ export const GalleryModal = React.memo(
           if (res.success) {
             const name = folders.find((f) => f.id === target)?.name ?? "folder";
             toast.success(
-              `Moved ${itemIds.length} item${itemIds.length === 1 ? "" : "s"} to ${name}`,
+              `${name}(으)로 항목 ${itemIds.length}개 이동됨`,
             );
           } else {
-            toast.error(res.errorMessage || "Failed to move items.");
+            toast.error(res.errorMessage || "항목 이동 실패.");
             loadFolders();
           }
         } catch (err) {
           toast.error(
-            `Failed to move items: ${err instanceof Error ? err.message : String(err)}`,
+            `항목 이동 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
           loadFolders();
         }
@@ -2285,12 +2284,12 @@ export const GalleryModal = React.memo(
             mediaFileTokens: itemIds,
           });
           if (!res.success) {
-            toast.error(res.errorMessage || "Failed to remove from folder.");
+            toast.error(res.errorMessage || "폴더에서 제거 실패.");
             loadFolders();
           }
         } catch (err) {
           toast.error(
-            `Failed to remove from folder: ${err instanceof Error ? err.message : String(err)}`,
+            `폴더에서 제거 실패: ${err instanceof Error ? err.message : String(err)}`,
           );
           loadFolders();
         }
@@ -2520,7 +2519,7 @@ export const GalleryModal = React.memo(
         <div className="px-4 pt-4">
           {activeFolderId && (
             <h3 className="text-md mb-2 font-medium text-base-fg/60">
-              Folders
+              폴더
             </h3>
           )}
           <div
@@ -2614,7 +2613,7 @@ export const GalleryModal = React.memo(
                               : "text-base-fg/60 hover:text-base-fg",
                           )}
                         >
-                          {t === "unsorted" ? "All Assets" : "Folders"}
+                          {t === "unsorted" ? "모든 에셋" : "폴더"}
                         </button>
                       ))}
                     </div>
@@ -2628,7 +2627,7 @@ export const GalleryModal = React.memo(
                         className="flex items-center gap-2 rounded-[3px] bg-ui-controls/60 px-3 py-1.5 text-sm font-medium text-base-fg hover:bg-ui-controls/90 transition-colors relative z-[51]"
                       >
                         <FolderPlusIcon className="text-xs" />
-                        New folder
+                        새 폴더
                       </button>
                     )}
                   {activeTag ? (
@@ -2639,7 +2638,7 @@ export const GalleryModal = React.memo(
                         onClick={handleOpenTagBrowser}
                         className="text-base-fg/50 hover:text-base-fg text-sm transition-colors"
                       >
-                        Tags
+                        태그
                       </button>
                       <span className="text-base-fg/30">/</span>
                       <TagIcon className="text-sm text-violet-400" />
@@ -2647,13 +2646,13 @@ export const GalleryModal = React.memo(
                         {activeTag.tag_value}
                       </h2>
                       <span className="text-base-fg/40 text-sm">
-                        {activeTag.use_count} file
-                        {activeTag.use_count === 1 ? "" : "s"}
+                        파일 {activeTag.use_count}개
+                        
                       </span>
                       <button
                         type="button"
                         onClick={handleCloseTagView}
-                        aria-label="Close tag view"
+                        aria-label="태그 보기 닫기"
                         className="flex h-7 w-7 items-center justify-center rounded-[3px] hover:bg-ui-controls/60 text-base-fg/60 hover:text-base-fg transition-colors"
                       >
                         <XIcon className="text-sm" />
@@ -2663,11 +2662,11 @@ export const GalleryModal = React.memo(
                     /* ── All-tags browser header ── */
                     <div className="flex items-center gap-2 relative z-[51]">
                       <TagIcon className="text-sm text-violet-400" />
-                      <h2 className="text-lg font-semibold">Tags</h2>
+                      <h2 className="text-lg font-semibold">태그</h2>
                       <button
                         type="button"
                         onClick={handleCloseTagView}
-                        aria-label="Close tags"
+                        aria-label="태그 닫기"
                         className="flex h-7 w-7 items-center justify-center rounded-[3px] hover:bg-ui-controls/60 text-base-fg/60 hover:text-base-fg transition-colors"
                       >
                         <XIcon className="text-sm" />
@@ -2681,7 +2680,7 @@ export const GalleryModal = React.memo(
                         onClick={handleBackToLibrary}
                         className="text-base-fg/50 hover:text-base-fg text-sm transition-colors"
                       >
-                        Folders
+                        폴더
                       </button>
                       {/* Ancestor crumbs (everything above the active folder) */}
                       {folderPath.slice(0, -1).map((crumb) => (
@@ -2767,27 +2766,27 @@ export const GalleryModal = React.memo(
                         <h2 className="text-xl font-semibold">
                           {activeFilter === "video"
                             ? maxSelections === 1
-                              ? "Select Video"
-                              : "Select Videos"
+                              ? "영상 선택"
+                              : "영상 선택"
                             : activeFilter === "audio"
-                              ? "Select Audio"
+                              ? "오디오 선택"
                               : activeFilter === "mesh"
                                 ? maxSelections === 1
-                                  ? "Select 3D Object"
-                                  : "Select 3D Objects"
+                                  ? "3D 오브젝트 선택"
+                                  : "3D 오브젝트 선택"
                                 : activeFilter === "splat"
                                   ? maxSelections === 1
-                                    ? "Select 3D World"
-                                    : "Select 3D Worlds"
+                                    ? "3D 월드 선택"
+                                    : "3D 월드 선택"
                                   : activeFilter === "uploaded"
                                     ? maxSelections === 1
-                                      ? "Select Upload"
-                                      : "Select Uploads"
+                                      ? "업로드 항목 선택"
+                                      : "업로드 항목 선택"
                                     : activeFilter === "all"
-                                      ? "Select Media"
+                                      ? "미디어 선택"
                                       : maxSelections === 1
-                                        ? "Select Image"
-                                        : "Select Images"}
+                                        ? "이미지 선택"
+                                        : "이미지 선택"}
                         </h2>
                       )}
                       {mode === "view" && galleryTab === "unsorted" && (
@@ -2799,7 +2798,7 @@ export const GalleryModal = React.memo(
                               (galleryReopenAfterDragSignal.value =
                                 e.target.checked)
                             }
-                            label="Reopen after adding"
+                            label="추가 후 다시 열기"
                           />
                         </div>
                       )}
@@ -2814,7 +2813,7 @@ export const GalleryModal = React.memo(
                           id="gallery-show-uploads"
                           checked={showUploads}
                           onChange={(e) => setShowUploads(e.target.checked)}
-                          label="Show uploads"
+                          label="업로드 항목 보기"
                         />
                       </div>
                     )}
@@ -2823,7 +2822,7 @@ export const GalleryModal = React.memo(
                   {/* Refresh button */}
                   <Tooltip
                     position="top"
-                    content="Refresh list"
+                    content="목록 새로고침"
                     closeOnClick={true}
                   >
                     <Button
@@ -2831,7 +2830,7 @@ export const GalleryModal = React.memo(
                       onClick={refreshGallery}
                       className="relative z-[51] h-9 w-9 p-2.5"
                       disabled={loading}
-                      aria-label="Refresh list"
+                      aria-label="목록 새로고침"
                     >
                       <RefreshCwIcon
                         className={`text-lg text-base-fg ${loading ? "animate-spin" : ""}`}
@@ -2841,7 +2840,7 @@ export const GalleryModal = React.memo(
                   {/* Image fit toggle button */}
                   <Tooltip
                     position="top"
-                    content="Toggle image fit"
+                    content="이미지 맞춤 전환"
                     closeOnClick={true}
                   >
                     <Button
@@ -2876,7 +2875,7 @@ export const GalleryModal = React.memo(
                       showProgressBar={false}
                       tooltipContent={`${
                         maxColumns - (sliderValue - minColumns)
-                      } columns`}
+                      }열`}
                     />
                   </div>
                   {mode === "view" && <Modal.ExpandButton />}
@@ -2942,13 +2941,13 @@ export const GalleryModal = React.memo(
                   {/* Folders header — pinned alongside the filters */}
                   <div className="flex items-center justify-between px-3 pt-2 pb-1 flex-shrink-0">
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-base-fg/40">
-                      Folders
+                      폴더
                     </span>
                     {mode === "view" && (
                       <button
                         type="button"
                         onClick={() => handleOpenNewFolderModal(null)}
-                        aria-label="New folder"
+                        aria-label="새 폴더"
                         className="flex h-5 w-5 items-center justify-center rounded-[3px] text-base-fg/50 hover:bg-ui-controls/60 hover:text-base-fg transition-colors"
                       >
                         <PlusIcon className="text-[10px]" />
@@ -2959,7 +2958,7 @@ export const GalleryModal = React.memo(
                   <div className="flex flex-1 min-h-0 flex-col overflow-y-auto px-1.5 pb-2">
                     {rootFolders.length === 0 ? (
                       <div className="px-2.5 py-1.5 text-xs text-base-fg/30 italic">
-                        No folders yet
+                        아직 폴더가 없습니다
                       </div>
                     ) : (
                       rootFolders.map((folder) => (
@@ -3014,7 +3013,7 @@ export const GalleryModal = React.memo(
                       <>
                         <div className="flex items-center justify-between px-1.5 pt-3 pb-1 flex-shrink-0">
                           <span className="text-[11px] font-semibold uppercase tracking-wider text-base-fg/40">
-                            Tags
+                            태그
                           </span>
                         </div>
                         {sidebarTags.map((tag) => (
@@ -3049,7 +3048,7 @@ export const GalleryModal = React.memo(
                           )}
                         >
                           <EllipsisIcon className="text-xs w-4" />
-                          <span>All tags</span>
+                          <span>모든 태그</span>
                           <span className="ml-auto text-[10px] text-base-fg/40">
                             {sortedTags.length}
                           </span>
@@ -3083,10 +3082,10 @@ export const GalleryModal = React.memo(
                         <TagIcon className="text-violet-400 text-2xl" />
                       </div>
                       <div className="text-base-fg font-semibold">
-                        No files carry this tag
+                        이 태그가 붙은 파일이 없습니다
                       </div>
                       <div className="text-base-fg/40 text-sm text-center max-w-[16rem]">
-                        Add tags to media from the item view's Tags section.
+                        항목 보기의 태그 영역에서 미디어에 태그를 추가하세요.
                       </div>
                     </div>
                   ) : (
@@ -3174,11 +3173,10 @@ export const GalleryModal = React.memo(
                         <TagIcon className="text-violet-400 text-2xl" />
                       </div>
                       <div className="text-base-fg font-semibold">
-                        No tags yet
+                        아직 태그가 없습니다
                       </div>
                       <div className="text-base-fg/40 text-sm text-center max-w-[16rem]">
-                        Open any item and add tags in its details panel —
-                        they'll show up here.
+                        항목을 열고 상세 패널에서 태그를 추가하면 여기에 표시됩니다.
                       </div>
                     </div>
                   ) : (
@@ -3195,10 +3193,10 @@ export const GalleryModal = React.memo(
                         <FolderIcon className="text-primary text-2xl" />
                       </div>
                       <div className="text-base-fg font-semibold">
-                        No folders yet
+                        아직 폴더가 없습니다
                       </div>
                       <div className="text-base-fg/40 text-sm text-center max-w-[16rem]">
-                        Create a folder to organize your media.
+                        폴더를 만들어 미디어를 정리하세요.
                       </div>
                       {mode === "view" && (
                         <Button
@@ -3207,7 +3205,7 @@ export const GalleryModal = React.memo(
                           onClick={() => handleOpenNewFolderModal(null)}
                           className="mt-1 px-3 py-1.5 text-sm"
                         >
-                          New folder
+                          새 폴더
                         </Button>
                       )}
                     </div>
@@ -3227,12 +3225,12 @@ export const GalleryModal = React.memo(
                           <FolderIcon className="text-primary text-2xl" />
                         </div>
                         <div className="text-base-fg font-semibold">
-                          This folder is empty
+                          이 폴더는 비어 있습니다
                         </div>
                         <div className="text-base-fg/40 text-sm text-center max-w-[16rem]">
                           {mode === "view"
-                            ? "Drag images here, generate new ones, or create a subfolder."
-                            : "There's nothing in this folder yet."}
+                            ? "이미지를 끌어다 놓거나, 새로 생성하거나, 하위 폴더를 만드세요."
+                            : "이 폴더에는 아직 아무것도 없습니다."}
                         </div>
                         {mode === "view" && (
                           <Button
@@ -3243,7 +3241,7 @@ export const GalleryModal = React.memo(
                             }
                             className="mt-1 px-3 py-1.5 text-sm"
                           >
-                            New folder
+                            새 폴더
                           </Button>
                         )}
                       </div>
@@ -3337,14 +3335,14 @@ export const GalleryModal = React.memo(
                       <div className="flex h-full items-center justify-center">
                         <div className="flex max-w-xs flex-col items-center gap-4 text-center text-sm">
                           <div className="text-base-fg/60">
-                            Log in to browse and use your library.
+                            라이브러리를 보고 사용하려면 로그인하세요.
                           </div>
                           {onLoginClick ? (
                             <button
                               className="rounded-[3px] bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                               onClick={() => onLoginClick()}
                             >
-                              Log in
+                              로그인
                             </button>
                           ) : (
                             <button
@@ -3354,7 +3352,7 @@ export const GalleryModal = React.memo(
                                 setUsernameRetryCount((c) => c + 1);
                               }}
                             >
-                              Retry
+                              다시 시도
                             </button>
                           )}
                         </div>
@@ -3363,7 +3361,7 @@ export const GalleryModal = React.memo(
                       <div className="flex h-full items-center justify-center">
                         <div className="flex flex-col items-center gap-3 text-sm max-w-xs text-center">
                           <div className="text-base-fg/60">
-                            Failed to load gallery.
+                            갤러리를 불러오지 못했습니다.
                           </div>
                           <div className="text-xs text-base-fg/40 font-mono break-all">
                             {itemsLoadError}
@@ -3375,13 +3373,13 @@ export const GalleryModal = React.memo(
                                 navigator.clipboard?.writeText(itemsLoadError!)
                               }
                             >
-                              Copy error
+                              오류 복사
                             </button>
                             <button
                               className="text-xs text-blue-400 hover:text-blue-300 underline"
                               onClick={() => refreshGallery()}
                             >
-                              Retry
+                              다시 시도
                             </button>
                           </div>
                         </div>
@@ -3394,7 +3392,7 @@ export const GalleryModal = React.memo(
                       currentSubfolders.length === 0 ? (
                       <div className="flex h-full items-center justify-center">
                         <div className="text-base-fg/40 text-sm">
-                          No items yet
+                          아직 항목이 없습니다
                         </div>
                       </div>
                     ) : (
@@ -3478,7 +3476,7 @@ export const GalleryModal = React.memo(
                         )}
                         {!hasMore && allItems.length > 0 && (
                           <div className="flex justify-center py-4 text-base-fg/40 text-xs">
-                            No more items
+                            더 이상 항목이 없습니다
                           </div>
                         )}
                       </div>
@@ -3491,15 +3489,15 @@ export const GalleryModal = React.memo(
             {/* ── New Folder dialog ── */}
             <FolderNameDialog
               isOpen={newFolderModalOpen}
-              title="New folder"
-              subtitle={`in ${
+              title="새 폴더"
+              subtitle={`위치: ${
                 newFolderParentId
                   ? (folders.find((f) => f.id === newFolderParentId)?.name ??
-                    "My Library")
-                  : "My Library"
+                    "내 라이브러리")
+                  : "내 라이브러리"
               }`}
               initialValue="New Folder"
-              confirmLabel="Create"
+              confirmLabel="만들기"
               onConfirm={handleCreateFolder}
               onClose={() => {
                 setNewFolderModalOpen(false);
@@ -3510,11 +3508,11 @@ export const GalleryModal = React.memo(
             {/* ── Rename Folder dialog (sidebar context menu) ── */}
             <FolderNameDialog
               isOpen={!!(renameViaModal && renamingFolderId)}
-              title="Rename folder"
+              title="폴더 이름 변경"
               initialValue={
                 folders.find((f) => f.id === renamingFolderId)?.name ?? ""
               }
-              confirmLabel="Rename"
+              confirmLabel="이름 변경"
               onConfirm={handleConfirmRename}
               onClose={() => {
                 setRenamingFolderId(null);
@@ -3555,7 +3553,7 @@ export const GalleryModal = React.memo(
                     </div>
                   )}
                   <span className="ms-2.5 text-sm font-medium text-base-fg/80">
-                    {bulkSelectedIds.size} selected
+                    {bulkSelectedIds.size}개 선택됨
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -3567,7 +3565,7 @@ export const GalleryModal = React.memo(
                       className="px-3 bg-ui-controls/60 hover:bg-ui-controls/90"
                       icon={FolderPlusIcon}
                     >
-                      Add to folder
+                      폴더에 추가
                     </Button>
                     {bulkFolderPopoverOpen && (
                       <>
@@ -3579,11 +3577,11 @@ export const GalleryModal = React.memo(
                         <div className="absolute bottom-full mb-2 right-0 w-56 rounded-[3px] border border-ui-panel-border bg-ui-panel p-2 shadow-xl z-[60]">
                           {/* Folders */}
                           <div className="text-[11px] font-semibold uppercase tracking-wider text-base-fg/40 px-2 py-1">
-                            Folders
+                            폴더
                           </div>
                           {folders.length === 0 ? (
                             <div className="px-2 py-1.5 text-xs text-base-fg/30 italic">
-                              No folders yet
+                              아직 폴더가 없습니다
                             </div>
                           ) : (
                             // Same ordering as the folder chips: starred
@@ -3615,7 +3613,7 @@ export const GalleryModal = React.memo(
                             }}
                           >
                             <PlusIcon className="text-xs w-4" />
-                            <span>Create new folder</span>
+                            <span>새 폴더 만들기</span>
                           </button>
                         </div>
                       </>
@@ -3628,13 +3626,13 @@ export const GalleryModal = React.memo(
                       className="px-3"
                       icon={Trash2Icon}
                     >
-                      Delete
+                      삭제
                     </Button>
                   )}
                   <button
                     onClick={clearBulkSelection}
                     className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-ui-controls/60 hover:bg-ui-controls/90 text-base-fg transition-colors"
-                    aria-label="Clear selection"
+                    aria-label="선택 해제"
                   >
                     <XIcon className="text-base" />
                   </button>
@@ -3656,7 +3654,7 @@ export const GalleryModal = React.memo(
                       onClick={handleDeselectAll}
                       className="text-sm text-base-fg/60 hover:text-base-fg"
                     >
-                      Deselect All
+                      모두 선택 해제
                     </button>
                   )}
                 </div>
@@ -3665,7 +3663,7 @@ export const GalleryModal = React.memo(
                   disabled={selectedItemIds.length === 0 || useSelectedLoading}
                   loading={useSelectedLoading}
                 >
-                  Use selected
+                  선택 항목 사용
                 </Button>
               </div>
             )}

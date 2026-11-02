@@ -49,7 +49,7 @@ export const DurationLabel = ({ className = "" }: { className?: string }) => {
   return (
     <button
       type="button"
-      title="Set timeline duration (seconds)"
+      title="타임라인 길이 설정 (초)"
       onClick={(e) => {
         e.stopPropagation();
         setValue(String(Math.round(duration)));

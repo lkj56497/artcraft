@@ -62,7 +62,7 @@ const NewsView = ({ onBack }: { onBack: () => void }) => {
           onClick={() => setSelectedSlug(null)}
           className="self-start mb-4 text-sm flex items-center gap-2 text-white/60 hover:text-white transition-colors"
         >
-          <ChevronLeftIcon /> Back to News
+          <ChevronLeftIcon /> 소식으로 돌아가기
         </button>
 
         <div className="article-content">
@@ -133,7 +133,7 @@ const NewsView = ({ onBack }: { onBack: () => void }) => {
         </div>
       ))}
       {items.length === 0 && (
-        <div className="text-center text-white/40 py-10">No news yet.</div>
+        <div className="text-center text-white/40 py-10">아직 소식이 없습니다.</div>
       )}
     </div>
   );
@@ -177,13 +177,13 @@ export function HelpMenuButton({
   // Menu items for the popover
   const menuItems: PopoverItem[] = [
     {
-      label: "Tutorials",
+      label: "튜토리얼",
       selected: false,
       icon: <BookIcon  className="text-base" />,
       action: "tutorials",
     },
     {
-      label: "News & Updates",
+      label: "소식 & 업데이트",
       selected: false,
       icon: <NewspaperIcon  className="text-base" />,
       action: "news",
@@ -345,7 +345,7 @@ export function HelpMenuButton({
         triggerIcon={
           <CircleHelpIcon  className="text-base-fg" />
         }
-        triggerLabel="Help"
+        triggerLabel="도움말"
         buttonClassName="h-9"
       />
 
@@ -363,7 +363,7 @@ export function HelpMenuButton({
           <>
             {tutorials.length === 0 ? (
               <div className="flex items-center justify-center py-12 text-white/60">
-                No tutorials yet.
+                아직 튜토리얼이 없습니다.
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -400,10 +400,10 @@ export function HelpMenuButton({
                 variant="action"
                 icon={ChevronLeftIcon}
               >
-                Back
+                뒤로
               </Button>
               <div className="font-display text-lg font-bold text-base-fg">
-                Tutorial: {selected.title}
+                튜토리얼: {selected.title}
               </div>
             </div>
             <div className="w-full">

@@ -53,7 +53,7 @@ export class RendererManager {
     if (typeof ClipboardItem === "undefined" || !navigator.clipboard?.write) {
       return {
         success: false,
-        error: "Clipboard image copy is not supported in this browser",
+        error: "이 브라우저는 클립보드 이미지 복사를 지원하지 않습니다",
       };
     }
 
@@ -73,7 +73,7 @@ export class RendererManager {
       console.error("Copy snapshot failed:", error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: error instanceof Error ? error.message : "알 수 없는 오류",
       };
     }
   }
@@ -84,12 +84,12 @@ export class RendererManager {
       const activeProject = this.editor.project.getActive();
 
       if (!renderTree || !activeProject) {
-        return { success: false, error: "No project or scene to capture" };
+        return { success: false, error: "캡처할 프로젝트나 장면이 없습니다" };
       }
 
       const duration = this.editor.timeline.getTotalDuration();
       if (duration === 0) {
-        return { success: false, error: "Project is empty" };
+        return { success: false, error: "프로젝트가 비어 있습니다" };
       }
 
       const { canvasSize, fps } = activeProject.settings;
@@ -119,7 +119,7 @@ export class RendererManager {
       });
 
       if (!blob) {
-        return { success: false, error: "Failed to create image" };
+        return { success: false, error: "이미지 만들기 실패" };
       }
 
       const timecode = formatTimecode({ time: renderTime, rate: fps })!.replace(/:/g, "-");
@@ -133,7 +133,7 @@ export class RendererManager {
       console.error("Snapshot capture failed:", error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: error instanceof Error ? error.message : "알 수 없는 오류",
       };
     }
   }
@@ -155,12 +155,12 @@ export class RendererManager {
       const activeProject = this.editor.project.getActive();
 
       if (!activeProject) {
-        return { success: false, error: "No active project" };
+        return { success: false, error: "열린 프로젝트가 없습니다" };
       }
 
       const duration = this.editor.timeline.getTotalDuration();
       if (duration === 0) {
-        return { success: false, error: "Project is empty" };
+        return { success: false, error: "프로젝트가 비어 있습니다" };
       }
 
       const exportFps = fps ?? activeProject.settings.fps;
@@ -234,7 +234,7 @@ export class RendererManager {
       console.error("Export failed:", error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown export error",
+        error: error instanceof Error ? error.message : "알 수 없는 내보내기 오류",
       };
     }
   }

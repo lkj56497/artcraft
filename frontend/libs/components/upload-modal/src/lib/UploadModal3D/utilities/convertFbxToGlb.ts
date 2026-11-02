@@ -100,7 +100,7 @@ function getWorker(): Worker | null {
       pendingJobs.clear();
       for (const job of jobs) {
         job.reject(
-          new Error("FBX conversion result failed to decode — please retry."),
+          new Error("FBX 변환 결과를 해석하지 못했습니다 — 다시 시도해 주세요."),
         );
       }
     };

@@ -50,7 +50,7 @@ export function StickersView() {
         <Input
           size="sm"
           variant="default"
-          placeholder="Search..."
+          placeholder="검색..."
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery({ query: e.target.value });
@@ -74,7 +74,7 @@ export function StickersView() {
         variant="underline"
         className="mt-2 flex min-h-0 flex-1 flex-col"
       >
-        <TabsList aria-label="Sticker categories">
+        <TabsList aria-label="스티커 카테고리">
           {Object.entries(STICKER_CATEGORIES).map(([key, label]) => (
             <TabsTrigger key={key} value={key}>
               {label}
@@ -96,7 +96,7 @@ function InlineSpinner({ className }: { className?: string }) {
   return (
     <svg
       role="status"
-      aria-label="Loading"
+      aria-label="불러오는 중"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ function EmptyView({ message }: { message: string }) {
         className="text-muted-foreground size-10"
       />
       <div className="flex flex-col gap-2 text-center">
-        <p className="text-lg font-medium">No stickers found</p>
+        <p className="text-lg font-medium">스티커를 찾을 수 없습니다</p>
         <p className="text-muted-foreground text-sm text-balance">{message}</p>
       </div>
     </div>
@@ -201,7 +201,7 @@ function StickersContentView() {
         <div className="flex flex-col gap-3 pb-4">
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm">
-              {searchResults.total} results
+              결과 {searchResults.total}개
             </span>
           </div>
           <StickerGrid items={searchResults.items} />
@@ -211,7 +211,7 @@ function StickersContentView() {
 
     // "all" tab search — sections are in browseContent, fall through to section rendering below
     if (selectedCategory !== "all" && searchQuery) {
-      return <EmptyView message={`No stickers found for "${searchQuery}"`} />;
+      return <EmptyView message={`"${searchQuery}"에 해당하는 스티커가 없습니다`} />;
     }
   }
 
@@ -229,10 +229,10 @@ function StickersContentView() {
       <EmptyView
         message={
           viewMode === "search"
-            ? `No stickers found for "${searchQuery}"`
+            ? `"${searchQuery}"에 해당하는 스티커가 없습니다`
             : selectedCategory === "all"
-              ? "No stickers available yet."
-              : `No stickers available in ${categoryLabel.toLowerCase()} yet.`
+              ? "아직 사용할 수 있는 스티커가 없습니다."
+              : `${categoryLabel.toLowerCase()} 카테고리에는 아직 스티커가 없습니다.`
         }
       />
     );
@@ -284,7 +284,7 @@ function StickerSection({
                 size="sm"
                 className="h-auto gap-1 p-0 text-xs text-muted-foreground"
               >
-                Clear
+                지우기
               </Button>
             )}
 
@@ -297,7 +297,7 @@ function StickerSection({
                   onSeeAll(section.action?.category as StickerCategory);
                 }}
               >
-                See all
+                모두 보기
               </Button>
             )}
           </div>
@@ -377,7 +377,7 @@ function StickerItem({
       addToRecentStickers({ stickerId: item.id });
     } catch (error) {
       console.error("Failed to add sticker:", error);
-      toast.error("Failed to add sticker to timeline");
+      toast.error("스티커를 타임라인에 추가하지 못했습니다");
     } finally {
       setIsAdding(false);
     }

@@ -82,7 +82,7 @@ export const upload3DObjectsBatch = async ({
         onFileStatusChange(
           i,
           "error",
-          err instanceof Error ? err.message : "Unexpected error",
+          err instanceof Error ? err.message : "예기치 않은 오류",
         );
       }
     });

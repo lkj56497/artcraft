@@ -121,7 +121,7 @@ function ToolbarLeftSection() {
       ? getSourceAudioActionLabel({
           element: selectedElement.element,
         })
-      : "Extract audio";
+      : "오디오 추출";
   const isSelectedSourceAudioSeparated =
     selectedElement?.element.type === "video" &&
     isSourceAudioSeparated({
@@ -144,19 +144,19 @@ function ToolbarLeftSection() {
       <TooltipProvider delayDuration={500}>
         <ToolbarButton
           icon={<HugeiconsIcon icon={ScissorIcon} />}
-          tooltip="Split element"
+          tooltip="요소 자르기"
           onClick={({ event }) => handleAction({ action: "split", event })}
         />
 
         <ToolbarButton
           icon={<HugeiconsIcon icon={AlignLeftIcon} />}
-          tooltip="Split left"
+          tooltip="왼쪽 자르기"
           onClick={({ event }) => handleAction({ action: "split-left", event })}
         />
 
         <ToolbarButton
           icon={<HugeiconsIcon icon={AlignRightIcon} />}
-          tooltip="Split right"
+          tooltip="오른쪽 자르기"
           onClick={({ event }) =>
             handleAction({ action: "split-right", event })
           }
@@ -177,7 +177,7 @@ function ToolbarLeftSection() {
 
         <ToolbarButton
           icon={<HugeiconsIcon icon={Copy01Icon} />}
-          tooltip="Duplicate element"
+          tooltip="요소 복제"
           onClick={({ event }) =>
             handleAction({ action: "duplicate-selected", event })
           }
@@ -185,14 +185,14 @@ function ToolbarLeftSection() {
 
         <ToolbarButton
           icon={<HugeiconsIcon icon={SnowIcon} />}
-          tooltip="Freeze frame (coming soon)"
+          tooltip="프레임 정지 (곧 제공)"
           disabled={true}
           onClick={({ event: _event }) => {}}
         />
 
         <ToolbarButton
           icon={<HugeiconsIcon icon={Delete02Icon} />}
-          tooltip="Delete element"
+          tooltip="요소 삭제"
           onClick={({ event }) =>
             handleAction({ action: "delete-selected", event })
           }
@@ -204,7 +204,7 @@ function ToolbarLeftSection() {
           <ToolbarButton
             icon={<HugeiconsIcon icon={Bookmark02Icon} />}
             isActive={isCurrentlyBookmarked}
-            tooltip={isCurrentlyBookmarked ? "Remove bookmark" : "Add bookmark"}
+            tooltip={isCurrentlyBookmarked ? "북마크 제거" : "북마크 추가"}
             onClick={({ event }) =>
               handleAction({ action: "toggle-bookmark", event })
             }
@@ -286,14 +286,14 @@ function ToolbarRightSection({
         <ToolbarButton
           icon={<HugeiconsIcon icon={MagnetIcon} />}
           isActive={snappingEnabled}
-          tooltip="Auto snapping"
+          tooltip="자동 스냅"
           onClick={() => toggleSnapping()}
         />
 
         <ToolbarButton
           icon={<OcRippleIcon size={24} className="scale-110" />}
           isActive={rippleEditingEnabled}
-          tooltip="Ripple editing"
+          tooltip="리플 편집"
           onClick={() => toggleRippleEditing()}
         />
       </TooltipProvider>

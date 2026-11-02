@@ -109,7 +109,7 @@ export const PromptBoxVFX = ({
             state.status === UploaderStates.assetError ||
             state.status === UploaderStates.imageCreateError
           ) {
-            onError("Failed to upload source video. Use an MP4 file.");
+            onError("원본 영상 업로드 실패. MP4 파일을 사용하세요.");
             setSourceUploading(false);
             URL.revokeObjectURL(previewUrl);
           }
@@ -152,8 +152,8 @@ export const PromptBoxVFX = ({
           ) {
             onError(
               kind === "mask"
-                ? "Failed to upload mask image."
-                : "Failed to upload reference image.",
+                ? "마스크 이미지 업로드 실패."
+                : "참조 이미지 업로드 실패.",
             );
             setUploading(false);
             URL.revokeObjectURL(previewUrl);
@@ -258,13 +258,13 @@ export const PromptBoxVFX = ({
           <div className="glass flex flex-col gap-1.5 rounded-2xl px-3 py-2 shadow-2xl sm:px-4 sm:py-3">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-base-fg/60">
-                Prompt (optional)
+                프롬프트 (선택)
               </span>
               <button
                 type="button"
                 onClick={() => setShowPromptPopover(false)}
                 className="flex h-5 w-5 items-center justify-center rounded-full text-base-fg/50 hover:bg-base-fg/10 hover:text-base-fg"
-                aria-label="Close prompt"
+                aria-label="프롬프트 닫기"
               >
                 <XIcon  className="h-3 w-3" />
               </button>
@@ -273,7 +273,7 @@ export const PromptBoxVFX = ({
               ref={promptTextareaRef}
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe the new scene, lighting, or change..."
+              placeholder="새 장면, 조명, 변경 사항을 설명하세요..."
               rows={3}
               className="max-h-40 min-h-[3.5rem] w-full resize-none bg-transparent text-sm text-base-fg placeholder-base-fg/50 focus:outline-none"
               onKeyDown={(e) => {
@@ -321,7 +321,7 @@ export const PromptBoxVFX = ({
         {/* Primary inputs — centered, all aspect-video. Source + Reference are required, Mask is optional */}
         <div className="flex items-end justify-center gap-3">
           <UploadTile
-            label="Source Video"
+            label="원본 영상"
             icon={VideoIcon}
             previewUrl={source?.url}
             isVideo
@@ -334,7 +334,7 @@ export const PromptBoxVFX = ({
           />
           {/* Mask is hidden for now — backend endpoint doesn't accept it yet. */}
           <UploadTile
-            label="Reference Image"
+            label="참조 이미지"
             icon={ImageIcon}
             previewUrl={reference?.url}
             uploading={referenceUploading}
@@ -349,12 +349,12 @@ export const PromptBoxVFX = ({
         {/* Bottom row: model + resolution chips on left, prompt toggle + Generate on right.
             Wraps on narrow widths so Generate stays visible on mobile. */}
         <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
-          <Tooltip content="Model" position="top" closeOnClick>
+          <Tooltip content="모델" position="top" closeOnClick>
             <PopoverMenu
               items={modelItems}
               onSelect={handleModelSelect}
               mode="toggle"
-              panelTitle="Model"
+              panelTitle="모델"
               triggerIcon={
                 <SparklesIcon  className="h-3 w-3" />
               }
@@ -362,19 +362,19 @@ export const PromptBoxVFX = ({
             />
           </Tooltip>
           {!hideResolution && (
-            <Tooltip content="Resolution" position="top" closeOnClick>
+            <Tooltip content="해상도" position="top" closeOnClick>
               <PopoverMenu
                 items={resolutionItems}
                 onSelect={handleResolutionSelect}
                 mode="toggle"
-                panelTitle="Resolution"
+                panelTitle="해상도"
                 triggerLabel={resolution}
               />
             </Tooltip>
           )}
 
           <Tooltip
-            content={hasPrompt ? "Edit prompt" : "Add an optional prompt"}
+            content={hasPrompt ? "프롬프트 편집" : "선택 프롬프트 추가"}
             position="top"
           >
             <button
@@ -392,9 +392,9 @@ export const PromptBoxVFX = ({
                 className="hidden h-3 w-3 sm:inline-block"
               />
               <span className="truncate">
-                <span className="sm:hidden">Prompt</span>
+                <span className="sm:hidden">프롬프트</span>
                 <span className="hidden sm:inline">
-                  {hasPrompt ? "Prompt" : "Add prompt"}
+                  {hasPrompt ? "프롬프트" : "프롬프트 추가"}
                 </span>
               </span>
             </button>
@@ -412,7 +412,7 @@ export const PromptBoxVFX = ({
               loading={isSubmitting}
               className="border-none bg-primary px-4 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Generate
+              생성
             </GenerateButton>
           </div>
         </div>
@@ -473,7 +473,7 @@ const UploadTile = ({
         {required && <span className="text-primary-400">*</span>}
         {optional && (
           <span className="rounded bg-base-fg/10 px-1 py-px text-[9px] font-medium normal-case tracking-normal text-base-fg/40">
-            optional
+            선택
           </span>
         )}
       </div>
@@ -493,7 +493,7 @@ const UploadTile = ({
                 icon={PlusIcon}
                 className="w-full"
               >
-                Upload
+                업로드
               </Button>
               <Button
                 variant="action"
@@ -501,7 +501,7 @@ const UploadTile = ({
                 icon={ImagesIcon}
                 className="w-full bg-base-fg/10 hover:bg-base-fg/20"
               >
-                Pick from library
+                라이브러리에서 선택
               </Button>
             </div>
           }

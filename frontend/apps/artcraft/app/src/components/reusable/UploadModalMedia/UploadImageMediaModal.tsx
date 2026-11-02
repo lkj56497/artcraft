@@ -48,7 +48,7 @@ export function UploadImageMediaModal({
       case UploaderStates.ready:
         return (
           <UploadImageMedia
-            title={"Image"}
+            title={"이미지"}
             fileTypes={fileTypes}
             onClose={onClose}
             onUploadProgress={updateUploaderState}
@@ -61,13 +61,13 @@ export function UploadImageMediaModal({
         return (
           <>
             <LoadingDots className="mb-1 bg-transparent" />
-            <div className="hud-label w-full text-center text-base-fg/50">Uploading...</div>
+            <div className="hud-label w-full text-center text-base-fg/50">업로드 중...</div>
           </>
         );
       case UploaderStates.success:
         return (
           <UploadSuccess
-            title={"Image"}
+            title={"이미지"}
             onOk={() => {
               onSuccess(uploaderState.data);
               onClose();

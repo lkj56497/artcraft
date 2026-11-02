@@ -48,10 +48,10 @@ export const PromptClearAllButton = ({
 
   return (
     <>
-      <Tooltip content="Clear all" position="top" className="z-50" delay={200}>
+      <Tooltip content="모두 지우기" position="top" className="z-50" delay={200}>
         <button
           type="button"
-          aria-label="Clear prompt and attached references"
+          aria-label="프롬프트와 첨부한 참조 지우기"
           onClick={handleClick}
           disabled={disabled}
           className={twMerge(
@@ -69,19 +69,19 @@ export const PromptClearAllButton = ({
       <Modal
         isOpen={isConfirmOpen}
         onClose={() => setIsConfirmOpen(false)}
-        title="Clear all?"
+        title="모두 지울까요?"
         className="max-w-md"
         showClose={false}
       >
         <div className="text-sm text-base-fg">
-          This clears the prompt and also removes the attached references.
+          프롬프트를 지우고 첨부한 참조도 제거합니다.
         </div>
         <div className="mt-6 flex justify-end gap-2">
           <Button variant="secondary" onClick={() => setIsConfirmOpen(false)}>
-            Cancel
+            취소
           </Button>
           <Button variant="destructive" onClick={handleConfirm}>
-            Clear all
+            모두 지우기
           </Button>
         </div>
       </Modal>

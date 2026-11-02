@@ -8,10 +8,10 @@ export function LoginSuccess({ username }: { username: string }) {
         <CheckIcon size={28} strokeWidth={2} />
       </div>
       <h2 className={styles.heading}>
-        Logged in as{" "}
+        로그인 계정:{" "}
         <span className={styles.username}>{username}</span>
       </h2>
-      <p className={styles.caption}>You're ready to create.</p>
+      <p className={styles.caption}>이제 만들 준비가 됐습니다.</p>
     </div>
   );
 }

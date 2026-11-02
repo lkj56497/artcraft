@@ -252,14 +252,14 @@ function resolvePropertySelection({
   if (propertyKeyframes.keyframes.length > 2) {
     return {
       reason: "multiple-keyframes-selected",
-      message: "Select at most two adjacent keyframes per property.",
+      message: "속성마다 인접한 키프레임을 최대 2개까지만 선택하세요.",
     };
   }
 
   if (!element.animations) {
     return {
       reason: "selected-element-has-no-animations",
-      message: "The selected keyframe has no editable graph.",
+      message: "선택한 키프레임에는 편집 가능한 그래프가 없습니다.",
     };
   }
 
@@ -270,7 +270,7 @@ function resolvePropertySelection({
   if (!scalarResult || scalarResult.channels.length === 0) {
     return {
       reason: "selected-keyframe-has-no-scalar-channel",
-      message: "The selected keyframe has no editable graph channel.",
+      message: "선택한 키프레임에는 편집 가능한 그래프 채널이 없습니다.",
     };
   }
 
@@ -324,7 +324,7 @@ function resolvePropertySelection({
   if (contexts.length === 0) {
     return {
       reason: "selected-keyframe-missing-on-channel",
-      message: "The selected keyframe is not editable as a graph segment.",
+      message: "선택한 키프레임은 그래프 구간으로 편집할 수 없습니다.",
     };
   }
 
@@ -336,7 +336,7 @@ function resolvePropertySelection({
       ? [
           {
             key: "value",
-            label: "Curve",
+            label: "곡선",
             context: contexts[0].context,
             allContexts: contexts.map(({ context }) => context),
           },
@@ -389,14 +389,14 @@ function resolveSegmentForOption({
   if (!option) {
     return {
       reason: "selected-properties-have-no-shared-component",
-      message: "Selected properties do not share a graph-editable channel.",
+      message: "선택한 속성들은 함께 편집 가능한 그래프 채널이 없습니다.",
     };
   }
 
   if (!option.context.nextKey) {
     return {
       reason: "selected-keyframe-has-no-next-segment",
-      message: "Select a keyframe that has an outgoing segment.",
+      message: "다음 구간이 있는 키프레임을 선택하세요.",
     };
   }
 
@@ -406,14 +406,14 @@ function resolveSegmentForOption({
   ) {
     return {
       reason: "selected-keyframes-are-not-adjacent",
-      message: "Selected keyframes must be adjacent on each property.",
+      message: "선택한 키프레임은 각 속성에서 서로 인접해야 합니다.",
     };
   }
 
   if (option.context.keyframe.segmentToNext === "step") {
     return {
       reason: "selected-segment-is-hold",
-      message: "Hold segments have a fixed value - easing has no effect here.",
+      message: "고정 구간은 값이 일정해서 가속 곡선이 적용되지 않습니다.",
     };
   }
 
@@ -430,7 +430,7 @@ function resolveSegmentForOption({
     return {
       reason: "selected-segment-is-flat",
       message:
-        "Cannot edit a segment where both keyframes are at the same time.",
+        "두 키프레임이 같은 시점에 있는 구간은 편집할 수 없습니다.",
     };
   }
 
@@ -458,7 +458,7 @@ export function resolveGraphEditorSelectionState({
   if (selectedKeyframes.length === 0) {
     return createUnavailableState({
       reason: "no-keyframe-selected",
-      message: "Select a keyframe to edit its curve.",
+      message: "곡선을 편집할 키프레임을 선택하세요.",
     });
   }
 
@@ -469,7 +469,7 @@ export function resolveGraphEditorSelectionState({
   if (!primaryKeyframe) {
     return createUnavailableState({
       reason: "no-keyframe-selected",
-      message: "Select a keyframe to edit its curve.",
+      message: "곡선을 편집할 키프레임을 선택하세요.",
     });
   }
 
@@ -480,7 +480,7 @@ export function resolveGraphEditorSelectionState({
   if (!selectedElement) {
     return createUnavailableState({
       reason: "selected-element-missing",
-      message: "The selected keyframe could not be resolved.",
+      message: "선택한 키프레임을 찾을 수 없습니다.",
     });
   }
 
@@ -492,7 +492,7 @@ export function resolveGraphEditorSelectionState({
   if (spansMultipleElements) {
     return createUnavailableState({
       reason: "selected-keyframes-span-multiple-elements",
-      message: "Selected keyframes must be on the same element.",
+      message: "선택한 키프레임은 같은 요소에 있어야 합니다.",
     });
   }
 
@@ -534,7 +534,7 @@ export function resolveGraphEditorSelectionState({
   if (componentOptions.length === 0) {
     return createUnavailableState({
       reason: "selected-properties-have-no-shared-component",
-      message: "Selected properties do not share a graph-editable channel.",
+      message: "선택한 속성들은 함께 편집 가능한 그래프 채널이 없습니다.",
     });
   }
 
@@ -587,7 +587,7 @@ export function resolveGraphEditorSelectionState({
   if (!primarySegment) {
     return createUnavailableState({
       reason: "selected-keyframe-missing-on-channel",
-      message: "The selected keyframe is not editable as a graph segment.",
+      message: "선택한 키프레임은 그래프 구간으로 편집할 수 없습니다.",
       componentOptions,
       activeComponentKey,
     });
@@ -597,8 +597,8 @@ export function resolveGraphEditorSelectionState({
     status: "ready",
     message:
       segments.length === 1
-        ? "Edit graph"
-        : `Edit graph for ${segments.length} properties`,
+        ? "그래프 편집"
+        : `속성 ${segments.length}개의 그래프 편집`,
     componentOptions,
     activeComponentKey,
     trackId: selectedElement.trackId,

@@ -85,7 +85,7 @@ export const blurEffectDefinition: EffectDefinition = {
   params: [
     {
       key: "intensity",
-      label: "Intensity",
+      label: "강도",
       type: "number",
       default: 15,
       min: 0,

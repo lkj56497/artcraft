@@ -59,7 +59,7 @@ export const BOX_LIKE_MASK_PARAMS: ParamDefinition<
   },
   {
     key: "width",
-    label: "Width",
+    label: "너비",
     type: "number",
     default: 0.6,
     min: 1,
@@ -67,7 +67,7 @@ export const BOX_LIKE_MASK_PARAMS: ParamDefinition<
   },
   {
     key: "height",
-    label: "Height",
+    label: "높이",
     type: "number",
     default: 0.6,
     min: 1,
@@ -75,7 +75,7 @@ export const BOX_LIKE_MASK_PARAMS: ParamDefinition<
   },
   {
     key: "rotation",
-    label: "Rotation",
+    label: "회전",
     type: "number",
     default: 0,
     min: 0,
@@ -84,7 +84,7 @@ export const BOX_LIKE_MASK_PARAMS: ParamDefinition<
   },
   {
     key: "scale",
-    label: "Scale",
+    label: "크기",
     type: "number",
     default: 1,
     min: 1,
@@ -93,13 +93,13 @@ export const BOX_LIKE_MASK_PARAMS: ParamDefinition<
   },
   {
     key: "strokeAlign",
-    label: "Stroke Align",
+    label: "외곽선 위치",
     type: "select",
     default: "center",
     options: [
-      { value: "inside", label: "Inside" },
-      { value: "center", label: "Center" },
-      { value: "outside", label: "Outside" },
+      { value: "inside", label: "안쪽" },
+      { value: "center", label: "가운데" },
+      { value: "outside", label: "바깥쪽" },
     ],
   },
 ];

@@ -161,49 +161,49 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
         return {
           resolution: prompt2D.resolution,
           generationCount: prompt2D.generationCount,
-          label: "Images",
+          label: "이미지",
         };
       case ModelPage.Stage3D:
         return {
           resolution: prompt3D.resolution,
           generationCount: 1, // 3D doesn't have generation count
-          label: "Images",
+          label: "이미지",
         };
       case ModelPage.TextToImage:
         return {
           resolution: promptImage.resolution,
           generationCount: promptImage.generationCount,
-          label: "Images",
+          label: "이미지",
         };
       case ModelPage.ImageToVideo:
         return {
           resolution: promptVideo.resolution,
           generationCount: promptVideo.generationCount,
-          label: "Videos",
+          label: "영상",
         };
       case ModelPage.ImageEditor:
         return {
           resolution: promptEdit.resolution,
           generationCount: 1, // Edit doesn't have generation count in store
-          label: "Images",
+          label: "이미지",
         };
       case ModelPage.ImageTo3DWorld:
         return {
           resolution: undefined,
           generationCount: 1,
-          label: "Worlds",
+          label: "월드",
         };
       case ModelPage.Angles:
         return {
           resolution: undefined,
           generationCount: 1,
-          label: "Images",
+          label: "이미지",
         };
       default:
         return {
           resolution: "1k",
           generationCount: 1,
-          label: "Items",
+          label: "항목",
         };
     }
   };
@@ -260,7 +260,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
   const getPageName = () => {
     switch (activePage) {
       case ModelPage.TextToImage:
-        return "Text to Image";
+        return "텍스트 → 이미지";
       case ModelPage.ImageToVideo:
         return "Generate Video";
       case ModelPage.Canvas2D:
@@ -270,7 +270,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
       case ModelPage.ImageEditor:
         return "Image Editor";
       case ModelPage.ImageTo3DWorld:
-        return "Image to 3D World";
+        return "이미지 → 3D 월드";
       case ModelPage.Angles:
         return "Angles";
       default:
@@ -328,7 +328,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
         <div className="flex items-center gap-2 pb-3 border-b border-ui-panel-border select-none">
           <div className="hud-label flex items-center gap-2 text-base-fg">
             <CoinsIcon className="text-base-fg" />
-            Cost Breakdown
+            비용 내역
           </div>
         </div>
       </DragHandle>
@@ -344,7 +344,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
         {/* Model row — always shown */}
         {selectedModel && (
           <div className="flex justify-between items-center">
-            <span className="text-base-fg/60">Model</span>
+            <span className="text-base-fg/60">모델</span>
             <span
               className="text-base-fg font-medium truncate max-w-[140px]"
               title={selectedModel.selectorName}
@@ -360,7 +360,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
             <div className="space-y-1.5">
               {storeData.resolution && (
                 <div className="flex justify-between items-center">
-                  <span className="text-base-fg/60">Resolution</span>
+                  <span className="text-base-fg/60">해상도</span>
                   <span className="text-base-fg font-medium uppercase">
                     {storeData.resolution}
                   </span>
@@ -376,7 +376,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
               )}
               {selectedProvider && (
                 <div className="flex justify-between items-center">
-                  <span className="text-base-fg/60">Provider</span>
+                  <span className="text-base-fg/60">제공업체</span>
                   <span className="text-base-fg font-medium">
                     {formatProvider(selectedProvider)}
                   </span>
@@ -389,19 +389,19 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
               {/* Credits row */}
               <div>
                 <div className="font-mono text-[10px] text-base-fg/50 uppercase tracking-[0.12em] mb-0.5">
-                  Credits
+                  크레딧
                 </div>
                 <div className="font-display text-lg font-medium tracking-[-0.02em] text-base-fg flex items-center gap-1.5">
                   {isEstimateLoading && isLiveEstimatePage ? (
                     <>
                       <LoaderIcon className="animate-spin text-base" />
                       <span className="text-base-fg/50 text-sm">
-                        Calculating…
+                        계산 중…
                       </span>
                     </>
                   ) : totalCredits != null ? (
                     <>
-                      {totalCredits} {totalCredits === 1 ? "Credit" : "Credits"}
+                      {totalCredits} {totalCredits === 1 ? "크레딧" : "크레딧"}
                     </>
                   ) : (
                     <span className="text-base-fg/50">—</span>
@@ -414,7 +414,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
               {/* Converted price row */}
               <div>
                 <div className="font-mono text-[10px] text-base-fg/50 uppercase tracking-[0.12em] mb-0.5">
-                  Estimated Price
+                  예상 가격
                 </div>
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-display text-lg font-medium text-base-fg tracking-[-0.02em]">
@@ -432,7 +432,7 @@ export function CostBreakdownModal({ activeTabId }: CostBreakdownModalProps) {
           </>
         ) : (
           <div className="bg-ui-sunken rounded-none p-2.5 border border-ui-panel-border text-center text-base-fg/60 text-[11px]">
-            Credit Costs not yet available for this model
+            이 모델의 크레딧 비용은 아직 제공되지 않습니다
           </div>
         )}
       </div>

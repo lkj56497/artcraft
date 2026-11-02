@@ -42,7 +42,7 @@ export const CostModal = ({ credits = 1, onClose }: CostModalProps) => {
         <div className="flex cursor-move select-none items-center justify-between border-b border-white/15 px-4 py-3">
           <div className="flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg">
             <CoinsIcon className="text-primary" />
-            Cost Breakdown
+            비용 내역
           </div>
           <button
             onClick={onClose}
@@ -55,9 +55,9 @@ export const CostModal = ({ credits = 1, onClose }: CostModalProps) => {
         <div className="space-y-4 bg-ui-panel p-4">
           <div className="border border-white/15 bg-white/5 p-3">
             <div className="mb-1 flex items-center justify-between">
-              <span className="text-sm text-base-fg/80">Total Cost</span>
+              <span className="text-sm text-base-fg/80">총 비용</span>
               <span className="text-lg font-semibold tabular-nums tracking-tight text-base-fg">
-                {credits} Credits
+                {credits} 크레딧
               </span>
             </div>
             <div className="text-right text-xs text-base-fg/60">
@@ -67,7 +67,7 @@ export const CostModal = ({ credits = 1, onClose }: CostModalProps) => {
 
           <div className="space-y-1">
             <label className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-              Currency
+              통화
             </label>
             <Select
               options={selectOptions}
@@ -78,7 +78,7 @@ export const CostModal = ({ credits = 1, onClose }: CostModalProps) => {
           </div>
 
           <div className="mt-2 border-t border-white/15 pt-3 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-base-fg/40">
-            1 Credit = $0.01 USD
+            1 크레딧 = $0.01 USD
           </div>
         </div>
       </motion.div>

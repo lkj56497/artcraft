@@ -33,31 +33,31 @@ const createHugeiconsIcon =
 export const tabs = {
   media: {
     icon: createHugeiconsIcon({ icon: Folder03Icon }),
-    label: "Media",
+    label: "미디어",
   },
   sounds: {
     icon: createHugeiconsIcon({ icon: HeadphonesIcon }),
-    label: "Sounds",
+    label: "사운드",
   },
   text: {
     icon: createHugeiconsIcon({ icon: TextIcon }),
-    label: "Text",
+    label: "텍스트",
   },
   stickers: {
     icon: createHugeiconsIcon({ icon: Happy01Icon }),
-    label: "Stickers",
+    label: "스티커",
   },
   effects: {
     icon: createHugeiconsIcon({ icon: MagicWand05Icon }),
-    label: "Effects",
+    label: "효과",
   },
   captions: {
     icon: createHugeiconsIcon({ icon: ClosedCaptionIcon }),
-    label: "Captions",
+    label: "자막",
   },
   settings: {
     icon: createHugeiconsIcon({ icon: Settings01Icon }),
-    label: "Settings",
+    label: "설정",
   },
 } satisfies Record<
   Tab,

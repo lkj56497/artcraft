@@ -23,7 +23,7 @@ const creditPacks: CreditPack[] = [
     base: 5000,
     bonus: 0,
     priceUsd: 50,
-    badge: "Popular",
+    badge: "인기",
   },
   { id: "artcraft_10000", total: 10000, base: 10000, bonus: 0, priceUsd: 100 },
 ];
@@ -74,10 +74,10 @@ export function CreditsModal({
       <div className="relative overflow-hidden">
         <div className="relative px-8 pt-10 pb-8 sm:px-10 sm:pt-11 sm:pb-9">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-[34px] sm:leading-[1.1]">
-            Buy <span className="text-primary">credits</span>
+            <span className="text-primary">크레딧</span> 구매
           </h2>
           <p className="mt-3 text-[15px] leading-relaxed text-white/55">
-            One-time credit packs. No subscription required.
+            1회성 크레딧 팩. 구독이 필요 없습니다.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -116,7 +116,7 @@ export function CreditsModal({
                           <>
                             {pack.base.toLocaleString()} +{" "}
                             <span className="font-semibold text-white">
-                              {pack.bonus.toLocaleString()} bonus
+                              보너스 {pack.bonus.toLocaleString()}
                             </span>
                           </>
                         ) : (
@@ -135,7 +135,7 @@ export function CreditsModal({
                         <LoaderCircleIcon className="animate-spin" />
                       ) : (
                         <>
-                          Buy
+                          구매
                           <ArrowRightIcon className="text-xs transition-transform group-hover:translate-x-0.5" />
                         </>
                       )}
@@ -147,7 +147,7 @@ export function CreditsModal({
           </div>
 
           <p className="mt-6 text-center text-xs text-white/35">
-            Secure checkout via Stripe.
+            Stripe를 통한 안전한 결제.
           </p>
         </div>
       </div>

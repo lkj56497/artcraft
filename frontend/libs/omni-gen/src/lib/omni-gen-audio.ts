@@ -116,12 +116,12 @@ export async function enqueueAudioGeneration(
         : [response.inference_job_token];
       return { success: true, jobTokens };
     }
-    return { success: false, jobTokens: [], error: "Generation failed" };
+    return { success: false, jobTokens: [], error: "생성 실패" };
   } catch (err: any) {
     return {
       success: false,
       jobTokens: [],
-      error: err.error_message ?? err.message ?? "Request failed",
+      error: err.error_message ?? err.message ?? "요청 실패",
       errorCode: parseAudioHttpStatusCode(err),
     };
   }

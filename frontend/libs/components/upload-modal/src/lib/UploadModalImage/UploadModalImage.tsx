@@ -73,8 +73,8 @@ export function UploadModalImage(props: Props) {
             <LoadingDots className="mb-1 bg-transparent" />
             <div className="w-100 text-center opacity-50">
               {p && p.total > 1
-                ? `Uploading ${p.current} / ${p.total}...`
-                : "Uploading..."}
+                ? `업로드 중 ${p.current} / ${p.total}...`
+                : "업로드 중..."}
             </div>
           </>
         );
@@ -82,7 +82,7 @@ export function UploadModalImage(props: Props) {
       case UploaderStates.success: {
         return (
           <UploadSuccess
-            title="Image"
+            title="이미지"
             onOk={() => {
               // Open the gallery so the user can drag the freshly
               // uploaded image onto the canvas.

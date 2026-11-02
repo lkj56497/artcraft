@@ -55,7 +55,7 @@ export function useSoundSearch({
       setTotalCount({ count: data.totalCount });
     } catch (err) {
       setSearchError({
-        error: err instanceof Error ? err.message : "Load more failed",
+        error: err instanceof Error ? err.message : "더 불러오기 실패",
       });
     } finally {
       setLoadingMore({ loading: false });
@@ -99,7 +99,7 @@ export function useSoundSearch({
       } catch (err) {
         if (!ignore) {
           setSearchError({
-            error: err instanceof Error ? err.message : "Search failed",
+            error: err instanceof Error ? err.message : "검색 실패",
           });
         }
       } finally {

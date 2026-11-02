@@ -17,11 +17,11 @@ export const DragAndDropZone = ({
         <FileUpIcon className="text-4xl text-white/60" />
         <div className="flex flex-col gap-0">
           <p className="font-medium">
-            <u>Upload a file</u> or drop it here
+            <u>파일 업로드</u> 또는 여기로 끌어다 놓기
           </p>
 
           <p className="flex items-center gap-2 font-mono text-[11px] font-normal uppercase tracking-[0.12em] opacity-50">
-            {fileTypes.join(", ").toString()} supported
+            {fileTypes.join(", ").toString()} 지원
           </p>
         </div>
       </div>
@@ -45,9 +45,9 @@ export const DragAndDropZone = ({
           </p>
           <p className="flex items-center gap-2 text-sm font-normal">
             <span className="opacity-50">
-              {`${fileName} file size: ${fileSize} `}
+              {`${fileName} 파일 크기: ${fileSize} `}
             </span>
-            <u className="transition-all hover:text-white/80">Change File</u>
+            <u className="transition-all hover:text-white/80">파일 변경</u>
           </p>
         </div>
       </div>
@@ -58,9 +58,9 @@ export const DragAndDropZone = ({
     <div className="flex cursor-pointer items-center justify-between gap-3.5 rounded-none border border-dashed border-white/20 bg-white/[0.02] p-3 transition-colors hover:border-white/40 hover:bg-white/[0.05]">
       <DynamicIcon icon={fileIcon} className="text-4xl" />
       <div className="flex grow flex-col gap-0">
-        <p className="font-medium">{files.length} files selected</p>
+        <p className="font-medium">파일 {files.length}개 선택됨</p>
         <p className="flex items-center gap-2 text-sm font-normal">
-          <u className="transition-all hover:text-white/80">Change Files</u>
+          <u className="transition-all hover:text-white/80">파일 변경</u>
         </p>
       </div>
     </div>

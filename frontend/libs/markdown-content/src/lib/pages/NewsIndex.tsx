@@ -10,7 +10,7 @@ export const NewsIndex = ({ basePath }: NewsIndexProps) => {
   const items = getNewsPosts();
   const title = "News & Updates";
   const description =
-    "Latest updates, features, and announcements from the ArtCraft team.";
+    "ArtCraft 팀의 최신 업데이트, 기능, 공지.";
 
   // Note: SEO/Head handling should be done by the consumer app if needed (e.g. Helmet)
   // But we can check if we want to include it here or let the parent handle it.
@@ -53,7 +53,7 @@ export const NewsIndex = ({ basePath }: NewsIndexProps) => {
           ))}
           {items.length === 0 && (
             <div className="text-center py-10 opacity-50">
-                No updates yet. Check back soon!
+                아직 업데이트가 없습니다. 곧 다시 확인해 주세요!
             </div>
           )}
         </div>

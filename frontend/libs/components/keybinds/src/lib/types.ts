@@ -93,3 +93,18 @@ export interface Preset {
   /** Bindings that DIFFER from BASE for this preset (3D-only deltas). */
   bindings: Partial<Record<ActionId, Binding[]>>;
 }
+
+/** Korean display names for key groups (the group ids stay in English). */
+export const KEY_GROUP_LABELS_KO: Record<KeyGroup, string> = {
+  Camera: "카메라",
+  Transform: "변형",
+  Selection: "선택",
+  Edit: "편집",
+  View: "보기",
+  Tools: "도구",
+  Timeline: "타임라인",
+  Record: "녹화",
+  History: "기록",
+  Navigation: "탐색",
+  Rating: "평점",
+};

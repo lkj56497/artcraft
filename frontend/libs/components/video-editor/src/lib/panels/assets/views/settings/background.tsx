@@ -67,7 +67,7 @@ const BlurPreview = memo(
         )}
         onClick={onSelect}
         type="button"
-        aria-label={`Select ${blur.label} blur`}
+        aria-label={`${blur.label} 흐림 선택`}
       >
         <canvas
           ref={canvasRef}
@@ -122,7 +122,7 @@ const BackgroundPreviews = memo(
             }
             onClick={() => onSelect(bg)}
             type="button"
-            aria-label={`Select background ${bg}`}
+            aria-label={`배경 ${bg} 선택`}
           />
         )),
       [
@@ -158,7 +158,7 @@ function CustomColorPreview({
             isSelected && "border-primary border-2",
           )}
           type="button"
-          aria-label="Pick a custom background color"
+          aria-label="배경색 직접 고르기"
         >
           <span
             className="absolute inset-0"
@@ -180,7 +180,7 @@ function CustomColorPreview({
 }
 
 const COLOR_SECTIONS = [
-  { id: "colors", title: "Colors", backgrounds: colors, useBackgroundColor: true, showCustomPicker: true },
+  { id: "colors", title: "색상", backgrounds: colors, useBackgroundColor: true, showCustomPicker: true },
   { id: "pattern-craft", title: "Pattern craft", backgrounds: patternCraftGradients, showCustomPicker: false },
   { id: "syntax-ui", title: "Syntax UI", backgrounds: syntaxUIGradients, showCustomPicker: false },
 ] as const;
@@ -263,7 +263,7 @@ export function BackgroundContent() {
         showTopBorder={false}
       >
         <SectionHeader>
-          <SectionTitle>Blur</SectionTitle>
+          <SectionTitle>흐림</SectionTitle>
         </SectionHeader>
         <SectionContent>
           <div className="flex flex-wrap gap-2">{blurPreviews}</div>

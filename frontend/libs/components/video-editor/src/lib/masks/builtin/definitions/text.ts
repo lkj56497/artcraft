@@ -69,7 +69,7 @@ const TEXT_MASK_PARAMS: ParamDefinition<keyof TextMaskParams & string>[] = [
   },
   {
     key: "fontSize",
-    label: "Size",
+    label: "크기",
     type: "number",
     default: 15,
     min: MIN_FONT_SIZE,
@@ -78,7 +78,7 @@ const TEXT_MASK_PARAMS: ParamDefinition<keyof TextMaskParams & string>[] = [
   },
   {
     key: "rotation",
-    label: "Rotation",
+    label: "회전",
     type: "number",
     default: 0,
     min: 0,
@@ -87,7 +87,7 @@ const TEXT_MASK_PARAMS: ParamDefinition<keyof TextMaskParams & string>[] = [
   },
   {
     key: "scale",
-    label: "Scale",
+    label: "크기",
     type: "number",
     default: 1,
     min: 1,
@@ -361,7 +361,7 @@ export const textMaskDefinition: MaskDefinition<"text"> = {
         strokeColor: "#ffffff",
         strokeWidth: 0,
         strokeAlign: "center",
-        content: "Mask",
+        content: "마스크",
         fontSize: 15,
         fontFamily: "Arial",
         fontWeight: "normal",

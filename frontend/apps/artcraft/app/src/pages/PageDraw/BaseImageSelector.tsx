@@ -48,7 +48,7 @@ export const BaseImageSelector = ({
   const handleUseGalleryImages = (selectedItems: GalleryItem[]) => {
     const item = selectedItems[0];
     if (!item || !item.fullImage) {
-      toast.error("No image selected");
+      toast.error("선택된 이미지가 없습니다");
       return;
     }
     const referenceImage: BaseSelectorImage = {
@@ -110,7 +110,7 @@ export const BaseImageSelector = ({
                   fullImageUrl: finalUrl,
                   thumbnailUrlTemplate,
                 };
-                toast.success("Image uploaded successfully!");
+                toast.success("이미지 업로드 완료!");
                 onImageSelect(referenceImage);
                 setIsLoading(false);
               })();
@@ -118,7 +118,7 @@ export const BaseImageSelector = ({
               newState.status === UploaderStates.assetError ||
               newState.status === UploaderStates.imageCreateError
             ) {
-              toast.error("Upload failed. Please try again.");
+              toast.error("업로드에 실패했습니다. 다시 시도해 주세요.");
               setIsLoading(false);
             }
           },
@@ -134,18 +134,18 @@ export const BaseImageSelector = ({
         <div className="aspect-video w-full max-w-5xl bg-ui-background">
           <UploadEntryCard
             icon={PencilIcon}
-            title="Edit Image"
-            description="Click to upload or drag and drop an image here to edit"
+            title="이미지 편집"
+            description="클릭해서 업로드하거나 편집할 이미지를 여기로 끌어다 놓으세요"
             accentBackgroundClass="bg-blue-500/40"
             accentBorderClass="border-blue-400/30"
             accept="image/*"
             multiple
             onFilesSelected={handleFileUpload}
-            primaryLabel="Select Image"
-            secondaryLabel="Pick from Library"
+            primaryLabel="이미지 선택"
+            secondaryLabel="라이브러리에서 선택"
             secondaryIcon={ImagesIcon}
             onSecondaryClick={handleGalleryClick}
-            tertiaryLabel="Blank Canvas"
+            tertiaryLabel="빈 캔버스"
             tertiaryIcon={MaximizeIcon}
             onTertiaryClick={() => setIsBlankCanvasModalOpen(true)}
             disabled={isLoading || showLoading}

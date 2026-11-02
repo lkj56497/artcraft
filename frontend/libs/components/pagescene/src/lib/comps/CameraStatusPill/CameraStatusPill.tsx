@@ -26,7 +26,7 @@ export const CameraStatusPill = () => {
 
   return (
     <Tooltip
-      content={inCameraView ? "Looking through render camera" : "Free viewport camera"}
+      content={inCameraView ? "렌더 카메라로 보는 중" : "자유 뷰포트 카메라"}
       position="bottom"
       delay={300}
     >
@@ -41,7 +41,7 @@ export const CameraStatusPill = () => {
           inCameraView && "border-white/30 bg-white/10",
         )}
       >
-        {inCameraView ? renderCameraLabel : "Viewport"}
+        {inCameraView ? renderCameraLabel : "뷰포트"}
       </Button>
     </Tooltip>
   );

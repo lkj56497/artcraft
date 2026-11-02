@@ -60,7 +60,7 @@ const AllTabSection = ({
         className="mr-3 h-6 gap-1 px-1.5 py-0 text-[10px] tracking-[0.08em] leading-none"
         onClick={onViewAll}
       >
-        View all
+        모두 보기
         <ChevronRightIcon className="h-3 w-3 shrink-0 opacity-70" />
       </Button>
     </div>
@@ -169,7 +169,7 @@ export const AssetModal = () => {
     fetchUserObjects: fetchUserCharacters,
   } = useUserObjects({
     filterEngineCategories: [FilterEngineCategories.CHARACTER],
-    defaultErrorMessage: "Error fetching user characters",
+    defaultErrorMessage: "내 캐릭터를 불러오는 중 오류",
   });
 
   const {
@@ -178,7 +178,7 @@ export const AssetModal = () => {
     fetchUserObjects: fetchUserObjects,
   } = useUserObjects({
     filterEngineCategories: [FilterEngineCategories.OBJECT],
-    defaultErrorMessage: "Error fetching user objects",
+    defaultErrorMessage: "내 오브젝트를 불러오는 중 오류",
   });
 
   const {
@@ -187,7 +187,7 @@ export const AssetModal = () => {
     fetchUserObjects: fetchUserSets,
   } = useUserObjects({
     filterEngineCategories: [FilterEngineCategories.LOCATION],
-    defaultErrorMessage: "Error fetching user sets",
+    defaultErrorMessage: "내 세트를 불러오는 중 오류",
   });
 
   const {
@@ -196,7 +196,7 @@ export const AssetModal = () => {
     fetchUserObjects: fetchUserCreatures,
   } = useUserObjects({
     filterEngineCategories: [FilterEngineCategories.CREATURE],
-    defaultErrorMessage: "Error fetching user creatures",
+    defaultErrorMessage: "내 크리처를 불러오는 중 오류",
   });
 
   const {
@@ -205,7 +205,7 @@ export const AssetModal = () => {
     fetchUserObjects: fetchUserImagePlanes,
   } = useUserObjects({
     filterEngineCategories: [FilterEngineCategories.IMAGE_PLANE],
-    defaultErrorMessage: "Error fetching user image planes",
+    defaultErrorMessage: "내 이미지 평면을 불러오는 중 오류",
   });
 
   const {
@@ -214,7 +214,7 @@ export const AssetModal = () => {
   } = useFeaturedObjects({
     filterEngineCategories: [FilterEngineCategories.CHARACTER],
     filterMediaTypes: [FilterMediaType.GLB],
-    defaultErrorMessage: "Error fetching featured characters",
+    defaultErrorMessage: "추천 캐릭터를 불러오는 중 오류",
   });
 
   const {
@@ -222,7 +222,7 @@ export const AssetModal = () => {
     featuredFetchStatus: featuredObjectsFetchStatus,
   } = useFeaturedObjects({
     filterEngineCategories: [FilterEngineCategories.OBJECT],
-    defaultErrorMessage: "Error fetching featured objects",
+    defaultErrorMessage: "추천 오브젝트를 불러오는 중 오류",
   });
 
   const {
@@ -230,7 +230,7 @@ export const AssetModal = () => {
     featuredFetchStatus: featuredSetsFetchStatus,
   } = useFeaturedObjects({
     filterEngineCategories: [FilterEngineCategories.LOCATION],
-    defaultErrorMessage: "Error fetching featured sets",
+    defaultErrorMessage: "추천 세트를 불러오는 중 오류",
   });
 
   const {
@@ -238,7 +238,7 @@ export const AssetModal = () => {
     featuredFetchStatus: featuredCreaturesFetchStatus,
   } = useFeaturedObjects({
     filterEngineCategories: [FilterEngineCategories.CREATURE],
-    defaultErrorMessage: "Error fetching featured creatures",
+    defaultErrorMessage: "추천 크리처를 불러오는 중 오류",
   });
 
   const {
@@ -246,7 +246,7 @@ export const AssetModal = () => {
     featuredFetchStatus: featuredImagePlanesFetchStatus,
   } = useFeaturedObjects({
     filterEngineCategories: [FilterEngineCategories.IMAGE_PLANE],
-    defaultErrorMessage: "Error fetching featured image planes",
+    defaultErrorMessage: "추천 이미지 평면을 불러오는 중 오류",
   });
 
   // Animations data shared with the standalone AnimationsModal. Unlike the
@@ -299,10 +299,10 @@ export const AssetModal = () => {
     const orderedCharacters = [...priorityCharacters, ...remainingCharacters];
 
     return [
-      { id: "all", label: "All", icon: LayersIcon, items: [] },
+      { id: "all", label: "전체", icon: LayersIcon, items: [] },
       {
         id: "character",
-        label: "Characters",
+        label: "캐릭터",
         labelSingle: "Character",
         icon: UserIcon,
         engineCategory: FilterEngineCategories.CHARACTER,
@@ -310,7 +310,7 @@ export const AssetModal = () => {
       },
       {
         id: "objects",
-        label: "Objects",
+        label: "오브젝트",
         labelSingle: "Object",
         icon: BoxIcon,
         engineCategory: FilterEngineCategories.OBJECT,
@@ -321,7 +321,7 @@ export const AssetModal = () => {
       },
       {
         id: "memes",
-        label: "Memes",
+        label: "밈",
         labelSingle: "Meme",
         icon: LaughIcon,
         engineCategory: FilterEngineCategories.CHARACTER,
@@ -332,7 +332,7 @@ export const AssetModal = () => {
       },
       {
         id: "sets",
-        label: "Sets",
+        label: "세트",
         labelSingle: "Set",
         icon: MountainIcon,
         engineCategory: FilterEngineCategories.LOCATION,
@@ -343,7 +343,7 @@ export const AssetModal = () => {
       },
       {
         id: "creatures",
-        label: "Creatures",
+        label: "크리처",
         labelSingle: "Creature",
         icon: DogIcon,
         engineCategory: FilterEngineCategories.CREATURE,
@@ -354,7 +354,7 @@ export const AssetModal = () => {
       },
       {
         id: "animations",
-        label: "Animations",
+        label: "애니메이션",
         labelSingle: "Animation",
         icon: FootprintsIcon,
         engineCategory: FilterEngineCategories.ANIMATION,
@@ -364,7 +364,7 @@ export const AssetModal = () => {
       },
       {
         id: "skybox",
-        label: "Skybox",
+        label: "스카이박스",
         labelSingle: "Skybox",
         icon: SunIcon,
         items: activeLibraryTab === "library" ? demoSkyboxItems : [],
@@ -509,7 +509,7 @@ export const AssetModal = () => {
           <div className="relative col-span-3 flex h-full flex-col p-3 pt-2 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-gray-200 after:bg-white/10">
             <div className="flex h-10 items-center justify-between gap-2.5">
               <h2 className="font-display text-lg tracking-tight text-white">
-                ArtCraft Presets
+                ArtCraft 프리셋
               </h2>
             </div>
             <hr className="my-2 w-full border-white/10" />
@@ -538,7 +538,7 @@ export const AssetModal = () => {
                 id="reopen-after-add"
                 checked={reopenAfterDrag}
                 onChange={handleReopenChange}
-                label="Reopen after adding"
+                label="추가 후 다시 열기"
               />
             </div>
           </div>
@@ -549,7 +549,7 @@ export const AssetModal = () => {
                   <div className="relative grow">
                     <Input
                       ref={searchInputRef}
-                      placeholder="Search"
+                      placeholder="검색"
                       className="relative z-[51] grow"
                       inputClassName="bg-white/5 pr-10 placeholder-white/40"
                       icon={SearchIcon}
@@ -606,7 +606,7 @@ export const AssetModal = () => {
           isOpen: isUploadModalOpen,
           onClose: () => setIsUploadModalOpen(false),
           onSuccess: handleUploadSuccess,
-          title: "Upload 3D Asset",
+          title: "3D 에셋 업로드",
           titleIcon: ArrowUpFromLineIcon,
         })}
     </>

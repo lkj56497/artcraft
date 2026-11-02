@@ -450,13 +450,13 @@ export const PromptBoxVideo = ({
     selectedModel?.supportsReferenceMode
       ? [
           {
-            label: "Keyframe",
-            description: "First/Last frame",
+            label: "키프레임",
+            description: "첫/마지막 프레임",
             selected: inputMode === "keyframe",
           },
           {
-            label: "Omni Reference",
-            description: "Multi-media ref",
+            label: "옴니 참조",
+            description: "멀티미디어 참조",
             selected: inputMode === "reference",
           },
         ]
@@ -464,7 +464,7 @@ export const PromptBoxVideo = ({
 
   const handleInputModeSelect = (selectedItem: PopoverItem) => {
     const mode: VideoInputMode =
-      selectedItem.label === "Omni Reference" ? "reference" : "keyframe";
+      selectedItem.label === "옴니 참조" ? "reference" : "keyframe";
     setInputMode(mode);
     // Clear images/videos when switching modes to avoid stale state
     if (mode === "reference") {
@@ -527,13 +527,13 @@ export const PromptBoxVideo = ({
         if (!firstOpen && !lastOpen) {
           toast.error(
             selectedModel?.endFrame
-              ? "First and last frames are already set"
-              : "The first frame is already set",
+              ? "첫 프레임과 마지막 프레임이 이미 지정되어 있습니다"
+              : "첫 프레임이 이미 지정되어 있습니다",
           );
         }
       } else if (deck.availableImageSlots <= 0) {
         toast.error(
-          `Max ${maxImageCount} image reference${maxImageCount === 1 ? "" : "s"}`,
+          `이미지 참조 최대 ${maxImageCount}개`,
         );
       } else {
         deck.processImageFiles(images, "start");
@@ -631,13 +631,13 @@ export const PromptBoxVideo = ({
     refDeckAddActions.push(
       {
         key: "upload-image",
-        label: "Upload",
+        label: "업로드",
         group: "image",
         onSelect: deck.openImageUpload,
       },
       {
         key: "library-image",
-        label: "From library",
+        label: "라이브러리에서",
         group: "image",
         onSelect: () => deck.openGallery("start"),
       },
@@ -647,13 +647,13 @@ export const PromptBoxVideo = ({
     refDeckAddActions.push(
       {
         key: "upload-video",
-        label: "Upload",
+        label: "업로드",
         group: "video",
         onSelect: deck.openVideoUpload,
       },
       {
         key: "library-video",
-        label: "From library",
+        label: "라이브러리에서",
         group: "video",
         onSelect: () => deck.openGallery("video"),
       },
@@ -663,13 +663,13 @@ export const PromptBoxVideo = ({
     refDeckAddActions.push(
       {
         key: "upload-audio",
-        label: "Upload",
+        label: "업로드",
         group: "audio",
         onSelect: deck.openAudioUpload,
       },
       {
         key: "library-audio",
-        label: "From library",
+        label: "라이브러리에서",
         group: "audio",
         onSelect: () => deck.openGallery("audio"),
       },
@@ -774,24 +774,24 @@ export const PromptBoxVideo = ({
       onFirstAddActions={[
         {
           key: "upload-first",
-          label: "Upload",
+          label: "업로드",
           onSelect: deck.openImageUpload,
         },
         {
           key: "library-first",
-          label: "Pick from library",
+          label: "라이브러리에서 선택",
           onSelect: () => deck.openGallery("start"),
         },
       ]}
       onLastAddActions={[
         {
           key: "upload-last",
-          label: "Upload",
+          label: "업로드",
           onSelect: deck.openEndUpload,
         },
         {
           key: "library-last",
-          label: "Pick from library",
+          label: "라이브러리에서 선택",
           onSelect: () => deck.openGallery("end"),
         },
       ]}
@@ -1041,25 +1041,25 @@ export const PromptBoxVideo = ({
   const handleEnqueue = async () => {
     if (!prompt.trim()) {
       console.warn("Cannot generate video: prompt is empty");
-      toast.error("Please enter a prompt to generate video");
+      toast.error("영상을 생성하려면 프롬프트를 입력하세요");
       return;
     }
     if (isFinite(maxLen) && prompt.length > maxLen) {
       toast.error(
-        `Prompt exceeds the ${maxLen} character limit for this model`,
+        `프롬프트가 이 모델의 글자 수 제한(${maxLen}자)을 넘었습니다`,
       );
       return;
     }
 
     if (!selectedModel) {
       console.warn("Cannot generate video: no model selected");
-      toast.error("Please select a model to generate video");
+      toast.error("영상을 생성하려면 모델을 선택하세요");
       return;
     }
 
     if (selectedModel?.requiresImage && referenceImages.length === 0) {
       console.warn("Cannot generate video: no reference image provided");
-      toast.error("Please add a starting frame image to generate video");
+      toast.error("영상을 생성하려면 시작 프레임 이미지를 추가하세요");
       return;
     }
 
@@ -1229,7 +1229,7 @@ export const PromptBoxVideo = ({
     const failure = outcomes.find((outcome) => outcome.status === "rejected");
     if (failure?.status === "rejected") {
       console.error("PromptBoxVideo - enqueue failed", failure.reason);
-      toast.error(commandErrorMessage(failure.reason, "Failed to start video generation. Please try again."));
+      toast.error(commandErrorMessage(failure.reason, "영상 생성을 시작하지 못했습니다. 다시 시도해 주세요."));
     }
     if (acceptedIds.length) onEnqueuePressed?.(prompt, acceptedIds);
 
@@ -1329,12 +1329,12 @@ export const PromptBoxVideo = ({
 
   // Input-mode (keyframe/reference) picker, reused in the fullscreen footer.
   const inputModeEl = inputModeOptions ? (
-    <Tooltip content="Input Mode" position="top" className="z-50" closeOnClick>
+    <Tooltip content="입력 모드" position="top" className="z-50" closeOnClick>
       <PopoverMenu
         items={inputModeOptions}
         onSelect={handleInputModeSelect}
         mode="toggle"
-        panelTitle="Input Mode"
+        panelTitle="입력 모드"
       />
     </Tooltip>
   ) : null;
@@ -1358,8 +1358,7 @@ export const PromptBoxVideo = ({
                 
                 className="h-3 w-3 shrink-0" />
               <span>
-                This model can&apos;t generate from text alone - add a starting
-                frame to animate your prompt.
+                이 모델은 텍스트만으로는 생성할 수 없습니다 — 시작 프레임을 추가해 프롬프트를 움직이게 하세요.
               </span>
             </div>
           )}
@@ -1377,8 +1376,8 @@ export const PromptBoxVideo = ({
                   selectedTokens={mentionSelections}
                   placeholder={
                     isReferenceMode
-                      ? "Use @Image1, @Video1, @Audio1... to reference uploads in prompt..."
-                      : "Describe what you want to happen in the video..."
+                      ? "프롬프트에서 @Image1, @Video1, @Audio1... 로 업로드한 파일을 참조하세요..."
+                      : "영상에서 일어났으면 하는 일을 설명하세요..."
                   }
                   className="promptbox-scrollbar text-md relative min-h-[2.5em] w-full resize-y overflow-y-auto bg-transparent pr-8 text-base-fg"
                   onKeyDown={(e) => {
@@ -1402,7 +1401,7 @@ export const PromptBoxVideo = ({
                 <textarea
                   ref={textareaRef}
                   rows={1}
-                  placeholder="Describe what you want to happen in the video..."
+                  placeholder="영상에서 일어났으면 하는 일을 설명하세요..."
                   className="promptbox-scrollbar text-md relative min-h-[2.5em] w-full resize-y overflow-y-auto bg-transparent pr-8 text-base-fg placeholder-base-fg/60 focus:outline-none"
                   value={prompt}
                   onChange={handleChange}
@@ -1424,7 +1423,7 @@ export const PromptBoxVideo = ({
             <div className="flex flex-wrap items-center gap-2">
               {modelSelector}
               <Tooltip
-                content="Aspect Ratio"
+                content="화면 비율"
                 position="top"
                 className="z-50"
                 closeOnClick={true}
@@ -1433,7 +1432,7 @@ export const PromptBoxVideo = ({
                   items={aspectRatioOptions}
                   onSelect={handleAspectRatioSelect}
                   mode="toggle"
-                  panelTitle="Aspect Ratio"
+                  panelTitle="화면 비율"
                   showIconsInList
                   triggerIcon={
                     <AspectRatioIcon sizeIcon={getCurrentAspectRatioIcon()} />
@@ -1443,7 +1442,7 @@ export const PromptBoxVideo = ({
 
               {resolutionPickerOptions && (
                 <Tooltip
-                  content="Resolution"
+                  content="해상도"
                   position="top"
                   className="z-50"
                   closeOnClick={true}
@@ -1452,15 +1451,15 @@ export const PromptBoxVideo = ({
                     items={resolutionPickerOptions}
                     onSelect={handleResolutionSelect}
                     mode="toggle"
-                    panelTitle="Resolution"
+                    panelTitle="해상도"
                   />
                 </Tooltip>
               )}
 
               {!!selectedModel?.bitrateOptions?.length && (
-                <Tooltip content="Bitrate" position="top" className="z-50">
+                <Tooltip content="비트레이트" position="top" className="z-50">
                   <PopoverMenu
-                    panelTitle="Bitrate"
+                    panelTitle="비트레이트"
                     mode="toggle"
                     items={selectedModel.bitrateOptions.map((value) => ({
                       label: value === "normal" ? "Normal" : value === "high" ? "High" : value,
@@ -1473,9 +1472,9 @@ export const PromptBoxVideo = ({
               )}
 
               {!!selectedModel?.outputFormatOptions?.length && (
-                <Tooltip content="Output format" position="top" className="z-50">
+                <Tooltip content="출력 형식" position="top" className="z-50">
                   <PopoverMenu
-                    panelTitle="Output format"
+                    panelTitle="출력 형식"
                     mode="toggle"
                     items={selectedModel.outputFormatOptions.map((value) => ({
                       label: value.toUpperCase(),
@@ -1488,10 +1487,10 @@ export const PromptBoxVideo = ({
               )}
 
               {durationRange && durationRange.max > durationRange.min && (
-                <Tooltip content="Duration" position="top" className="z-50">
+                <Tooltip content="길이" position="top" className="z-50">
                   <PopoverMenu
                     mode="default"
-                    panelTitle="Duration"
+                    panelTitle="길이"
                     triggerIcon={
                       <ClockIcon  className="h-3.5 w-3.5" />
                     }
@@ -1525,7 +1524,7 @@ export const PromptBoxVideo = ({
 
               {selectedModel?.generateWithSound && (
                 <Tooltip
-                  content={generateWithSound ? "Sound: ON" : "Sound: OFF"}
+                  content={generateWithSound ? "소리: 켜짐" : "소리: 꺼짐"}
                   position="top"
                   className="z-50"
                   delay={200}
@@ -1547,7 +1546,7 @@ export const PromptBoxVideo = ({
               {modelNeedsAnImageButNoneAreSelected && (
                 <span className="flex items-center gap-1.5 text-xs text-red-500 font-medium animate-pulse">
                   <InfoIcon />
-                  Starting frame required
+                  시작 프레임이 필요합니다
                 </span>
               )}
               {generationCounts.length > 1 && (
@@ -1563,7 +1562,7 @@ export const PromptBoxVideo = ({
                 confirmClear={hasAttachedRefs}
               />
               <Tooltip
-                content="Add a starting image before generating"
+                content="생성 전에 시작 이미지를 추가하세요"
                 position="top"
                 className="z-50"
                 delay={0}
@@ -1582,7 +1581,7 @@ export const PromptBoxVideo = ({
           </div>
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
             <Tooltip
-              content={isExpanded ? "Collapse" : "Expand"}
+              content={isExpanded ? "접기" : "펼치기"}
               position="top"
               className="-mb-2"
             >
@@ -1671,15 +1670,15 @@ export const PromptBoxVideo = ({
             selectedTokens={mentionSelections}
             placeholder={
               isReferenceMode
-                ? "Use @Image1, @Video1, @Audio1... to reference uploads in prompt..."
-                : "Describe what you want to happen in the video..."
+                ? "프롬프트에서 @Image1, @Video1, @Audio1... 로 업로드한 파일을 참조하세요..."
+                : "영상에서 일어났으면 하는 일을 설명하세요..."
             }
             className="promptbox-scrollbar text-md h-full min-h-0 w-full resize-none overflow-y-auto rounded-[3px] bg-transparent text-base-fg"
             style={{ resize: "none" }}
           />
         ) : (
           <textarea
-            placeholder="Describe what you want to happen in the video..."
+            placeholder="영상에서 일어났으면 하는 일을 설명하세요..."
             className="promptbox-scrollbar text-md h-full min-h-0 w-full resize-none overflow-y-auto rounded-[3px] bg-transparent text-base-fg placeholder-base-fg/60 focus:outline-none"
             value={prompt}
             onChange={handleChange}

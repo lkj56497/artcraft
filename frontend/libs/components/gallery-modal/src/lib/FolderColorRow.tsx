@@ -21,7 +21,7 @@ export const FolderColorRow: React.FC<FolderColorRowProps> = ({
       <button
         key={c}
         type="button"
-        aria-label={`Color ${c}`}
+        aria-label={`색상 ${c}`}
         onClick={() => onSetColor(c)}
         style={{ backgroundColor: c }}
         className={twMerge(
@@ -34,7 +34,7 @@ export const FolderColorRow: React.FC<FolderColorRowProps> = ({
     {/* Clear color */}
     <button
       type="button"
-      aria-label="Clear color"
+      aria-label="색상 지우기"
       onClick={() => onSetColor(null)}
       className={twMerge(
         "flex h-5 w-5 items-center justify-center rounded-[3px] border border-ui-panel-border text-base-fg/50 hover:text-base-fg",
@@ -45,7 +45,7 @@ export const FolderColorRow: React.FC<FolderColorRowProps> = ({
     </button>
     {/* Custom hex (native picker) */}
     <label
-      title="Custom color"
+      title="사용자 지정 색상"
       className="relative h-5 w-5 cursor-pointer overflow-hidden rounded-[3px] border border-ui-panel-border"
       style={{
         background:

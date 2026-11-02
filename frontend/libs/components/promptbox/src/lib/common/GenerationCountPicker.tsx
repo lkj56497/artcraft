@@ -49,7 +49,7 @@ export const GenerationCountPicker = ({
 
   return (
     <Tooltip
-      content="Number of generations"
+      content="생성 개수"
       position="top"
       className="z-50"
       closeOnClick={true}
@@ -59,7 +59,7 @@ export const GenerationCountPicker = ({
         items={generationCountOptions}
         onSelect={onSelect}
         mode="toggle"
-        panelTitle="No. of images"
+        panelTitle="이미지 수"
         triggerIcon={<CopyIcon  className="h-4 w-4" />}
         buttonClassName={PROMPT_TOOLBAR_ICON_BUTTON_CLASSES}
       />

@@ -87,7 +87,7 @@ export function GlobalFileDropHandler() {
               const skippedCount = payload.paths.length - matchingPaths.length;
               if (skippedCount > 0) {
                 toast(
-                  `${skippedCount} file${skippedCount > 1 ? "s" : ""} skipped — unsupported or mixed types`,
+                  `파일 ${skippedCount}개 건너뜀 — 지원하지 않거나 섞인 형식`,
                   { icon: "⚠️" }
                 );
               }
@@ -167,7 +167,7 @@ export function GlobalFileDropHandler() {
         const skippedCount = allFiles.length - matchingFiles.length;
         if (skippedCount > 0) {
           toast(
-            `${skippedCount} file${skippedCount > 1 ? "s" : ""} skipped — unsupported or mixed types`,
+            `파일 ${skippedCount}개 건너뜀 — 지원하지 않거나 섞인 형식`,
             { icon: "⚠️" }
           );
         }
@@ -194,7 +194,7 @@ export function GlobalFileDropHandler() {
         <div className="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
           <div className="flex flex-col items-center gap-3 border border-dashed border-white/60 bg-ui-panel px-16 py-12 text-white">
             <Maximize2Icon className="text-3xl opacity-60" />
-            <div className="font-display text-2xl tracking-tight">Drop to Upload</div>
+            <div className="font-display text-2xl tracking-tight">놓아서 업로드</div>
             <div className="hud-label text-white/50">GLB, PNG, JPG, JPEG, SPZ</div>
           </div>
         </div>
@@ -204,7 +204,7 @@ export function GlobalFileDropHandler() {
         initialFiles={pendingFiles.length > 0 ? pendingFiles : undefined}
         onClose={closeModal}
         onSuccess={(_category: FilterEngineCategories) => closeModal()}
-        title="Upload a 3D Model"
+        title="3D 모델 업로드"
         titleIcon={BoxIcon}
       />
       <UploadModalImage
@@ -212,7 +212,7 @@ export function GlobalFileDropHandler() {
         initialFiles={pendingFiles.length > 0 ? pendingFiles : undefined}
         onClose={closeModal}
         onSuccess={() => closeModal()}
-        title="Upload an Image"
+        title="이미지 업로드"
         titleIcon={ImagesIcon}
       />
       <UploadModalSplat
@@ -220,7 +220,7 @@ export function GlobalFileDropHandler() {
         initialFiles={pendingFiles.length > 0 ? pendingFiles : undefined}
         onClose={closeModal}
         onSuccess={() => {}}
-        title="Upload a Splat"
+        title="스플랫 업로드"
         titleIcon={BoxIcon}
       />
     </>

@@ -13,20 +13,20 @@ interface EllipseParams {
 const ELLIPSE_PARAMS: ParamDefinition<keyof EllipseParams & string>[] = [
   {
     key: "fill",
-    label: "Fill",
+    label: "채우기",
     type: "color",
     default: "#ffffff",
   },
   {
     key: "stroke",
-    label: "Color",
+    label: "색상",
     type: "color",
     default: "#000000",
     group: "stroke",
   },
   {
     key: "strokeWidth",
-    label: "Width",
+    label: "너비",
     type: "number",
     default: 0,
     min: 0,

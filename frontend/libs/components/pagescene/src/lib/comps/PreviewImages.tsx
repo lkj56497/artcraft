@@ -29,7 +29,7 @@ export const PreviewImages = () => {
       >
         <img
           id="styled-preview"
-          alt="Styled Preview"
+          alt="스타일 미리보기"
           width={imageWidth}
           height={imageHeight}
         />

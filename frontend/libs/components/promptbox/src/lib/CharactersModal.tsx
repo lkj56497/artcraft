@@ -145,7 +145,7 @@ export const CharactersModal = ({
         () => {
           setPendingCharacters((prev) => {
             if (!prev.some((p) => p.name === pending.name)) return prev;
-            toast.error(`Character "${pending.name}" failed to create`);
+            toast.error(`캐릭터 "${pending.name}" 생성 실패`);
             return prev.filter((p) => p.name !== pending.name);
           });
         },
@@ -160,7 +160,7 @@ export const CharactersModal = ({
     <Modal
       isOpen={isOpen}
       onClose={handleClose}
-      title={view === "list" ? "Characters" : undefined}
+      title={view === "list" ? "캐릭터" : undefined}
       className="max-w-[800px] h-[600px] max-h-[80vh] overflow-hidden"
     >
       <div
@@ -273,16 +273,15 @@ const CharacterListView = ({
   const handleDelete = (character: Character) => {
     showActionReminder({
       reminderType: "default",
-      title: "Delete character?",
+      title: "캐릭터를 삭제할까요?",
       message: (
         <p className="text-sm text-white/70">
-          This will permanently delete <strong>{character.name}</strong>. This
-          action cannot be undone.
+          <strong>{character.name}</strong>을(를) 영구적으로 삭제합니다. 되돌릴 수 없습니다.
         </p>
       ),
-      primaryActionText: "Delete",
+      primaryActionText: "삭제",
       primaryActionIcon: Trash2Icon,
-      secondaryActionText: "Cancel",
+      secondaryActionText: "취소",
       primaryActionBtnClassName: "bg-red text-white hover:bg-red/90",
       onPrimaryAction: async () => {
         if (actionReminderProps.value) {
@@ -302,12 +301,12 @@ const CharacterListView = ({
               prev.filter((c) => c.token !== character.token),
             );
             storeRemoveCharacter(character.token);
-            toast.success(`Character "${character.name}" deleted`);
+            toast.success(`캐릭터 "${character.name}" 삭제됨`);
           } else {
-            toast.error(res.errorMessage || "Failed to delete character");
+            toast.error(res.errorMessage || "캐릭터 삭제 실패");
           }
         } catch {
-          toast.error("Failed to delete character");
+          toast.error("캐릭터 삭제 실패");
         } finally {
           isActionReminderOpen.value = false;
         }
@@ -358,7 +357,7 @@ const CharacterListView = ({
           >
             <div className="flex aspect-square w-full flex-col items-center justify-center gap-2">
               <PlusIcon  className="text-lg" />
-              <span className="text-sm font-medium">Create New</span>
+              <span className="text-sm font-medium">새로 만들기</span>
             </div>
           </button>
 
@@ -385,7 +384,7 @@ const CharacterListView = ({
                     
                     className="text-lg text-white/80 animate-spin" />
                   <span className="text-xs font-medium text-white/80">
-                    Creating...
+                    만드는 중...
                   </span>
                 </div>
               </div>
@@ -442,7 +441,7 @@ const CharacterListView = ({
                           e.stopPropagation();
                           setPreviewCharacter(character);
                         }}
-                        title="View full size"
+                        title="원본 크기로 보기"
                         className="flex h-7 w-7 items-center justify-center bg-black/60 text-white/80 transition-colors hover:bg-black/80"
                       >
                         <EyeIcon  className="text-[10px]" />
@@ -525,7 +524,7 @@ const EditCharacterView = ({
 
   const handleSave = async () => {
     if (!name.trim()) {
-      toast.error("Name cannot be empty");
+      toast.error("이름을 비워둘 수 없습니다");
       return;
     }
 
@@ -542,14 +541,14 @@ const EditCharacterView = ({
       });
 
       if (res.success) {
-        toast.success("Character updated");
+        toast.success("캐릭터가 수정되었습니다");
         updateCharacterInStore(character.token, { name: name.trim() });
         onSaved();
       } else {
-        toast.error(res.errorMessage || "Failed to update character");
+        toast.error(res.errorMessage || "캐릭터 수정 실패");
       }
     } catch {
-      toast.error("Failed to update character");
+      toast.error("캐릭터 수정 실패");
     } finally {
       setSaving(false);
     }
@@ -567,7 +566,7 @@ const EditCharacterView = ({
           >
             <ArrowLeftIcon />
           </button>
-          <h2 className="text-xl font-bold text-base-fg">Edit Character</h2>
+          <h2 className="text-xl font-bold text-base-fg">캐릭터 편집</h2>
         </div>
 
         {/* Avatar preview */}
@@ -584,13 +583,13 @@ const EditCharacterView = ({
         {/* Name input */}
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="edit-character-name" className={FIELD_LABEL_CLASSES}>
-            Name
+            이름
           </Label>
           <Input
             id="edit-character-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Character name"
+            placeholder="캐릭터 이름"
             autoComplete="off"
             inputClassName="bg-ui-controls text-sm"
           />
@@ -602,14 +601,14 @@ const EditCharacterView = ({
             htmlFor="edit-character-description"
             className={FIELD_LABEL_CLASSES}
           >
-            Description{" "}
-            <span className="font-normal text-base-fg/40">(optional)</span>
+            설명{" "}
+            <span className="font-normal text-base-fg/40">(선택)</span>
           </Label>
           <textarea
             id="edit-character-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description..."
+            placeholder="설명..."
             rows={3}
             autoComplete="off"
             className="w-full resize-none rounded-[3px] border border-ui-panel-border bg-ui-controls px-3 py-2 text-sm text-base-fg placeholder-base-fg/50 outline-none transition-colors focus:border-white focus:!outline-none"
@@ -620,7 +619,7 @@ const EditCharacterView = ({
       {/* Action buttons */}
       <div className="flex justify-end gap-2 pt-4">
         <Button variant="secondary" onClick={onBack}>
-          Cancel
+          취소
         </Button>
         <Button
           variant="primary"
@@ -628,7 +627,7 @@ const EditCharacterView = ({
           loading={saving}
           disabled={saving || !name.trim() || !hasChanges}
         >
-          Save
+          저장
         </Button>
       </div>
     </div>
@@ -665,7 +664,7 @@ const NewCharacterView = ({
         f.type.startsWith("image/"),
       );
       if (imageFiles.length === 0) {
-        toast.error("Please upload image files");
+        toast.error("이미지 파일을 업로드하세요");
         return;
       }
 
@@ -698,11 +697,11 @@ const NewCharacterView = ({
           if (res.success && res.data) {
             updatedImages.push({ ...img, mediaToken: res.data });
           } else {
-            toast.error(`Failed to upload ${img.file.name}`);
+            toast.error(`${img.file.name} 업로드 실패`);
             updatedImages.push(img);
           }
         } catch {
-          toast.error(`Failed to upload ${img.file.name}`);
+          toast.error(`${img.file.name} 업로드 실패`);
           updatedImages.push(img);
         }
       }
@@ -772,13 +771,13 @@ const NewCharacterView = ({
 
   const handleCreate = async () => {
     if (!name.trim()) {
-      toast.error("Please enter a character name");
+      toast.error("캐릭터 이름을 입력하세요");
       return;
     }
 
     const uploadedImages = images.filter((img) => img.mediaToken);
     if (uploadedImages.length < 1) {
-      toast.error("Please upload a reference image");
+      toast.error("참조 이미지를 업로드하세요");
       return;
     }
 
@@ -794,17 +793,17 @@ const NewCharacterView = ({
       });
 
       if (res.success && res.data) {
-        toast.success(`Character "${name.trim()}" is being created`);
+        toast.success(`캐릭터 "${name.trim()}" 만드는 중`);
         // Pass pending info up so the list shows an optimistic card
         onCreated({
           name: name.trim(),
           previewUrl: uploadedImages[0]!.url,
         });
       } else {
-        toast.error(res.errorMessage || "Failed to create character");
+        toast.error(res.errorMessage || "캐릭터 생성 실패");
       }
     } catch {
-      toast.error("Failed to create character");
+      toast.error("캐릭터 생성 실패");
     } finally {
       setCreating(false);
     }
@@ -829,7 +828,7 @@ const NewCharacterView = ({
           >
             <ArrowLeftIcon />
           </button>
-          <h2 className="text-xl font-bold text-base-fg">New Character</h2>
+          <h2 className="text-xl font-bold text-base-fg">새 캐릭터</h2>
         </div>
 
         {/* Image upload area */}
@@ -852,7 +851,7 @@ const NewCharacterView = ({
             >
               <img
                 src={images[0]!.url}
-                alt="Reference"
+                alt="참조"
                 className="max-h-full max-w-full object-contain"
               />
               {!images[0]!.mediaToken && (
@@ -877,9 +876,9 @@ const NewCharacterView = ({
               <UploadIcon
                 
                 className="mb-2 text-xl text-base-fg/40" />
-              <p className="text-sm">Upload reference image</p>
+              <p className="text-sm">참조 이미지 업로드</p>
               <p className="mb-3 text-xs text-base-fg/40">
-                Click or drag an image here
+                클릭하거나 이미지를 여기로 드래그
               </p>
               <div
                 className="flex items-center gap-3"
@@ -890,14 +889,14 @@ const NewCharacterView = ({
                   className="flex items-center gap-2 rounded-[3px] border border-base-fg/15 bg-transparent px-3 py-1.5 text-sm text-base-fg/80 transition-colors hover:border-base-fg/25 hover:bg-base-fg/[0.07] hover:text-base-fg"
                 >
                   <ImagesIcon  className="text-xs" />
-                  Choose from Library
+                  라이브러리에서 선택
                 </button>
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   className="flex items-center gap-2 rounded-[3px] border border-base-fg/15 bg-transparent px-3 py-1.5 text-sm text-base-fg/80 transition-colors hover:border-base-fg/25 hover:bg-base-fg/[0.07] hover:text-base-fg"
                 >
                   <UploadIcon  className="text-xs" />
-                  Upload Image
+                  이미지 업로드
                 </button>
               </div>
             </div>
@@ -915,13 +914,13 @@ const NewCharacterView = ({
         {/* Name input */}
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="character-name" className={FIELD_LABEL_CLASSES}>
-            Name
+            이름
           </Label>
           <Input
             id="character-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Character name"
+            placeholder="캐릭터 이름"
             autoComplete="off"
             inputClassName="bg-ui-controls text-sm"
           />
@@ -933,14 +932,14 @@ const NewCharacterView = ({
             htmlFor="character-description"
             className={FIELD_LABEL_CLASSES}
           >
-            Description{" "}
-            <span className="font-normal text-base-fg/40">(optional)</span>
+            설명{" "}
+            <span className="font-normal text-base-fg/40">(선택)</span>
           </Label>
           <textarea
             id="character-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description..."
+            placeholder="설명..."
             rows={3}
             autoComplete="off"
             className="w-full resize-none rounded-[3px] border border-ui-panel-border bg-ui-controls px-3 py-2 text-sm text-base-fg placeholder-base-fg/50 outline-none transition-colors focus:border-white focus:!outline-none"
@@ -951,7 +950,7 @@ const NewCharacterView = ({
       {/* Action buttons — sticky at the bottom */}
       <div className="sticky bottom-0 flex justify-end gap-2 pt-4 pb-1 bg-ui-modal">
         <Button variant="secondary" onClick={onBack}>
-          Cancel
+          취소
         </Button>
         <Button
           variant="primary"
@@ -964,7 +963,7 @@ const NewCharacterView = ({
             images.filter((i) => i.mediaToken).length < 1
           }
         >
-          Create
+          만들기
         </Button>
       </div>
 

@@ -76,22 +76,20 @@ export const HistoryStack = ({
     setPendingRemoveTargetId(id);
     showActionReminder({
       reminderType: "default",
-      title: "Remove pending generation",
+      title: "대기 중인 생성 제거",
       primaryActionIcon: Trash2Icon,
       primaryActionBtnClassName: "bg-red hover:bg-red/80",
       message: (
         <>
           <p className="text-base-fg text-sm opacity-70">
-            Stop showing this generation in the history stack? This action
-            cannot be undone.
+            이 생성 작업을 기록 목록에서 숨길까요? 되돌릴 수 없습니다.
           </p>
           <p className="text-base-fg text-sm opacity-70">
-            The image may still finish in the background and will be available
-            in your library when it does.
+            이미지는 백그라운드에서 계속 생성될 수 있으며, 완료되면 라이브러리에서 볼 수 있습니다.
           </p>
         </>
       ),
-      primaryActionText: "Remove",
+      primaryActionText: "제거",
       onPrimaryAction: () => {
         onPendingRemove(id);
         setPendingRemoveTargetId(null);
@@ -186,8 +184,8 @@ export const HistoryStack = ({
                     className="group relative w-full cursor-pointer"
                     title={
                       tileCount > 1
-                        ? `Remove batch of ${tileCount}`
-                        : "Remove"
+                        ? `${tileCount}개 묶음 제거`
+                        : "제거"
                     }
                     onClick={(e) => {
                       e.stopPropagation();
@@ -313,21 +311,20 @@ export const HistoryStack = ({
                         e.stopPropagation();
                         showActionReminder({
                           reminderType: "default",
-                          title: "Remove Image",
+                          title: "이미지 제거",
                           primaryActionIcon: Trash2Icon,
                           primaryActionBtnClassName: "bg-red hover:bg-red/80",
                           message: (
                             <>
                             <p className="text-base-fg text-sm opacity-70">
-                              Are you sure you want to remove this image from the history stack? This
-                              action cannot be undone.
+                              이 이미지를 기록 목록에서 제거할까요? 되돌릴 수 없습니다.
                             </p>
                             <p className="text-base-fg text-sm opacity-70">
-                              Images removed here can still be found in the library.
+                              여기서 제거한 이미지는 라이브러리에서 계속 볼 수 있습니다.
                             </p>
                             </>
                           ),
-                          primaryActionText: "Delete",
+                          primaryActionText: "삭제",
                           onPrimaryAction: () => {
                             handleOnImageRemove(image);
                             isActionReminderOpen.value = false;
@@ -356,7 +353,7 @@ export const HistoryStack = ({
         <div className="glass w-fit rounded-xl border-2 border-red/50 shadow-lg hover:border-red/80">
           <div className="relative h-full">
             <Tooltip
-              content="Reset All"
+              content="모두 초기화"
               position="left"
               closeOnClick={true}
               className="ms-1 rounded-md bg-red px-3 py-1"
@@ -367,16 +364,15 @@ export const HistoryStack = ({
                 onClick={() =>
                   showActionReminder({
                     reminderType: "default",
-                    title: "Reset All",
+                    title: "모두 초기화",
                     primaryActionIcon: Trash2Icon,
                     primaryActionBtnClassName: "bg-red hover:bg-red/80",
                     message: (
                       <p className="text-base-fg text-sm opacity-70">
-                        Are you sure you want to reset all? This will clear all
-                        your work and cannot be undone.
+                        모두 초기화할까요? 모든 작업이 지워지며 되돌릴 수 없습니다.
                       </p>
                     ),
-                    primaryActionText: "Reset all",
+                    primaryActionText: "모두 초기화",
                     onPrimaryAction: () => {
                       handleClear();
                       isActionReminderOpen.value = false;

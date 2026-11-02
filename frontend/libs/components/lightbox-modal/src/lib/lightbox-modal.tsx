@@ -394,15 +394,14 @@ export function LightboxModal({
     (mediaToken: string) => {
       showActionReminder({
         reminderType: "default",
-        title: "Delete this media?",
+        title: "이 미디어를 삭제할까요?",
         message: (
           <p className="text-sm text-white/70">
-            This will permanently remove the media from your library. This
-            action cannot be undone.
+            라이브러리에서 이 미디어를 영구적으로 삭제합니다. 되돌릴 수 없습니다.
           </p>
         ),
-        primaryActionText: "Delete",
-        secondaryActionText: "Cancel",
+        primaryActionText: "삭제",
+        secondaryActionText: "취소",
         primaryActionBtnClassName: "bg-red text-white hover:bg-red/90",
         onPrimaryAction: async () => {
           try {
@@ -564,7 +563,7 @@ export function LightboxModal({
           <div className="group/nav relative flex h-full flex-1 items-center justify-center overflow-hidden bg-black">
             {!selectedImageUrl ? (
               <div className="flex h-full w-full items-center justify-center bg-black">
-                <span className="text-base-fg/60">Image not available</span>
+                <span className="text-base-fg/60">이미지를 사용할 수 없습니다</span>
               </div>
             ) : mediaClass === "dimensional" ||
               mediaClass === "mesh" ||
@@ -597,7 +596,7 @@ export function LightboxModal({
                 }}
               >
                 <source src={selectedImageUrl as string} type="video/mp4" />
-                Your browser does not support the video tag.
+                브라우저가 영상 재생을 지원하지 않습니다.
               </video>
             ) : mediaClass === "audio" ? (
               <div className="flex h-full w-full items-center justify-center px-4 sm:px-8">
@@ -629,7 +628,7 @@ export function LightboxModal({
                           <img
                             data-lightbox-modal="true"
                             src={addCorsParam(url) || url}
-                            alt={`${imageAlt || "Generated image"} ${idx + 1}`}
+                            alt={`${imageAlt || "생성된 이미지"} ${idx + 1}`}
                             className="h-full w-full object-contain"
                             onError={(e) => {
                               onImageError?.();
@@ -682,7 +681,7 @@ export function LightboxModal({
                             >
                               <img
                                 src={addCorsParam(url) || url}
-                                alt={`Thumbnail ${idx + 1}`}
+                                alt={`썸네일 ${idx + 1}`}
                                 className="h-full w-full object-cover bg-black/20"
                               />
                             </button>
@@ -714,7 +713,7 @@ export function LightboxModal({
                   onNavigatePrev();
                 }}
                 className="absolute left-3 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 items-center justify-center bg-black/50 text-white/70 opacity-0 transition-opacity duration-200 hover:bg-black/70 hover:text-white group-hover/nav:opacity-100 focus:outline-none"
-                aria-label="Previous item"
+                aria-label="이전 항목"
               >
                 <ChevronLeftIcon  className="text-lg" />
               </button>
@@ -726,7 +725,7 @@ export function LightboxModal({
                   onNavigateNext();
                 }}
                 className="absolute right-3 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 items-center justify-center bg-black/50 text-white/70 opacity-0 transition-opacity duration-200 hover:bg-black/70 hover:text-white group-hover/nav:opacity-100 focus:outline-none"
-                aria-label="Next item"
+                aria-label="다음 항목"
               >
                 <ChevronRightIcon  className="text-lg" />
               </button>
@@ -759,7 +758,7 @@ export function LightboxModal({
                       {creator.display_name}
                     </span>
                     <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                      Author
+                      작성자
                     </span>
                   </div>
                 </div>
@@ -779,7 +778,7 @@ export function LightboxModal({
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
                         <PencilIcon />
-                        <span>Prompt</span>
+                        <span>프롬프트</span>
                       </div>
                       {!promptLoading && prompt && (
                         <button
@@ -790,7 +789,7 @@ export function LightboxModal({
                             navigator.clipboard
                               .writeText(prompt)
                               .catch(() => {});
-                            toast.success("Prompt copied");
+                            toast.success("프롬프트 복사됨");
                             setPromptCopied(true);
                             if (promptCopiedTimeoutRef.current) {
                               window.clearTimeout(
@@ -810,7 +809,7 @@ export function LightboxModal({
                             icon={promptCopied ? CheckIcon : CopyIcon}
                             className="h-3 w-3"
                           />
-                          <span>{promptCopied ? "Copied!" : "Copy"}</span>
+                          <span>{promptCopied ? "복사됨!" : "복사"}</span>
                         </button>
                       )}
                     </div>
@@ -832,7 +831,7 @@ export function LightboxModal({
                         >
                           {prompt || (
                             <span className="text-sm text-base-fg">
-                              No prompt
+                              프롬프트 없음
                             </span>
                           )}
                         </div>
@@ -849,7 +848,7 @@ export function LightboxModal({
                             setIsPromptExpanded((prev) => !prev);
                           }}
                         >
-                          <span>{isPromptExpanded ? "Hide" : "See all"}</span>
+                          <span>{isPromptExpanded ? "숨기기" : "모두 보기"}</span>
                           <svg
                             className={twMerge(
                               "h-3 w-3 transition-transform duration-200",
@@ -905,7 +904,7 @@ export function LightboxModal({
                         <div className="space-y-2">
                           <div className="flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
                             <ImageIcon />
-                            <span>Reference Media</span>
+                            <span>참조 미디어</span>
                           </div>
                           <div className="grid grid-cols-5 gap-1.5 w-fit">
                             {contextImages.map((contextImage, index) => {
@@ -939,7 +938,7 @@ export function LightboxModal({
                                           <SearchIcon
                                             
                                             className="mr-1.5" />
-                                          Preview image
+                                          이미지 미리보기
                                         </button>
                                       )}
                                       {onNavigateToMedia && (
@@ -955,7 +954,7 @@ export function LightboxModal({
                                           <LogOutIcon
                                             
                                             className="mr-1.5" />
-                                          View as media
+                                          미디어로 보기
                                         </button>
                                       )}
                                     </div>
@@ -982,7 +981,7 @@ export function LightboxModal({
                                       <>
                                         <img
                                           src={thumbnail}
-                                          alt={`Reference ${index + 1}`}
+                                          alt={`참조 ${index + 1}`}
                                           className="h-full w-full object-cover"
                                         />
                                         {isVideoRef && (
@@ -1058,7 +1057,7 @@ export function LightboxModal({
                         });
                       }}
                     >
-                      Recreate
+                      다시 만들기
                     </Button>
                   )}
 
@@ -1075,7 +1074,7 @@ export function LightboxModal({
                         await onEditClicked(actionUrl, selectedMediaToken);
                       }}
                     >
-                      Edit Image
+                      이미지 편집
                     </Button>
                   )}
 
@@ -1095,7 +1094,7 @@ export function LightboxModal({
                         );
                       }}
                     >
-                      Make Video
+                      영상 만들기
                     </Button>
                   )}
 
@@ -1117,7 +1116,7 @@ export function LightboxModal({
                         onCloseGallery();
                       }}
                     >
-                      Remove BG
+                      배경 제거
                     </Button>
                   )}
 
@@ -1139,7 +1138,7 @@ export function LightboxModal({
                         onCloseGallery();
                       }}
                     >
-                      Make 3D
+                      3D로 만들기
                     </Button>
                   )}
 
@@ -1161,7 +1160,7 @@ export function LightboxModal({
                         onCloseGallery();
                       }}
                     >
-                      Make 3D World
+                      3D 월드 만들기
                     </Button>
                   )}
 
@@ -1180,7 +1179,7 @@ export function LightboxModal({
                       await onDownloadClicked(actionUrl, mediaClass, modelType ?? undefined);
                     }}
                   >
-                    Download
+                    다운로드
                   </Button>
                 )}
 
@@ -1196,7 +1195,7 @@ export function LightboxModal({
                       onCloseGallery();
                     }}
                   >
-                    Add to Scene
+                    장면에 추가
                   </Button>
                 )}
 
@@ -1211,7 +1210,7 @@ export function LightboxModal({
                       const shareUrl = `https://getartcraft.com/media/${selectedMediaToken}`;
                       try {
                         await navigator.clipboard.writeText(shareUrl);
-                        toast.success("Share link copied");
+                        toast.success("공유 링크 복사됨");
                         setShareCopied(true);
                         if (shareCopiedTimeoutRef.current) {
                           window.clearTimeout(shareCopiedTimeoutRef.current);
@@ -1224,11 +1223,11 @@ export function LightboxModal({
                           1500,
                         );
                       } catch (err) {
-                        toast.error("Unable to copy link");
+                        toast.error("링크를 복사할 수 없습니다");
                       }
                     }}
                   >
-                    {shareCopied ? "Link Copied!" : "Share"}
+                    {shareCopied ? "링크 복사됨!" : "공유"}
                   </Button>
                 )}
 
@@ -1243,7 +1242,7 @@ export function LightboxModal({
                       await onDeleteClicked(selectedMediaToken);
                     }}
                   >
-                    Delete
+                    삭제
                   </Button>
                 )}
               </div>
@@ -1271,7 +1270,7 @@ export function LightboxModal({
           <div className="relative flex items-center justify-center overflow-hidden bg-black">
             <img
               src={addCorsParam(refPreviewUrl) || refPreviewUrl}
-              alt="Reference preview"
+              alt="참조 미리보기"
               className="max-w-[72vw] max-h-[70vh] object-contain"
             />
           </div>
@@ -1320,17 +1319,17 @@ function InfoSection({
     <div className="space-y-2">
       <div className="flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
         <InfoIcon />
-        <span>Information</span>
+        <span>정보</span>
       </div>
       <div className="flex flex-col bg-black/20 border border-white/10 overflow-hidden">
         {modelType && (
           <InfoRow
-            label="Model"
+            label="모델"
             value={
               <>
                 <img
                   src={getCreatorIconPathForModelId(modelType)}
-                  alt="Model creator logo"
+                  alt="모델 제작사 로고"
                   className="h-4 w-4 invert"
                 />
                 <span>{getModelDisplayName(modelType)}</span>
@@ -1340,7 +1339,7 @@ function InfoSection({
         )}
         {generationProvider && (
           <InfoRow
-            label="Provider"
+            label="제공업체"
             value={
               <>
                 {getProviderIconByName(generationProvider, "h-4 w-4 invert")}
@@ -1351,25 +1350,25 @@ function InfoSection({
         )}
         {aspectRatio && (
           <InfoRow
-            label="Aspect Ratio"
+            label="화면 비율"
             value={formatAspectRatio(aspectRatio)}
           />
         )}
         {resolution && (
-          <InfoRow label="Resolution" value={formatResolution(resolution)} />
+          <InfoRow label="해상도" value={formatResolution(resolution)} />
         )}
         {durationSeconds != null && (
-          <InfoRow label="Duration" value={formatDuration(durationSeconds)} />
+          <InfoRow label="길이" value={formatDuration(durationSeconds)} />
         )}
         {generateAudio != null && (
-          <InfoRow label="Audio" value={generateAudio ? "On" : "Off"} />
+          <InfoRow label="오디오" value={generateAudio ? "On" : "Off"} />
         )}
         {mediaWidth && mediaHeight && (
-          <InfoRow label="Size" value={`${mediaWidth} × ${mediaHeight}`} />
+          <InfoRow label="크기" value={`${mediaWidth} × ${mediaHeight}`} />
         )}
         {createdAt && (
           <InfoRow
-            label="Created"
+            label="생성일"
             value={dayjs(createdAt).format("MMM D, YYYY h:mm:ss A")}
           />
         )}

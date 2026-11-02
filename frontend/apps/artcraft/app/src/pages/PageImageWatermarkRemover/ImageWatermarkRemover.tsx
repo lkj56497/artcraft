@@ -56,7 +56,7 @@ export const ImageWatermarkRemover = () => {
   const handleGallerySelect = async (selectedItems: GalleryItem[]) => {
     const item = selectedItems[0];
     if (!item || !item.fullImage) {
-      toast.error("No image selected");
+      toast.error("선택된 이미지가 없습니다");
       return;
     }
 
@@ -80,22 +80,22 @@ export const ImageWatermarkRemover = () => {
 
   const handleRemoveWatermark = async () => {
     if (!imageUrl) {
-      toast.error("Please select an image first");
+      toast.error("먼저 이미지를 선택하세요");
       return;
     }
 
     setIsProcessing(true);
-    toast.loading("Processing watermark removal...", {
+    toast.loading("워터마크 제거 처리 중...", {
       id: "watermark-removal",
     });
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      toast.success("Watermark removal completed!", {
+      toast.success("워터마크 제거 완료!", {
         id: "watermark-removal",
       });
     } catch (error) {
-      toast.error("Failed to remove watermark", { id: "watermark-removal" });
+      toast.error("워터마크 제거 실패", { id: "watermark-removal" });
       console.error("Error removing watermark:", error);
     } finally {
       setIsProcessing(false);
@@ -118,14 +118,14 @@ export const ImageWatermarkRemover = () => {
                 <div className="aspect-video overflow-hidden border border-ui-panel-border bg-ui-panel">
                   <UploadEntryCard
                     icon={DropletIcon}
-                    title="Remove Image Watermark"
-                    description="Erase watermarks from your images seamlessly. Upload your image and get a clean, watermark-free result."
+                    title="이미지 워터마크 제거"
+                    description="이미지의 워터마크를 자연스럽게 지웁니다. 이미지를 업로드하면 워터마크 없는 깔끔한 결과를 받을 수 있습니다."
                     accentBackgroundClass="bg-indigo-500/40"
                     accentBorderClass="border-indigo-400/30"
                     accept="image/*"
                     onFilesSelected={handleLocalImageSelect}
-                    primaryLabel="Select Image"
-                    secondaryLabel="Pick from Library"
+                    primaryLabel="이미지 선택"
+                    secondaryLabel="라이브러리에서 선택"
                     secondaryIcon={ImagesIcon}
                     onSecondaryClick={() => setIsGalleryModalOpen(true)}
                   />
@@ -144,13 +144,13 @@ export const ImageWatermarkRemover = () => {
                       }}
                       className="absolute right-3 top-3 z-10 border border-red/50 px-3 py-1.5 text-sm hover:border-red/80 hover:bg-red/80"
                     >
-                      Switch Image
+                      이미지 바꾸기
                     </Button>
                     <div className="flex min-h-[400px] items-center justify-center p-6">
                       <img
                         ref={imageRef}
                         src={imageUrl}
-                        alt="Selected pic"
+                        alt="선택한 사진"
                         className="max-h-[70vh] max-w-full object-contain"
                         onLoad={(e) => {
                           const img = e.currentTarget;
@@ -173,7 +173,7 @@ export const ImageWatermarkRemover = () => {
                     className="px-12 py-3 text-lg font-semibold"
                     disabled={isProcessing}
                   >
-                    {isProcessing ? "Processing..." : "Remove Watermark"}
+                    {isProcessing ? "처리 중..." : "워터마크 제거"}
                   </Button>
                 </div>
 
@@ -183,13 +183,13 @@ export const ImageWatermarkRemover = () => {
                       <ImagesIcon
                         
                         className="text-ui-accent-ink" />
-                      Image Information
+                      이미지 정보
                     </div>
                     {imageDimensions ? (
                       <div className="space-y-3 text-sm">
                         <div className="flex items-center justify-between border-b border-ui-divider py-2">
                           <span className="font-medium text-base-fg/70">
-                            Resolution
+                            해상도
                           </span>
                           <span className="font-mono text-lg font-semibold tabular-nums text-base-fg">
                             {imageDimensions.width} × {imageDimensions.height}
@@ -197,7 +197,7 @@ export const ImageWatermarkRemover = () => {
                         </div>
                         <div className="flex items-center justify-between py-2">
                           <span className="font-medium text-base-fg/70">
-                            Aspect Ratio
+                            화면 비율
                           </span>
                           <span className="font-mono text-lg font-semibold tabular-nums text-base-fg">
                             {(
@@ -208,7 +208,7 @@ export const ImageWatermarkRemover = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="text-sm text-base-fg/50">Loading...</div>
+                      <div className="text-sm text-base-fg/50">불러오는 중...</div>
                     )}
                   </div>
                 </div>

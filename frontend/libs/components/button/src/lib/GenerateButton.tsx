@@ -27,7 +27,7 @@ export const GenerateButton = ({
 
       {credits != null && (
         <Tooltip
-          content={`${credits} credit${credits !== 1 ? "s" : ""} cost`}
+          content={`비용 ${credits} 크레딧`}
           position="top"
           className="z-50"
         >

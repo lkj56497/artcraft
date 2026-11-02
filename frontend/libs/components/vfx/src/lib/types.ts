@@ -42,7 +42,7 @@ export const VFX_MODELS: VFXModel[] = [
   {
     id: "beeble_switchx",
     label: "Beeble SwitchX",
-    description: "Relight, change location, swap objects.",
+    description: "조명 변경, 장소 변경, 사물 교체.",
   },
 ];
 

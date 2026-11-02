@@ -9,33 +9,33 @@ pub(super) fn password_auth_error_message(error: &LoginChallengeClientError, is_
   let Some(status) = error.status else {
     return match error.message {
       "Unable to reach the login server" => {
-        "Couldn't reach the ArtCraft servers. Check your internet connection and try again.".to_owned()
+        "ArtCraft 서버에 연결할 수 없습니다. 인터넷 연결을 확인하고 다시 시도하세요.".to_owned()
       }
-      _ => "Something went wrong while signing in. Please try again.".to_owned(),
+      _ => "로그인 중 문제가 발생했습니다. 다시 시도해 주세요.".to_owned(),
     };
   };
   if status == 429 {
-    return "Too many attempts. Please wait a minute and try again.".to_owned();
+    return "시도 횟수가 너무 많습니다. 1분 정도 기다린 뒤 다시 시도하세요.".to_owned();
   }
   if status >= 500 {
-    return "ArtCraft's servers are having trouble right now. Please try again in a few minutes.".to_owned();
+    return "ArtCraft 서버에 일시적인 문제가 있습니다. 몇 분 뒤 다시 시도하세요.".to_owned();
   }
   if let Some(message) = error.maybe_rejection.as_ref().and_then(rejection_message) {
     return message;
   }
   match (status, is_signup) {
-    (401, false) => "Incorrect username, email, or password.".to_owned(),
-    (_, true) => "We couldn't create your account. Please check your details and try again.".to_owned(),
-    (_, false) => "We couldn't sign you in. Please check your details and try again.".to_owned(),
+    (401, false) => "사용자 이름, 이메일 또는 비밀번호가 올바르지 않습니다.".to_owned(),
+    (_, true) => "계정을 만들지 못했습니다. 입력 내용을 확인하고 다시 시도하세요.".to_owned(),
+    (_, false) => "로그인하지 못했습니다. 입력 내용을 확인하고 다시 시도하세요.".to_owned(),
   }
 }
 
 fn rejection_message(rejection: &LoginRejection) -> Option<String> {
   match rejection.error_type.as_deref() {
-    Some("InvalidCredentials") => return Some("Incorrect username, email, or password.".to_owned()),
+    Some("InvalidCredentials") => return Some("사용자 이름, 이메일 또는 비밀번호가 올바르지 않습니다.".to_owned()),
     Some("AccountNeedsPassword") => {
       return Some(
-        "This account doesn't have a password yet. Sign in through the website, or reset your password.".to_owned(),
+        "이 계정에는 아직 비밀번호가 없습니다. 웹사이트로 로그인하거나 비밀번호를 재설정하세요.".to_owned(),
       )
     }
     _ => {}
@@ -72,17 +72,17 @@ fn rejection_message(rejection: &LoginRejection) -> Option<String> {
 /// friendlier rewrite, and anything else is shown as a sentence.
 fn field_reason_message(reason: &str) -> String {
   let friendly = match reason {
-    "username is taken" => "That username is already taken. Please choose another.",
-    "username is reserved" | "username contains slurs" => "That username isn't available. Please choose another.",
-    "username is too short" => "Usernames must be at least 3 characters.",
-    "username is too long" => "Usernames can be at most 16 characters.",
+    "username is taken" => "이미 사용 중인 사용자 이름입니다. 다른 이름을 선택하세요.",
+    "username is reserved" | "username contains slurs" => "사용할 수 없는 사용자 이름입니다. 다른 이름을 선택하세요.",
+    "username is too short" => "사용자 이름은 3자 이상이어야 합니다.",
+    "username is too long" => "사용자 이름은 16자까지 가능합니다.",
     "invalid username characters" => {
-      "Usernames can only contain letters, numbers, underscores (_), and hyphens (-)."
+      "사용자 이름에는 영문, 숫자, 밑줄(_), 하이픈(-)만 쓸 수 있습니다."
     }
-    "email is taken" => "An account with that email already exists. Try logging in instead.",
-    "invalid email address" => "Please enter a valid email address.",
-    "password is too short" => "Passwords must be at least 6 characters.",
-    "passwords do not match" => "Passwords do not match.",
+    "email is taken" => "이미 가입된 이메일입니다. 로그인해 보세요.",
+    "invalid email address" => "올바른 이메일 주소를 입력하세요.",
+    "password is too short" => "비밀번호는 6자 이상이어야 합니다.",
+    "passwords do not match" => "비밀번호가 일치하지 않습니다.",
     other => return sentence(other),
   };
   friendly.to_owned()

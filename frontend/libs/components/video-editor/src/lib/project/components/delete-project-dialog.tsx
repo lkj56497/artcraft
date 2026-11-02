@@ -38,29 +38,28 @@ export function DeleteProjectDialog({
           <DialogTitle>
             {singleName ? (
               <>
-                {"Delete '"}
+                {"'"}
                 <span className="inline-block max-w-[300px] truncate align-bottom">
                   {singleName}
                 </span>
-                {"'?"}
+                {"'을(를) 삭제할까요?"}
               </>
             ) : (
-              `Delete ${count} projects?`
+              `프로젝트 ${count}개를 삭제할까요?`
             )}
           </DialogTitle>
         </DialogHeader>
         <DialogBody>
           <Alert variant="destructive">
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>경고</AlertTitle>
             <AlertDescription>
-              This will permanently delete{" "}
-              {singleName ? `"${singleName}"` : `${count} projects`} and all
-              associated files.
+              {singleName ? `"${singleName}"` : `프로젝트 ${count}개`}와(과) 관련된 모든 파일을{" "}
+              영구적으로 삭제합니다.
             </AlertDescription>
           </Alert>
           <div className="flex flex-col gap-3">
             <Label className="text-xs font-semibold text-slate-500">
-              Type "DELETE" to confirm
+              확인하려면 "DELETE"를 입력하세요
             </Label>
             <Input
               type="text"
@@ -72,10 +71,10 @@ export function DeleteProjectDialog({
         </DialogBody>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            취소
           </Button>
           <Button variant="destructive" onClick={onConfirm}>
-            Delete project
+            프로젝트 삭제
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -24,7 +24,7 @@ export const AnonHintChip = () => {
       className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-[3px] border border-ui-panel-border bg-ui-controls px-3 py-1.5 text-xs font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
     >
       <LogInIcon  className="opacity-70" />
-      Sign up to save
+      가입하고 저장
     </button>
   );
 };

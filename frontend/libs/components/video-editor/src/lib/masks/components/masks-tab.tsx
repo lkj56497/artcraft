@@ -257,7 +257,7 @@ export function MasksTab({ element, trackId }: MasksTabProps) {
   return (
     <div className="flex flex-col h-full">
       <div className="border-b px-3.5 h-11 shrink-0 flex items-center justify-between gap-2">
-        <SectionTitle>Masks</SectionTitle>
+        <SectionTitle>마스크</SectionTitle>
         <DropdownMenu
           open={hasMask ? false : isDropdownOpen}
           onOpenChange={handleDropdownOpenChange}
@@ -270,20 +270,19 @@ export function MasksTab({ element, trackId }: MasksTabProps) {
                     variant="ghost"
                     size="icon"
                     disabled
-                    aria-label="Add mask"
+                    aria-label="마스크 추가"
                   >
                     <HugeiconsIcon icon={PlusSignIcon} className="size-3.5!" />
                   </Button>
                 </span>
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-balance">
-                Only one mask is supported right now. If you need more,
-                duplicate the clip and apply a different mask to each copy.
+                현재는 마스크를 하나만 지원합니다. 더 필요하면 클립을 복제해서 각각 다른 마스크를 적용하세요.
               </TooltipContent>
             </Tooltip>
           ) : (
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Add mask">
+              <Button variant="ghost" size="icon" aria-label="마스크 추가">
                 <HugeiconsIcon icon={PlusSignIcon} className="size-3.5!" />
               </Button>
             </DropdownMenuTrigger>
@@ -345,7 +344,7 @@ function MaskItem({
             <Button
               variant="ghost"
               size="icon"
-              aria-label={`Toggle ${definition.name} mask inversion`}
+              aria-label={`${definition.name} 마스크 반전 전환`}
               onClick={() =>
                 editor.timeline.toggleMaskInverted({
                   trackId,
@@ -361,7 +360,7 @@ function MaskItem({
             <Button
               variant="ghost"
               size="icon"
-              aria-label={`Remove ${definition.name} mask`}
+              aria-label={`${definition.name} 마스크 제거`}
               onClick={() =>
                 editor.timeline.removeMask({
                   trackId,
@@ -440,7 +439,7 @@ function MaskParamsFields({
       {definition.features.hasPosition &&
         "centerX" in mask.params &&
         "centerY" in mask.params && (
-          <SectionField label="Position">
+          <SectionField label="위치">
             <div className="flex items-center gap-2">
               <MaskNumberField
                 className="flex-1"
@@ -477,7 +476,7 @@ function MaskParamsFields({
       {definition.features.sizeMode === "width-height" &&
         "width" in mask.params &&
         "height" in mask.params && (
-          <SectionField label="Size">
+          <SectionField label="크기">
             <div className="flex items-center gap-2">
               <MaskNumberField
                 className="flex-1"
@@ -513,7 +512,7 @@ function MaskParamsFields({
 
       {definition.features.sizeMode === "height-only" &&
         "height" in mask.params && (
-          <SectionField label="Height">
+          <SectionField label="높이">
             <MaskNumberField
               icon="H"
               param={getNumberParamDefinition({
@@ -532,7 +531,7 @@ function MaskParamsFields({
 
       {definition.features.sizeMode === "width-only" &&
         "width" in mask.params && (
-          <SectionField label="Width">
+          <SectionField label="너비">
             <MaskNumberField
               icon="W"
               param={getNumberParamDefinition({
@@ -550,7 +549,7 @@ function MaskParamsFields({
         )}
 
       {definition.features.sizeMode === "uniform" && "scale" in mask.params && (
-        <SectionField label="Scale">
+        <SectionField label="크기">
           <MaskNumberField
             icon={
               isTextMask(mask) ? <HugeiconsIcon icon={ArrowExpandIcon} /> : "S"
@@ -570,7 +569,7 @@ function MaskParamsFields({
       )}
 
       {definition.features.hasRotation && "rotation" in mask.params && (
-        <SectionField label="Rotation">
+        <SectionField label="회전">
           <MaskNumberField
             icon={<HugeiconsIcon icon={RotateClockwiseIcon} />}
             param={getNumberParamDefinition({
@@ -587,7 +586,7 @@ function MaskParamsFields({
         </SectionField>
       )}
 
-      <SectionField label="Feather">
+      <SectionField label="페더">
         <MaskNumberField
           icon={<HugeiconsIcon icon={FeatherIcon} />}
           param={featherParam}
@@ -600,7 +599,7 @@ function MaskParamsFields({
         />
       </SectionField>
 
-      <SectionField label="Stroke">
+      <SectionField label="외곽선">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <MaskNumberField
@@ -652,7 +651,7 @@ function MaskParamsFields({
 
 const LETTER_SPACING_PARAM: NumberParamDefinition = {
   key: "letterSpacing",
-  label: "Letter spacing",
+  label: "자간",
   type: "number",
   default: 0,
   min: -100,
@@ -662,7 +661,7 @@ const LETTER_SPACING_PARAM: NumberParamDefinition = {
 
 const LINE_HEIGHT_PARAM: NumberParamDefinition = {
   key: "lineHeight",
-  label: "Line height",
+  label: "행간",
   type: "number",
   default: 1.2,
   min: 0.1,
@@ -693,7 +692,7 @@ function TextMaskFields({
 
   return (
     <>
-      <SectionField label="Content">
+      <SectionField label="내용">
         <Textarea
           value={content.displayValue}
           className="min-h-20"
@@ -702,7 +701,7 @@ function TextMaskFields({
           onBlur={content.onBlur}
         />
       </SectionField>
-      <SectionField label="Font">
+      <SectionField label="글꼴">
         <FontPicker
           defaultValue={mask.params.fontFamily}
           onValueChange={(value) => {
@@ -711,7 +710,7 @@ function TextMaskFields({
           }}
         />
       </SectionField>
-      <SectionField label="Size">
+      <SectionField label="크기">
         <MaskNumberField
           icon={<HugeiconsIcon icon={TextFontIcon} />}
           param={fontSizeParam}
@@ -720,7 +719,7 @@ function TextMaskFields({
           onCommit={onCommit}
         />
       </SectionField>
-      <SectionField label="Spacing">
+      <SectionField label="간격">
         <div className="flex items-start gap-2">
           <MaskNumberField
             className="w-1/2"
@@ -847,13 +846,13 @@ function EmptyView({ onAddMask }: EmptyViewProps) {
     <div className="flex flex-col h-full items-center justify-center gap-4 text-center">
       <OcShapesIcon className="size-10 text-muted-foreground" strokeWidth={1} />
       <div className="flex flex-col gap-2">
-        <h3 className="font-medium text-foreground">No masks</h3>
+        <h3 className="font-medium text-foreground">마스크 없음</h3>
         <p className="text-muted-foreground text-sm text-balance max-w-40">
-          Add a mask to hide or reveal parts of this layer.
+          마스크를 추가해 이 레이어의 일부를 숨기거나 드러내세요.
         </p>
       </div>
       <Button variant="default" size="sm" onClick={onAddMask}>
-        Add mask
+        마스크 추가
       </Button>
     </div>
   );

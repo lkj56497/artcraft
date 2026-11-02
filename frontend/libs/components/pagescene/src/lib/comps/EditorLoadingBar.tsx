@@ -16,7 +16,7 @@ export const EditorLoadingBar = () => {
       hasSpinner
       progressData={{
         progress: 100,
-        label: "Loading Editor Engine 🦊",
+        label: "편집기 엔진 불러오는 중 🦊",
         message: editorLoader.message ?? "",
       }}
     />

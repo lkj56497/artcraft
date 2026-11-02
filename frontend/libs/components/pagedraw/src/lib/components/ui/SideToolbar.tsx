@@ -197,7 +197,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
 
     <>
       <div className="relative">
-        <p className="mb-2 text-sm font-medium text-white">Brush Size</p>
+        <p className="mb-2 text-sm font-medium text-white">브러시 크기</p>
         <SliderWithIndicator
           value={brushSize}
           onChange={(size) => {
@@ -218,7 +218,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
   // separate from the brush so switching tools doesn't clobber either.
   const EraserPopout = (
     <div className="glass relative w-56 rounded-2xl p-4 shadow-lg">
-      <p className="mb-2 text-sm font-medium text-white">Eraser Size</p>
+      <p className="mb-2 text-sm font-medium text-white">지우개 크기</p>
       <SliderWithIndicator
         value={eraserSize}
         onChange={setEraserSize}
@@ -232,7 +232,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
   const tools = [
     {
       id: "select",
-      label: "Select & Move",
+      label: "선택 & 이동",
       icon: (
         <MousePointerIcon  className="pl-0.5 text-lg" />
       ),
@@ -243,7 +243,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     { id: "separator-1", type: "separator" },
     {
       id: "add-shape",
-      label: "Add Shape",
+      label: "도형 추가",
       icon: <ShapesIcon  className="h-5 w-5" />,
       onClick: () => {
         store.selectNode(null);
@@ -277,7 +277,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     },
     {
       id: "upload",
-      label: "Upload Image",
+      label: "이미지 업로드",
       icon: <ImageIcon  className="h-5 w-5" />,
       onClick: () => {
         onUploadImage();
@@ -286,7 +286,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     { id: "separator-2", type: "separator" },
     {
       id: "draw",
-      label: "Brush",
+      label: "브러시",
       icon: null,
       onClick: () => {
         sendPaint(hsvaToHex(brushHsva), brushSize, brushHsva.a);
@@ -296,7 +296,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     },
     {
       id: "inpaint",
-      label: "Mask",
+      label: "마스크",
       icon: <SendToBackIcon  className="h-5 w-5" />,
       onClick: () => {
         store.setActiveTool("inpaint");
@@ -304,7 +304,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     },
     {
       id: "erase",
-      label: "Eraser",
+      label: "지우개",
       icon: <EraserIcon  className="h-5 w-5" />,
       onClick: () => {
         store.setActiveTool("eraser");
@@ -314,7 +314,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     { id: "separator-3", type: "separator" },
     {
       id: "background",
-      label: "Canvas Background",
+      label: "캔버스 배경",
       icon: (
         <div className="relative inline-flex h-5 w-5 items-center justify-center">
           <span
@@ -333,7 +333,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     },
     {
       id: "undo",
-      label: "Undo",
+      label: "실행 취소",
       icon: <RotateCcwIcon  className="h-5 w-5" />,
       onClick: () => {
         store.undo();
@@ -341,7 +341,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
     },
     {
       id: "redo",
-      label: "Redo",
+      label: "다시 실행",
       icon: <Redo2Icon  className="h-5 w-5" />,
       onClick: () => {
         store.redo();
@@ -356,16 +356,15 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
   const handleResetCanvas = () => {
     showActionReminder({
       reminderType: "default",
-      title: "Reset Canvas",
+      title: "캔버스 초기화",
       primaryActionIcon: Trash2Icon,
       primaryActionBtnClassName: "bg-red hover:bg-red/80",
       message: (
         <p className="text-sm text-white/70">
-          Are you sure you want to reset the canvas? This will clear all your
-          work and cannot be undone.
+          캔버스를 초기화할까요? 모든 작업이 지워지며 되돌릴 수 없습니다.
         </p>
       ),
-      primaryActionText: "Reset all",
+      primaryActionText: "모두 초기화",
       onPrimaryAction: () => {
         store.setNodes([]);
         store.drawNodes.filter((n) => n.type === "line").forEach((lineNode) => {
@@ -602,7 +601,7 @@ const SideToolbar: React.FC<SideToolbarProps> = ({
       <div className="glass absolute -bottom-14 left-1/2 -translate-x-1/2 rounded-xl border-2 border-red/50 shadow-lg hover:border-red/80">
         <div className="relative">
           <Tooltip
-            content="Reset Canvas"
+            content="캔버스 초기화"
             position="right"
             closeOnClick={true}
             className="ms-1 rounded-md bg-red px-3 py-1"

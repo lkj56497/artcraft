@@ -183,8 +183,8 @@ const ImageToVideo = ({ imageMediaId, imageUrl }: ImageToVideoProps) => {
   return (
     <DesktopCreatePageShell
       hasContent={hasContent}
-      emptyStateTitle="Create Video"
-      emptyStateSubtitle="Choose an image, add a prompt, then generate"
+      emptyStateTitle="영상 만들기"
+      emptyStateSubtitle="이미지를 고르고 프롬프트를 입력한 뒤 생성하세요"
       bottomOffset={promptHeight + 40}
       listContent={
         <DesktopGenerationGallery

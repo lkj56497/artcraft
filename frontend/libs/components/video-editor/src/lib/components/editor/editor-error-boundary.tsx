@@ -60,17 +60,17 @@ export class EditorErrorBoundary extends Component<
         <div className="bg-background flex h-full w-full flex-col items-center justify-center gap-4 p-6">
           <div className="flex max-w-md flex-col items-center gap-2 text-center">
             <h2 className="text-foreground text-base font-semibold">
-              The editor ran into a problem
+              편집기에 문제가 발생했습니다
             </h2>
             <p className="text-muted-foreground text-xs">
-              {this.state.error.message || "An unexpected error occurred."}
+              {this.state.error.message || "예기치 않은 오류가 발생했습니다."}
             </p>
             <p className="text-muted-foreground text-[11px]">
-              The full error has been logged to the developer console.
+              자세한 오류는 개발자 콘솔에 기록되었습니다.
             </p>
           </div>
           <Button variant="outline" size="sm" onClick={this.handleRecover}>
-            Reload editor
+            편집기 다시 불러오기
           </Button>
         </div>
       );

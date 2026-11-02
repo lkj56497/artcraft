@@ -53,7 +53,7 @@ pub async fn worldlabs_login_window_open(
         NewWindowResponse::Allow
       })
       .always_on_top(false)
-      .title("Login to WorldLabs")
+      .title("WorldLabs 로그인")
       .center()
       .resizable(true)
       .visible(true)

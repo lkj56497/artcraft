@@ -152,7 +152,7 @@ export const GalleryFolderChip: React.FC<GalleryFolderChipProps> = ({
               hasArt ? "text-white/70" : "text-base-fg/40",
             )}
           >
-            {childCount} folder{childCount === 1 ? "" : "s"}
+            폴더 {childCount}개
           </span>
         )}
       </div>
@@ -162,7 +162,7 @@ export const GalleryFolderChip: React.FC<GalleryFolderChipProps> = ({
         <span
           role="button"
           tabIndex={-1}
-          aria-label="Folder options"
+          aria-label="폴더 옵션"
           onPointerDown={(e) => e.stopPropagation()}
           onClick={(e) => {
             e.stopPropagation();

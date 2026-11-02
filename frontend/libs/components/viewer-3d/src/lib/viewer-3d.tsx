@@ -584,7 +584,7 @@ export function Viewer3D({
           {hasRig && (
             <button
               type="button"
-              title={skeletonVisible ? "Hide skeleton" : "Show skeleton"}
+              title={skeletonVisible ? "뼈대 숨기기" : "뼈대 보기"}
               onClick={() => setSkeletonVisible((visible) => !visible)}
               className={`flex h-10 w-10 items-center justify-center rounded-md border transition-colors ${
                 skeletonVisible
@@ -605,7 +605,7 @@ export function Viewer3D({
                     label: name,
                     value: String(index),
                   })),
-                  { label: "T-pose (none)", value: NO_ANIMATION_VALUE },
+                  { label: "T-포즈 (없음)", value: NO_ANIMATION_VALUE },
                 ]}
               />
             </div>

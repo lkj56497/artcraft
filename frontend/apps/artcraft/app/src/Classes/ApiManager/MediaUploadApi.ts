@@ -49,7 +49,7 @@ export class MediaUploadApi extends ApiManager {
       } else {
         return {
           success: false,
-          errorMessage: "Could not obtain session tokens.",
+          errorMessage: "세션 토큰을 가져오지 못했습니다.",
         };
       }
     } else {
@@ -98,7 +98,7 @@ export class MediaUploadApi extends ApiManager {
     if (result.success && result.media_file_token) {
       return { success: true, data: result.media_file_token };
     } else {
-      return { success: false, errorMessage: "Failed to Get Media Token" };
+      return { success: false, errorMessage: "미디어 토큰을 가져오지 못했습니다" };
     }
   }
 

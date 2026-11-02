@@ -117,8 +117,8 @@ export const CameraSettingsModal = ({
       <div className="grid h-full grid-cols-12 gap-3">
         <div className="relative col-span-4 p-3 pt-2 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-white/15">
           <div className="flex items-center justify-between gap-2.5 py-0.5">
-            <h2 className="hud-label text-base-fg/60">Camera</h2>
-            <Tooltip content="Add camera" position="top" delay={200}>
+            <h2 className="hud-label text-base-fg/60">카메라</h2>
+            <Tooltip content="카메라 추가" position="top" delay={200}>
               <button
                 className="flex h-6 w-6 items-center justify-center rounded-[3px] text-white/70 transition-colors hover:bg-white/10 hover:text-white"
                 onClick={onAddCamera}
@@ -159,8 +159,8 @@ export const CameraSettingsModal = ({
                 <Tooltip
                   content={
                     selectedCamera?.id === "main"
-                      ? "Cannot delete the main camera"
-                      : "Delete camera"
+                      ? "메인 카메라는 삭제할 수 없습니다"
+                      : "카메라 삭제"
                   }
                   position="top"
                   delay={200}
@@ -186,7 +186,7 @@ export const CameraSettingsModal = ({
               <div className="space-y-4">
                 <div className="space-y-1">
                   <Label htmlFor="camera-name">
-                    Name
+                    이름
                   </Label>
                   <Input
                     id="camera-name"
@@ -202,7 +202,7 @@ export const CameraSettingsModal = ({
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="focal-length">
-                    Focal Length
+                    초점 거리
                   </Label>
                   <div
                     className="mt-1 flex items-center gap-4"
@@ -230,7 +230,7 @@ export const CameraSettingsModal = ({
               </div>
             </div>
             <div className="mt-auto flex justify-end pt-4">
-              <Button onClick={onClose}>Done</Button>
+              <Button onClick={onClose}>완료</Button>
             </div>
           </div>
         </div>

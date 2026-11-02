@@ -6,6 +6,7 @@ import {
   useEditApps,
   getAppCardPalette,
   getBadgeStyles,
+  getBadgeLabel,
   goToApp,
   type FullAppItem,
 } from "~/config/appMenu";
@@ -14,8 +15,8 @@ export const AppsIndexPage = () => {
   const generateApps = useGenerateApps();
   const editApps = useEditApps();
   const categories = [
-    { title: "Create", apps: generateApps },
-    { title: "Edit", apps: editApps },
+    { title: "만들기", apps: generateApps },
+    { title: "편집", apps: editApps },
   ];
 
   return (
@@ -25,13 +26,13 @@ export const AppsIndexPage = () => {
     <div className="fixed inset-0 overflow-y-auto bg-ui-background pt-[56px] text-base-fg">
       <main className="mx-auto w-full max-w-6xl px-5 pb-20 pt-8 sm:px-8 sm:pt-12">
         <p className="hud-label mb-4 text-ui-accent-ink">
-          Your creative workspace
+          나만의 창작 작업 공간
         </p>
         <h1 className="max-w-3xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
-          What will you <span className="text-ui-accent-ink">craft</span> today?
+          오늘은 무엇을 <span className="text-ui-accent-ink">만들어</span> 볼까요?
         </h1>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-base-fg/70 sm:text-base">
-          Start with an idea. Choose a tool to bring it to life.
+          아이디어에서 시작하세요. 도구를 골라 현실로 만들어 보세요.
         </p>
 
         {categories.map((category, index) => (
@@ -95,7 +96,7 @@ function AppCard({ app }: { app: FullAppItem }) {
                       : "border-primary/30 text-ui-accent-ink",
                   )}
                 >
-                  {app.badge}
+                  {getBadgeLabel(app.badge)}
                 </span>
               )}
             </div>

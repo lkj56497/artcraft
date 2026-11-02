@@ -427,7 +427,7 @@ export function Timeline() {
         "panel bg-background relative flex h-full flex-col overflow-hidden rounded-lg border border-ui-panel-border"
       }
       {...dragProps}
-      aria-label="Timeline"
+      aria-label="타임라인"
     >
       <TimelineToolbar
         zoomLevel={zoomLevel}
@@ -834,7 +834,7 @@ function TimelineTrackRows({
                 invokeAction("paste-copied");
               }}
             >
-              Paste elements
+              요소 붙여넣기
             </ContextMenuItem>
             <ContextMenuItem
               icon={<HugeiconsIcon icon={VolumeHighIcon} />}
@@ -844,8 +844,8 @@ function TimelineTrackRows({
               }}
             >
               {canTrackHaveAudio(track) && track.muted
-                ? "Unmute track"
-                : "Mute track"}
+                ? "트랙 음소거 해제"
+                : "트랙 음소거"}
             </ContextMenuItem>
             <ContextMenuItem
               icon={<HugeiconsIcon icon={ViewIcon} />}
@@ -855,8 +855,8 @@ function TimelineTrackRows({
               }}
             >
               {canTrackBeHidden(track) && track.hidden
-                ? "Show track"
-                : "Hide track"}
+                ? "트랙 보기"
+                : "트랙 숨기기"}
             </ContextMenuItem>
             {track.id !== mainTrackId && (
               <ContextMenuItem
@@ -867,7 +867,7 @@ function TimelineTrackRows({
                 }}
                 variant="destructive"
               >
-                Delete track
+                트랙 삭제
               </ContextMenuItem>
             )}
           </ContextMenuContent>

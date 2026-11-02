@@ -42,16 +42,16 @@ export const useGenerationEnqueueSuccessEvent = () => {
 const makeMessage = (event: GenerationEnqueueSuccessEvent) => {
   switch (event.action) {
     case GenerationAction.GenerateImage:
-      return "Image generation enqueued!";
+      return "이미지 생성이 대기열에 추가됐습니다!";
     case GenerationAction.GenerateVideo:
-      return "Video generation enqueued!";
+      return "영상 생성이 대기열에 추가됐습니다!";
     case GenerationAction.RemoveBackground:
-      return "Background removal enqueued!";
+      return "배경 제거가 대기열에 추가됐습니다!";
     case GenerationAction.ImageTo3d:
-      return "3D model generation enqueued!";
+      return "3D 모델 생성이 대기열에 추가됐습니다!";
     case GenerationAction.GenerateGaussian:
-      return "3D world generation enqueued!";
+      return "3D 월드 생성이 대기열에 추가됐습니다!";
     default:
-      return "Generation enqueued!";
+      return "생성이 대기열에 추가됐습니다!";
   }
 }

@@ -15,8 +15,8 @@ export const RenderOverlay = () => {
     progress?.phase === "encoding"
       ? `Rendering video… ${pct}%`
       : progress?.phase === "uploading"
-        ? "Uploading to gallery…"
-        : "Capturing frame…";
+        ? "갤러리에 업로드 중…"
+        : "프레임 캡처 중…";
 
   return (
     <>
@@ -33,7 +33,7 @@ export const RenderOverlay = () => {
             onClick={requestEncodeCancel}
             className="glass glass-no-hover rounded-full px-5 py-2 text-sm font-medium text-base-fg shadow-xl hover:bg-white/10"
           >
-            Cancel (Esc)
+            취소 (Esc)
           </button>
         </div>
       )}

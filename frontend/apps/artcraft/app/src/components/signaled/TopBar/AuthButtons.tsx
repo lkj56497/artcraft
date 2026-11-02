@@ -24,7 +24,7 @@ export const AuthButtons = ({
               loginSignUpPressed();
             }}
           >
-            Login / Sign Up
+            로그인 / 회원가입
           </button>
         </div>
       </>

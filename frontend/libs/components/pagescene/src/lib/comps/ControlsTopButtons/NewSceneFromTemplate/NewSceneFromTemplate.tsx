@@ -99,7 +99,7 @@ export const NewSceneFromTemplate = ({
         {!featuredScenes && (
           <div className="flex items-center justify-center gap-3 py-12">
             <LoadingSpinner />
-            <span className="font-medium opacity-70">Loading scenes...</span>
+            <span className="font-medium opacity-70">장면 불러오는 중...</span>
           </div>
         )}
         {featuredScenes && (

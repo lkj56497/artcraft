@@ -314,7 +314,7 @@ class DndAsset {
     if (names && !names.some((name) => root.getObjectByName(name))) {
       editor.adapter.showToast(
         ToastTypes.WARNING,
-        "This animation doesn't match the character's skeleton.",
+        "이 애니메이션은 캐릭터의 뼈대와 맞지 않습니다.",
       );
       return;
     }
@@ -327,7 +327,7 @@ class DndAsset {
     if (!laneId) {
       editor.adapter.showToast(
         ToastTypes.WARNING,
-        "No room left on the character's timeline for this clip.",
+        "캐릭터 타임라인에 이 클립을 넣을 공간이 없습니다.",
       );
     }
   }

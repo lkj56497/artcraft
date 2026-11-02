@@ -38,7 +38,7 @@ export const useMoodboardImageEntry = (
   const triggerGallery = useCallback(() => {
     if (adapter.renderLibraryPicker) setPickerOpen(true);
     else
-      toast("Library picker isn't available here — upload or paste for now", {
+      toast("여기서는 라이브러리 선택을 쓸 수 없습니다 — 우선 업로드하거나 붙여넣으세요", {
         icon: "🖼️",
       });
   }, [adapter]);

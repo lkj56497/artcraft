@@ -21,11 +21,11 @@ export const RecenterIndicator = () => {
     <button
       type="button"
       onClick={() => fitToContent()}
-      title="Zoom to fit (Shift+1)"
+      title="화면에 맞추기 (Shift+1)"
       className="pointer-events-auto absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-2 text-sm text-white/90 shadow-lg backdrop-blur-sm transition-colors hover:bg-black/80"
     >
       <MinimizeIcon />
-      <span>Content off-screen — recenter</span>
+      <span>내용이 화면 밖에 있음 — 가운데로</span>
     </button>
   );
 };

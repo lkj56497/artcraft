@@ -131,7 +131,7 @@ export const VideoFrameExtractor = () => {
   const handleGallerySelect = async (selectedItems: GalleryItem[]) => {
     const item = selectedItems[0];
     if (!item || !item.fullImage) {
-      toast.error("No video selected");
+      toast.error("선택된 영상이 없습니다");
       return;
     }
 
@@ -228,7 +228,7 @@ export const VideoFrameExtractor = () => {
     if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) {
       await new Promise<void>((resolve, reject) => {
         const timeout = setTimeout(() => {
-          reject(new Error("Video failed to load metadata"));
+          reject(new Error("영상 정보를 불러오지 못했습니다"));
         }, 5000);
 
         const handleLoadedData = () => {
@@ -316,14 +316,14 @@ export const VideoFrameExtractor = () => {
 
     if (corsError) {
       toast.error(
-        "CORS error: Cannot extract frames from this video. Try uploading the video file directly instead.",
+        "CORS 오류: 이 영상에서는 프레임을 추출할 수 없습니다. 영상 파일을 직접 업로드해 보세요.",
       );
       setIsExtracting(false);
       return;
     }
 
     if (frames.length === 0) {
-      toast.error("Failed to extract any frames");
+      toast.error("프레임을 하나도 추출하지 못했습니다");
       setIsExtracting(false);
       return;
     }
@@ -371,14 +371,14 @@ export const VideoFrameExtractor = () => {
           next.delete(frameId);
           return next;
         });
-        toast.success("Frame saved to library!");
+        toast.success("프레임이 라이브러리에 저장되었습니다!");
       } else {
         setSavingFrames((prev) => {
           const next = new Set(prev);
           next.delete(frameId);
           return next;
         });
-        toast.error(uploadResponse.errorMessage || "Failed to save frame");
+        toast.error(uploadResponse.errorMessage || "프레임 저장 실패");
       }
     } catch (error) {
       setSavingFrames((prev) => {
@@ -386,7 +386,7 @@ export const VideoFrameExtractor = () => {
         next.delete(frameId);
         return next;
       });
-      toast.error("Failed to save frame");
+      toast.error("프레임 저장 실패");
       console.error("Error saving frame:", error);
     }
   };
@@ -441,7 +441,7 @@ export const VideoFrameExtractor = () => {
           return next;
         });
         toast.error(
-          uploadResponse.errorMessage || "Failed to convert to video",
+          uploadResponse.errorMessage || "영상으로 변환하지 못했습니다",
         );
       }
     } catch (error) {
@@ -450,7 +450,7 @@ export const VideoFrameExtractor = () => {
         next.delete(frameId);
         return next;
       });
-      toast.error("Failed to convert frame to video");
+      toast.error("프레임을 영상으로 변환하지 못했습니다");
       console.error("Error converting frame:", error);
     }
   };
@@ -471,14 +471,14 @@ export const VideoFrameExtractor = () => {
                 <div className="aspect-video overflow-hidden border border-ui-panel-border bg-ui-panel">
                   <UploadEntryCard
                     icon={ImagesIcon}
-                    title="Extract Video Frames"
-                    description="Capture perfect moments from your videos. Select frames at precise timestamps and save them as images."
+                    title="영상 프레임 추출"
+                    description="영상 속 완벽한 순간을 포착하세요. 원하는 시점의 프레임을 골라 이미지로 저장할 수 있습니다."
                     accentBackgroundClass="bg-rose-500/40"
                     accentBorderClass="border-rose-400/30"
                     accept="video/*"
                     onFilesSelected={handleLocalVideoSelect}
-                    primaryLabel="Select Video"
-                    secondaryLabel="Pick from Library"
+                    primaryLabel="영상 선택"
+                    secondaryLabel="라이브러리에서 선택"
                     secondaryIcon={ImagesIcon}
                     onSecondaryClick={() => setIsGalleryModalOpen(true)}
                   />
@@ -502,7 +502,7 @@ export const VideoFrameExtractor = () => {
                       }}
                       className="absolute right-3 top-3 z-10 border border-red/50 px-3 py-1.5 text-sm hover:border-red/80 hover:bg-red/80"
                     >
-                      Switch Video
+                      영상 바꾸기
                     </Button>
                     <video
                       ref={videoRef}
@@ -571,7 +571,7 @@ export const VideoFrameExtractor = () => {
                           <button
                             onClick={() => seekToFrame("first")}
                             className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-white/10 transition-colors hover:bg-white/20"
-                            title="First Frame"
+                            title="첫 프레임"
                           >
                             <SkipBackIcon
                               
@@ -589,7 +589,7 @@ export const VideoFrameExtractor = () => {
                           <button
                             onClick={() => seekToFrame("last")}
                             className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-white/10 transition-colors hover:bg-white/20"
-                            title="Last Frame"
+                            title="마지막 프레임"
                           >
                             <SkipForwardIcon
                               
@@ -634,7 +634,7 @@ export const VideoFrameExtractor = () => {
                     className="px-12 py-3 text-lg font-semibold"
                     disabled={isExtracting}
                   >
-                    {isExtracting ? "Extracting..." : "Extract Frames"}
+                    {isExtracting ? "추출 중..." : "프레임 추출"}
                   </Button>
                 </div>
 
@@ -643,14 +643,14 @@ export const VideoFrameExtractor = () => {
                     <div className="group border border-ui-panel-border bg-ui-panel p-6">
                       <div>
                         <div className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                          Start Time
+                          시작 시간
                         </div>
                         <div className="font-mono text-3xl font-semibold tabular-nums text-ui-accent-ink">
                           {formatTimePrecise(startTime)}
                         </div>
                         <div className="mt-3 flex items-center gap-2 text-xs text-base-fg/60">
                           <div className="h-2.5 w-2.5 animate-pulse rounded-full bg-yellow-400" />
-                          <span>Adjust via the yellow marker on the video</span>
+                          <span>영상 위 노란 마커로 조절하세요</span>
                         </div>
                       </div>
                     </div>
@@ -658,12 +658,12 @@ export const VideoFrameExtractor = () => {
                     <div className="group border border-ui-panel-border bg-ui-panel p-6">
                       <div>
                         <div className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                          Video Information
+                          영상 정보
                         </div>
                         <div className="space-y-3 text-sm">
                           <div className="flex items-center justify-between border-b border-ui-divider py-2">
                             <span className="font-medium text-base-fg/70">
-                              Duration
+                              길이
                             </span>
                             <span className="font-mono text-lg font-semibold tabular-nums text-base-fg">
                               {formatTime(duration)}
@@ -672,7 +672,7 @@ export const VideoFrameExtractor = () => {
                           {videoRef.current && (
                             <div className="flex items-center justify-between py-2">
                               <span className="font-medium text-base-fg/70">
-                                Resolution
+                                해상도
                               </span>
                               <span className="font-mono font-semibold tabular-nums text-base-fg">
                                 {videoRef.current.videoWidth} ×{" "}
@@ -691,7 +691,7 @@ export const VideoFrameExtractor = () => {
                         <SparklesIcon
                           
                           className="text-ui-accent-ink" />
-                        Extraction Settings
+                        추출 설정
                       </h3>
 
                       <div className="space-y-5">
@@ -700,7 +700,7 @@ export const VideoFrameExtractor = () => {
                             htmlFor="numFrames"
                             className="mb-1.5 block text-xs font-medium text-base-fg/60"
                           >
-                            Number of Frames
+                            프레임 수
                           </label>
                           <input
                             id="numFrames"
@@ -725,7 +725,7 @@ export const VideoFrameExtractor = () => {
                             htmlFor="frameDistance"
                             className="mb-1.5 block text-xs font-medium text-base-fg/60"
                           >
-                            Distance (ms)
+                            간격 (ms)
                           </label>
                           <input
                             id="frameDistance"
@@ -743,8 +743,7 @@ export const VideoFrameExtractor = () => {
                         </div>
 
                         <div className="text-xs leading-relaxed text-base-fg/60">
-                          Extracting multiple frames helps capture a sharp,
-                          non-blurred frame.
+                          여러 프레임을 추출하면 흔들림 없는 선명한 프레임을 얻기 쉽습니다.
                         </div>
                       </div>
                     </div>
@@ -762,11 +761,11 @@ export const VideoFrameExtractor = () => {
                           <ImagesIcon
                             
                             className="text-ui-accent-ink" />
-                          Extracted Frames
+                          추출된 프레임
                         </h3>
                         <div className="border border-white/20 px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase leading-none tracking-[0.12em] text-base-fg/70">
                           {extractedFrames.length}{" "}
-                          {extractedFrames.length === 1 ? "Frame" : "Frames"}
+                          {extractedFrames.length === 1 ? "프레임" : "프레임"}
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-3">
@@ -778,7 +777,7 @@ export const VideoFrameExtractor = () => {
                             <div className="aspect-video overflow-hidden bg-black">
                               <img
                                 src={frame.url}
-                                alt={`Frame ${index + 1}`}
+                                alt={`프레임 ${index + 1}`}
                                 className="h-full w-full object-contain"
                               />
                             </div>
@@ -816,10 +815,10 @@ export const VideoFrameExtractor = () => {
                                   className="flex-1 px-3 py-1.5 text-xs font-semibold"
                                 >
                                   {savingFrames.has(frame.id)
-                                    ? "Saving..."
+                                    ? "저장 중..."
                                     : savedFrames.has(frame.id)
-                                      ? "Saved"
-                                      : "Save"}
+                                      ? "저장됨"
+                                      : "저장"}
                                 </Button>
                                 <Button
                                   variant="primary"
@@ -839,7 +838,7 @@ export const VideoFrameExtractor = () => {
                                   disabled={convertingFrames.has(frame.id)}
                                   className="flex-1 px-3 py-1.5 text-xs font-semibold"
                                 >
-                                  Turn into Video
+                                  영상으로 만들기
                                 </Button>
                               </div>
                             </div>

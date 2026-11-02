@@ -44,29 +44,29 @@ export const AppearanceSettingsPane = () => {
     () => [
       {
         id: "gray" as const,
-        label: "Default",
+        label: "기본",
         swatch: <Swatch background="#121316" />,
       },
       {
         id: "light" as const,
-        label: "Light",
+        label: "라이트",
         swatch: <Swatch background="#ffffff" />,
       },
       {
         id: "black" as const,
-        label: "Black",
+        label: "블랙",
         swatch: <Swatch background="#000000" />,
       },
       {
         id: "aurora" as const,
-        label: "Aurora",
+        label: "오로라",
         swatch: (
           <Swatch background="radial-gradient(28px 14px at 20% 10%, #2d81ff, transparent), radial-gradient(32px 20px at 80% 80%, #1cb6be, transparent), #0d0f16" />
         ),
       },
       {
         id: "sunset" as const,
-        label: "Sunset",
+        label: "선셋",
         swatch: (
           <Swatch background="radial-gradient(28px 14px at 20% 10%, #8b5cf6, transparent), radial-gradient(32px 20px at 80% 80%, #fb923c, transparent), #140b12" />
         ),
@@ -78,9 +78,9 @@ export const AppearanceSettingsPane = () => {
   return (
     <div className="space-y-4 pt-3 text-base-fg">
       <div className="flex flex-col gap-0.5">
-        <Label>Themes</Label>
+        <Label>테마</Label>
         <p className="text-xs opacity-70">
-          Choose your preferred look. Applies instantly.
+          원하는 테마를 고르세요. 바로 적용됩니다.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-2">

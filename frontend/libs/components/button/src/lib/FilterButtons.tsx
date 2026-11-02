@@ -7,15 +7,15 @@ interface Props {
 
 const FILTERS = [
   {
-    text: "Featured",
+    text: "추천",
     option: AssetFilterOption.FEATURED,
   },
   {
-    text: "Mine",
+    text: "내 것",
     option: AssetFilterOption.MINE,
   },
   {
-    text: "Bookmarked",
+    text: "북마크",
     option: AssetFilterOption.BOOKMARKED,
   },
 ];

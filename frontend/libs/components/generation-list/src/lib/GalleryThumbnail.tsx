@@ -75,7 +75,7 @@ export function GalleryThumbnail({
       <div className="flex h-full w-full flex-col items-center justify-center gap-2">
         <LoaderCircleIcon className="animate-spin text-lg text-white/30" />
         {showRetryLabel && (
-          <span className="text-[10px] text-white/30">Loading thumbnail…</span>
+          <span className="text-[10px] text-white/30">썸네일 불러오는 중…</span>
         )}
       </div>
     );

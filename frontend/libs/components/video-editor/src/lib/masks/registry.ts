@@ -40,7 +40,7 @@ export const BASE_MASK_PARAM_DEFINITIONS: ParamDefinition<
 >[] = [
   {
     key: "feather",
-    label: "Feather",
+    label: "페더",
     type: "number",
     default: 0,
     min: 0,
@@ -50,7 +50,7 @@ export const BASE_MASK_PARAM_DEFINITIONS: ParamDefinition<
   },
   {
     key: "strokeWidth",
-    label: "Stroke width",
+    label: "외곽선 두께",
     type: "number",
     default: 0,
     min: 0,
@@ -59,7 +59,7 @@ export const BASE_MASK_PARAM_DEFINITIONS: ParamDefinition<
   },
   {
     key: "strokeColor",
-    label: "Stroke color",
+    label: "선 색상",
     type: "color",
     default: "#ffffff",
   },

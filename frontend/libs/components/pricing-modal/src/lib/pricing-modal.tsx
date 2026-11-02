@@ -16,9 +16,9 @@ import { useCreditsModalStore } from "./credits-modal-store";
 
 const pricingConfig = {
   header: {
-    title: "Pick a plan",
+    title: "요금제 선택",
     subtitle:
-      "Get a ton of generations and invest in a tool you'll always own. Your subscription helps keep ArtCraft free and open for everyone.",
+      "넉넉한 생성량을 받고, 평생 소유하는 도구에 투자하세요. 여러분의 구독이 ArtCraft를 모두에게 무료·오픈소스로 유지하는 힘이 됩니다.",
   },
 };
 
@@ -76,11 +76,10 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-2.5 pl-6 pr-14 md:pl-10">
           <p className="pricing-hud flex items-center gap-2 font-bold">
             <TagIcon aria-hidden className="h-3.5 w-3.5" />
-            Limited-time offer
+            기간 한정 혜택
           </p>
           <p className="text-sm">
-            Save {PROMO_PCT}% on every plan, monthly or yearly — lock in the
-            lowest price today.
+            모든 요금제 {PROMO_PCT}% 할인 (월간·연간) — 오늘 최저가로 확정하세요.
           </p>
         </div>
       </div>
@@ -88,8 +87,8 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
       <PricingSection>
         <PricingSectionLabel
           index="01"
-          label="Pricing"
-          annotation="Free & open source · Subscriptions optional†"
+          label="요금"
+          annotation="무료 & 오픈소스 · 구독은 선택†"
         />
         <div className="px-6 py-12 md:px-10 md:py-16">
           <h1 className="max-w-3xl font-display text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl md:text-6xl">
@@ -106,7 +105,7 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
                 onClick={handleBuyCredits}
               >
                 <CoinsIcon aria-hidden className="h-4 w-4" />
-                Buy more credits
+                크레딧 추가 구매
               </Button>
               <Button
                 variant="secondary"
@@ -114,7 +113,7 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
                 onClick={handleUpdatePaymentMethod}
               >
                 <CreditCardIcon aria-hidden className="h-4 w-4" />
-                Update payment method
+                결제 수단 변경
               </Button>
             </div>
           )}
@@ -124,8 +123,8 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
       <PricingSection>
         <PricingSectionLabel
           index="02"
-          label="Choose your plan"
-          annotation="Every paid plan includes video credits"
+          label="요금제 선택"
+          annotation="모든 유료 요금제에 영상 크레딧 포함"
         />
         <PricingTable
           activePlanSlug={activePlanSlug}
@@ -140,12 +139,12 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
       <PricingSection>
         <div className="grid md:grid-cols-2">
           <div className="p-6 md:p-10">
-            <p className="pricing-hud text-white/40">Need more credits?</p>
+            <p className="pricing-hud text-white/40">크레딧이 더 필요하신가요?</p>
             <h2 className="mt-4 font-display text-2xl font-medium tracking-[-0.02em] text-white">
-              One-time credit packs
+              1회성 크레딧 팩
             </h2>
             <p className="mt-2 max-w-md leading-relaxed text-white/55">
-              Top up without changing your plan. Credit packs never expire.
+              요금제 변경 없이 충전하세요. 크레딧 팩은 만료되지 않습니다.
             </p>
             <Button
               variant="secondary"
@@ -153,16 +152,13 @@ export function PricingContent({ title, subtitle }: PricingContentProps) {
               onClick={handleBuyCredits}
             >
               <CoinsIcon aria-hidden className="h-4 w-4 text-primary" />
-              Buy credits
+              크레딧 구매
             </Button>
           </div>
           <div className="border-t border-white/15 p-6 md:border-l md:border-t-0 md:p-10">
-            <p className="pricing-hud text-white/40">† Footnote</p>
+            <p className="pricing-hud text-white/40">† 참고</p>
             <p className="mt-4 max-w-md leading-relaxed text-white/55">
-              ArtCraft can be used without paying for a subscription. You can
-              bring your own compute and third-party subscriptions. We hope
-              you’ll subscribe, though, as that helps accelerate our
-              development.
+              ArtCraft는 구독 없이도 사용할 수 있습니다. 자신의 API 키와 다른 서비스 구독을 연결해 쓸 수 있습니다. 다만 구독해 주시면 개발 속도를 높이는 데 큰 도움이 됩니다.
             </p>
           </div>
         </div>

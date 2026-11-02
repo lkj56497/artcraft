@@ -32,7 +32,7 @@ export const TimelineBar = ({ readOnly = false }: { readOnly?: boolean }) => {
       <button
         type="button"
         onClick={togglePlay}
-        aria-label={isPlaying ? "Pause timeline" : "Play timeline"}
+        aria-label={isPlaying ? "타임라인 일시정지" : "타임라인 재생"}
         className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/80 hover:bg-white/10"
       >
         <DynamicIcon icon={isPlaying ? PauseIcon : PlayIcon} className="h-3.5 w-3.5" />
@@ -42,7 +42,7 @@ export const TimelineBar = ({ readOnly = false }: { readOnly?: boolean }) => {
       </span>
       <input
         type="range"
-        aria-label="Timeline playhead"
+        aria-label="타임라인 재생 헤드"
         min={0}
         max={duration}
         step={0.01}
@@ -64,7 +64,7 @@ export const TimelineBar = ({ readOnly = false }: { readOnly?: boolean }) => {
       {!readOnly && (
         <button
           type="button"
-          title="Expand timeline"
+          title="타임라인 펼치기"
           onClick={() => setExpanded(true)}
           className="flex h-7 w-7 items-center justify-center rounded-[3px] text-base-fg/60 hover:bg-white/10"
         >

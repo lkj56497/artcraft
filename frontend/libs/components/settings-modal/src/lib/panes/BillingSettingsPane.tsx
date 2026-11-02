@@ -38,8 +38,8 @@ export const BillingSettingsPane = (args: BillingSettingsPaneProps) => {
     subscriptionStore.subscriptionInfo?.subscriptionEndAt?.toLocaleDateString();
 
   const changeOrUpgradePlanButtonLabel = canCancelPlan
-    ? "Change plan"
-    : "Upgrade plan";
+    ? "요금제 변경"
+    : "요금제 업그레이드";
 
   useEffect(() => {
     creditsStore.fetchFromServer();
@@ -49,10 +49,9 @@ export const BillingSettingsPane = (args: BillingSettingsPaneProps) => {
   return (
     <>
       <div className="flex flex-col gap-0.5 pt-3 text-base-fg">
-        <Label>Support ArtCraft</Label>
+        <Label>ArtCraft 후원하기</Label>
         <p className="text-xs opacity-70">
-          You do not have to purchase anything from us to use ArtCraft, but you
-          can support ArtCraft development by subscribing or buying credits.
+          ArtCraft를 쓰기 위해 무언가를 구매할 필요는 없지만, 구독하거나 크레딧을 구매해 개발을 후원할 수 있습니다.
         </p>
       </div>
 
@@ -60,7 +59,7 @@ export const BillingSettingsPane = (args: BillingSettingsPaneProps) => {
 
       <div className="space-y-4 text-base-fg">
         <div className="space-y-2">
-          <Label>Current ArtCraft Plan</Label>
+          <Label>현재 ArtCraft 요금제</Label>
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 font-display text-2xl font-medium tracking-[-0.02em]">
               <StarIcon className="text-lg text-base-fg/70" />
@@ -91,14 +90,14 @@ export const BillingSettingsPane = (args: BillingSettingsPaneProps) => {
         {subscriptionEndAt && (
           <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-base-fg/50">
             <InfoIcon />
-            Subscription ends on {subscriptionEndAt}
+            구독 종료일 {subscriptionEndAt}
           </div>
         )}
 
         {nextBillAt && (
           <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-base-fg/50">
             <InfoIcon />
-            Next payment on {nextBillAt}
+            다음 결제일 {nextBillAt}
           </div>
         )}
 
@@ -106,7 +105,7 @@ export const BillingSettingsPane = (args: BillingSettingsPaneProps) => {
 
         <div className="flex flex-col">
           <Label htmlFor="credits" className="flex items-center gap-2">
-            Your ArtCraft credit balance
+            내 ArtCraft 크레딧 잔액
           </Label>
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
@@ -134,7 +133,7 @@ const CancelPlanButton = () => {
 
   return (
     <Button variant="secondary" className="h-9 shrink-0 px-3" onClick={handleClick}>
-      Cancel plan
+      요금제 해지
     </Button>
   );
 };
@@ -148,7 +147,7 @@ const BuyCreditsButton = () => {
       className="h-9 shrink-0 px-4"
       onClick={() => toggleCreditsModal()}
     >
-      Buy credits
+      크레딧 구매
     </Button>
   );
 };
@@ -158,13 +157,13 @@ const CreditsTally = ({ creditsStore }: { creditsStore: CreditsState }) => {
     <ul className="mt-4 divide-y divide-ui-panel-border border border-ui-panel-border">
       <li className="flex items-baseline justify-between gap-3 px-3 py-2">
         <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-          Monthly credits (refilled monthly)
+          월간 크레딧 (매월 충전)
         </span>
         <span className="text-sm font-medium">{creditsStore.monthlyCredits}</span>
       </li>
       <li className="flex items-baseline justify-between gap-3 px-3 py-2">
         <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-base-fg/50">
-          Purchased credits
+          구매한 크레딧
         </span>
         <span className="text-sm font-medium">{creditsStore.bankedCredits}</span>
       </li>

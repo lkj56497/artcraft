@@ -68,7 +68,7 @@ export class PromptsApi extends ApiManager {
         },
         job_token: jobToken,
         request: {
-          maybe_model_title: "Image Generation",
+          maybe_model_title: "이미지 생성",
         },
         status: {
           status: status_string.toLowerCase(),
@@ -167,7 +167,7 @@ export class PromptsApi extends ApiManager {
     } else {
       result = {
         success: false,
-        errorMessage: "Failed to generate snapshot.",
+        errorMessage: "스냅샷 생성 실패.",
       };
     }
 

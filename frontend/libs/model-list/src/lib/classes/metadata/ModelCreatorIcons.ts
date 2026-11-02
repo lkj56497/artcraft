@@ -76,7 +76,7 @@ export const getCreatorIcon = (
   const path = getCreatorIconPath(creator);
   return React.createElement("img", {
     src: path,
-    alt: `${creator} logo`,
+    alt: `${creator} 로고`,
     className,
   });
 };
@@ -86,7 +86,7 @@ export const getCreatorListIcon = (creator: ModelCreator): ReactNode => {
   const { src, isColor } = getCreatorIconSource(creator);
   return React.createElement("img", {
     src,
-    alt: `${creator} logo`,
+    alt: `${creator} 로고`,
     className: isColor ? "h-4 w-4" : "h-4 w-4 icon-auto-contrast",
   });
 };

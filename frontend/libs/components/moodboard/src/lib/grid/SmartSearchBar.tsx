@@ -26,13 +26,13 @@ export const SmartSearchBar = ({
         <input
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Search this board"
+          placeholder="이 보드에서 검색"
           className="w-full bg-transparent text-sm text-base-fg placeholder:text-base-fg/40 focus:outline-none"
         />
         {query && (
           <button
             type="button"
-            aria-label="Clear search"
+            aria-label="검색 지우기"
             onClick={() => onQueryChange("")}
             className="rounded-full text-base-fg/45 transition-colors hover:text-base-fg focus:outline-none focus-visible:text-base-fg focus-visible:ring-2 focus-visible:ring-primary"
           >

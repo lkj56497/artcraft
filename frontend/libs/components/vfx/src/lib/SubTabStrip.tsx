@@ -2,8 +2,8 @@ import { twMerge } from "tailwind-merge";
 import type { VFXSubTab } from "./types";
 
 const TABS: { id: VFXSubTab; label: string }[] = [
-  { id: "history", label: "History" },
-  { id: "showcase", label: "Showcase" },
+  { id: "history", label: "기록" },
+  { id: "showcase", label: "예시" },
 ];
 
 interface SubTabStripProps {

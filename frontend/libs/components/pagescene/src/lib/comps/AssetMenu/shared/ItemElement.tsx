@@ -71,7 +71,7 @@ export const ItemElement = ({ item }: Props) => {
     if (!target) {
       editor.adapter.showToast(
         ToastTypes.WARNING,
-        "Select a character or rigged object in the scene, then click an animation to add it.",
+        "장면에서 캐릭터나 리깅된 오브젝트를 선택한 뒤 애니메이션을 클릭하면 추가됩니다.",
       );
       return;
     }
@@ -141,12 +141,12 @@ export const ItemElement = ({ item }: Props) => {
           {item.type === AssetType.ANIMATION ? (
             <>
               <FootprintsIcon  className="mr-1.5" />
-              Add to Character
+              캐릭터에 추가
             </>
           ) : (
             <>
               <MoveIcon  className="mr-1.5" />
-              Drag to Scene
+              장면으로 드래그
             </>
           )}
         </div>

@@ -672,7 +672,7 @@ class Editor {
       this.save_manager.loadScene(sceneToken).then(applyIfLoaded);
     } else {
       this.adapter.onSceneTitleChange?.({
-        title: "Untitled New Scene",
+        title: "제목 없는 새 장면",
         token: undefined,
         ownerToken: this.adapter.getCurrentUserToken?.(),
         isModified: false,

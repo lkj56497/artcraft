@@ -38,11 +38,11 @@ export const OpenAIApiKeyBlock = () => {
 
   return (
     <div className="flex justify-between items-center">
-      <span>Open AI API Key:</span>
+      <span>OpenAI API 키:</span>
       <Input
         value={openAIApiKey}
         onChange={(e) => syncOpenAIApiKey(e.target.value)}
-        placeholder="Enter Open AI API key"
+        placeholder="OpenAI API 키 입력"
       />
 
       {/*<Button

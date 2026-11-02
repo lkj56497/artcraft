@@ -28,7 +28,7 @@ export const VideoGenerationCountPicker = ({
 
   return (
     <Tooltip
-      content="Number of generations"
+      content="생성 개수"
       position="top"
       className="z-50"
       closeOnClick={true}
@@ -38,7 +38,7 @@ export const VideoGenerationCountPicker = ({
         items={options}
         onSelect={onSelect}
         mode="toggle"
-        panelTitle="No. of videos"
+        panelTitle="영상 수"
         triggerIcon={<CopyIcon  className="h-4 w-4" />}
         buttonClassName={PROMPT_TOOLBAR_ICON_BUTTON_CLASSES}
       />

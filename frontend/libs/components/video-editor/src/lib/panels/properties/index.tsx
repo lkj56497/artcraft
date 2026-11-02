@@ -34,7 +34,7 @@ export function PropertiesPanel() {
     return (
       <div className="panel bg-background flex h-full flex-col items-center justify-center overflow-hidden rounded-lg border border-ui-panel-border">
         <p className="text-muted-foreground text-sm">
-          {selectedElements.length} elements selected.
+          요소 {selectedElements.length}개 선택됨.
         </p>
       </div>
     );

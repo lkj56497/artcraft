@@ -31,7 +31,7 @@ interface Props {
 const KIND_LABEL: Record<BoardItem["kind"], string> = {
   image: "Image",
   video: "Video",
-  text: "Note",
+  text: "메모",
   link: "Link",
   color: "Color",
 };
@@ -100,7 +100,7 @@ export const ItemInspector = ({
     <Modal
       isOpen
       onClose={onClose}
-      accessibleTitle="Item details"
+      accessibleTitle="항목 상세"
       className="rounded-xl bg-ui-modal h-[760px] w-[1200px] max-w-screen min-w-[1000px] min-h-[600px] p-4"
       draggable
       resizable
@@ -130,13 +130,13 @@ export const ItemInspector = ({
               </span>
             </div>
 
-            <Section title="Rating">
+            <Section title="평점">
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((n) => (
                   <button
                     key={n}
                     type="button"
-                    aria-label={`Rate ${n}`}
+                    aria-label={`별 ${n}개`}
                     onClick={() => onSetRating(item.rating === n ? 0 : n)}
                     className="rounded p-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
@@ -152,7 +152,7 @@ export const ItemInspector = ({
               </div>
             </Section>
 
-            <Section title="Tags">
+            <Section title="태그">
               <div className="flex flex-wrap gap-1.5">
                 {item.tags.map((tag) => (
                   <button
@@ -172,23 +172,23 @@ export const ItemInspector = ({
                     if (e.key === "Enter") commitTag();
                   }}
                   onBlur={commitTag}
-                  placeholder="Add tag"
+                  placeholder="태그 추가"
                   className="w-20 rounded-full bg-base-fg/5 px-2.5 py-1 text-[11px] text-base-fg placeholder:text-base-fg/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 />
               </div>
             </Section>
 
             {item.kind === "image" && palette.length > 0 && (
-              <Section title="Palette">
+              <Section title="팔레트">
                 <div className="flex flex-wrap gap-1.5">
                   {palette.map((hex) => (
                     <button
                       key={hex}
                       type="button"
-                      title={`${hex} — copy`}
+                      title={`${hex} — 복사`}
                       onClick={() => {
                         void navigator.clipboard?.writeText(hex);
-                        toast.success(`Copied ${hex}`);
+                        toast.success(`${hex} 복사됨`);
                       }}
                       className="h-7 w-7 rounded-md ring-1 ring-inset ring-black/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                       style={{ background: hex }}
@@ -201,7 +201,7 @@ export const ItemInspector = ({
                   className="mt-2.5 flex items-center gap-1.5 rounded text-xs font-medium text-base-fg/60 transition-colors hover:text-base-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <PlusIcon  className="h-3 w-3" />
-                  Add swatches to board
+                  보드에 색상 견본 추가
                 </button>
               </Section>
             )}
@@ -216,7 +216,7 @@ export const ItemInspector = ({
                 onClick={onUseReference}
                 className="w-full col-span-2 py-1.5 text-[13px]"
               >
-                Use as reference
+                참조로 사용
               </Button>
             )}
             <Button
@@ -225,7 +225,7 @@ export const ItemInspector = ({
               onClick={onDelete}
               className="w-full col-span-2 py-1.5 text-[13px]"
             >
-              Delete
+              삭제
             </Button>
           </div>
         </div>
@@ -327,7 +327,7 @@ const NavArrow = ({
 }) => (
   <button
     type="button"
-    aria-label={side === "left" ? "Previous" : "Next"}
+    aria-label={side === "left" ? "이전" : "다음"}
     onClick={(e) => {
       e.stopPropagation();
       onClick();

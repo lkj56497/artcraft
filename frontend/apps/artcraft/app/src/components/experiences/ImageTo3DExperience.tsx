@@ -60,7 +60,7 @@ interface ImageTo3DExperienceProps {
 }
 
 const MODE_TABS = [
-  { id: "image", label: "Image to 3D" },
+  { id: "image", label: "이미지 → 3D" },
   // { id: "text", label: "Text to 3D" },
 ] satisfies { id: Mode; label: string }[];
 
@@ -242,12 +242,12 @@ export const ImageTo3DExperience = ({
       });
 
       if (!uploadResult.success || !uploadResult.data) {
-        throw new Error("Failed to upload image");
+        throw new Error("이미지 업로드 실패");
       }
 
       setUploadedMediaToken(uploadResult.data);
     } catch (error) {
-      toast.error("Failed to upload image");
+      toast.error("이미지 업로드 실패");
       setUploadedPreview(null);
       setUploadedName(null);
     } finally {
@@ -307,7 +307,7 @@ export const ImageTo3DExperience = ({
           });
 
           if (!uploadResult.success || !uploadResult.data) {
-            throw new Error("Upload failed");
+            throw new Error("업로드 실패");
           }
 
           setWorldImages((prev) =>
@@ -318,7 +318,7 @@ export const ImageTo3DExperience = ({
             ),
           );
         } catch {
-          toast.error(`Failed to upload ${file.name}`);
+          toast.error(`${file.name} 업로드 실패`);
           setWorldImages((prev) => prev.filter((img) => img.id !== imageId));
         }
       }),
@@ -362,7 +362,7 @@ export const ImageTo3DExperience = ({
 
     const item = selectedItems[0];
     if (!item || !item.fullImage) {
-      toast.error("No image selected");
+      toast.error("선택된 이미지가 없습니다");
       return;
     }
 
@@ -466,8 +466,8 @@ export const ImageTo3DExperience = ({
         }
       }
     } catch (error) {
-      const errorMessage = commandErrorMessage(error, "An unexpected error occurred");
-      toast.error(`Failed to generate 3D model: ${errorMessage}`);
+      const errorMessage = commandErrorMessage(error, "예기치 않은 오류가 발생했습니다");
+      toast.error(`3D 모델 생성 실패: ${errorMessage}`);
       if (variant === "world") {
         worldFailGeneration(subscriberId);
       } else {
@@ -534,7 +534,7 @@ export const ImageTo3DExperience = ({
             onClick={() => fileInputRef.current?.click()}
             className="w-full"
           >
-            Upload image
+            이미지 업로드
           </Button>
           <Button
             variant="action"
@@ -542,7 +542,7 @@ export const ImageTo3DExperience = ({
             onClick={handlePickFromLibrary}
             className="w-full"
           >
-            Pick from library
+            라이브러리에서 선택
           </Button>
         </div>
       }
@@ -588,7 +588,7 @@ export const ImageTo3DExperience = ({
           )} />
         {!hasResults && (
           <span className="mt-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-            Add Image
+            이미지 추가
           </span>
         )}
       </div>
@@ -607,7 +607,7 @@ export const ImageTo3DExperience = ({
         >
           <img
             src={uploadedPreview}
-            alt="Reference"
+            alt="참조"
             className={twMerge(
               "h-full w-full object-cover transition-opacity",
               isUploading && "opacity-50",
@@ -649,7 +649,7 @@ export const ImageTo3DExperience = ({
         rows={1}
         className="text-md max-h-[5.5em] w-full resize-none overflow-y-auto rounded-[3px] bg-transparent pr-2 pt-1 text-base-fg placeholder-base-fg/60 focus:outline-none"
         value={prompt}
-        placeholder="Describe any object you want to generate from scratch..."
+        placeholder="새로 만들고 싶은 물체를 설명하세요..."
         onChange={(event) => setPrompt(event.target.value)}
       />
     </div>
@@ -676,7 +676,7 @@ export const ImageTo3DExperience = ({
                     onClick={() => worldFileInputRef.current?.click()}
                     className="w-full"
                   >
-                    Upload images
+                    이미지 업로드
                   </Button>
                   <Button
                     variant="action"
@@ -684,7 +684,7 @@ export const ImageTo3DExperience = ({
                     onClick={handlePickFromLibrary}
                     className="w-full"
                   >
-                    Pick from library
+                    라이브러리에서 선택
                   </Button>
                 </div>
               }
@@ -734,7 +734,7 @@ export const ImageTo3DExperience = ({
                   
                   className="text-3xl text-base-fg opacity-80" />
                 <span className="mt-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                  Add Images
+                  이미지 추가
                 </span>
               </div>
             </Tooltip>
@@ -745,7 +745,7 @@ export const ImageTo3DExperience = ({
             className="w-full resize-none overflow-y-auto rounded-[3px] border border-white/15 bg-ui-controls px-3 py-2.5 text-base text-base-fg placeholder-base-fg/60 transition-colors focus:border-white/60 focus:outline-none"
             style={{ maxHeight: "5em" }}
             value={worldPrompt}
-            placeholder="Describe your 3D world (optional)..."
+            placeholder="3D 월드를 설명하세요 (선택)..."
             onChange={(e) => setWorldPrompt(e.target.value)}
           />
         </div>
@@ -806,7 +806,7 @@ export const ImageTo3DExperience = ({
               onClick={() => worldFileInputRef.current?.click()}
               className="w-full"
             >
-              Upload images
+              이미지 업로드
             </Button>
             <Button
               variant="action"
@@ -814,7 +814,7 @@ export const ImageTo3DExperience = ({
               onClick={handlePickFromLibrary}
               className="w-full"
             >
-              Pick from library
+              라이브러리에서 선택
             </Button>
           </div>
         }
@@ -840,14 +840,14 @@ export const ImageTo3DExperience = ({
     const imageCountRow = (
       <div className="flex items-center justify-center gap-2 font-mono text-[11px] tabular-nums text-base-fg/40">
         <span>
-          {worldImages.length}/{MAX_WORLD_IMAGES} images
+          이미지 {worldImages.length}/{MAX_WORLD_IMAGES}
         </span>
         <button
           type="button"
           className="text-base-fg/40 underline transition-colors hover:text-base-fg/70"
           onClick={() => setWorldImages([])}
         >
-          Clear all
+          모두 지우기
         </button>
       </div>
     );
@@ -869,7 +869,7 @@ export const ImageTo3DExperience = ({
               rows={1}
               className="flex-1 resize-none overflow-y-auto rounded-[3px] border border-white/15 bg-ui-controls px-3 py-2 text-sm text-base-fg placeholder-base-fg/60 transition-colors focus:border-white/60 focus:outline-none"
               value={worldPrompt}
-              placeholder="Describe world (optional)..."
+              placeholder="월드 설명 (선택)..."
               onChange={(e) => setWorldPrompt(e.target.value)}
             />
           </div>
@@ -892,7 +892,7 @@ export const ImageTo3DExperience = ({
           className="w-full resize-none overflow-y-auto rounded-[3px] border border-white/15 bg-ui-controls px-3 py-2.5 text-base text-base-fg placeholder-base-fg/60 transition-colors focus:border-white/60 focus:outline-none"
           style={{ maxHeight: "5em" }}
           value={worldPrompt}
-          placeholder="Describe your 3D world (optional)..."
+          placeholder="3D 월드를 설명하세요 (선택)..."
           onChange={(e) => setWorldPrompt(e.target.value)}
         />
       </div>
@@ -977,14 +977,14 @@ export const ImageTo3DExperience = ({
                         const editor = getActiveEditor();
                         if (editor) {
                           void addObject(editor, mediaItem);
-                          toast.success("Added to 3D scene");
+                          toast.success("3D 장면에 추가됨");
                         } else {
-                          toast.error("3D editor isn't ready yet");
+                          toast.error("3D 편집기가 아직 준비되지 않았습니다");
                         }
                       }, 500);
                     }}
                   >
-                    Open in 3D Editor
+                    3D 편집기에서 열기
                   </Button>
                   <Button
                     variant="action"
@@ -995,7 +995,7 @@ export const ImageTo3DExperience = ({
                         {
                           loading: "Downloading GLB...",
                           success: "Downloaded GLB file",
-                          error: "Failed to download file",
+                          error: "파일 다운로드 실패",
                         },
                       );
                     }}
@@ -1010,14 +1010,14 @@ export const ImageTo3DExperience = ({
             <div className="flex h-full flex-col overflow-hidden border border-ui-panel-border bg-ui-panel">
               <div className="flex items-center justify-between border-b border-ui-panel-border px-4 py-3">
                 <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-base-fg/60">
-                  History
+                  기록
                 </h3>
                 {results.length > 0 && (
                   <button
                     onClick={resetResults}
                     className="rounded-[3px] border border-red/40 bg-red/10 px-3 py-1 text-xs text-white/70 transition-colors hover:bg-red/20"
                   >
-                    Clear Session
+                    세션 지우기
                   </button>
                 )}
               </div>
@@ -1067,7 +1067,7 @@ export const ImageTo3DExperience = ({
                           <div className="mt-1 flex items-center gap-1.5 text-xs">
                             {isPending ? (
                               <span className="text-base-fg/55">
-                                Generating…
+                                생성 중…
                               </span>
                             ) : (
                               <span className="font-mono tabular-nums text-base-fg/45">
@@ -1133,7 +1133,7 @@ export const ImageTo3DExperience = ({
                   loading={isGenerating}
                   credits={variant === "world" ? worldCredits : objectCredits}
                 >
-                  {`Generate ${variant === "object" ? "Object" : "World"}`}
+                  {`${variant === "object" ? "오브젝트" : "월드"} 생성`}
                 </GenerateButton>
               </div>
             </div>
@@ -1214,7 +1214,7 @@ export const ImageTo3DExperience = ({
           </button>
           <img
             src={previewImage}
-            alt="Preview"
+            alt="미리보기"
             className="max-h-[80vh] max-w-[80vw] border border-white/15 object-contain"
             onClick={(e) => e.stopPropagation()}
           />
